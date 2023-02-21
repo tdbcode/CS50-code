@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <cs50.h>
 
 int main(void){
     int i = 0;
@@ -17,8 +18,7 @@ int main(void){
         printf("meow\n");
     }
 
-    bool l = true;
-    while(l==true){
+    while(true){
         printf("meow\n");
     }
 }
