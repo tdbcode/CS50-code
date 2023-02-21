@@ -10,17 +10,20 @@ int main(void)
     print_grid(n);
 }
 
-int get_size(void){
+int get_size(void)
+{
     // Get size of grid
     int n;
-    do{
+    do
+    {
         n = get_int("Size: ");
     }
     while(n<1);
     return n;
 }
 
-void print_grid(int n){
+void print_grid(int n)
+{
     // Print grid of bricks
     for (int i = 0; i < n; i++)
     {
