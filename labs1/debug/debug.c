@@ -2,7 +2,6 @@
 // Learn to debug buggy code
 
 #include <cs50.h>
-#include <stdio.h>
 
 int main(void)
 {
@@ -11,5 +10,5 @@ int main(void)
     string location = get_string("Where do you live? ");
 
     // Say hello
-    printf("Hello, %s\n", name, " from %s\n", location);
+    printf("Hello, %s", name, "from %s\n", location);
 }
