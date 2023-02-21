@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 int get_size(void);
-void print_guid(n);
+void print_grid(int n);
 
 int main(void)
 {
