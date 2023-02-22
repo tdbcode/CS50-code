@@ -48,7 +48,7 @@ int compute_score(string word)
         }
         else
         {
-            ascii = toupper(temp) - 65;
+            ascii = toupper(temp) - 64;
             score = POINTS[ascii];
         }
     }
