@@ -7,6 +7,7 @@ int getLength(long n);
 int main(void)
 {
     long creditno = 1;
+    long creditno2 = 0;
     int length = 0;
     int currentNo = 0;
     int product = 0;
@@ -21,16 +22,24 @@ int main(void)
 
     length = getLength(creditno);
 
-    currentNo = creditno;
+    creditno2 = creditno;
     for (int c = 0; c < length; c++)
     {
-        currentNo = (currentNo % 10);
+        currentNo = creditno2 % 10;
+        creditno2 = creditno2 / 10;
         ccno[c] = currentNo;
     }
 
-    for (int b = 0; b < length; b++)
+    for (int a = length; a > 0 ; a=a-2)
     {
-        printf("%i %i\n", b, ccno[b]);
+        currentNo = ccno[a];
+        if (currentNo > 9)
+        {
+            product = (currentNo % 10) + (currentNo / 10);
+            currentNo = product;
+        }
+        checksum += currentNo;
+        printf("%i\n", checksum);
     }
 
 
@@ -38,11 +47,7 @@ int main(void)
     /*
 
 
-        if (currentNo > 9)
-        {
-            product = (currentNo % 10) + (currentNo / 10);
-            currentNo = product;
-        }
+
 
         checksum += currentNo;
         creditno2 = creditno2 / 10;
