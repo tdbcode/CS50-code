@@ -23,16 +23,16 @@ int main(void)
     length = getLength(creditno);
 
     creditno2 = creditno;
-    for (int c = length-1; c > -1; c--)
+    for (int c = length - 1; c > -1; c--)
     {
         currentNo = creditno2 % 10;
         creditno2 = creditno2 / 10;
         ccno[c] = currentNo;
     }
 
-    for (int a = length-1; a > 0 ; a=a-2)
+    for (int a = length - 1; a > 0 ; a = a - 2)
     {
-        currentNo = ccno[a+1]*2;
+        currentNo = ccno[a + 1] * 2;
         if (currentNo > 9)
         {
             product = (currentNo % 10) + (currentNo / 10);
@@ -42,7 +42,7 @@ int main(void)
         checksum += currentNo;
     }
 
-    for (int a = length-1; a > 0 ; a=a-2)
+    for (int a = length - 1; a > 0 ; a = a - 2)
     {
         currentNo = ccno[a];
         checksum += currentNo;
@@ -58,7 +58,7 @@ int main(void)
         {
             printf("Mastercard\n");
         }
-        else if((length == 15) && (ccno[0] == 3))
+        else if ((length == 15) && (ccno[0] == 3))
         {
             printf("AMEX\n");
         }
@@ -66,7 +66,7 @@ int main(void)
     else
     {
         printf("INVALID\n");
-    }*/
+    }
 
 }
 
