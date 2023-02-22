@@ -4,15 +4,23 @@
 int main(void)
 {
     int height = get_int("Height: ");
-    int width = 1;
-    for (int i = 2; i < height; i++)
+    int bricks = 0;
+
+    for(int i = 0; i < height; i++)
     {
-        width++;
-        while (width <= i)
+        bricks = height - (height-1);
+        for(int j = height; j > bricks; j--)
+        {
+            printf(" ");
+        }
+
+        for(int b = 0; b < bricks; b++)
         {
             printf("#");
         }
 
+        printf("  ");
         printf("\n");
     }
+
 }
