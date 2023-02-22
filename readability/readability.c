@@ -48,11 +48,12 @@ int count_words(string text)
     {
         temp = text[c];
 
-        if((ispunct(temp) || isblank(temp)) && temp != 45)
+        if (isblank(temp) && temp != 45)
         {
             words++;
         }
     }
 
+    words++;
     return words;
 }
