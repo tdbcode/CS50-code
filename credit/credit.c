@@ -48,9 +48,13 @@ int main(void)
             printf("Checksum: %i\n", checksum);
         }
 
-        if((checksum % 10) == 0)
+        if ((checksum % 10) == 0)
         {
             printf("Valid");
+        }
+        else
+        {
+            printf("INVALID");
         }
 
 }
