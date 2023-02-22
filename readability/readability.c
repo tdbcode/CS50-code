@@ -29,17 +29,21 @@ int main(void)
 
     index = 0.0588 * letters / words * 100 - 0.296 * sentences / words * 100 - 15.8; // Perform readability calculation
 
-    grade = round(index);
+    grade = round(index); // Round the readability
 
-    if (grade<1)
+    // Output grade based on requirements
+    if (grade < 1)
     {
         printf("Before Grade 1\n");
     }
-    else if(grade>16)
+    else if (grade > 16)
     {
-        printf("Before Grade 1\n");
+        printf("Grade 16+\n");
     }
-    printf("%i index\n", grade);           // Output readability
+    else
+    {
+        printf("%i index\n", grade);
+    }
 
 }
 
