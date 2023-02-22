@@ -41,7 +41,10 @@ int main(void)
 
     if ((checksum % 10) == 0)
     {
-        printf("Valid");
+        if (counter > 15)
+        {
+            printf("VISA");
+        }
     }
     else
     {
