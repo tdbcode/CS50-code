@@ -18,16 +18,19 @@ int main(void)
 
 int count_letters(string text)
 {
-    int letters = 0;
     char temp;
+    int letters = 0;
 
     for (int c = 0; c < strlen(text); c++)
     {
         temp = text[c];
 
-        if(ispunct(temp) || isblack(ispunct) || )
+        if(!(ispunct(temp) || isblank(temp)))
+        {
+            letters++;
+        }
     }
 
     return letters;
-
 }
+
