@@ -23,5 +23,10 @@ int main(void)
 
 int compute_score(string word)
 {
-    // TODO: Compute and return score for string
+    toupper(char c);
+    for(int c = 0; c < strlen(word); c++)
+    {
+        
+    }
+
 }
