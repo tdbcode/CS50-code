@@ -58,7 +58,7 @@ int main(void)
         }
         else if (length == 16 && (ccno[0] == 5 && (ccno[1] > 0 && ccno[1] < 6)))
         {
-            printf("Mastercard\n");
+            printf("MASTERCARD\n");
         }
         else if ((length == 15) && ((ccno[0] == 3) && ((ccno[1] == 4) || (ccno[1] == 7))))
         {
