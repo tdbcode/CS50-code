@@ -21,11 +21,6 @@ int main(void)
 
         printf("  ");
 
-        for(int b2 = bricks; b2 > bricks; b2--)
-        {
-            printf("#");
-        }
-
         printf("\n");
     }
 
