@@ -21,7 +21,11 @@ int main(void)
 
     length = getLength(creditno);
 
-    printf("Length: %i\n", length);
+    for (int c = 0; c < length; c++)
+    {
+        ccno[c] = c+1;
+        printf("%i\n", ccno[c]);
+    }
 
 
 
