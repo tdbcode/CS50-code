@@ -16,16 +16,12 @@ int main(void)
     int sentences = 0;
     long index = 0;
     int grade = 0;
-    printf("%s\n", sentence);                 // Output the text entered
 
     letters = count_letters(sentence);       // Save number of letters using count letters function
-    printf("%i letters\n", letters);        // Output number of letters
 
     words = count_words(sentence);          // Save number of words using count words function
-    printf("%i words\n", words);            // Output number of words
 
     sentences = count_sentences(sentence); // Save number of sentences using count sentences function
-    printf("%i sentences\n", sentences);   // Output number of words
 
     index = 0.0588 * letters / words * 100 - 0.296 * sentences / words * 100 - 15.8; // Perform readability calculation
 
