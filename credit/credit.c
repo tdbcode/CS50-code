@@ -19,15 +19,16 @@ int main(void)
         {
             creditno2 = creditno2/10;
             currentNo = (creditno2 % 10)*2;
+            printf("Credit Left: %ld\n", creditno2);
 
             if (currentNo>9){
-                product = (currentNo % 10) + (currentNo % 100);
-                printf("%i\n", product);
+                product = (currentNo % 10) + (currentNo / 10);
+                printf("Product: %i\n", product);
             }
 
             creditno2 = creditno2/10;
             counter=counter+2;
-            printf("%i\n", currentNo);
+            printf("Current No: %i\n", currentNo);
         }
  //   } while ((counter > 16) && (counter < 13) && (counter == 14));
 
