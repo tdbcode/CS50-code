@@ -13,11 +13,8 @@ int main(void)
         counter++;
     }
 
-    int currentNo = 0;
-    for(int i = counter; i > 0; i=i-2)
-    {
-        currentNo = creditno[i];
-        printf("%i\n% currentNo);
-    }
+    int creditNos[counter];
+
+
 
 }
