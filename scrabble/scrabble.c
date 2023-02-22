@@ -37,7 +37,7 @@ int compute_score(string word)
 {
     char temp;
     int ascii;
-    int score;
+    int score = 0;
     // Work out ascii code and then convert to score
     for (int c = 0; c < strlen(word); c++)
     {
@@ -46,13 +46,12 @@ int compute_score(string word)
 
         if (ispunct(temp))
         {
-            score = 0;
+            score += 0;
         }
         else
         {
             ascii = temp - 65;
-            score = POINTS[ascii];
-            printf("%i\n", ascii);
+            score += POINTS[ascii];
         }
     }
 
