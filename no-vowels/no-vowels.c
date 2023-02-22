@@ -24,10 +24,10 @@ int main(int argc, string argv[])
 
 }
 
-string replace(string argv[]){
-
+string replace(string argv[])
+{
     char temp;
-    for(int c = 0; c < strlen(argv[1]); c++)
+    for (int c = 0; c < strlen(argv[1]); c++)
     {
         temp = argv[1][c];
 
