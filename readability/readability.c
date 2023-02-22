@@ -4,15 +4,20 @@
 #include <ctype.h>
 
 int count_letters(string text);
+int count_words(string text);
 
 int main(void)
 {
     string sentence = get_string("Text: ");
     int letters = 0;
+    int words = 0;
     printf("%s\n", sentence);
 
     letters = count_letters(sentence);
     printf("%i letters\n", letters);
+
+    words = count_words(sentence);
+    printf("%i words\n", words);
 
 }
 
@@ -34,3 +39,20 @@ int count_letters(string text)
     return letters;
 }
 
+int count_words(string text)
+{
+    char temp;
+    int words = 0;
+
+    for (int c = 0; c < strlen(text); c++)
+    {
+        temp = text[c];
+
+        if((ispunct(temp) || isblank(temp)) && temp != 45)
+        {
+            words++;
+        }
+    }
+
+    return words;
+}
