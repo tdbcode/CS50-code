@@ -52,7 +52,7 @@ int main(void)
 
     if ((checksum % 10) == 0)
     {
-        if (((length == 16) || (length == 13)) && (ccno[0] == 4))
+        if (((length == 13) || length == 16) && (ccno[0] == 4))
         {
             printf("VISA\n");
         }
