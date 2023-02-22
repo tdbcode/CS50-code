@@ -22,8 +22,9 @@ int main(void)
 
             if (currentNo>9){
                 product = (currentNo % 10) + (currentNo % 100);
+                printf("%i\n", product);
             }
-            printf("%i\n", product);
+
             creditno2 = creditno2/10;
             counter=counter+2;
             printf("%i\n", currentNo);
