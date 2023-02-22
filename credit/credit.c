@@ -2,33 +2,30 @@
 #include <stdio.h>
 #include <math.h>
 
+int getLength(long n);
+
 int main(void)
 {
-    long creditno = 0;
-    long creditno2 = 0;
-    int counter = 0;
+    long creditno = 1;
+    int length = 0;
     int currentNo = 0;
     int product = 0;
     int checksum = 0;
 
-    creditno = get_long("Enter the credit card number: ");
-    creditno2 = creditno;
-
-    int index = floor(log10(creditno));
-    printf("%d\n", index);
-    int creditnos[index+1];
-    for (int i = index+1; i > 0; i--)
+    int ccno[16];
+//
+    while ((getLength(creditno) < 13) || (getLength(creditno) > 16) || (getLength(creditno) == 14))
     {
-        creditnos[index] = (int)(creditno/pow(10,i-1)) % 10;
-        printf("%i : %i\n", index-i, creditnos[index-i]);
+        creditno = get_long("Enter the credit card number: ");
     }
 
+    length = getLength(creditno);
+
+    printf("Length: %i\n", length);
 
 
-  /*  while (creditno2 > 0)
-    {
-        creditno2 = creditno2 / 10;
-        counter = counter + 1;
+
+    /*
         currentNo = (creditno2 % 10) * 2;
 
         if (currentNo > 9)
@@ -63,4 +60,19 @@ int main(void)
         printf("INVALID\n");
     }*/
 
+}
+
+int getLength(long n)
+{
+    long number = n;
+    int llength = 0;
+
+
+    while (number > 0)
+    {
+        number = number / 10;
+        llength++;
+    }
+
+    return llength;
 }
