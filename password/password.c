@@ -30,7 +30,12 @@ bool valid(string password)
     bool symbol = false;
     for(int c = 0; c < strlen(password); c++)
     {
-
+        char temp = password[c];
+        if(temp >= 65 && temp <= 90)
+        {
+            upperc = true;
+        }
+        else if(temp >= 65 && temp <= 90
     }
 
     return false;
