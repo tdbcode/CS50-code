@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <string.h>
 
-void replace(string argv[]);
+string replace(string argv[]);
 
 int main(int argc, string argv[])
 {
@@ -17,15 +17,35 @@ int main(int argc, string argv[])
         return 1;
     }
 
-    replace(argv);
+    printf("%s\n", replace(argv));
 
     return 0;
 
 
 }
 
-void replace(string argv[]){
+string replace(string argv[]){
 
-    for(int c = 0; c < strlen(argv[1]) )
-    printf("hello, %c\n", argv[1][1]);
+    char temp;
+    for(int c = 0; c < strlen(argv[1]); c++)
+    {
+        temp = argv[1][c];
+
+        switch (temp)
+        {
+            case 'a':
+                argv[1][c] = '6';
+                break;
+            case 'e':
+                argv[1][c] = '3';
+                break;
+            case 'i':
+                argv[1][c] = '1';
+                break;
+            case 'o':
+                argv[1][c] = '0';
+                break;
+        }
+    }
+    return argv[1];
 }
