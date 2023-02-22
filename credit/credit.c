@@ -10,10 +10,8 @@ int main(void)
     int product = 0;
     int checksum = 0;
 
-   // do
-    //{
-        creditno = get_long("Enter the credit card number: ");
-        creditno2 = creditno;
+    creditno = get_long("Enter the credit card number: ");
+    creditno2 = creditno;
 
         while (creditno2 > 0)
         {
@@ -23,15 +21,16 @@ int main(void)
 
             if (currentNo>9){
                 product = (currentNo % 10) + (currentNo / 10);
+                currentNo = product;
                 printf("Product: %i\n", product);
             }
+
+            checksum += currentNo;
 
             creditno2 = creditno2/10;
             counter=counter+2;
             printf("Current No: %i\n", currentNo);
-        }
- //   } while ((counter > 16) && (counter < 13) && (counter == 14));
+            printf("Checksum: %i\n", checksum);
 
-   // printf("%i\n", counter);
 
 }
