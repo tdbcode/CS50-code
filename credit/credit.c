@@ -23,7 +23,7 @@ int main(void)
     length = getLength(creditno);
 
     creditno2 = creditno;
-    for (int c = 0; c < length; c++)
+    for (int c = length-1; c > -1; c--)
     {
         currentNo = creditno2 % 10;
         creditno2 = creditno2 / 10;
