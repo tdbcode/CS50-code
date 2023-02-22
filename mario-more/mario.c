@@ -8,16 +8,16 @@ int main(void)
 {
     int bricks = 0;
     int height = 0;
-    while(height<1 || height > 8)
+    while (height < 1 || height > 8)
     {
         height = get_int("Height: ");
     }
 
-    for(int i = 0; i < height; i++)
+    for (int i = 0; i < height; i++)
     {
         bricks++;
 
-        spaces(height,bricks);
+        spaces(height, bricks);
 
         brick(bricks);
 
@@ -30,16 +30,17 @@ int main(void)
 
 }
 
-void brick(int bricks){
-    for(int b = 0; b < bricks; b++)
-        {
-            printf("#");
-        }
+void brick(int bricks)
+{
+    for (int b = 0; b < bricks; b++)
+    {
+        printf("#");
+    }
 }
 
 void spaces(int spaces, int bricks)
 {
-    for(int j = spaces; j > bricks; j--)
+    for (int j = spaces; j > bricks; j--)
     {
         printf(" ");
     }
