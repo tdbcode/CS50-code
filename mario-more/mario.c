@@ -25,8 +25,6 @@ int main(void)
 
         brick(bricks);
 
-        spaces(height,bricks);
-
         printf("\n");
     }
 
