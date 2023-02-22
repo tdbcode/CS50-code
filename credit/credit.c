@@ -14,12 +14,12 @@ int main(void)
     creditno = get_long("Enter the credit card number: ");
     creditno2 = creditno;
 
-    int index = floor(log10(creditno)) + 1;
+    int index = floor(log10(creditno));
     printf("%d\n", index);
-    int creditnos[index];
-    for (int i = index; i > 0; i--)
+    int creditnos[index+1];
+    for (int i = index+1; i > 0; i--)
     {
-        creditnos[index-i] = (int)(creditno/pow(10,i-1)) % 10;
+        creditnos[index] = (int)(creditno/pow(10,i-1)) % 10;
         printf("%i : %i\n", index-i, creditnos[index-i]);
     }
 
