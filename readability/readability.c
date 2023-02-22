@@ -88,7 +88,7 @@ int count_sentences(string text)
         temp = text[c]; // Set the current character to a temp variable
 
         // Check if current character is either an explanation mark, aperiod or a question mark and add 1 to sentences
-        if (temp == 21 || temp == 46 || temp == 63)
+        if (temp == 33 || temp == 46 || temp == 63)
         {
             sentences++;
         }
