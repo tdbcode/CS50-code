@@ -31,17 +31,14 @@ int main(void)
 bool prime(int number)
 {
     bool result;
-    for (int i = 1; i<=number; i++)
-    {
-        if((number % i == 0) && (i != number))
+    if((number %  == 0) && (i != number))
         {
              result = false;
              break;
         }
-        else if(number % i == 0)
+        else
         {
             result = true;
         }
-    }
     return result;
 }
