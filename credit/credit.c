@@ -30,20 +30,23 @@ int main(void)
         ccno[c] = currentNo;
     }
 
-    for (int a = length; a > 0 ; a=a-2)
+    for (int a = length-1; a > 0 ; a=a-2)
     {
-        currentNo = ccno[a];
+        printf("a: %i\n", a);
+        currentNo = ccno[a] * 2;
+        printf("CurrentNo: %i\n", currentNo);
         if (currentNo > 9)
         {
             product = (currentNo % 10) + (currentNo / 10);
             currentNo = product;
+            printf("Product: %i\n", currentNo);
         }
         checksum += currentNo;
         printf("First: %i\n", checksum);
 
         currentNo = ccno[a-1];
         checksum += currentNo;
-        printf("Second: %i\n", checksum);
+       // printf("Second: %i\n", checksum);
 
     }
 
