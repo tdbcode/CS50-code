@@ -56,7 +56,7 @@ int main(void)
         {
             printf("VISA\n");
         }
-        else if (((length == 16) && (ccno[0] == 5)) && ((ccno[0] == 5) && (ccno[1] > 0) && (ccno[1] < 6)))
+        else if (length == 16 && (ccno[0] == 5 && (ccno[1] > 0 && ccno[1] < 6)))
         {
             printf("Mastercard\n");
         }
