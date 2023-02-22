@@ -31,6 +31,10 @@ int main(void)
             counter=counter+2;
             printf("Current No: %i\n", currentNo);
             printf("Checksum: %i\n", checksum);
+        }
 
+        creditno2 = creditno;
+
+        
 
 }
