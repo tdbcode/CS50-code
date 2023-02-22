@@ -41,6 +41,7 @@ int count_letters(string text)
 
 int count_words(string text)
 {
+    text = text
     char temp;
     int words = 0;
 
