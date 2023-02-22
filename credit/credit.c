@@ -17,6 +17,11 @@ int main(void)
 
     creditno = get_long("Enter the credit card number: ");
 
+    if ((getLength(creditno) < 13) || (getLength(creditno) > 16) || (getLength(creditno) == 14))
+    {
+        goto INVALID;
+    }
+
     length = getLength(creditno);
 
     creditno2 = creditno;
@@ -26,12 +31,6 @@ int main(void)
         creditno2 = creditno2 / 10;
         ccno[c] = currentNo;
     }
-
-    if ((length < 13) || (length> 16) || (length == 14))
-    {
-        goto INVALID;
-    }
-    else if()
 
     for (int a = length - 1; a > 0 ; a = a - 2)
     {
@@ -57,13 +56,17 @@ int main(void)
         {
             printf("VISA\n");
         }
-        else if ((length == 16) && (ccno[0] == 5))
+        else if (((length == 16) && (ccno[0] == 5)) && ((ccno[0] == 5) && (ccno[1] < 6) && (ccno[1] < 6)))
         {
             printf("Mastercard\n");
         }
         else if ((length == 15) && (ccno[0] == 3))
         {
             printf("AMEX\n");
+        }
+        else
+        {
+            goto INVALID;
         }
     }
     else
