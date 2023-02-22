@@ -31,7 +31,9 @@ int main(void)
 bool prime(int number)
 {
     bool result;
-    if((number %  == 0) && (i != number))
+    for (int i = 1; i<=number; i++)
+    {
+        if((i % number == 0) && (i != number))
         {
              result = false;
              break;
@@ -40,5 +42,6 @@ bool prime(int number)
         {
             result = true;
         }
+    }
     return result;
 }
