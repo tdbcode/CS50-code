@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include <math.h>
 
 int count_letters(string text);
 int count_words(string text);
@@ -14,7 +15,7 @@ int main(void)
     int words = 0;
     int sentences = 0;
     long index = 0;
-    int readability = 0;
+    int grade = 0;
     printf("%s\n", sentence);                 // Output the text entered
 
     letters = count_letters(sentence);       // Save number of letters using count letters function
@@ -28,11 +29,17 @@ int main(void)
 
     index = 0.0588 * letters / words * 100 - 0.296 * sentences / words * 100 - 15.8; // Perform readability calculation
 
-    readability = index;
+    grade = round(index);
 
-   // if(readability < )
-
-    printf("%i index\n", readability);           // Output readability
+    if (grade<1)
+    {
+        printf("Before Grade 1\n");
+    }
+    else if(grade>16)
+    {
+        printf("Before Grade 1\n");
+    }
+    printf("%i index\n", grade);           // Output readability
 
 }
 
