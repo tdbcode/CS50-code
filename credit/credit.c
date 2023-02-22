@@ -39,11 +39,11 @@ int main(void)
             currentNo = product;
         }
         checksum += currentNo;
-        printf("%i\n", checksum);
+        printf("First: %i\n", checksum);
 
         currentNo = ccno[a-1];
-
-        
+        checksum += currentNo;
+        printf("Second: %i\n", checksum);
 
     }
 
