@@ -13,48 +13,38 @@ int main(void)
     creditno = get_long("Enter the credit card number: ");
     creditno2 = creditno;
 
-        while (creditno2 > 0)
+    while (creditno2 > 0)
+    {
+        creditno2 = creditno2 / 10;
+        currentNo = (creditno2 % 10) * 2;
+
+        if (currentNo > 9)
         {
-            creditno2 = creditno2/10;
-            currentNo = (creditno2 % 10)*2;
-            printf("Credit Left: %ld\n", creditno2);
-
-            if (currentNo>9){
-                product = (currentNo % 10) + (currentNo / 10);
-                currentNo = product;
-                printf("Product: %i\n", product);
-            }
-
-            checksum += currentNo;
-
-            creditno2 = creditno2/10;
-            counter=counter+2;
-            printf("Current No: %i\n", currentNo);
-            printf("Checksum: %i\n", checksum);
+            product = (currentNo % 10) + (currentNo / 10);
+            currentNo = product;
         }
 
-        creditno2 = creditno;
+        checksum += currentNo;
+        creditno2 = creditno2 / 10;
+        counter = counter + 2;
+    }
 
-        while (creditno2 > 0)
-        {
-            currentNo = (creditno2 % 10);
-            printf("Credit Left: %ld\n", creditno2);
+    creditno2 = creditno;
 
-            checksum += currentNo;
+    while (creditno2 > 0)
+    {
+        currentNo = (creditno2 % 10);
+        checksum += currentNo;
+        creditno2 = creditno2 / 10;
+    }
 
-            creditno2 = creditno2/10;
-
-            printf("Current No: %i\n", currentNo);
-            printf("Checksum: %i\n", checksum);
-        }
-
-        if ((checksum % 10) == 0)
-        {
-            printf("Valid");
-        }
-        else
-        {
-            printf("INVALID");
-        }
+    if ((checksum % 10) == 0)
+    {
+        printf("Valid");
+    }
+    else
+    {
+        printf("INVALID");
+    }
 
 }
