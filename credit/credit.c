@@ -14,7 +14,7 @@ int main(void)
     }
 
     int currentNo = 0;
-    for(int i = creditno2; i > 0; i=i-2)
+    for(int i = counter; i > 0; i=i-2)
     {
         currentNo = creditno[i];
         printf("%i\n% currentNo);
