@@ -8,7 +8,7 @@ int main(void)
 {
     int bricks = 0;
     int height = 0;
-    while(height<1)
+    while(height<1 || height > 8)
     {
         height = get_int("Height: ");
     }
