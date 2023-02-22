@@ -50,6 +50,7 @@ int main(void)
         checksum += currentNo;
     }
 
+    printf("%i", checksum);
     if ((checksum % 10) == 0)
     {
         if ((length == 13 | length == 16) && (ccno[0] == 4))
