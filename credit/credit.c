@@ -40,6 +40,11 @@ int main(void)
         }
         checksum += currentNo;
         printf("%i\n", checksum);
+
+        currentNo = ccno[a-1];
+
+        
+
     }
 
 
