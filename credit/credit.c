@@ -14,11 +14,8 @@ int main(void)
     int checksum = 0;
 
     int ccno[16];
-//
-    while ((getLength(creditno) < 13) || (getLength(creditno) > 16) || (getLength(creditno) == 14))
-    {
-        creditno = get_long("Enter the credit card number: ");
-    }
+
+    creditno = get_long("Enter the credit card number: ");
 
     length = getLength(creditno);
 
