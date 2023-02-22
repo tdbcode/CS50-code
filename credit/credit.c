@@ -56,11 +56,11 @@ int main(void)
         {
             printf("VISA\n");
         }
-        else if (((length == 16) && (ccno[0] == 5)) && ((ccno[0] == 5) && (ccno[1] < 6) && (ccno[1] < 6)))
+        else if (((length == 16) && (ccno[0] == 5)) && ((ccno[0] == 5) && (ccno[1] > 0) && (ccno[1] < 6)))
         {
             printf("Mastercard\n");
         }
-        else if ((length == 15) && (ccno[0] == 3))
+        else if ((length == 15) && ((ccno[0] == 3) && ((ccno[1] == 4) || (ccno[1] == 7))))
         {
             printf("AMEX\n");
         }
