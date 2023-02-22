@@ -25,10 +25,10 @@ int main(void)
     int popincrease = 0;
     int popdecrease = 0;
     int years = 0;
-    while (population<pop_end_size)
+    while (population < pop_end_size)
     {
-        popincrease = population/3;
-        popdecrease = population/4;
+        popincrease = population / 3;
+        popdecrease = population / 4;
 
         population = population + popincrease - popdecrease;
         years++;
