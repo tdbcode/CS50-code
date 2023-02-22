@@ -28,11 +28,11 @@ int main(void)
 
     index = 0.0588 * letters / words * 100 - 0.296 * sentences / words * 100 - 15.8; // Perform readability calculation
 
-    readability = (int) index;
+    readability = index;
 
    // if(readability < )
 
-    printf("%ld index\n", index);           // Output readability
+    printf("%i index\n", readability);           // Output readability
 
 }
 
