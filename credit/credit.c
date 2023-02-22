@@ -49,7 +49,7 @@ int main(void)
         currentNo = ccno[a];
         checksum += currentNo;
     }
-    printf("checksum: %i\n", checksum);
+
     if ((checksum % 10) == 0)
     {
         if (((length == 16) || (length == 13)) && (ccno[0] == 4))
