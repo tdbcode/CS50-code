@@ -35,6 +35,19 @@ int main(void)
 
         creditno2 = creditno;
 
-        
+        while (creditno2 > 0)
+        {
+            currentNo = (creditno2 % 10);
+            printf("Credit Left: %ld\n", creditno2);
+
+            checksum += currentNo;
+
+            creditno2 = creditno2/10;
+
+            printf("Current No: %i\n", currentNo);
+            printf("Checksum: %i\n", checksum);
+        }
+
+
 
 }
