@@ -21,16 +21,22 @@ int main(void)
 
     length = getLength(creditno);
 
+    currentNo = creditno;
     for (int c = 0; c < length; c++)
     {
-        ccno[c] = c+1;
-        printf("%i\n", ccno[c]);
+        currentNo = (currentNo % 10);
+        ccno[c] = currentNo;
+    }
+
+    for (int b = 0; b < length; b++)
+    {
+        printf("%i %i\n", b, ccno[b]);
     }
 
 
 
     /*
-        currentNo = (creditno2 % 10) * 2;
+
 
         if (currentNo > 9)
         {
