@@ -17,6 +17,11 @@ int main(void)
 
     creditno = get_long("Enter the credit card number: ");
 
+    if ((getLength(creditno) < 13) || (getLength(creditno) > 16) || (getLength(creditno) == 14))
+    {
+        goto INVALID;
+    }
+
     length = getLength(creditno);
 
     creditno2 = creditno;
@@ -62,6 +67,7 @@ int main(void)
     }
     else
     {
+INVALID:
         printf("INVALID\n");
     }
 
