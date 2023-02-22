@@ -16,6 +16,7 @@ int main(void)
     while (creditno2 > 0)
     {
         creditno2 = creditno2 / 10;
+        counter = counter + 1;
         currentNo = (creditno2 % 10) * 2;
 
         if (currentNo > 9)
@@ -26,7 +27,7 @@ int main(void)
 
         checksum += currentNo;
         creditno2 = creditno2 / 10;
-        counter = counter + 2;
+        counter = counter + 1;
     }
 
     creditno2 = creditno;
