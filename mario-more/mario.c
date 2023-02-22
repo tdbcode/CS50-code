@@ -4,14 +4,15 @@
 int main(void)
 {
     int height = get_int("Height: ");
-    int width = height;
-    for (int i = 0; i < height; i++)
+    int width = 1;
+    for (int i = 2; i < height; i++)
     {
-        for (int j = 2; j > width; j++)
+        width++;
+        while (width < i)
         {
             printf("#");
-            width--;
         }
         printf("\n");
     }
+
 }
