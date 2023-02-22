@@ -42,14 +42,17 @@ int compute_score(string word)
     for (int c = 0; c < strlen(word); c++)
     {
         temp = word[c];
+        temp = toupper(temp);
+
         if (ispunct(temp))
         {
             score = 0;
         }
         else
         {
-            ascii = toupper(temp) - 64;
+            ascii = temp - 65;
             score = POINTS[ascii];
+            printf("%i\n", ascii);
         }
     }
 
