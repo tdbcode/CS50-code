@@ -5,4 +5,5 @@ int main(void)
 {
     long creditno = get_long("Enter the credit card number: ");
 
+    for(int i = creditno.length())
 }
