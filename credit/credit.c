@@ -17,12 +17,12 @@ int main(void)
 
     creditno = get_long("Enter the credit card number: ");
 
-    if ((getLength(creditno) < 13) || (getLength(creditno) > 16) || (getLength(creditno) == 14))
+    length = getLength(creditno);
+
+    if (length < 13 || length > 16 || length == 14)
     {
         goto INVALID;
     }
-
-    length = getLength(creditno);
 
     creditno2 = creditno;
     for (int c = length - 1; c > -1; c--)
