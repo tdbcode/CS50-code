@@ -8,7 +8,7 @@ int main(void)
 
     for(int i = 0; i < height; i++)
     {
-        bricks = bricks+1;
+        bricks++;
         for(int j = height; j > bricks; j--)
         {
             printf(" ");
@@ -21,9 +21,9 @@ int main(void)
 
         printf("  ");
 
-        for(int j = height; j > bricks; j--)
+        for(int b2 = bricks; b2 > bricks; b2--)
         {
-            printf(" ");
+            printf("#");
         }
 
         printf("\n");
