@@ -31,14 +31,12 @@ int main(void)
 bool prime(int number)
 {
     bool result = true;
-    int i = 2;
-    while (i < number)
+    for (int i = 2; i < number; i++)
     {
         if((number % i) == 0)
         {
             result = false;
         }
-        i++;
     }
     return result;
 }
