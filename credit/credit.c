@@ -34,7 +34,7 @@ int main(void)
 
     for (int a = length - 1; a > 0 ; a = a - 2)
     {
-        currentNo = ccno[a-1] * 2;
+        currentNo = ccno[a - 1] * 2;
         if (currentNo > 9)
         {
             product = (currentNo % 10) + (currentNo / 10);
