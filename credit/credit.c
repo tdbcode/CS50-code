@@ -44,13 +44,12 @@ int main(void)
         checksum += currentNo;
     }
 
-    for (int a = length - 1; a > 0 ; a = a - 2)
+    for (int a = length - 1; a >= 0; a = a - 2)
     {
         currentNo = ccno[a];
         checksum += currentNo;
     }
 
-    printf("%i", checksum);
     if ((checksum % 10) == 0)
     {
         if ((length == 13 | length == 16) && (ccno[0] == 4))
