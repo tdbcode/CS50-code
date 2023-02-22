@@ -23,10 +23,13 @@ int main(void)
 
 int compute_score(string word)
 {
-    toupper(char c);
+    char temp;
+    int ascii;
     for(int c = 0; c < strlen(word); c++)
     {
-        
+        temp = word[c];
+        ascii = toupper(temp) - 65;
+        printf("%i\n", ascii);
     }
-
+    return ascii;
 }
