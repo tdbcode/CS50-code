@@ -26,6 +26,6 @@ int main(int argc, string argv[])
 
 void replace(string argv[]){
 
-    for(int c = 0; c < )
+    for(int c = 0; c < strlen(argv[1]) )
     printf("hello, %c\n", argv[1][1]);
 }
