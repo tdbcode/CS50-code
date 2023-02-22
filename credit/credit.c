@@ -64,6 +64,10 @@ int main(void)
         {
             printf("AMEX\n");
         }
+        else
+        {
+            goto INVALID;
+        }
     }
     else
     {
