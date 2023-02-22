@@ -18,11 +18,14 @@ int main(void)
     creditno = get_long("Enter the credit card number: ");
 
     length = getLength(creditno);
+    printf("Length: %i\n ", length);
 
     if (length < 13 || length > 16 || length == 14)
     {
         goto INVALID;
     }
+
+    printf("Length: %i\n ", length);
 
     creditno2 = creditno;
     for (int c = length - 1; c > -1; c--)
