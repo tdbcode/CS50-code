@@ -8,11 +8,11 @@ int main(void)
     for (int i = 2; i < height; i++)
     {
         width++;
-        while (width < i)
+        while (width <= i)
         {
             printf("#");
         }
+
         printf("\n");
     }
-
 }
