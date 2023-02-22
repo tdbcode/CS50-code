@@ -25,7 +25,7 @@ int main(void)
     }
 
     creditno2 = creditno;
-    for (int c = length - 1; c > -1; c--)
+    for (int c = length - 1; c >= 0; c--)
     {
         currentNo = creditno2 % 10;
         creditno2 = creditno2 / 10;
