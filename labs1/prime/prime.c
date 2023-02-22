@@ -30,21 +30,15 @@ int main(void)
 
 bool prime(int number)
 {
-    bool result = false;
-    for (int i = 1; i<=number; i++)
+    bool result = true;
+    int i = 2;
+    while (i < number)
     {
         if((number % i) == 0)
         {
-            if(number == i)
-            {
-                result = true;
-            }
-             else
-            {
-                result = false;
-                break;
-            }
+            result = false;
         }
+        i++;
     }
     return result;
 }
