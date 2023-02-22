@@ -20,7 +20,7 @@ int main(void)
     for (int i = index; i > 0; i--)
     {
         creditnos[index-i] = (int)(creditno/pow(10,i-1)) % 10;
-        printf("%d : %d\n", index-i, creditnos[index-i]);
+        printf("%i : %i\n", index-i, creditnos[index-i]);
     }
 
 
