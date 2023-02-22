@@ -36,16 +36,13 @@ int main(void)
     for (int a = length - 1; a > 0 ; a = a - 2)
     {
         currentNo = ccno[a-1] * 2;
-        printf("Current no: %i\n", currentNo);
         if (currentNo > 9)
         {
             product = (currentNo % 10) + (currentNo / 10);
             currentNo = product;
-            printf("Product: %i\n", currentNo);
         }
 
         checksum += currentNo;
-        printf("Checksum 1: %i\n", checksum);
     }
 
     for (int a = length - 1; a > 0 ; a = a - 2)
@@ -53,7 +50,7 @@ int main(void)
         currentNo = ccno[a];
         checksum += currentNo;
     }
-
+    printf("checksum: %i\n", checksum);
     if ((checksum % 10) == 0)
     {
         if (((length == 16) || (length == 13)) && (ccno[0] == 4))
