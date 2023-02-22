@@ -1,6 +1,5 @@
 #include <cs50.h>
 #include <stdio.h>
-#include <math.h>
 
 int main(void)
 {
@@ -14,18 +13,7 @@ int main(void)
     creditno = get_long("Enter the credit card number: ");
     creditno2 = creditno;
 
-    int index = floor(log10(creditno)) + 1;
-    printf("%d\n", index);
-    int creditnos[index];
-    for (int i = index; i > 0; i--)
-    {
-        creditnos[index-i] = (int)(creditno/pow(10,i-1)) % 10;
-        printf("%d : %d\n", index-i, creditnos[index-i]);
-    }
-
-
-
-  /*  while (creditno2 > 0)
+    while (creditno2 > 0)
     {
         creditno2 = creditno2 / 10;
         counter = counter + 1;
@@ -61,6 +49,6 @@ int main(void)
     else
     {
         printf("INVALID\n");
-    }*/
+    }
 
 }
