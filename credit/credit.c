@@ -32,49 +32,35 @@ int main(void)
 
     for (int a = length-1; a > 0 ; a=a-2)
     {
-        currentNo = ccno[a];
-        printf("CurrentNo: %i\n", currentNo);
+        currentNo = ccno[a+1]*2;
         if (currentNo > 9)
         {
             product = (currentNo % 10) + (currentNo / 10);
             currentNo = product;
-            printf("Product: %i\n", currentNo);
         }
-        checksum += currentNo;
-        printf("First: %i\n", checksum);
 
-        currentNo = ccno[a+1];
         checksum += currentNo;
-       // printf("Second: %i\n", checksum);
-
     }
 
-
-
-    /*
-
-
-
-
-        checksum += currentNo;
-        creditno2 = creditno2 / 10;
-        counter = counter + 1;
-    }
-
-    creditno2 = creditno;
-
-    while (creditno2 > 0)
+    for (int a = length-1; a > 0 ; a=a-2)
     {
-        currentNo = (creditno2 % 10);
+        currentNo = ccno[a];
         checksum += currentNo;
-        creditno2 = creditno2 / 10;
     }
 
     if ((checksum % 10) == 0)
     {
-        if (counter > 15)
+        if (((length == 16) || (length == 13)) && (ccno[0] == 4))
         {
-            printf("VISA");
+            printf("VISA\n");
+        }
+        else if ((length == 16) && (ccno[0] == 5))
+        {
+            printf("Mastercard\n");
+        }
+        else if((length == 15) && (ccno[0] == 3))
+        {
+            printf("AMEX\n");
         }
     }
     else
