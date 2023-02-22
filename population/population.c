@@ -15,7 +15,7 @@ int main(void)
     // TODO: Prompt for end size
 
 
-    while (pop_end_size <= pop_start_size)
+    while (pop_end_size < pop_start_size)
     {
         pop_end_size = get_int("End size: ");
     }
