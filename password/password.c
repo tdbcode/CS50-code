@@ -5,6 +5,7 @@
 #include <cs50.h>
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 
 bool valid(string password);
 
@@ -28,15 +29,33 @@ bool valid(string password)
     bool lowerc = false;
     bool number = false;
     bool symbol = false;
-    for(int c = 0; c < strlen(password); c++)
+    for (int c = 0; c < strlen(password); c++)
     {
         char temp = password[c];
-        if(temp >= 65 && temp <= 90)
+        if (isupper(temp))
         {
             upperc = true;
         }
-        else if(temp >= 65 && temp <= 90
+        else if (islower(temp))
+        {
+            lowerc = true;
+        }
+        else if (isdigit(temp))
+        {
+            number = true;
+        }
+        else if (ispunct(temp))
+        {
+            symbol = true;
+        }
     }
 
-    return false;
+    if (upperc && lowerc && number && symbol)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
