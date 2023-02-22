@@ -17,6 +17,6 @@ int get_negative_int(void)
     {
         n = get_int("Negative Integer: ");
     }
-    while (n < 0);
+    while (n >= 0);
     return n;
 }
