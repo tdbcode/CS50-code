@@ -30,18 +30,22 @@ int main(void)
         currentNo = creditno2 % 10;
         creditno2 = creditno2 / 10;
         ccno[c] = currentNo;
+        printf("%i\n", ccno[c]);
     }
 
     for (int a = length - 1; a > 0 ; a = a - 2)
     {
-        currentNo = ccno[a + 1] * 2;
+        currentNo = ccno[a-1] * 2;
+        printf("Current no: %i\n", currentNo);
         if (currentNo > 9)
         {
             product = (currentNo % 10) + (currentNo / 10);
             currentNo = product;
+            printf("Product: %i\n", currentNo);
         }
 
         checksum += currentNo;
+        printf("Checksum 1: %i\n", checksum);
     }
 
     for (int a = length - 1; a > 0 ; a = a - 2)
