@@ -3,6 +3,7 @@
 
 #include <cs50.h>
 #include <stdio.h>
+#include <math.h>
 
 float half(float bill, float tax, int tip);
 
@@ -18,6 +19,6 @@ int main(void)
 // TODO: Complete the function
 float half(float bill, float tax, int tip)
 {
-    float total = (bill + (bill*(tax/100)) + (bill*((float)tip/100))) / 2;
+    float total = round((bill + (bill * (tax / 100)) + (bill * ((float)tip / 100))) / 2);
     return total;
 }
