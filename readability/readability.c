@@ -27,6 +27,9 @@ int main(void)
 
     grade = round(index); // Round the readability
 
+    printf("%ld Index\n", index);
+    printf("%i Grade\n", grade);
+
     // Output grade based on requirements
     if (grade < 1)
     {
