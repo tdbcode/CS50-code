@@ -5,13 +5,15 @@ int main(void)
 {
     // TODO: Prompt for start size
     int pop_start_size = 0;
+    int pop_end_size = 0;
+    int population = 0;
     while (pop_start_size < 9)
     {
-        op_start_size = get_int("Start size: ");
+        pop_start_size = get_int("Start size: ");
     }
 
     // TODO: Prompt for end size
-    int pop_end_size = 0;
+
 
     while (pop_end_size < pop_start_size)
     {
@@ -19,6 +21,20 @@ int main(void)
     }
 
     // TODO: Calculate number of years until we reach threshold
+    population = pop_start_size;
+    int popincrease = 0;
+    int popdecrease = 0;
+    int years = 0;
+    while (population<pop_end_size)
+    {
+        popincrease = population/3;
+        popdecrease = population/4;
+
+        population = population + popincrease - popdecrease;
+        years++;
+    }
+
 
     // TODO: Print number of years
+    printf("Years: %i\n", years);
 }
