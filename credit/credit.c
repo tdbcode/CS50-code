@@ -32,7 +32,6 @@ int main(void)
 
     for (int a = length-1; a > 0 ; a=a-2)
     {
-        printf("a: %i\n", a);
         currentNo = ccno[a];
         printf("CurrentNo: %i\n", currentNo);
         if (currentNo > 9)
@@ -44,7 +43,7 @@ int main(void)
         checksum += currentNo;
         printf("First: %i\n", checksum);
 
-        currentNo = ccno[a-1];
+        currentNo = ccno[a+1];
         checksum += currentNo;
        // printf("Second: %i\n", checksum);
 
