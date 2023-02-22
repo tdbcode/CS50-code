@@ -13,6 +13,7 @@ int main(void)
     int letters = 0;
     int words = 0;
     int sentences = 0;
+    long index = 0;
     printf("%s\n", sentence);
 
     letters = count_letters(sentence);
@@ -22,7 +23,10 @@ int main(void)
     printf("%i words\n", words);
 
     sentences = count_sentences(sentence);
-    printf("%i words\n", words);
+    printf("%i sentences\n", sentences);
+
+    index = 0.0588 * (words/100) - 0.296 * (sentences/100) - 15.8;
+    printf("%ld index\n", index);
 
 }
 
@@ -72,9 +76,9 @@ int count_sentences(string text)
     {
         temp = text[c];
 
-        if (isblank(temp) && temp != 45)
+        if (temp == 21 || temp == 46 || temp == 63)
         {
-            words++;
+            sentences++;
         }
     }
 
