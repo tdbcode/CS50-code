@@ -25,7 +25,7 @@ int main(void)
     sentences = count_sentences(sentence); // Save number of sentences using count sentences function
     printf("%i sentences\n", sentences);   // Output number of words
 
-    index = 0.0588 * (((letters / words) / 100) - 0.296) * (((sentences / words) / 100) - 15.8); // Perform readability calculation
+    index = 0.0588 * (((letters / words) * 100) - 0.296) * (((sentences / words) * 100) - 15.8); // Perform readability calculation
     printf("%ld index\n", index);           // Output readability
 
 }
