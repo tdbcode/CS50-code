@@ -6,8 +6,12 @@ void spaces(int spaces, int bricks);
 
 int main(void)
 {
-    int height = get_int("Height: ");
     int bricks = 0;
+    int height = 0;
+    while(height<0)
+    {
+        height = get_int("Height: ");
+    }
 
     for(int i = 0; i < height; i++)
     {
