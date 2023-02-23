@@ -160,10 +160,10 @@ int check_word(string guess, int wordsize, int status[], string choice)
             if (ctemp == gtemp)
             {
                 status[g] = 2;
-                printf("%i", status[g]);
                 break;
             }
          }
+         printf("%i", status[c]);
      }
 
 
