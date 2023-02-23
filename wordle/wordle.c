@@ -160,8 +160,8 @@ int check_word(string guess, int wordsize, int status[], string choice)
                 score+=2;
                 break;
             }
-            if (guess[g] == choice[c-1]){
-                status[g] = 1;
+            if (guess[g] == choice[c-1] || guess[g] == choice[c+1]){
+                status[c] = 1;
             }
 
          }
