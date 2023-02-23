@@ -150,7 +150,7 @@ void add_pairs(void)
                 pairs[w].winner = l;
                 pairs[l].loser = w;
             }
-            printf("Candidate : %i vs %i : \n", pairs[w].winner, pairs[l].loser);
+            printf("Candidate : %i vs %i \n", pairs[w].winner, pairs[l].loser);
         }
     }
 
