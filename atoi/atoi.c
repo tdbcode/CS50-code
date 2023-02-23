@@ -26,17 +26,18 @@ int main(void)
 int convert(string input)
 {
     string test = input;
+    int value = 0;
+    int length = strlen(input);
+    string currentLetter = NULL;
 
     if (input == 0)
     {
-        return 0;
+        return;
     }
+    else
+    {
 
-   int value = 0;
-   int length = strlen(input);
-   string currentLetter = NULL;
-
-    value = test[length - 1];
+     value = test[length - 1];
 
   //  for (int c = 0; c < length-1; c++)
   //  {
@@ -47,4 +48,6 @@ int convert(string input)
 
 
     return convert(currentLetter);
+    }
+    return 0;
 }
