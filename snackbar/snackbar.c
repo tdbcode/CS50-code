@@ -106,17 +106,16 @@ void add_items(void)
 float get_cost(string item)
 {
     float cost = 0;
-    string currentItem = NULL;
-
-
+    for (int i = 0; i < NUM_ITEMS-1; i++)
+    {
+        menu[i].item[0] = tolower(menu[i].item[0]);
+    }
 
     string litem = converttolower(item);
 
     for (int s = 0; s < NUM_ITEMS; s++)
     {
-        currentItem = menu[s].item;
-        printf("Item Selected %s\n", currentItem);
-        if (strcmp(litem, currentItem) == 0)
+        if (strcmp(litem, menu[s].item) == 0)
         {
             cost = menu[s].price;
             break;
@@ -135,5 +134,6 @@ string converttolower(string s)
             s[c] = tolower(s[c]);
         }
     }
+
     return s;
 }
