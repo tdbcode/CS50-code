@@ -134,7 +134,7 @@ string get_guess(int wordsize)
                 validchar = false;
             }
         }
-    } while((strlen(guess) < wordsize) || (strlen(guess) > wordsize) || validchar == false);
+    } while(((strlen(guess) < wordsize) || (strlen(guess) > wordsize)) || validchar != false);
 
     printf("Word: %s\n", guess);
 
