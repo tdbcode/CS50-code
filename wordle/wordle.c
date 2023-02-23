@@ -109,7 +109,7 @@ int main(int argc, string argv[])
     // Print the game's result
     if (won)
     {
-        printf("You won!");
+        printf("You won!\n");
     }
     else
     {
