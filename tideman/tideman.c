@@ -143,6 +143,7 @@ void add_pairs(void)
             {
                 pairs[w].winner = w;
                 pairs[w].loser = l;
+                printf("Candidate : %i vs %i : \n", pairs[w].winner, pairs[l].loser);
             }
         }
     }
