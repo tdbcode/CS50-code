@@ -143,14 +143,14 @@ void add_pairs(void)
             // If [winner][loser], e.g. [0][1] is more than [loser][winner], e.g. 1, 0 then
             if (preferences[w][l] > preferences[l][w])
             {
-                pairs[w].winner = w;
-                pairs[w].loser = l;
+                pairs[pair_count].winner = w;
+                pairs[pair_count].loser = l;
                 pair_count++;                //Have to add one to paircount so total number of pairs is known
             }
             else if (preferences[w][l] < preferences[l][w]) // Doing both if statements checks either side of list.
             {
-                pairs[w].winner = l;
-                pairs[l].loser = w;
+                pairs[pair_count].winner = l;
+                pairs[pair_count].loser = w;
                 pair_count++;
             }
            printf("Candidate : %i vs %i \n", pairs[w].winner, pairs[l].loser);
