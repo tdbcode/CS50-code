@@ -30,9 +30,9 @@ int convert(string input)
     int length = strlen(input);
     string currentLetter = NULL;
 
-    if (input == 0)
+    if (strcmp(input,"\0"))
     {
-        return;
+        return 0;
     }
     else
     {
@@ -44,10 +44,9 @@ int convert(string input)
   //      currentLetter[c] = input[c];
   //  }
 
-      strncpy(currentLetter, test, length-1);
+        strncpy(currentLetter, test, length-1);
 
-
-    return convert(currentLetter);
+        return convert(currentLetter);
     }
-    return 0;
+
 }
