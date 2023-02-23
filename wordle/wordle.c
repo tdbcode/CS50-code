@@ -165,12 +165,14 @@ int check_word(string guess, int wordsize, int status[], string choice)
                 break;
             }
 
-           if (currentLetter == choice[c])
+        }
+
+        if (currentLetter == choice[g])
             {
-                    status[c] = 1;
+                    status[g] = 1;
                     score += 1;
             }
-        }
+
        printf("%i\n", status[g]);
 
      }
