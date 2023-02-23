@@ -7,6 +7,11 @@ real    0m0.094s
 user    0m0.059s
 sys     0m0.016s
 
+Random10000
+real    0m0.284s
+user    0m0.239s
+sys     0m0.032s
+
 Reversed 10000
 real    0m0.273s
 user    0m0.191s
@@ -16,6 +21,16 @@ sort2 uses: TODO
 
 How do you know?: TODO
 
+Random5000
+real    0m0.039s
+user    0m0.008s
+sys     0m0.011s
+
+Random10000
+real    0m0.056s
+user    0m0.008s
+sys     0m0.034s
+
 Reversed 10000
 real    0m0.079s
 user    0m0.007s
@@ -24,6 +39,16 @@ sys     0m0.037s
 sort3 uses: TODO
 
 How do you know?: TODO
+
+Random5000
+real    0m0.043s
+user    0m0.026s
+sys     0m0.018s
+
+Random10000
+real    0m0.158s
+user    0m0.098s
+sys     0m0.040s
 
 Reverse 10000
 real    0m0.178s
