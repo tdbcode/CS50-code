@@ -20,15 +20,25 @@ int main(void)
     }
 
     // Convert string to int
-    printf("%i\n", convert(input));
+    printf("%i\n", convert(input, strlen(input)));
 }
 
-int convert(string input)
+int convert(string input, int length)
 {
-    string test = input;
     int value = 0;
-    int length = strlen(input);
+    char S[length];
+
+    for (int c = 0; c < length-1; c++)
+    {
+        S[c] = input[c];
+    }
+
+    if (n < 0 || (S[n] < '0' || S[n] > '9')) {
+        return 0;
+    }
+
     string currentLetter = NULL;
+
 
     if (strcmp(input,"\0"))
     {
@@ -39,10 +49,7 @@ int convert(string input)
 
      value = test[length - 1];
 
-  //  for (int c = 0; c < length-1; c++)
-  //  {
-  //      currentLetter[c] = input[c];
-  //  }
+
 
         strncpy(currentLetter, test, length-1);
 
