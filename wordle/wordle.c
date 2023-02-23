@@ -25,13 +25,25 @@ void print_word(string guess, int wordsize, int status[]);
 
 int main(int argc, string argv[])
 {
-    // ensure proper usage
-    // TODO #1
-    
     int wordsize = 0;
+    // ensure proper usage
+    if (argc != 2)
+    {
+        printf("Missing argument\n");
+        return 1;
+    }
+    else
+    {
+        wordsize = (int)argv[1];
+    }
+
+
 
     // ensure argv[1] is either 5, 6, 7, or 8 and store that value in wordsize instead
-    // TODO #2
+    while (wordsize < 5 || wordsize > 8)
+    {
+        wordsize = get_int("Please re-enter word size");
+    }
 
     // open correct file, each file has exactly LISTSIZE words
     char wl_filename[6];
