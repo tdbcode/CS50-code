@@ -11,7 +11,7 @@ int main(void)
     string s = get_string("String: ");
     for (int i = 0; i < 7; i++)
     {
-        if (strcmp(strings[i], s))
+        if (strcmp(strings[i], s) == 0)
         {
             printf("Found in position %i \n", i+1);
             return 0;
