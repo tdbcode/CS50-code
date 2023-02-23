@@ -150,19 +150,26 @@ string get_guess(int wordsize)
 int check_word(string guess, int wordsize, int status[], string choice)
 {
     int score = 0;
-    char currentLetter;
+    char currentGuess;
+    char currentChoice;
 
     // compare guess to choice and score points as appropriate, storing points in status
      for (int g = 0; g < wordsize; g++)
      {
-        currentLetter = guess[g];
+        currentGuess = guess[g];
          for (int c = 0; c < wordsize; c++)
          {
-            if (currentLetter == choice[c])
+            currentChoice = choice[c];
+            if (currentGuess == choice[c])
             {
                 status[c] = 2;
                 score += 2;
                 break;
+            }
+            if (currentChoice == guess[g])
+            {
+                status[g] = 1;
+                score += 1;
             }
         }
 
