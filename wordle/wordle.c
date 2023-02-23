@@ -173,26 +173,30 @@ int check_word(string guess, int wordsize, int status[], string choice)
                 }
             }
         }
-
-       printf("%i\n", status[g]);
-
      }
-
-    // HINTS
-    // iterate over each letter of the guess
-        // iterate over each letter of the choice
-            // compare the current guess letter to the current choice letter
-                // if they're the same position in the word, score EXACT points (green) and break so you don't compare that letter further
-                // if it's in the word, but not the right spot, score CLOSE point (yellow)
-        // keep track of the total score by adding each individual letter's score from above
 
     return score;
 }
 
 void print_word(string guess, int wordsize, int status[])
 {
+    char currentletter;
     // print word character-for-character with correct color coding, then reset terminal font to normal
-    // TODO #6
+    for (int c = 0; c < wordsize; c++)
+    {
+        currentletter = guess[c];
+        if (status[c] == 2)
+        {
+            printf(GREEN"%c"RESET"", currentletter);
+        }
+        else if (status[c] == 1)
+        {
+            printf(YELLOW"%c"RESET"", currentletter);
+        }
+        else{
+            printf(RED"%c"RESET"", currentletter);
+        }
+    }
 
     printf("\n");
     return;
