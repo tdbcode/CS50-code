@@ -123,7 +123,7 @@ void record_preferences(int ranks[])
         for (int l = w + 1; l < candidate_count; l++)
         {
             preferences[ranks[w]][ranks[l]]++; // Add one to winner vs loser in ranking for preferences
-            printf("Candidate : %i vs %i : %i\n", w, l, preferences[w][l]); // Output List for testing.
+            //printf("Candidate : %i vs %i : %i\n", w, l, preferences[w][l]); // Output List for testing.
         }
     }
 }
