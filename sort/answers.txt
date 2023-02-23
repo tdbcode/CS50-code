@@ -47,9 +47,9 @@ real    0m0.349s
 user    0m0.038s
 sys     0m0.170s
 
-sort2 uses: TODO
+sort2 uses: Merge Sort
 
-How do you know?: TODO
+How do you know?: Random Sort was sorted the fastest
 
 Random5000
 real    0m0.039s
