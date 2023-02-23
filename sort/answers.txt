@@ -2,6 +2,9 @@ sort1 uses: TODO
 
 How do you know?: TODO
 
+First I collected the data and then put it into a word table to compare to help with the process.
+
+Data Collected:
 Random5000
 real    0m0.094s
 user    0m0.059s
@@ -51,6 +54,10 @@ sort2 uses: Merge Sort
 
 How do you know?: Random Sort was sorted the fastest
 
+First I collected the data and then put it into a word table to compare to help with the process.
+
+Data Collected:
+
 Random5000
 real    0m0.039s
 user    0m0.008s
@@ -99,6 +106,10 @@ sys     0m0.155s
 sort3 uses: TODO
 
 How do you know?: TODO
+
+First I collected the data and then put it into a word table to compare to help with the process.
+
+Data Collected:
 
 Random5000
 real    0m0.043s
