@@ -27,14 +27,16 @@ int convert(string input)
 {
     int value = 0;
     int length = strlen(input);
-    printf("%s\n", input);
+    char currentLetter[length-1];
 
     value = input[length - 1];
-    if (input[length - 1] == '&')
+
+    for (int c = 0; c < length-1; c++)
     {
-        input[length - 1] = '\0';
+        
     }
+
     printf("%szn", input);
-    return 0;
-    //return convert(input + length - 1);
+
+    return convert(input);
 }
