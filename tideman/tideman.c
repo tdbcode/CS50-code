@@ -133,7 +133,18 @@ void record_preferences(int ranks[])
 void add_pairs(void)
 {
 
-    return;
+    for (int p = 0; p < )
+
+preferences[ranks[w]][ranks[l]]++; 
+    // Current winner of pair
+    for (int w = 0; w < candidate_count; w++)
+    {
+        // Jump one down the list from above as there is no need to check previous value as it's the same person or already lost
+        for (int l = 0; l < candidate_count; l++)
+        {
+             pairs[w]
+        }
+
 }
 
 // Sort pairs in decreasing order by strength of victory
