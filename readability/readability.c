@@ -14,7 +14,7 @@ int main(void)
     int letters = 0;
     int words = 0;
     int sentences = 0;
-    long index = 0;
+    float index = 0;
     int grade = 0;
 
     letters = count_letters(sentence);       // Save number of letters using count letters function
@@ -26,9 +26,6 @@ int main(void)
     index = 0.0588 * letters / words * 100 - 0.296 * sentences / words * 100 - 15.8; // Perform readability calculation
 
     grade = round(index); // Round the readability
-
-    printf("%ld Index\n", index);
-    printf("%i Grade\n", grade);
 
     // Output grade based on requirements
     if (grade < 1)
