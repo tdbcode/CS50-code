@@ -27,10 +27,12 @@ int convert(string input)
 {
     int value = 0;
     int length = strlen(input);
-    string substring = input - length + (length - 1);
-    value = input[length - 1];
+    printf("%s\n", input);
 
-    printf("%s, %s\n", input, substring);
+    value = input[length - 1];
+    input[length-1] = NULL;
+
+    printf("%szn", input);
     return 0;
     //return convert(input + length - 1);
 }
