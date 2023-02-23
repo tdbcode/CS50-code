@@ -3,6 +3,7 @@
     "files.associations": {
         "string_view": "c",
         "random": "c",
-        "string": "c"
+        "string": "c",
+        "array": "c"
     }
 }
