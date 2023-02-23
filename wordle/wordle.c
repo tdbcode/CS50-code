@@ -165,7 +165,7 @@ int check_word(string guess, int wordsize, int status[], string choice)
                 break;
             }
 
-           else if (currentLetter == choice[c])
+           if (currentLetter == choice[c])
             {
                     status[c] = 1;
                     score += 1;
