@@ -39,6 +39,5 @@ int convert(string input)
     strncpy(input, currentLetter, length-1);
     input[length-1] = '\0';
 
-    printf("%s\n", input);
     return convert(input);
 }
