@@ -25,5 +25,10 @@ int main(void)
 
 int convert(string input)
 {
-    // TODO
+    int value = 0;
+    for (int c = strlen(input)-1; c >= 0; c--)
+    {
+        value = input[c];
+        
+    }
 }
