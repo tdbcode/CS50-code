@@ -53,9 +53,8 @@ sys     0m0.170s
 sort2 uses: Merge Sort
 
 How do you know?: First I collected the data and then put it into a word table to compare to help with the process.
-I indentified that sort 2 was faster for random sorting which implies merge sort is likely as it will sort in groups in
-
-
+I indentified that sort 2 was faster for random sorting which implies merge sort is likely, as it will sort
+in groups and then merge the groups together, which is easier to sort random data with.
 
 Data Collected:
 
@@ -106,9 +105,9 @@ sys     0m0.155s
 
 sort3 uses: Selection Sort
 
-How do you know?: TODO
-
-First I collected the data and then put it into a word table to compare to help with the process.
+How do you know?: First I collected the data and then put it into a word table to compare to help with the process.
+I indentified that sort 3 was faster for reversed sorting which implies selection sort is likely, as it will sort
+by selecting values then comparing  and then merge the groups together, which is easier to sort random data with.
 
 Data Collected:
 
