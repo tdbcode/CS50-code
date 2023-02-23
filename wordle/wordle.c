@@ -160,9 +160,13 @@ int check_word(string guess, int wordsize, int status[], string choice)
                 status[g] = 2;
                 break;
             }
-            else if(choice[c] == guess[g])
+         }
+
+        for (int g2 = 0; g2 < wordsize; g2++)
+         {
+            if (choice[c] == guess[g2])
             {
-                status[c] = 1;
+                status[g2] = 1;
             }
          }
 
