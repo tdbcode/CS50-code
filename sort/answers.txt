@@ -2,7 +2,12 @@ sort1 uses: TODO
 
 How do you know?: TODO
 
-R10000
+Random5000
+real    0m0.094s
+user    0m0.059s
+sys     0m0.016s
+
+Reversed 10000
 real    0m0.273s
 user    0m0.191s
 sys     0m0.044s
@@ -20,7 +25,7 @@ sort3 uses: TODO
 
 How do you know?: TODO
 
-R10000
+Reverse 10000
 real    0m0.178s
 user    0m0.104s
 sys     0m0.042s
