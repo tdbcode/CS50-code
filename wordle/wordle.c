@@ -75,6 +75,8 @@ int main(int argc, string argv[])
     printf(GREEN"This is WORDLE50"RESET"\n");
     printf("You have %i tries to guess the %i-letter word I'm thinking of\n", guesses, wordsize);
 
+    printf("%s\n", choice); //////////////////////////////////////////////////////////////
+
     // main game loop, one iteration for each guess
     for (int i = 0; i < guesses; i++)
     {
@@ -149,7 +151,6 @@ int check_word(string guess, int wordsize, int status[], string choice)
 {
     int score = 0;
     char currentLetter;
-    printf("%s\n", choice);
 
     // compare guess to choice and score points as appropriate, storing points in status
      for (int g = 0; g < wordsize; g++)
