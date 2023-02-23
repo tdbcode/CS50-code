@@ -30,15 +30,16 @@ int main(int argc, string argv[])
 
     if (argc < 2)
     {
-        x = strtol(argv[1], NULL, 10);
+
         printf("Missing argument\n");
         return 1;
     }
-        else
-        {
-            return 0;
-        }
-        wordsize = x;
+    else
+    {
+        x = atoi(argv[1]);
+        return 0;
+    }
+    wordsize = x;
 
 
     // ensure argv[1] is either 5, 6, 7, or 8 and store that value in wordsize instead
