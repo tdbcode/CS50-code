@@ -124,7 +124,8 @@ string get_guess(int wordsize)
         guess = get_string("Input a %i-letter word: ", wordsize);
 
         // Run through every character in guess
-        for (int c = 0; c < wordsize; c++){
+        for (int c = 0; c < wordsize; c++)
+        {
             temp = guess[c]; // Set temp variable to current character
 
             // If current character is an alphabetic character (and not a punctuation mark or number)
@@ -147,9 +148,22 @@ string get_guess(int wordsize)
 int check_word(string guess, int wordsize, int status[], string choice)
 {
     int score = 0;
-
+    char gtemp;
+    char ctemp;
     // compare guess to choice and score points as appropriate, storing points in status
-    // TODO #5
+     for (int g = 0; g < wordsize; g++)
+     {
+        gtemp = guess[g];
+         for (int c = 0; c < wordsize; c++){
+            ctemp = choice[c];
+
+            if (gtemp == ctemp)
+            {
+                status[g] = 2;
+            }
+         }
+     }
+
 
     // HINTS
     // iterate over each letter of the guess
