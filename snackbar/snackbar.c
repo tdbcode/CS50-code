@@ -101,13 +101,15 @@ void add_items(void)
 // Search through the menu array to find an item's cost
 float get_cost(string item)
 {
-    int cost = 0;
+    float cost = 0;
     for (int s = 0; s < NUM_ITEMS - 1; s++)
     {
         if (strcmp(item, menu[s].item))
         {
             cost = menu[s].price;
+            break;
         }
     }
+    printf("Your total cost is: $%.2f\n", cost);
     return cost;
 }
