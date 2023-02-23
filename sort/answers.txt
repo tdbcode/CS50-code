@@ -17,17 +17,17 @@ real    0m7.906s
 user    0m7.332s
 sys     0m0.197s
 
-Reversed 5000
+Reversed5000
 real    0m0.134s
 user    0m0.053s
 sys     0m0.020s
 
-Reversed 10000
+Reversed10000
 real    0m0.273s
 user    0m0.191s
 sys     0m0.044s
 
-Reversed 50000
+Reversed50000
 real    0m5.566s
 user    0m4.942s
 sys     0m0.200s
