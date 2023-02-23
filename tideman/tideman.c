@@ -138,6 +138,7 @@ void add_pairs(void)
         // Iterate through losers in preferences
         for (int l = 1; l < candidate_count; l++)
         {
+            printf("Candidate : %i vs %i \n", w, l);
             // Note to self: There can't be a [0][0] because it's the same candidate
             // If [winner][loser], e.g. [0][1] is more than [loser][winner], e.g. 1, 0 then
             if (preferences[w][l] > preferences[l][w])
@@ -150,7 +151,7 @@ void add_pairs(void)
                 pairs[w].winner = l;
                 pairs[l].loser = w;
             }
-            printf("Candidate : %i vs %i \n", pairs[w].winner, pairs[l].loser);
+           // printf("Candidate : %i vs %i \n", pairs[w].winner, pairs[l].loser);
         }
     }
 
