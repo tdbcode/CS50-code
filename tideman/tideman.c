@@ -105,7 +105,7 @@ bool vote(int rank, string name, int ranks[])
         if (strcmp(name, candidates[c]) == 0)
         {
             ranks[rank] = c;
-            printf("%s %i\n", name,  ranks[rank]);
+            // printf("%s %i\n", name,  ranks[rank]); // Output List for testing.
             return true;
             break;
         }
@@ -116,22 +116,18 @@ bool vote(int rank, string name, int ranks[])
 // Update preferences given one voter's ranks
 void record_preferences(int ranks[])
 {
+    // Current winner of pair
     for (int w = 0; w < candidate_count; w++)
     {
-        for (int l = 1; l < candidate_count; l++)
+        // Jump one down the list from above as there is no need to check previous value as it's the same person or already lost
+        for (int l = w + 1; l < candidate_count; l++)
         {
-            if (w != l)
-            //{
-             //   if (ranks[0] == w)
-              //  {
-                    preferences[w][l]++;
-             //   }
-                    printf("Candidate : %i vs %i : %i\n", w, l, preferences[w][l]);
-            }
-            }
+            preferences[ranks[w]][ranks[l]]++; // Add one to winner vs loser in ranking for preferences
+            printf("Candidate : %i vs %i : %i\n", w, l, preferences[w][l]); // Output List for testing.
         }
-
     }
+}
+
 
 
 
