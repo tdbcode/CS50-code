@@ -62,7 +62,27 @@ int main(void)
 // TODO: Sort cities by temperature in descending order
 void sort_cities(void)
 {
+    int length = sizeof(temps) / sizeof(temps[0]); // Works out the size of an array
+    string tempCity = NULL;
+    int tempValue = 0;
+    bool flag = true;
 
-    for (int t = 0; )
+    while (flag)
+    {
+        flag = false;
+        for (int t = 0; t < length - 1; t++)
+        {
+            if (temps[t].temp < temps[t + 1].temp)
+            {
+                tempCity = temps[t + 1].city;
+                tempValue = temps[t + 1].temp;
+                temps[t + 1].city = temps[t].city;
+                temps[t + 1].temp = temps[t].temp;
+                temps[t].city = tempCity;
+                temps[t].temp = tempValue;
+                flag = true;
+            }
+        }
+    }
 
 }
