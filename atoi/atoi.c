@@ -28,5 +28,5 @@ int convert(string input)
     int value = 0;
     int length = strlen(input);
     value = input[length - 1];
-    convert(input + length - 1);
+    return convert(input + length - 1);
 }
