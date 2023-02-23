@@ -12,6 +12,11 @@ real    0m0.284s
 user    0m0.239s
 sys     0m0.032s
 
+Random50000
+real    0m7.906s
+user    0m7.332s
+sys     0m0.197s
+
 Reversed 10000
 real    0m0.273s
 user    0m0.191s
