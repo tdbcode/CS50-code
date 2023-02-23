@@ -28,7 +28,7 @@ int main(int argc, string argv[])
     int wordsize = 0;
     long x;
 
-    if (argc != 2)
+    if (argc < 2)
     {
         x = strtol(argv[1], NULL, 10);
         printf("Missing argument\n");
