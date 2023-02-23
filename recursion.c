@@ -5,16 +5,28 @@ void draw(int n);
 
 int main(void)
 {
-    draw(1);
+     // Get height of pyramid
+    int height = get_int("Height: ");
+
+    // Draw pyramid
+    draw(height);
 }
 
 void draw(int n)
 {
+    // If nothing to draw
+    if (n <= 0)
+    {
+        return;
+    }
+
+    // Draw pyramid of height n - 1
+    draw(n - 1);
+
+    // Draw one more row of width n
     for (int i = 0; i < n; i++)
     {
         printf("#");
     }
     printf("\n");
-
-    draw(n + 1);
 }
