@@ -151,7 +151,6 @@ int check_word(string guess, int wordsize, int status[], string choice)
     bool inWord;
     int location=0;
 
-
     // compare guess to choice and score points as appropriate, storing points in status
      for (int c = 0; c < wordsize; c++)
      {
@@ -160,6 +159,7 @@ int check_word(string guess, int wordsize, int status[], string choice)
             if (choice[c] == guess[g])
             {
                 inWord = true;
+                status[c] = 2;
                 location = g;
                 break;
             }
