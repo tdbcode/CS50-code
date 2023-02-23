@@ -2,6 +2,7 @@ sort1 uses: Bubble Sort
 
 How do you know?: First I collected the data and then put it into a word table to compare to help with the process.
 I identified that Sort 1 was marginally faster for sorted data, implying it was a bubble sort (the compared in pairs sort).
+As the data was already sorted no switching is required which means it had less lines of code to run in total.
 
 
 Data Collected:
@@ -107,7 +108,8 @@ sort3 uses: Selection Sort
 
 How do you know?: First I collected the data and then put it into a word table to compare to help with the process.
 I indentified that sort 3 was faster for reversed sorting which implies selection sort is likely, as it will sort
-by selecting values then comparing  and then merge the groups together, which is easier to sort random data with.
+by finding the lowest value (at the end) then comparing them to the first unsorted element (which is the first one)
+this means the nth unsorted value will be swapped with length-nth value.
 
 Data Collected:
 
