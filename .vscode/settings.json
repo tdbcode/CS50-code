@@ -5,6 +5,7 @@
         "random": "c",
         "string": "c",
         "array": "c",
-        "numbers": "c"
+        "numbers": "c",
+        "typeinfo": "c"
     }
 }

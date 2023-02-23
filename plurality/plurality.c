@@ -87,7 +87,8 @@ void print_winner(void)
 {
 
     bool flag = true;
-    string winner = NULL;
+    candidate winner;
+    candidate second;
     string tempName = NULL;
     int tempVotes = 0;
 
@@ -109,9 +110,16 @@ void print_winner(void)
         }
     }
 
-    for (int w = 0; w < candidate_count; w++)
-    {
-        printf("Name: %s, Votes:%i \n", candidates[w].name, candidates[w].votes);
-    }
+    winner = candidates[0];
+    second = candidates[1];
 
+    if (winner.votes == second.votes)
+    {
+        printf("Name: %s, Votes:%i \n", winner.name, winner.votes);
+        printf("Name: %s, Votes:%i \n", second.name, second.votes);
+    }
+    else
+    {
+        printf("Name: %s, Votes:%i \n", winner.name, winner.votes);
+    }
 }
