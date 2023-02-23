@@ -123,8 +123,16 @@ void record_preferences(int ranks[])
     {
         for (int j = 0; j < candidate_count; j++)
         {
-            preferences[i][j] = ranks[j];
-            printf("Rank : %i %i\n", j, preferences[i][j]);
+            if(ranks[i] < ranks[j])
+            {
+                preferences[i][j] = ranks[i];
+            }
+            else
+            {
+                preferences[i][j] = ranks[j];
+            }
+
+
         }
     }
 
