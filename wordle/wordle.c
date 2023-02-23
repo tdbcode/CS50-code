@@ -34,7 +34,8 @@ int main(int argc, string argv[])
     }
     else
     {
-        wordsize = (int)argv[1];
+        wordsize = argv[1];
+        return 0;
     }
 
 
