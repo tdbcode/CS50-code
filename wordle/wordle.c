@@ -26,7 +26,6 @@ void print_word(string guess, int wordsize, int status[]);
 int main(int argc, string argv[])
 {
     int wordsize = 0;
-    long x;
 
     if (argc != 2)
     {
@@ -35,17 +34,14 @@ int main(int argc, string argv[])
     }
     else
     {
-        x = atoi(argv[1]);
-        return 0;
+        wordsize = atoi(argv[1]);
     }
-    wordsize = x;
-
 
     // ensure argv[1] is either 5, 6, 7, or 8 and store that value in wordsize instead
-    while (wordsize < 5 || wordsize > 8)
+    do
     {
         wordsize = get_int("Please re-enter word size");
-    }
+    } while(wordsize < 5 || wordsize > 8);
 
     // open correct file, each file has exactly LISTSIZE words
     char wl_filename[6];
