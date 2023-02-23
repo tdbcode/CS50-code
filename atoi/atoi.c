@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int convert(string input);
+int convert(string input, int length);
 
 int main(void)
 {
@@ -33,27 +33,9 @@ int convert(string input, int length)
         S[c] = input[c];
     }
 
-    if (n < 0 || (S[n] < '0' || S[n] > '9')) {
+    if (length < 0) {
         return 0;
     }
 
-    string currentLetter = NULL;
-
-
-    if (strcmp(input,"\0"))
-    {
-        return 0;
-    }
-    else
-    {
-
-     value = test[length - 1];
-
-
-
-        strncpy(currentLetter, test, length-1);
-
-        return convert(currentLetter);
-    }
-
+    return convert(S, strlen(S) - 1);
 }
