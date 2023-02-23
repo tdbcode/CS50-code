@@ -62,5 +62,7 @@ int main(void)
 // TODO: Sort cities by temperature in descending order
 void sort_cities(void)
 {
-    // Add your code here
+
+    for (int t = 0; )
+
 }
