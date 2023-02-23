@@ -115,11 +115,11 @@ void print_winner(void)
 
     if (winner.votes == second.votes)
     {
-        printf("Name: %s, Votes:%i \n", winner.name, winner.votes);
-        printf("Name: %s, Votes:%i \n", second.name, second.votes);
+        printf("%s\n", winner.name);
+        printf("%s\n", second.name);
     }
     else
     {
-        printf("Name: %s, Votes:%i \n", winner.name, winner.votes);
+        printf("%s\n", winner.name);
     }
 }
