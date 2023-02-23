@@ -119,7 +119,7 @@ string get_guess(int wordsize)
     do
     {
         guess = get_string("Input a %i-letter word: ", wordsize);
-
+        validchar = false;
         // convert all items in array to lower case
         for (int c = 0; c < wordsize; c++){
             temp = guess[c];
@@ -131,6 +131,7 @@ string get_guess(int wordsize)
             else
             {
                 validchar = false;
+                break;
             }
         }
     } while((strlen(guess) < wordsize) && validchar == false);
