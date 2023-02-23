@@ -28,9 +28,8 @@ int main(int argc, string argv[])
     int wordsize = 0;
     long x;
 
-    if (argc < 2)
+    if (argc != 2)
     {
-
         printf("Missing argument\n");
         return 1;
     }
