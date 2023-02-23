@@ -21,6 +21,8 @@
 #include <string.h>
 #include <strings.h>
 
+string converttolower(string s);
+
 // Number of menu items
 // Adjust this value (10) to number of items input below
 #define NUM_ITEMS 10
@@ -102,18 +104,13 @@ void add_items(void)
 float get_cost(string item)
 {
     float cost = 0;
+    string currentItem = NULL;
 
-    for (int c = 0; c < strlen(item)-1; c++)
-    {
-        if (isupper(item[c]))
-        {
-            item[c] = tolower(item[c]);
-        }
-    }
+    item = converttolower(item);
 
-    for (int s = 0; s < NUM_ITEMS; s++)
+    for (int s = 0; s < NUM_ITEMS-1; s++)
     {
-        if (strcmp(item, menu[s].item) == 0)
+        if (strcmp(item, currentItem) == 0)
         {
             cost = menu[s].price;
             break;
@@ -121,4 +118,16 @@ float get_cost(string item)
     }
     printf("Your total cost is: $%.2f\n", cost);
     return cost;
+}
+
+string converttolower(string s)
+{
+    for (int c = 0; c < strlen(s)-1; c++)
+    {
+        if (isupper(s[c]))
+        {
+            s[c] = tolower(s[c]);
+        }
+    }
+    return s;
 }
