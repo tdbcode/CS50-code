@@ -43,7 +43,6 @@ int main(int argc, string argv[])
     {
         candidates[i].name = argv[i + 1];
         candidates[i].votes = 0;
-        printf("%s\n", candidates[i].name);
     }
 
     int voter_count = get_int("Number of voters: ");
@@ -58,6 +57,10 @@ int main(int argc, string argv[])
         {
             printf("Invalid vote.\n");
         }
+        else
+        {
+            printf("Vote registered.\n");
+        }
     }
 
     // Display winner of election
@@ -67,7 +70,16 @@ int main(int argc, string argv[])
 // Update vote totals given a new vote
 bool vote(string name)
 {
-    // TODO
+    for (int c = 0; c < candidate_count; c++)
+    {
+        if (strcmp(name, candidates[c].name) == 0)
+        {
+            candidates[c].votes += 1;
+            printf("%i\n", candidates[c].votes);
+            return true;
+            break;
+        }
+    }
     return false;
 }
 
