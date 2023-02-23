@@ -164,11 +164,12 @@ int check_word(string guess, int wordsize, int status[], string choice)
                 break;
             }
          }
+         
          printf("%i", status[c]);
      }
 
-         printf("%s", guess);
-         printf("%s", choice);
+         printf("%s\n", guess);
+         printf("%s\n", choice);
 
 
     // HINTS
