@@ -25,19 +25,24 @@ int main(void)
 
 int convert(string input)
 {
-    int value = 0;
-    int length = strlen(input);
-    char currentLetter[length-1];
+    if (input == 0)
+    {
+        return 0;
+    }
+
+   int value = 0;
+   int length = strlen(input);
+   // char currentLetter[length-1];
 
     value = input[length - 1];
 
-    for (int c = 0; c < length-1; c++)
-    {
-        currentLetter[c] = input[c];
-    }
+  //  for (int c = 0; c < length-1; c++)
+  //  {
+  //      currentLetter[c] = input[c];
+  //  }
 
-    strncpy(input, currentLetter, length-1);
-    input[length-1] = '\0';
+  //  strncpy(input, currentLetter, length-1);
+  //  input[length-1] = '\0';
 
-    return convert(input);
+    return convert(input - 1);
 }
