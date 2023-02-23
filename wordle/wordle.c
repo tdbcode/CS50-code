@@ -30,19 +30,19 @@ int main(int argc, string argv[])
     // Make sure there is an argument, if there is convert it to an integer and store in wordsize
     if (argc != 2)
     {
-        printf("Missing argument\n");
+        printf("Missing argument.\n");
         return 1;
     }
     else
     {
         wordsize = atoi(argv[1]);
+        // ensure argv[1] is either 5, 6, 7, or 8 and store that value in wordsize instead
+        if (wordsize < 5 || wordsize > 8)
+        {
+            printf("Wordsize must be 5, 6, 7 or 8.\n");
+            return 1;
+        }
     }
-
-    // ensure argv[1] is either 5, 6, 7, or 8 and store that value in wordsize instead
-    do
-    {
-        wordsize = get_int("Please re-enter word size");
-    } while(wordsize < 5 || wordsize > 8);
 
     // open correct file, each file has exactly LISTSIZE words
     char wl_filename[6];
