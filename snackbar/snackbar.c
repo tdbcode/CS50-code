@@ -95,6 +95,13 @@ void add_items(void)
     menu[9].item = "Soda";
     menu[9].price = 2;
 
+    string choice = 
+
+    for(int i = 0; i < 4; i++)
+    {
+
+    }
+
     return;
 }
 
