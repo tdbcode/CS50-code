@@ -139,7 +139,7 @@ void add_pairs(void)
         // Iterate through losers in preferences
         for (int l = 1; l < candidate_count; l++)
         {
-            if (preferences[w][l] > preferences[l][w])
+            if (preferences[w][l] != preferences[l][w])
             {
                 pairs[w].winner = w;
                 pairs[w].loser = l;
