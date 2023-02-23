@@ -27,6 +27,7 @@ int main(int argc, string argv[])
 {
     int wordsize = 0;
 
+    // Make sure there is an argument, if there is convert it to an integer and store in wordsize
     if (argc != 2)
     {
         printf("Missing argument\n");
