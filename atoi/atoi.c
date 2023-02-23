@@ -27,16 +27,16 @@ int convert(string input)
 {
     int value = 0;
     int length = strlen(input);
-    char currentLetter[length-1];
+    strei currentLetter[length-1];
 
     value = input[length - 1];
 
     for (int c = 0; c < length-1; c++)
     {
-        
+        currentLetter += input[c];
     }
 
-    printf("%szn", input);
-
-    return convert(input);
+    printf("%s\n", currentLetter);
+    return 0;
+    //return convert(input);
 }
