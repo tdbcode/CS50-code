@@ -26,9 +26,7 @@ int main(void)
 int convert(string input)
 {
     int value = 0;
-    for (int c = strlen(input)-1; c >= 0; c--)
-    {
-        value = input[c];
-        
-    }
+    int length = strlen(input);
+    value = input[length - 1];
+    convert(input + length - 1);
 }
