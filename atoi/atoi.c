@@ -25,6 +25,8 @@ int main(void)
 
 int convert(string input)
 {
+    string test = input;
+
     if (input == 0)
     {
         return 0;
@@ -32,17 +34,17 @@ int convert(string input)
 
    int value = 0;
    int length = strlen(input);
-   // char currentLetter[length-1];
+   string currentLetter = NULL;
 
-    value = input[length - 1];
+    value = test[length - 1];
 
   //  for (int c = 0; c < length-1; c++)
   //  {
   //      currentLetter[c] = input[c];
   //  }
 
-  //  strncpy(input, currentLetter, length-1);
-      input[length-1] = '\0';
+      strncpy(currentLetter, test, length-1);
 
-    return convert(input);
+
+    return convert(currentLetter);
 }
