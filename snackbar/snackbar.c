@@ -102,10 +102,18 @@ void add_items(void)
 float get_cost(string item)
 {
     float cost = 0;
-    string litem = tolower(item);
+
+    for (int c = 0; c < strlen(item)-1; c++)
+    {
+        if (isupper(item[c]))
+        {
+            item[c] = tolower(item[c]);
+        }
+    }
+
     for (int s = 0; s < NUM_ITEMS; s++)
     {
-        if (strcmp(litem, menu[s].item) == 0)
+        if (strcmp(item, menu[s].item) == 0)
         {
             cost = menu[s].price;
             break;
