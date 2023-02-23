@@ -114,29 +114,29 @@ string get_guess(int wordsize)
 {
     string guess = "";
     char temp;
-    bool validchar;
+    bool validchar = false;
     // ensure users actually provide a guess that is the correct length
     do
     {
         guess = get_string("Input a %i-letter word: ", wordsize);
-        validchar = false;
 
-        // convert all items in array to lower case
+        // Run through every character in guess
         for (int c = 0; c < wordsize; c++){
-            temp = guess[c];
-            if (isalpha(temp) == 0)
+            temp = guess[c]; // Set temp variable to current character
+
+            // If current character is an alphabetic character (and not a punctuation mark or number)
+            if (isalpha(temp))
             {
-                guess[c] = tolower(temp);
-                validchar = true;
+                guess[c] = tolower(temp);    // Convert current character to lower case
+                validchar = true;            // Set that it is a valid char to true
             }
             else
             {
-                validchar = false;
+                validchar = false;          // Else, if it is not a alphabetic character, then set valid char to false
+                break;                     // Exit for loop
             }
         }
-    } while(((strlen(guess) < wordsize) || (strlen(guess) > wordsize)) || validchar != false);
-
-    printf("Word: %s\n", guess);
+    } while(strlen(guess) != wordsize || validchar == false); // Repeat until the guess entered is exactly the worldsize and it is all valid characters
 
     return guess;
 }
