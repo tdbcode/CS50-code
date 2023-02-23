@@ -160,7 +160,7 @@ int check_word(string guess, int wordsize, int status[], string choice)
          for (int c = 0; c < wordsize; c++)
          {
             currentChoice = choice[c];
-            if (currentGuess == choice[c])
+            if (currentGuess == currentChoice)
             {
                 status[c] = 2;
                 score += 2;
