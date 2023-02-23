@@ -57,7 +57,7 @@ int count_letters(string text)
         temp = text[c]; // Set the current character to a temp variable
 
         // Check if current character is either not a space or a puncuation and add 1 to letters
-        if (!(ispunct(temp) || isblank(temp)))
+        if (isalnum(temp))
         {
             letters++;
         }
