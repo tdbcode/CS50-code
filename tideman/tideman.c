@@ -136,7 +136,7 @@ void add_pairs(void)
     for (int w = 0; w < candidate_count; w++)
     {
         // Iterate through losers in preferences
-        for (int l = w+ 1; l < candidate_count; l++)
+        for (int l = w + 1; l < candidate_count; l++)
         {
             printf("Candidate : %i vs %i \n", w, l);
             // Note to self: There can't be a [0][0] because it's the same candidate, also can't be a [1][1] either as this is a duplicate candidate and so on.
