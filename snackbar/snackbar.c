@@ -95,18 +95,19 @@ void add_items(void)
     menu[9].item = "Soda";
     menu[9].price = 2;
 
-    string choice = 
-
-    for(int i = 0; i < 4; i++)
-    {
-
-    }
-
     return;
 }
 
 // Search through the menu array to find an item's cost
 float get_cost(string item)
 {
-    return 0.0;
+    int cost = 0;
+    for (int s = 0; s < NUM_ITEMS - 1; s++)
+    {
+        if (strcmp(item, menu[s].item))
+        {
+            cost = menu[s].price;
+        }
+    }
+    return cost;
 }
