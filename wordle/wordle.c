@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
+#include <ctype.h>
 
 // each of our text files contains 1000 words
 #define LISTSIZE 1000
@@ -118,6 +119,7 @@ string get_guess(int wordsize)
     do
     {
         guess = get_string("Input a %i-letter word: ", wordsize);
+
         // convert all items in array to lower case
         for (int c = 0; c < wordsize; c++){
             temp = guess[c];
