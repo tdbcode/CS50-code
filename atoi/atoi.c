@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int convert(const char S[], int length);
+int convert(char S[], int length);
 
 int main(void)
 {
@@ -29,7 +29,7 @@ int main(void)
 
 }
 
-int convert(const char S[], int length)
+int convert(char S[], int length)
 {
 
     if (length < 0) {
