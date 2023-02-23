@@ -160,6 +160,7 @@ int check_word(string guess, int wordsize, int status[], string choice)
             if (gtemp == ctemp)
             {
                 status[g] = 2;
+                break;
             }
          }
      }
