@@ -9,7 +9,7 @@ int convert(string input, int length);
 int main(void)
 {
     string input = get_string("Enter a positive integer: ");
-    char S[length];
+    char S[strlen(input)];
 
     for (int i = 0, n = strlen(input); i < n; i++)
     {
@@ -20,12 +20,13 @@ int main(void)
         }
         else
         {
-            S[c] = input[c];
+            S[i] = input[i];
         }
     }
 
     // Convert string to int
     printf("%i\n", convert(S, strlen(input)));
+
 }
 
 int convert(char[] input, int length)
