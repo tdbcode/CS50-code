@@ -114,16 +114,17 @@ string get_guess(int wordsize)
 {
     string guess = "";
     char temp;
-    bool validchar = false;
+    bool validchar;
     // ensure users actually provide a guess that is the correct length
     do
     {
         guess = get_string("Input a %i-letter word: ", wordsize);
         validchar = false;
+
         // convert all items in array to lower case
         for (int c = 0; c < wordsize; c++){
             temp = guess[c];
-            if (isalpha(temp))
+            if (isalpha(temp) == 0)
             {
                 guess[c] = tolower(temp);
                 validchar = true;
@@ -131,10 +132,9 @@ string get_guess(int wordsize)
             else
             {
                 validchar = false;
-                break;
             }
         }
-    } while((strlen(guess) < wordsize) && validchar == false);
+    } while((strlen(guess) < wordsize) || (strlen(guess) > wordsize) || validchar == false);
 
     printf("Word: %s\n", guess);
 
