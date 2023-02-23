@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int convert(string input, int length);
+int convert(char S[], int length);
 
 int main(void)
 {
@@ -25,11 +25,11 @@ int main(void)
     }
 
     // Convert string to int
-    printf("%i\n", convert(S, strlen(input)));
+    printf("%i\n", convert(S, strlen(S)-1));
 
 }
 
-int convert(char[] input, int length)
+int convert(char S[], int length)
 {
 
     if (length < 0) {
