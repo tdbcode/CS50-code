@@ -100,11 +100,12 @@ int main(int argc, string argv[])
 // Update ranks given a new vote
 bool vote(int rank, string name, int ranks[])
 {
+    // Loops through all candidates
     for (int c = 0; c < candidate_count; c++)
     {
-        if (strcmp(name, candidates[c]) == 0)
+        if (strcmp(name, candidates[c]) == 0) // if name entered matches a candidate
         {
-            ranks[rank] = c;
+            ranks[rank] = c; // Record index into rank array in rank location
             // printf("%s %i\n", name,  ranks[rank]); // Output List for testing.
             return true;
             break;
@@ -128,13 +129,10 @@ void record_preferences(int ranks[])
     }
 }
 
-
-
-
 // Record pairs of candidates where one is preferred over the other
 void add_pairs(void)
 {
-    // TODO
+    
     return;
 }
 
