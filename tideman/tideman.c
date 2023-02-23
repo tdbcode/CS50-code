@@ -121,17 +121,17 @@ void record_preferences(int ranks[])
         for (int l = 1; l < candidate_count; l++)
         {
             if (w != l)
-            {
+            //{
              //   if (ranks[0] == w)
               //  {
                     preferences[w][l]++;
-             }
+             //   }
                     printf("Candidate : %i vs %i : %i\n", w, l, preferences[w][l]);
+            }
+            }
         }
+
     }
-        }
-
-
 
 
 
