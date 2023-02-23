@@ -162,7 +162,7 @@ int check_word(string guess, int wordsize, int status[], string choice)
             currentChoice = choice[c];
             if (currentGuess == currentChoice)
             {
-                status[c] = 2;
+                status[g] = 2;
                 score += 2;
                 break;
             }
