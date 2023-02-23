@@ -133,17 +133,19 @@ void record_preferences(int ranks[])
 void add_pairs(void)
 {
 
-    for (int p = 0; p < )
-
-preferences[ranks[w]][ranks[l]]++; 
-    // Current winner of pair
+    // Iterate through winners in preferences
     for (int w = 0; w < candidate_count; w++)
     {
-        // Jump one down the list from above as there is no need to check previous value as it's the same person or already lost
-        for (int l = 0; l < candidate_count; l++)
+        // Iterate through losers in preferences
+        for (int l = 1; l < candidate_count; l++)
         {
-             pairs[w]
+            if (preferences[w][l] > preferences[l][w])
+            {
+                pairs[w].winner = w;
+                pairs[w].loser = l;
+            }
         }
+    }
 
 }
 
