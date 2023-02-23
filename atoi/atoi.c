@@ -42,7 +42,7 @@ int convert(string input)
   //  }
 
   //  strncpy(input, currentLetter, length-1);
-  //  input[length-1] = '\0';
+      input[length-1] = '\0';
 
-    return convert(input - 1);
+    return convert(input);
 }
