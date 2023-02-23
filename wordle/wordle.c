@@ -147,7 +147,9 @@ string get_guess(int wordsize)
                 break;                     // Exit for loop
             }
         }
-    } while(strlen(guess) != wordsize || validchar == false); // Repeat until the guess entered is exactly the worldsize and it is all valid characters
+    }
+    while (strlen(guess) != wordsize
+           || validchar == false); // Repeat until the guess entered is exactly the worldsize and it is all valid characters
 
     return guess;
 }
@@ -159,19 +161,19 @@ int check_word(string guess, int wordsize, int status[], string choice)
     char currentChoice;
 
     // compare guess to choice and score points as appropriate, storing points in status
-     for (int g = 0; g < wordsize; g++)
-     {
+    for (int g = 0; g < wordsize; g++)
+    {
         currentGuess = guess[g];
-         for (int c = 0; c < wordsize; c++)
-         {
+        for (int c = 0; c < wordsize; c++)
+        {
             currentChoice = choice[c];
             if (currentGuess == currentChoice)
             {
                 if (g == c)
                 {
-                status[g] = 2;
-                score += 2;
-                break;
+                    status[g] = 2;
+                    score += 2;
+                    break;
                 }
                 else
                 {
@@ -180,7 +182,7 @@ int check_word(string guess, int wordsize, int status[], string choice)
                 }
             }
         }
-     }
+    }
 
     return score;
 }
@@ -200,7 +202,8 @@ void print_word(string guess, int wordsize, int status[])
         {
             printf(YELLOW"%c"RESET"", currentletter);
         }
-        else{
+        else
+        {
             printf(RED"%c"RESET"", currentletter);
         }
     }
