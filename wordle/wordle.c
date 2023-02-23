@@ -148,40 +148,27 @@ string get_guess(int wordsize)
 int check_word(string guess, int wordsize, int status[], string choice)
 {
     int score = 0;
-    char gtemp;
-    char ctemp;
-    int n=0;
+    bool inWord;
 
     // compare guess to choice and score points as appropriate, storing points in status
      for (int c = 0; c < wordsize; c++)
      {
-        ctemp = choice[c];
-         for (int g = 0; g < wordsize; g++){
-            gtemp = guess[g];
-
-            if (ctemp == gtemp)
+         for (int g = 0; g < wordsize; g++)
+         {
+            if (choice[c] == guess[g])
             {
                 status[g] = 2;
                 break;
             }
-            else
+            else if(choice[c] == guess[g])
             {
-                n++;
-                for(int g2= 0; g2< wordsize - n; g2++)
-                {
-                    if (choice[c+n] == gtemp)
-                    {
-                        choice[c+n] = 1;
-                    }
-                }
+                status[c] = 1;
             }
          }
 
-         printf("%i", status[c]);
+         printf("%i\n", status[c]);
      }
-
-         printf("%s\n", guess);
-         printf("%s\n", choice);
+     printf("%s\n", choice);
 
 
     // HINTS
