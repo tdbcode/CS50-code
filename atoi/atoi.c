@@ -30,8 +30,10 @@ int convert(string input)
     printf("%s\n", input);
 
     value = input[length - 1];
-    input[length-1] = NULL;
-
+    if (input[length - 1] == '&')
+    {
+        input[length - 1] = '\0';
+    }
     printf("%szn", input);
     return 0;
     //return convert(input + length - 1);
