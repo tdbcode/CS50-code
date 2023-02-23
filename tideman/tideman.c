@@ -124,7 +124,7 @@ void record_preferences(int ranks[])
             {
                 if (ranks[w] == 0)
                 {
-                    preferences[w][l+1] += 1;
+                    preferences[w][l] += 1;
                 }
                     printf("Candidate : %i vs %i : %i\n", w, l, preferences[w][l]);
             }
