@@ -198,7 +198,8 @@ void sort_pairs(void)
 // Lock pairs into the candidate graph in order, without creating cycles
 void lock_pairs(void)
 {
-    // TODO
+    // locked[i][j] means i is locked in over j
+    locked[MAX][MAX]; // boolean
     return;
 }
 
