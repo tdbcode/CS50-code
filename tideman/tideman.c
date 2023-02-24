@@ -153,7 +153,7 @@ void add_pairs(void)
                 pairs[pair_count].loser = w;                // Add current winner as loser of current pair
                 pair_count++;                           //Have to add one to paircount so total number of pairs is known
             }
-            //printf("Candidate : %i vs %i \n", pairs[w].winner, pairs[l].loser); //For testing and tracing only
+            printf("Pair: %i Winner : %i Loser: %i \n", pair_count, pairs[w].winner, pairs[l].loser); //For testing and tracing only
         }
     }
 
@@ -162,7 +162,6 @@ void add_pairs(void)
 // Sort pairs in decreasing order by strength of victory
 void sort_pairs(void)
 {
-    int length = sizeof(pairs) / sizeof(pairs[0]); // Works out the size of an array
     int tempWinner = 0;
     int tempLoser = 0;
     bool flag = true; //Flag to symbolise if a switch has been made, if so continue bubble sort
@@ -173,7 +172,7 @@ void sort_pairs(void)
         flag = false; // No switches made yet
 
         //Perform bubble sort on pairs array
-        for (int p = 0; p < number - 1; p++)
+        for (int p = 0; p < pair_count; p++)
         {
             if (pairs[p].winner < pairs[p + 1].winner)
             {
@@ -189,7 +188,7 @@ void sort_pairs(void)
     }
 
 
-    for (int i = 0; i < length - 1; i++)
+    for (int i = 0; i < pair_count; i++)
         {
             printf("Winner: %i Loser: %i\n", pairs[i].winner, pairs[i].loser);
         }
