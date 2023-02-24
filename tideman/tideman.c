@@ -185,7 +185,7 @@ void sort_pairs(void)
                 flag = true; // Switches has been made, loop needs to run again
             }
         }
-        back -= 1; // minus one from back
+        back -= 1; // minus one from back of array as its sorted
     }
 
     /* used for tracking and testing only - outputting list
