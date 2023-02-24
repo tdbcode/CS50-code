@@ -173,7 +173,7 @@ void sort_pairs(void)
         //Perform bubble sort on pairs array
         for (int p = 0; p < pair_count; p++)
         {
-            if (pairs[p].winner > pairs[p + 1].winner)
+            if (pairs[p].winner < pairs[p + 1].winner)
             {
                 temp = pairs[p + 1];
                 pairs[p + 1] = pairs[p];
