@@ -153,7 +153,7 @@ void add_pairs(void)
                 pairs[pair_count].loser = w;                // Add current loser as loser of current pair
                 pair_count++;                           //Have to add one to paircount so total number of pairs is known
             }
-            printf("Pair: %i Winner : %i Loser: %i \n", pair_count, pairs[w].winner, pairs[l].loser); //For testing and tracing only
+            printf("Pair: %i Winner : %i Loser: %i \n", pair_count, pairs[pair_count-1].winner, pairs[pair_count-1].loser); //For testing and tracing only
         }
     }
 
