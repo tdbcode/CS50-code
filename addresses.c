@@ -16,4 +16,14 @@ int main(void)
 
     char *c = "HI!";
     printf("%s\n", c);
+
+    char *c1 = "HI!";
+    printf("%c\n", c1[0]);
+    printf("%c\n", c1[1]);
+    printf("%c\n", c1[2]);
+
+    char *c2 = "HI!";
+    printf("%c\n", *c2);
+    printf("%c\n", *(c2 + 1));
+    printf("%c\n", *(c2 + 2));
 }
