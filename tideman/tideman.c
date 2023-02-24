@@ -202,9 +202,9 @@ void lock_pairs(void)
     int startcandidate;
     int endcandidate;
 
-    for (int p = 0; p < pair_count; p++){
-
-        for(int c = 0; c < candidate_count; c++)
+    for (int c = 0; c < candidate_count; c++){
+        //
+        for(int p = 0; p < pair_count; p++)
         {
             if (!pairs[p].winner == pairs[p].loser)
             {
