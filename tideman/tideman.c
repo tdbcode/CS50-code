@@ -162,8 +162,7 @@ void add_pairs(void)
 // Sort pairs in decreasing order by strength of victory
 void sort_pairs(void)
 {
-    int tempWinner = 0;
-    int tempLoser = 0;
+    pair temp = NULL;
     bool flag = true; //Flag to symbolise if a switch has been made, if so continue bubble sort
 
     // Use bubblesort to compare pairs
@@ -176,12 +175,9 @@ void sort_pairs(void)
         {
             if (pairs[p].winner < pairs[p + 1].winner)
             {
-                tempWinner = pairs[p + 1].winner;
-                tempLoser = pairs[p + 1].loser;
-                pairs[p + 1].winner = pairs[p].winner;
-                pairs[p + 1].loser = pairs[p].loser;
-                pairs[p].winner = tempWinner;
-                pairs[p].loser = tempLoser;
+                temp = pairs[p + 1];
+                pairs[p + 1] = pairs[p];
+                pairs[p] = temp;
                 flag = true; // Switches has been made, loop needs to run again
             }
         }
