@@ -199,26 +199,22 @@ void sort_pairs(void)
 void lock_pairs(void)
 {
 
-    for (int p = 0; p < pair_count; p++){
-        if (pairs[i].winner == pairs[i].loser)
-        {
+    int startcandidate;
+    int endcandidate;
 
+    for (int p = 0; p < pair_count; p++){
+
+        if (pairs[p].winner == pairs[p].loser)
+        {
+            locked[pairs[p].winner][pairs[p].loser] = true;
+            break;
         }
+
     }
 
     // locked[i][j] means i is locked in over j
-    locked[MAX][MAX]; // boolean
+    //locked[MAX][MAX]; // boolean
 
-    // Clear graph of locked in pairs
-    for (int i = 0; i < candidate_count; i++)
-    {
-        for (int j = 0; j < candidate_count; j++)
-        {
-            locked[i][j] = false;
-        }
-    }
-
-    return;
 }
 
 // Print the winner of the election
