@@ -162,8 +162,37 @@ void add_pairs(void)
 // Sort pairs in decreasing order by strength of victory
 void sort_pairs(void)
 {
-    // TODO
-    return;
+
+    int length = sizeof(pairs) / sizeof(pairs[0]); // Works out the size of an array
+    int tempWinner = 0;
+    int tempLoser = 0;
+    bool flag = true; //Flag to symbolise if a switch has been made, if so continue bubble sort
+
+    // Use bubblesort to compare pairs
+    while (flag)
+    {
+        flag = false; // No switches made yet
+
+        //Perform bubble sort on pairs array
+        for (int p = 0; p < length - 1; p++)
+        {
+            if (pairs[p].winner < pairs[p + 1].winner)
+            {
+                tempWinner = pairs[p + 1].winner;
+                tempLoser = pairs[p + 1].loser;
+                pairs[p + 1].winner = pairs[p].winner;
+                pairs[p + 1].loser = pairs[p].loser;
+                pairs[p].winner = tempWinner;
+                pairs[p].loser = tempLoser;
+                flag = true; // Switches has been made, loop needs to run again
+            }
+        }
+    }
+
+    for (int i = 0; i < length - 1; i++)
+        {
+            printf()
+        }
 }
 
 // Lock pairs into the candidate graph in order, without creating cycles
