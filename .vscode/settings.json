@@ -6,6 +6,7 @@
         "string": "c",
         "array": "c",
         "numbers": "c",
-        "typeinfo": "c"
+        "typeinfo": "c",
+        "stdio.h": "c"
     }
 }
