@@ -162,7 +162,6 @@ void add_pairs(void)
 // Sort pairs in decreasing order by strength of victory
 void sort_pairs(void)
 {
-
     int length = sizeof(pairs) / sizeof(pairs[0]); // Works out the size of an array
     int tempWinner = 0;
     int tempLoser = 0;
