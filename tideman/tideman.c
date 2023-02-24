@@ -173,7 +173,7 @@ void sort_pairs(void)
         flag = false; // No switches made yet
 
         //Perform bubble sort on pairs array
-        for (int p = 0; p < length - 1; p++)
+        for (int p = 0; p < number - 1; p++)
         {
             if (pairs[p].winner < pairs[p + 1].winner)
             {
@@ -187,6 +187,7 @@ void sort_pairs(void)
             }
         }
     }
+
 
     for (int i = 0; i < length - 1; i++)
         {
