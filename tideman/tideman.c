@@ -165,7 +165,7 @@ void sort_pairs(void)
 {
     pair temp;
     bool flag = true; //Flag to symbolise if a switch has been made, if so continue bubble sort
-    int front = pair_count - 1;
+    int back = pair_count - 1; // Set back of array for end of loop
 
     // Use bubblesort to compare pairs
     while (flag)
@@ -173,17 +173,19 @@ void sort_pairs(void)
         flag = false; // No switches made yet
 
         //Perform bubble sort on pairs array
-        for (int p = 0; p <= front; p++)
+        for (int p = 0; p <= back; p++)
         {
-            if (pairs[p].winner < pairs[p + 1].winner)
+            // got to compare with preferences now current pair to help sort the pair using the pair as a pointer for preference
+            // Compare to next item in the area to perform bubble sort
+            if ((preferences[pairs[p].winner][pairs[p].loser]) < (preferences[pairs[p + 1].winner][pairs[p + 1].loser]))
             {
-                temp = pairs[p + 1];
-                pairs[p + 1] = pairs[p];
-                pairs[p] = temp;
+                temp = pairs[p];
+                pairs[p] = pairs[p + 1];
+                pairs[p + 1] = temp;
                 flag = true; // Switches has been made, loop needs to run again
             }
         }
-        front -= 1;
+        back -= 1; // minus one from back
     }
 
     for (int i = 0; i < pair_count; i++)
