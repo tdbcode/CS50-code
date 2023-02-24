@@ -164,11 +164,13 @@ void sort_pairs(void)
 {
     pair temp;
     bool flag = true; //Flag to symbolise if a switch has been made, if so continue bubble sort
+    int front = paircount -1;
 
     // Use bubblesort to compare pairs
     while (flag)
     {
         flag = false; // No switches made yet
+        
 
         //Perform bubble sort on pairs array
         for (int p = 0; p < pair_count; p++)
