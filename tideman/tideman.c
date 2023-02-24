@@ -204,17 +204,18 @@ void lock_pairs(void)
 
     for (int p = 0; p < pair_count; p++){
 
-        if (pairs[p].winner == pairs[p].loser)
+        for(int c = 0; c < candidate_count; c++)
         {
-            locked[pairs[p].winner][pairs[p].loser] = true;
-            break;
+            if (pairs[p].winner == pairs[p].loser)
+            {
+                locked[pairs[p].winner][pairs[p].loser] = true;
+                break;
+            }
         }
-
-    }
 
     // locked[i][j] means i is locked in over j
     //locked[MAX][MAX]; // boolean
-
+    }
 }
 
 // Print the winner of the election
