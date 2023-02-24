@@ -188,11 +188,11 @@ void sort_pairs(void)
         back -= 1; // minus one from back
     }
 
-    /* used for tracking and testing only - outputting list */
+    /* used for tracking and testing only - outputting list
     for (int i = 0; i < pair_count; i++)
     {
         printf("Winner: %i Loser: %i\n", pairs[i].winner, pairs[i].loser);
-    }
+    }*/
 }
 
 // Lock pairs into the candidate graph in order, without creating cycles
