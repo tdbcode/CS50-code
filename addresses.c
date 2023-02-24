@@ -3,5 +3,6 @@
 int main(void)
 {
     int n = 50;
-    printf("%p\n", &n);
+    int *p = &n; //Gets memory location (pointer) of n &n = memory location of, *p = pointer
+    printf("%p\n", p);
 }
