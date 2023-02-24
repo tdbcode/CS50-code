@@ -162,7 +162,7 @@ void add_pairs(void)
 // Sort pairs in decreasing order by strength of victory
 void sort_pairs(void)
 {
-    pair temp = NULL;
+    pair temp;
     bool flag = true; //Flag to symbolise if a switch has been made, if so continue bubble sort
 
     // Use bubblesort to compare pairs
