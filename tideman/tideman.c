@@ -196,6 +196,8 @@ void sort_pairs(void)
 }
 
 // Lock pairs into the candidate graph in order, without creating cycles
+// Source used as I was stuck and couldn't work this out:
+// https://gist.github.com/nicknapoli82/6c5a1706489e70342e9a0a635ae738c9
 void lock_pairs(void)
 {
 
