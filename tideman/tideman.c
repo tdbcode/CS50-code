@@ -141,16 +141,16 @@ void add_pairs(void)
             //printf("Candidate : %i vs %i \n", w, l); //For testing and tracing only
             // Note to self: There can't be a [0][0] because it's the same candidate, also can't be a [1][1] either as this is a duplicate candidate and so on.
             // If [winner][loser], e.g. [0][1] is more than [loser][winner], e.g. 1, 0 then
-            if (preferences[w][l] > preferences[l][w]) // If current winner is more than next winner in preferences array then
+            if (preferences[w][l] > preferences[l][w]) // If current winner is more than the loser in preferences array then
             {
                 pairs[pair_count].winner = w;           // Add current winner to current pair in pair array
-                pairs[pair_count].loser = l;            // And add next winner as loser to current pair in pair array
+                pairs[pair_count].loser = l;            // And add the loser as loser to current pair in pair array
                 pair_count++;                //Have to add one to paircount so total number of pairs is known
             }
             else if (preferences[w][l] < preferences[l][w]) // If the opposite
             {
                 pairs[pair_count].winner = l;               // Add next items winner, as winner in current pair
-                pairs[pair_count].loser = w;                // Add current winner as loser of current pair
+                pairs[pair_count].loser = w;                // Add current loser as loser of current pair
                 pair_count++;                           //Have to add one to paircount so total number of pairs is known
             }
             printf("Pair: %i Winner : %i Loser: %i \n", pair_count, pairs[w].winner, pairs[l].loser); //For testing and tracing only
