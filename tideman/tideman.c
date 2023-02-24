@@ -200,6 +200,16 @@ void lock_pairs(void)
 {
     // locked[i][j] means i is locked in over j
     locked[MAX][MAX]; // boolean
+
+    // Clear graph of locked in pairs
+    for (int i = 0; i < candidate_count; i++)
+    {
+        for (int j = 0; j < candidate_count; j++)
+        {
+            locked[i][j] = false;
+        }
+    }
+
     return;
 }
 
