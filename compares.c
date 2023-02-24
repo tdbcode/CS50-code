@@ -7,6 +7,10 @@ int main(void)
     char *s = get_string("s: ");
     char *t = get_string("t: ");
 
+    // Print strings
+    printf("%p\n", s);
+    printf("%p\n", t);
+
     // Compare strings' addresses
     if (s == t)
     {
