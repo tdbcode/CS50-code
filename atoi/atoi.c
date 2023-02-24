@@ -32,7 +32,7 @@ int main(void)
 int convert(char S[], int length)
 {
 
-    if (length < 0) {
+    if (length <= 0) {
         return 0;
     }
 
