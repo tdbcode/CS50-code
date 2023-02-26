@@ -6,16 +6,19 @@
 int main(void)
 {
     // Get a string
-    string s = get_string("s: ");
+    char *s = get_string("s: ");
 
-    // Copy string's address
-    string t = s;
+    // Allocate memory for another string
+    char *t = malloc(strlen(s) + 1);
 
-    // Capitalize first letter in string
-    if (strlen(t) > 0)
+    // Copy string into memory, including '\0'
+    for (int i = 0; i <= strlen(s); i++)
     {
-        t[0] = toupper(t[0]);
+        t[i] = s[i];
     }
+
+    // Capitalize copy
+    t[0] = toupper(t[0]);
 
     // Print string twice
     printf("s: %s\n", s);
