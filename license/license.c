@@ -23,34 +23,16 @@ int main(int argc, char *argv[])
 
     int idx = 0;
 
-    string copys = NULL;
-
-
-
-    char *s = malloc(fread(buffer, 1, 7, infile));
-    if (s == NULL)
+    while (fread(buffer, 1, 7, infile) == 7)
     {
-        return 1;
-    }
 
-    // Copy string into memory
-   // strcpy(t, s);
-
-
-    while (true)
-    {
         // Replace '\n' with '\0'
         buffer[6] = '\0';
 
         // Save plate number in array
-        strcop(plates[idx],malloc(fread(buffer, 1, 7, infile)));
+        plates[idx] = buffer;
         idx++;
-
-        if (idx == 8){
-            break;
-        }
     }
-    free(s);
 
     for (int i = 0; i < 8; i++)
     {
