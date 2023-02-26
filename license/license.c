@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <cs50.h>
 
 int main(int argc, char *argv[])
 {
@@ -26,9 +27,8 @@ int main(int argc, char *argv[])
         buffer[6] = '\0';
 
         // Save plate number in array
-        plates[idx] = malloc(buffer);
+        plates[idx] = buffer;
         idx++;
-        free(plates[idx]);
     }
 
     for (int i = 0; i < 8; i++)

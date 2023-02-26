@@ -7,6 +7,7 @@
         "array": "c",
         "numbers": "c",
         "typeinfo": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "string.h": "c"
     }
 }
