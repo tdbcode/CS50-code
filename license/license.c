@@ -21,7 +21,17 @@ int main(int argc, char *argv[])
 
     int idx = 0;
 
-    string copys = NULL;
+    string *copys = malloc(buffer[];
+
+    if (s == NULL)
+    {
+        return 1;
+    }
+
+    // Allocate memory for another string
+    char *t = malloc(strlen(s) + 1);
+
+
     while (fread(buffer, 1, 7, infile) == 7)
     {
         // Replace '\n' with '\0'
