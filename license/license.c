@@ -33,6 +33,7 @@ int main(int argc, char *argv[])
         // Save plate number in array
         *plates[idx] = *s;
         idx++;
+        free(s);
     }
 
     for (int i = 0; i < 8; i++)
