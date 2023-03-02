@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
     float calc = 0.0;
     while(fread(currentSample, 16, 1, input))
     {
-        calc = currentSample * factor;
+        calc = currentSample;
         fwrite(calc, 16, 1 ,output);
     }
 
