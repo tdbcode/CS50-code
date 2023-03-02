@@ -19,13 +19,16 @@ int main(int argc, char *argv[])
     // Create array to store plate numbers
     char *plates[8]; // A string of 8 pointers
 
+    for (int i = 0; i)
+    plates [] = malloc(7);
+
     FILE *infile = fopen(argv[1], "r");
 
     int idx = 0;
     char *s = NULL;
     while (fread(buffer, 1, 7, infile) == 7)
     {
-        s = malloc(7);
+        s
         // Replace '\n' with '\0'
         buffer[6] = '\0';
         s = &buffer[0];
