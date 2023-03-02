@@ -29,10 +29,12 @@ int main(int argc, char *argv[])
         buffer[6] = '\0';
 
         // Save plate number in array
-        *plates[idx] = buffer;
+        plates[idx] = &buffer[0];
+        printf("%x\n", buffer[0]);
+        printf("%s\n", plates[idx]);
         idx++;
     }
-    free(buffer);
+
     for (int i = 0; i < 8; i++)
     {
         printf("%s\n", plates[i]);
