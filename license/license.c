@@ -28,11 +28,11 @@ int main(int argc, char *argv[])
     {
         // Replace '\n' with '\0'
         buffer[6] = '\0';
-        
+        s = buffer;
 
         // Save plate number in array
-        plates[idx] = &s;
-        idx++;*/
+        *plates[idx] = *s;
+        idx++;
     }
 
     for (int i = 0; i < 8; i++)
