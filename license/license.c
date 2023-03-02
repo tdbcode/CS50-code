@@ -19,8 +19,9 @@ int main(int argc, char *argv[])
     // Create array to store plate numbers
     char *plates[8]; // A string of 8 pointers
 
-    for (int i = 0; i)
-    plates [] = malloc(7);
+    for (int i = 0; i < 7; i++){
+        plates [i] = malloc(7);
+    }
 
     FILE *infile = fopen(argv[1], "r");
 
