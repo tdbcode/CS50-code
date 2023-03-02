@@ -20,6 +20,7 @@ int main(int argc, char *argv[])
     char *plates[8];
 
     FILE *infile = fopen(argv[1], "r");
+    printf("%s", &infile);
 
     int idx = 0;
 
@@ -29,9 +30,9 @@ int main(int argc, char *argv[])
         buffer[6] = '\0';
 
         // Save plate number in array
-        plates[idx] = malloc(sizeof(buffer));
+       /* plates[idx] = malloc(sizeof(buffer));
         plates[idx] = &buffer;
-        idx++;
+        idx++;*/
     }
 
     for (int i = 0; i < 8; i++)
