@@ -43,11 +43,11 @@ int main(int argc, char *argv[])
 
     uint16_t *currentSample = NULL;
     currentSample = malloc(16);
-    
+    float calc = 0.0;
     while(fread(currentSample, 16, 1, input))
     {
-        currentSample = currentSample * factor;
-        fwrite(currentSample, 16, 1 ,output);
+        calc = currentSample * factor;
+        fwrite(calc, 16, 1 ,output);
     }
 
     // Close files
