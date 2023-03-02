@@ -28,10 +28,10 @@ int main(int argc, char *argv[])
         s = malloc(7);
         // Replace '\n' with '\0'
         buffer[6] = '\0';
-        s = buffer;
+        s = &buffer[0];
 
         // Save plate number in array
-        plates[idx] = &s[0];
+        strcpy(s,plates[idx]);
         idx++;
     }
 
