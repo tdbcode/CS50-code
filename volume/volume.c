@@ -35,6 +35,8 @@ int main(int argc, char *argv[])
 
     uint8_t header[HEADER_SIZE];
 
+    header = output
+
     // TODO: Copy header from input file to output file
     read(buffer, 1, 7, infile)
 
