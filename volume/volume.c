@@ -44,10 +44,10 @@ int main(int argc, char *argv[])
 
     uint16_t *currentSample = NULL;
     currentSample = malloc(16);
-    float calc = 0.0;
+    float *calc = NULL;
     while(fread(currentSample, 16, 1, input))
     {
-        memcpy(calc,currentSample);
+        calc = currentSample;
         calc = calc * factor;
         fwrite(calc, 16, 1 ,output);
     }
