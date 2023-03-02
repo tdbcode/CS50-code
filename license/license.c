@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 
     for (int i = 0; i < 8; i++)
     {
-        plates[i] = malloc(sizeof(char) * 7);
+        plates[i] = malloc(sizeof(char) * 7); // Allocate memory to the plates array else it will just point to last address from buffer
     }
 
     FILE *infile = fopen(argv[1], "r");
@@ -37,6 +37,7 @@ int main(int argc, char *argv[])
         strcpy(plates[idx], buffer);
         idx++;
     }
+    free(buffer);
 
     for (int i = 0; i < 8; i++)
     {
