@@ -43,6 +43,7 @@ int main(int argc, char *argv[])
 
     uint16_t *currentSample = NULL;
     currentSample = malloc(16);
+    
     while(fread(currentSample, 16, 1, input))
     {
         currentSample = currentSample * factor;
