@@ -14,8 +14,7 @@ int main(int argc, char *argv[])
     }
 
     // Create buffer to read into
-    char buffer[7];
-    char *s = malloc(7);
+    char *buffer = malloc(7);
 
     // Create array to store plate numbers
     char *plates[8];
@@ -28,13 +27,12 @@ int main(int argc, char *argv[])
     {
         // Replace '\n' with '\0'
         buffer[6] = '\0';
-        s = buffer;
 
         // Save plate number in array
-        plates[idx] = buffer;
+        *plates[idx] = buffer;
         idx++;
     }
-
+    free(buffer);
     for (int i = 0; i < 8; i++)
     {
         printf("%s\n", plates[i]);
