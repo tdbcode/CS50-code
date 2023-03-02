@@ -14,10 +14,10 @@ int main(int argc, char *argv[])
     }
 
     // Create buffer to read into
-    char buffer[7];
+    char buffer[7]; // Buffer from the file
 
     // Create array to store plate numbers
-    char plates[8];
+    char *plates[8]; // A string of 8 pointers
 
     FILE *infile = fopen(argv[1], "r");
 
