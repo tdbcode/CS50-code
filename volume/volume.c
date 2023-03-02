@@ -43,11 +43,9 @@ int main(int argc, char *argv[])
     // TODO: Read samples from input file and write updated data to output file
 
     uint16_t currentSample;
-    float calc = 0.0;
     while (fread(&currentSample, sizeof(uint16_t), 1, input))
     {
-        calc = currentSample * factor;
-        currentSample = calc;
+        currentSample *= factor;
         fwrite(&currentSample, sizeof(uint16_t), 1, output);
     }
 
