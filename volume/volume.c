@@ -49,7 +49,8 @@ int main(int argc, char *argv[])
     memcpy(x, &y);
     while(fread(currentSample, 16, 1, input))
     {
-        memcpy(calc,currentSample;
+        memcpy(calc,&currentSample);
+        calc = calc * factor;
         fwrite(calc, 16, 1 ,output);
     }
 
