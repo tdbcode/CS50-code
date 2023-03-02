@@ -17,30 +17,28 @@ int main(int argc, char *argv[])
     char buffer[7]; // Buffer from the file
 
     // Create array to store plate numbers
-    char *plates[8]; // A string of 8 pointers
-
-    for (int i = 0; i < 7; i++){
-        plates [i] = malloc(7);
-    }
+    string plates[8]; // A string of 8 pointers
 
     FILE *infile = fopen(argv[1], "r");
 
     int idx = 0;
     char *s = NULL;
+    s = malloc(7);
+;
     while (fread(buffer, 1, 7, infile) == 7)
     {
-        s
         // Replace '\n' with '\0'
         buffer[6] = '\0';
         s = &buffer[0];
 
         // Save plate number in array
-        strcpy(&s[0],&plates[idx]);
+        plates[idx] = s;
+        printf("%s\n",plates[idx]);
         idx++;
     }
 
     for (int i = 0; i < 8; i++)
     {
-        printf("%c\n", plates[i]);
+        printf("%s\n", plates[i]);
     }
 }
