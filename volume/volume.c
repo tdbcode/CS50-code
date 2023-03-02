@@ -44,9 +44,12 @@ int main(int argc, char *argv[])
     uint16_t *currentSample = NULL;
     currentSample = malloc(16);
     float calc = 0.0;
+    uint16_t x[sizeof(float)];
+    float y = 2.4565;
+    memcpy(x, &y);
     while(fread(currentSample, 16, 1, input))
     {
-        calc = currentSample;
+        memcpy(calc,currentSample;
         fwrite(calc, 16, 1 ,output);
     }
 
