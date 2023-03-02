@@ -38,17 +38,17 @@ int main(int argc, char *argv[])
     uint8_t header[HEADER_SIZE];
 
     fread(header, HEADER_SIZE, 1, input);
-    fwrite(header, HEADER_SIZE, 1 ,output);
+    fwrite(header, HEADER_SIZE, 1, output);
 
     // TODO: Read samples from input file and write updated data to output file
 
-    uint16_t *currentSample = NULL;
-    currentSample = malloc(16);
-    float calc = 0;
-    while(fread(currentSample, 16, 1, input))
+    uint16_t currentSample;
+    float calc = 0.0;
+    while (fread(&currentSample, sizeof(uint16_t), 1, input))
     {
-        calc = currentSample;
-        fwrite(calc, 16, 1 ,output);
+        calc = currentSample * factor;
+        currentSample = calc;
+        fwrite(&currentSample, sizeof(uint16_t), 1, output);
     }
 
     // Close files
