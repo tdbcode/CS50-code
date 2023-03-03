@@ -4,8 +4,6 @@
 void grayscale(int height, int width, RGBTRIPLE image[height][width])
 {
     uint8_t average = 0;
-    uint8_t green = 0;
-    uint8_t blue = 0;
     for (int h = 0; h < height; h++)
     {
         for (int w = 0; w < width; w++)
