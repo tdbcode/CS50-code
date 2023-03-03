@@ -10,7 +10,11 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
             RGBTRIPLE currentTriple = image[h][w];
             if (currentTriple.rgbtRed < 255 & currentTriple.rgbtBlue < 255 & currentTriple.rgbtGreen < 255)
             {
-                
+                currentTriple.rgbtRed -= 100;
+                if(currentTriple.rgbtRed < 0)
+                {
+                    
+                }
             }
         }
     }
