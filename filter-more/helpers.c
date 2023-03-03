@@ -35,10 +35,10 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int w = 0; w < width; w++)
         {
-            image[h][w] = image[w][h];
+            image[h][w] = image[h][w];
         }
     }
-    // switch [h][w] with [w][h]? (or maybe a start point e.g. h+current or something)
+    // switch [h][w] with [w][h]? (or maybe a start point e.g. h+current or something) (inverse of w?)
     return;
 }
 
