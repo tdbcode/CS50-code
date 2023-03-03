@@ -7,16 +7,16 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int w = 0; w < width; w++)
         {
-            RGBTRIPLE currentTriple = *image[h][w];
-            if (currentTriple.rgbtRed < 255 & currentTriple.rgbtBlue < 255 & currentTriple.rgbtGreen < 255)
+
+            if (image[h][w].rgbtRed < 255 & image[h][w].rgbtBlue < 255 & image[h][w].rgbtGreen < 255)
             {
-                currentTriple.rgbtRed -= 100;
-                if(currentTriple.rgbtRed < 0)
+                image[h][w].rgbtRed -= 100;
+                if(image[h][w].rgbtRed < 0)
                 {
-                    currentTriple.rgbtRed = 0;
+                    image[h][w].rgbtRed = 0;
                 }
-                currentTriple.rgbtBlue = currentTriple.rgbtRed;
-                currentTriple.rgbtGreen = currentTriple.rgbtRed;
+                image[h][w].rgbtBlue = image[h][w].rgbtRed;
+                image[h][w].rgbtGreen = image[h][w].rgbtRed;
             }
         }
     }
