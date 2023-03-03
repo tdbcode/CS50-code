@@ -14,11 +14,11 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
         {
             if (image[h][w].rgbtRed < 255 || image[h][w].rgbtBlue < 255 || image[h][w].rgbtGreen < 255)
             {
-                red = image[h][w].rgbtRed / 3;
-                blue = image[h][w].rgbtBlue / 3;
-                green = image[h][w].rgbtGreen / 3;
+                red = image[h][w].rgbtRed;
+                blue = image[h][w].rgbtBlue;
+                green = image[h][w].rgbtGreen;
 
-                average = round(red + blue +  green);
+                average = round((red + blue +  green) / 3);
                 image[h][w].rgbtRed = average;
                 image[h][w].rgbtBlue = average;
                 image[h][w].rgbtGreen = average;
