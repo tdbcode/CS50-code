@@ -3,7 +3,7 @@
 // Convert image to grayscale
 void grayscale(int height, int width, RGBTRIPLE image[height][width])
 {
-    int average = 0;
+    float average = 0;
     for (int h = 0; h < height; h++)
     {
         for (int w = 0; w < width; w++)
