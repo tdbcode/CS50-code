@@ -71,6 +71,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             // Now need to select up and down but only if not edge pixels
             // this does up
             counter = 0;
+            rgbtRedTemp = 0;
+            rgbtGreen = 0;
+            rgbtBlue = 0;
             for(int i = -1; i < 2; i++)
             {
                 // this does across
