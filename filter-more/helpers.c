@@ -187,7 +187,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                 rgbtGreen = 255;
             }
 
-            temp[h1][w1].rgbtRed = rgbtRed; // round the calculated number
+            temp[h1][w1].rgbtRed = rgbtRed; // Assign to temp array as to not overwrite data in original array at this stage
             temp[h1][w1].rgbtGreen = rgbtGreen;
             temp[h1][w1].rgbtBlue = rgbtBlue;
 
