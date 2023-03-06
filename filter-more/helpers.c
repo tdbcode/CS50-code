@@ -50,32 +50,29 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 // Blur image
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
-    RGBTRIPLE temp [height][width];
-    BYTE  rgbtBlue;
-    BYTE  rgbtGreen;
-    BYTE  rgbtRed;
-
-
+    RGBTRIPLE temp[height][width];
+    float  rgbtBlueTemp = 0;
+    float  rgbtGreenTemp = 0;
+    float  rgbtRedTemp = 0;
+    float average = 0;
 
     for (int h = 0; h < height; h++)
     {
-        for (int w = 0; w < width; w++) // Range is halving every time (0,0 -> 0,4 then 0,1 -> 0,3 then 0,2 - 0, 2 then stop)
+        for (int w = 0; w < width; w++)
         {
             temp[h][w] = image[h][w];
         }
     }
 
-
-
     for (int h1 = 0; h1 < height; h1++)
     {
-        for (int w1 = 0; w1 < width; w1++) // Range is halving every time (0,0 -> 0,4 then 0,1 -> 0,3 then 0,2 - 0, 2 then stop)
+        for (int w1 = 0; w1 < width; w1++)
         {
             if (h1 > 0 && h1 < height - 1 && w1 > 0 && w1 < width - 1)
             {
-                image[h][w].rgbtRed = average;
-                image[h][w].rgbtBlue = average;
-                image[h][w].rgbtGreen = average;
+                rgbtRedTemp = image[h1][w1].rgbtRed;
+                rgbtBlueTemp = image[h1][w1].rgbtBlue;
+                rgbtGreenTemp = image[h][w].rgbtGreen;
             }
 
             image[h][w] = image[h][w];
