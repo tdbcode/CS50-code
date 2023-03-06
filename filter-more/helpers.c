@@ -119,9 +119,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 void edges(int height, int width, RGBTRIPLE image[height][width])
 {
     RGBTRIPLE temp[height][width];
-    float rgbtBlueTempG[3] = {0, 0, 0}; // x, y, ans
-    float rgbtGreenTempG[3] = {0, 0, 0}; // x, y, ans
-    float rgbtRedTempG[3] = {0, 0, 0}; // x, y, ans
+    float rgbtBlueTempG[2] = {0, 0}; // x, y, ans
+    float rgbtGreenTempG[2] = {0, 0}; // x, y, ans
+    float rgbtRedTempG[2] = {0, 0}; // x, y, ans
     int muliplierArrayGX[3][3] = {{-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1}}; // GX Array
     int muliplierArrayGY[3][3] = {{-1, -2, -1}, {0, 0, 0}, {1, 2, 1}}; // GY Array
 
@@ -172,26 +172,26 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                 }
             }
 
-            rgbtRedTempG[2] = sqrt(rgbtRedTempG[0] * rgbtRedTempG[0]) + (rgbtRedTempG[1] * rgbtRedTempG[1]);
-            rgbtBlueTempG[2] = sqrt(rgbtBlueTempG[0] * rgbtBlueTempG[0] + rgbtBlueTempG[1] * rgbtBlueTempG[1]);
-            rgbtGreenTempG[2] = sqrt(rgbtGreenTempG[0] * rgbtGreenTempG[0] + rgbtGreenTempG[1] * rgbtGreenTempG[1]);
+            int rgbtRed = round(sqrt(rgbtRedTempG[0] * rgbtRedTempG[0]) + (rgbtRedTempG[1] * rgbtRedTempG[1]));
+            int rgbtBlue = round(round(sqrt(rgbtBlueTempG[0] * rgbtBlueTempG[0] + rgbtBlueTempG[1] * rgbtBlueTempG[1]));
+            int rgbtGreen = round(sqrt(rgbtGreenTempG[0] * rgbtGreenTempG[0] + rgbtGreenTempG[1] * rgbtGreenTempG[1]));
 
-            if (rgbtRedTempG[2] > 255)
+            if (rgbtRed > 255)
             {
-                rgbtRedTempG[2] = 255;
+                rgbtRed = 255;
             }
-            if (rgbtBlueTempG[2] > 255)
+            if (rgbtBlue > 255)
             {
-                rgbtBlueTempG[2] = 255;
+                rgbtBlue = 255;
             }
-            if (rgbtGreenTempG[2] > 255)
+            if (rgbtGreen > 255)
             {
-                rgbtGreenTempG[2] = 255;
+                rgbtGreen = 255;
             }
 
-            temp[h1][w1].rgbtRed = round(rgbtRedTempG[2]); // round the calculated number
-            temp[h1][w1].rgbtGreen = round(rgbtGreenTempG[2]);
-            temp[h1][w1].rgbtBlue = round(rgbtBlueTempG[2]);
+            temp[h1][w1].rgbtRed = rgbtRed; // round the calculated number
+            temp[h1][w1].rgbtGreen = rgbtGreen;
+            temp[h1][w1].rgbtBlue = rgbtBlue;
 
         }
     }
