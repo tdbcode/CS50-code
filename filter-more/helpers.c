@@ -56,7 +56,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     float  rgbtRedTemp = 0;
     float average = 0;
 
-    for (int h = 0; h < height; h++)
+    for (int h = 0; h < height; h++) // copy array to temp array
     {
         for (int w = 0; w < width; w++)
         {
@@ -64,21 +64,30 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
         }
     }
 
-    for (int h1 = 0; h1 < height; h1++)
+    for (int h1 = 0; h1 < height; h1++) // get current pixel in temp array
     {
-        for (int w1 = 0; w1 < width; w1++)
+        for (int w1 = 0; w1 < width; w1++) // get current pixel in temp array
         {
+            // Now need to check up and down but only if not edge pixels
             if (h1 > 0 && h1 < height - 1 && w1 > 0 && w1 < width - 1)
             {
-                rgbtRedTemp = image[h1][w1].rgbtRed;
-                rgbtBlueTemp = image[h1][w1].rgbtBlue;
-                rgbtGreenTemp = image[h1][w1].rgbtGreen;
+                // this does up
+                for(int i = -1; i < 2; i++)
+                {
+                    // this does across
+                    for (int j = -1; j < 2; j++)
+                    {
+                        // need to offset each pixel for calculation in array - so current pixel (height-1 width-1, height-1 width, height -1 width+1)
+                        // (then height width -1, height width, height width +1, then height + 1 width - 1, height + 1 width, height +1 width +1)
+                        rgbtRedTemp = image[h1+i][w1+j].rgbtRed; // get sum of all red
+                        rgbtBlueTemp = image[h1+i][w1+j].rgbtBlue; // get sum of all blue
+                        rgbtGreenTemp = image[h1+i][w1+j].rgbtGreen; // get sum of all green
+                    }
+                }
+                temp[h1][w1].rgbtRed = round(rgbtRedTemp / 9);
+                temp[h1][w1].rgbtGreen = round(rgbtGreenTemp / 9);
+                temp[h1][w1].rgbtBlue = round(rgbtBlueTemp / 9);
             }
-
-            average = round((rgbtRedTemp + rgbtBlueTemp + rgbtGreenTemp))
-
-            temp[h1][w1].rgbtRed = ;
-            image[h][w] = temp;
 
     return;
         }
