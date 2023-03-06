@@ -38,8 +38,8 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
         for (int w = 0; w < width / 2; w++) // Range is halving every time (0,0 -> 0,4 then 0,1 -> 0,3 then 0,2 - 0, 2 then stop)
         {
             //algorithm to switch last place with first place then second to last etc
-            temp = image[h][width-(w+1)];
-            image[h][width-(w+1)] = image[h][w];
+            temp = image[h][width - (w + 1)];
+            image[h][width - (w + 1)] = image[h][w];
             image[h][w] = temp;
         }
     }
@@ -74,7 +74,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             rgbtRedTemp = 0;
             rgbtBlueTemp = 0;
             rgbtGreenTemp = 0;
-            for(int i = -1; i < 2; i++)
+            for (int i = -1; i < 2; i++)
             {
                 // this does across
                 for (int j = -1; j < 2; j++)
@@ -91,13 +91,14 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                     }
                     // need to offset each pixel for calculation in array - so current pixel (height-1 width-1, height-1 width, height -1 width+1)
                     // (then height width -1, height width, height width +1, then height + 1 width - 1, height + 1 width, height +1 width +1)
-                    rgbtRedTemp += image[h1+i][w1+j].rgbtRed; // get sum of all red
-                    rgbtBlueTemp += image[h1+i][w1+j].rgbtBlue; // get sum of all blue
-                    rgbtGreenTemp += image[h1+i][w1+j].rgbtGreen; // get sum of all green
+                    rgbtRedTemp += image[h1 + i][w1 + j].rgbtRed; // get sum of all red
+                    rgbtBlueTemp += image[h1 + i][w1 + j].rgbtBlue; // get sum of all blue
+                    rgbtGreenTemp += image[h1 + i][w1 + j].rgbtGreen; // get sum of all green
                     counter++;
                 }
                 temp[h1][w1].rgbtRed = round(rgbtRedTemp / counter); // do average of all 9 pixels for red
-                temp[h1][w1].rgbtGreen = round(rgbtGreenTemp / counter); // what if there aren't nine pixels, e.g. top left, bottom right, etc, use counter
+                temp[h1][w1].rgbtGreen = round(rgbtGreenTemp /
+                                               counter); // what if there aren't nine pixels, e.g. top left, bottom right, etc, use counter
                 temp[h1][w1].rgbtBlue = round(rgbtBlueTemp / counter);
             }
 
