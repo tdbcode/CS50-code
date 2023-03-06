@@ -77,25 +77,27 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                 for (int j = -1; j < 2; j++)
                 {
                     // can make a for loop skip a step using continue, reference : https://www.freecodecamp.org/news/c-break-and-continue-statements-loop-control-statements-in-c-explained/#:~:text=In%20C%2C%20if%20you%20want%20to%20skip%20iterations%20in%20which,which%20the%20condition%20is%20true.
-                    if ((h1 + i < 0 || h1 + i >= height) && (w1 + j < 0 || w1 + j >= width))
+                    if (h1 + i < 0 || h1 + i >= height)
                     {
                         continue;
                     }
-                    else
+
+                    if (w1 + j < 0 || w1 + j >= width)
                     {
-                        // need to offset each pixel for calculation in array - so current pixel (height-1 width-1, height-1 width, height -1 width+1)
-                        // (then height width -1, height width, height width +1, then height + 1 width - 1, height + 1 width, height +1 width +1)
-                        rgbtRedTemp += image[h1+i][w1+j].rgbtRed; // get sum of all red
-                        rgbtBlueTemp += image[h1+i][w1+j].rgbtBlue; // get sum of all blue
-                        rgbtGreenTemp += image[h1+i][w1+j].rgbtGreen; // get sum of all green
-                        counter++;
+                        continue;
                     }
+                    // need to offset each pixel for calculation in array - so current pixel (height-1 width-1, height-1 width, height -1 width+1)
+                    // (then height width -1, height width, height width +1, then height + 1 width - 1, height + 1 width, height +1 width +1)
+                    rgbtRedTemp += image[h1+i][w1+j].rgbtRed; // get sum of all red
+                    rgbtBlueTemp += image[h1+i][w1+j].rgbtBlue; // get sum of all blue
+                    rgbtGreenTemp += image[h1+i][w1+j].rgbtGreen; // get sum of all green
+                    counter++;
+                }
                 temp[h1][w1].rgbtRed = round(rgbtRedTemp / counter); // do average of all 9 pixels for red
                 temp[h1][w1].rgbtGreen = round(rgbtGreenTemp / counter); // what if there aren't nine pixels, e.g. top left, bottom right, etc, use counter
                 temp[h1][w1].rgbtBlue = round(rgbtBlueTemp / counter);
-                }
-
             }
+
         }
     }
 
