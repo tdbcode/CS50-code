@@ -84,15 +84,21 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                         rgbtGreenTemp = image[h1+i][w1+j].rgbtGreen; // get sum of all green
                     }
                 }
-                temp[h1][w1].rgbtRed = round(rgbtRedTemp / 9);
+                temp[h1][w1].rgbtRed = round(rgbtRedTemp / 9); // do average of all 9 pixels for red
                 temp[h1][w1].rgbtGreen = round(rgbtGreenTemp / 9);
                 temp[h1][w1].rgbtBlue = round(rgbtBlueTemp / 9);
             }
-
-    return;
         }
     }
 
+        for (int h = 0; h < height; h++) // copy array to temp array
+        {
+            for (int w = 0; w < width; w++)
+            {
+                image[h][w] = temp[h][w];
+            }
+    }
+    return;
 }
 
 // Detect edges
