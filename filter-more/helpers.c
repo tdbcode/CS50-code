@@ -50,19 +50,28 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 // Blur image
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
-    RGBTRIPLE temp;
+    RGBTRIPLE temp [height][width];
     BYTE  rgbtBlue;
     BYTE  rgbtGreen;
     BYTE  rgbtRed;
+
 
 
     for (int h = 0; h < height; h++)
     {
         for (int w = 0; w < width; w++) // Range is halving every time (0,0 -> 0,4 then 0,1 -> 0,3 then 0,2 - 0, 2 then stop)
         {
-            temp = image[h][w];
-            
-            if (h > 0 && h < height - 1 && width > 0 && width < width - 1)
+            temp[h][w] = image[h][w];
+        }
+    }
+
+
+
+    for (int h1 = 0; h1 < height; h1++)
+    {
+        for (int w1 = 0; w1 < width; w1++) // Range is halving every time (0,0 -> 0,4 then 0,1 -> 0,3 then 0,2 - 0, 2 then stop)
+        {
+            if (h1 > 0 && h1 < height - 1 && w1 > 0 && w1 < width - 1)
             {
                 image[h][w].rgbtRed = average;
                 image[h][w].rgbtBlue = average;
@@ -71,10 +80,11 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 
             image[h][w] = image[h][w];
             image[h][w] = temp;
+
+    return;
         }
     }
 
-    return;
 }
 
 // Detect edges
