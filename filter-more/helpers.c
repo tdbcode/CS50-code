@@ -167,12 +167,12 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                     rgbtGreenTempG[1] = image[h1 + i][w1 + j].rgbtGreen * muliplierArrayGY[i + 1][j + 1]; // get sum of all green
                     rgbtGreenTempG[2] = sqrt((rgbtGreenTempG[0] * rgbtGreenTempG[0]) + (rgbtGreenTempG[1] * rgbtGreenTempG[1]));
                 }
-
-                if (rgbtRedTempG[2] > 255)
-                {
-                    rgbtRedTempG[2] = 255;
-                }
-                if (rgbtBlueTempG[2] > 255)
+            }
+            if (rgbtRedTempG[2] > 255)
+            {
+                rgbtRedTempG[2] = 255;
+            }
+            if (rgbtBlueTempG[2] > 255)
                 {
                     rgbtBlueTempG[2] = 255;
                 }
@@ -183,7 +183,6 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                 temp[h1][w1].rgbtRed = round(rgbtRedTempG[2]); // round the calculated number
                 temp[h1][w1].rgbtGreen = round(rgbtGreenTempG[2]);
                 temp[h1][w1].rgbtBlue = round(rgbtBlueTempG[2]);
-            }
 
         }
     }
