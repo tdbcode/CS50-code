@@ -31,14 +31,15 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
 // Reflect image horizontally
 void reflect(int height, int width, RGBTRIPLE image[height][width])
 {
-    RGBTRIPLE temp = NULL;
+    RGBTRIPLE temp;
 
     for (int h = 0; h < height; h++)
     {
-        for (int w = 0; w < 0 width; w++)
+        for (int w = 0; w < width; w++)
         {
             temp = image[h][w];
-            image[h][w] = image[h][w];
+            image[h][w] = image[w][h];
+            image[w][h] = temp;
         }
     }
     // switch [h][w] with [w][h]? (or maybe a start point e.g. h+current or something) (inverse of w?)
