@@ -118,6 +118,77 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 // Detect edges
 void edges(int height, int width, RGBTRIPLE image[height][width])
 {
-    
+    RGBTRIPLE temp[height][width];
+    float  rgbtBlueTemp = 0;
+    float  rgbtGreenTemp = 0;
+    float  rgbtRedTemp = 0;
+    int counter = 0;
+    int muliplier = 0;
+
+    for (int h = 0; h < height; h++) // copy array to temp array
+    {
+        for (int w = 0; w < width; w++)
+        {
+            temp[h][w] = image[h][w];
+        }
+    }
+
+    for (int h1 = 0; h1 < height; h1++) // get current pixel in temp array
+    {
+        for (int w1 = 0; w1 < width; w1++) // get current pixel in temp array
+        {
+            // Now need to select up and down but only if not edge pixels
+            // this does up
+            counter = 0;
+            rgbtRedTemp = 0;
+            rgbtBlueTemp = 0;
+            rgbtGreenTemp = 0;
+            for (int i = -1; i < 2; i++)
+            {
+                // this does across
+                for (int j = -1; j < 2; j++)
+                {
+                    // can make a for loop skip a step using continue, reference : https://www.freecodecamp.org/news/c-break-and-continue-statements-loop-control-statements-in-c-explained/#:~:text=In%20C%2C%20if%20you%20want%20to%20skip%20iterations%20in%20which,which%20the%20condition%20is%20true.
+                    if (h1 + i < 0 || h1 + i >= height)
+                    {
+                        continue;
+                    }
+
+                    if (w1 + j < 0 || w1 + j >= width)
+                    {
+                        continue;
+                    }
+
+                    if (h1 + i == 0)
+                    {
+                        muliplier = 2;
+                    }
+                    else if (h1 + i == -1 ||  1 + i == 1)
+                    {
+                        muliplier = 2;
+                    }
+                    // need to offset each pixel for calculation in array - so current pixel (height-1 width-1, height-1 width, height -1 width+1)
+                    // (then height width -1, height width, height width +1, then height + 1 width - 1, height + 1 width, height +1 width +1)
+                    rgbtRedTemp += image[h1 + i][w1 + j].rgbtRed; // get sum of all red
+                    rgbtBlueTemp += image[h1 + i][w1 + j].rgbtBlue; // get sum of all blue
+                    rgbtGreenTemp += image[h1 + i][w1 + j].rgbtGreen; // get sum of all green
+                    counter++;
+                }
+                temp[h1][w1].rgbtRed = round(rgbtRedTemp / counter); // do average of all 9 pixels for red
+                temp[h1][w1].rgbtGreen = round(rgbtGreenTemp /
+                                               counter); // what if there aren't nine pixels, e.g. top left, bottom right, etc, use counter
+                temp[h1][w1].rgbtBlue = round(rgbtBlueTemp / counter);
+            }
+
+        }
+    }
+
+    for (int h2 = 0; h2 < height; h2++) // copy temp array back to main image array
+    {
+        for (int w2 = 0; w2 < width; w2++)
+        {
+            image[h2][w2] = temp[h2][w2];
+        }
+    }
     return;
 }
