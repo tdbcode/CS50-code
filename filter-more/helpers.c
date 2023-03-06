@@ -122,7 +122,6 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
     float rgbtBlueTempG[3] = {0, 0, 0}; // x, y, ans
     float rgbtGreenTempG[3] = {0, 0, 0}; // x, y, ans
     float rgbtRedTempG[3] = {0, 0, 0}; // x, y, ans
-    int counter = 0;
     int muliplierArrayGX[3][3] = {{-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1}}; // GX Array
     int muliplierArrayGY[3][3] = {{-1, -2, -1}, {0, 0, 0}, {1, 2, 1}}; // GY Array
 
@@ -140,7 +139,6 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
         {
             // Now need to select up and down but only if not edge pixels
             // this does up
-            counter = 0;
             for (int i = -1; i < 2; i++)
             {
                 // this does across
@@ -159,16 +157,15 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
 
                     // need to offset each pixel for calculation in array - so current pixel (height-1 width-1, height-1 width, height -1 width+1)
                     // (then height width -1, height width, height width +1, then height + 1 width - 1, height + 1 width, height +1 width +1)
-                    rgbtRedTempG[0] = image[h1 + i][w1 + j].rgbtRed * muliplierArrayGX[i][j]; // get sum of all red
-                    rgbtRedTempG[1] = image[h1 + i][w1 + j].rgbtRed * muliplierArrayGY[i][j];
+                    rgbtRedTempG[0] = image[h1 + i][w1 + j].rgbtRed * muliplierArrayGX[i + 1][j + 1]; // get sum of all red
+                    rgbtRedTempG[1] = image[h1 + i][w1 + j].rgbtRed * muliplierArrayGY[i + 1][j + 1];
                     rgbtRedTempG[2] = sqrt((rgbtRedTempG[0] * rgbtRedTempG[0]) + (rgbtRedTempG[1] * rgbtRedTempG[1]));
-                    rgbtBlueTempG[0] = image[h1 + i][w1 + j].rgbtBlue * muliplierArrayGX[i][j]; // get sum of all blue
-                    rgbtBlueTempG[1] = image[h1 + i][w1 + j].rgbtBlue * muliplierArrayGY[i][j]; // get sum of all blue
+                    rgbtBlueTempG[0] = image[h1 + i][w1 + j].rgbtBlue * muliplierArrayGX[i + 1][j + 1]; // get sum of all blue
+                    rgbtBlueTempG[1] = image[h1 + i][w1 + j].rgbtBlue * muliplierArrayGY[i + 1][j + 1]; // get sum of all blue
                     rgbtBlueTempG[2] = sqrt((rgbtBlueTempG[0] * rgbtBlueTempG[0]) + (rgbtBlueTempG[1] * rgbtBlueTempG[1]));
-                    rgbtGreenTempG[0] = image[h1 + i][w1 + j].rgbtGreen * muliplierArrayGX[i][j]; // get sum of all green
-                    rgbtGreenTempG[1] = image[h1 + i][w1 + j].rgbtGreen * muliplierArrayGY[i][j]; // get sum of all green
+                    rgbtGreenTempG[0] = image[h1 + i][w1 + j].rgbtGreen * muliplierArrayGX[i + 1][j + 1]; // get sum of all green
+                    rgbtGreenTempG[1] = image[h1 + i][w1 + j].rgbtGreen * muliplierArrayGY[i + 1][j + 1]; // get sum of all green
                     rgbtGreenTempG[2] = sqrt((rgbtGreenTempG[0] * rgbtGreenTempG[0]) + (rgbtGreenTempG[1] * rgbtGreenTempG[1]));
-                    counter++;
                 }
 
                 if (rgbtRedTempG[2] > 255)
