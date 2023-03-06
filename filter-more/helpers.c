@@ -123,7 +123,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
     float  rgbtGreenTemp = 0;
     float  rgbtRedTemp = 0;
     int counter = 0;
-    int muliplierArray = {-1, 0, 1}{-2, 0, 2}{-1, 0, 1};
+    int muliplierArray[3][3] = {{-1, 0, 1}{-2, 0, 2}{-1, 0, 1}};
 
     for (int h = 0; h < height; h++) // copy array to temp array
     {
