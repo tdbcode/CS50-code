@@ -168,21 +168,23 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                     rgbtGreenTempG[2] = sqrt((rgbtGreenTempG[0] * rgbtGreenTempG[0]) + (rgbtGreenTempG[1] * rgbtGreenTempG[1]));
                 }
             }
+
             if (rgbtRedTempG[2] > 255)
             {
                 rgbtRedTempG[2] = 255;
             }
             if (rgbtBlueTempG[2] > 255)
-                {
-                    rgbtBlueTempG[2] = 255;
-                }
-                if (rgbtGreenTempG[2] > 255)
-                {
-                    rgbtGreenTempG[2] = 255;
-                }
-                temp[h1][w1].rgbtRed = round(rgbtRedTempG[2]); // round the calculated number
-                temp[h1][w1].rgbtGreen = round(rgbtGreenTempG[2]);
-                temp[h1][w1].rgbtBlue = round(rgbtBlueTempG[2]);
+            {
+                rgbtBlueTempG[2] = 255;
+            }
+            if (rgbtGreenTempG[2] > 255)
+            {
+                rgbtGreenTempG[2] = 255;
+            }
+
+            temp[h1][w1].rgbtRed = round(rgbtRedTempG[2]); // round the calculated number
+            temp[h1][w1].rgbtGreen = round(rgbtGreenTempG[2]);
+            temp[h1][w1].rgbtBlue = round(rgbtBlueTempG[2]);
 
         }
     }
