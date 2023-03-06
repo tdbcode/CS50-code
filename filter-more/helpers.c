@@ -35,8 +35,9 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 
     for (int h = 0; h < height; h++)
     {
-        for (int w = width; w > w - 1; w--)
+        for (int w = 0; w < width / 2; w++) // Range is halving every time (0,0 -> 0,4 then 0,1 -> 0,3 then 0,2 - 0, 2 then stop)
         {
+            //sorting algorithm to switch last place with first place then second to last extra
             temp = image[h][w];
             image[h][w] = image[w][h];
             image[h][w] = temp;
