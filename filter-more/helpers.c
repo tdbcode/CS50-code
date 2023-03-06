@@ -51,9 +51,9 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
     RGBTRIPLE temp[height][width];
-    float  rgbtBlueTemp = 0;
-    float  rgbtGreenTemp = 0;
-    float  rgbtRedTemp = 0;
+    float rgbtBlueTemp = 0;
+    float rgbtGreenTemp = 0;
+    float rgbtRedTemp = 0;
     int counter = 0;
 
     for (int h = 0; h < height; h++) // copy array to temp array
