@@ -38,9 +38,9 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
         for (int w = 0; w < width / 2; w++) // Range is halving every time (0,0 -> 0,4 then 0,1 -> 0,3 then 0,2 - 0, 2 then stop)
         {
             //algorithm to switch last place with first place then second to last etc
-            temp = image[h][w];
-            image[h][w] = image[h][w+width-1];
-            image[h][w] = temp;
+            temp = image[h][w+width-1];
+            image[h][w+width-1] = image[h][w];
+            image[h][w+width-1] = temp;
         }
     }
     // switch [h][w] with [w][h]? (or maybe a start point e.g. h+current or something) (inverse of w?)
