@@ -50,7 +50,20 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 // Blur image
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
+    RGBTRIPLE temp;
     
+    for (int h = 0; h < height; h++)
+    {
+        for (int w = 0; w < width; w++) // Range is halving every time (0,0 -> 0,4 then 0,1 -> 0,3 then 0,2 - 0, 2 then stop)
+        {
+            temp = image[h][w];
+
+
+            image[h][w] = image[h][w];
+            image[h][w] = temp;
+        }
+    }
+
     return;
 }
 
