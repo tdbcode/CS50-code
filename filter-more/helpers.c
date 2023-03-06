@@ -119,12 +119,12 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 void edges(int height, int width, RGBTRIPLE image[height][width])
 {
     RGBTRIPLE temp[height][width];
-    float rgbtBlueTempG[3] = {0, 0, 0};
-    float rgbtGreenTempG[3] = {0, 0, 0};
-    float rgbtRedTempG[3] = {0, 0, 0};
+    float rgbtBlueTempG[3] = {0, 0, 0}; // x, y, ans
+    float rgbtGreenTempG[3] = {0, 0, 0}; // x, y, ans
+    float rgbtRedTempG[3] = {0, 0, 0}; // x, y, ans
     int counter = 0;
-    int muliplierArrayGX[3][3] = {{-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1}};
-    int muliplierArrayGY[3][3] = {{-1, -2, -1}, {0, 0, 0}, {1, 2, 1}};
+    int muliplierArrayGX[3][3] = {{-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1}}; // GX Array
+    int muliplierArrayGY[3][3] = {{-1, -2, -1}, {0, 0, 0}, {1, 2, 1}}; // GY Array
 
     for (int h = 0; h < height; h++) // copy array to temp array
     {
@@ -141,9 +141,6 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
             // Now need to select up and down but only if not edge pixels
             // this does up
             counter = 0;
-            rgbtRedTempG[0] = rgbtRedTempG[1] = rgbtRedTempG[2] = 0;
-            rgbtBlueTempG[0] = rgbtBlueTempG[1] = rgbtBlueTempG[2] = 0;
-            rgbtGreenTempG[0] = rgbtGreenTempG[1] = rgbtGreenTempG[2] = 0;
             for (int i = -1; i < 2; i++)
             {
                 // this does across
