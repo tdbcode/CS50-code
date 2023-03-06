@@ -77,7 +77,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                 for (int j = -1; j < 2; j++)
                 {
                     // can make a for loop skip a step using continue, reference : https://www.freecodecamp.org/news/c-break-and-continue-statements-loop-control-statements-in-c-explained/#:~:text=In%20C%2C%20if%20you%20want%20to%20skip%20iterations%20in%20which,which%20the%20condition%20is%20true.
-                    if ((h1 + i <= 0 || h1 + i >= height) && (w1 + j <= 0 || w1 + j >= width))
+                    if ((h1 + i < 0 || h1 + i >= height) && (w1 + j < 0 || w1 + j >= width))
                     {
                         continue;
                     }
