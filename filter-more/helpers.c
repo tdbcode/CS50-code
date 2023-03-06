@@ -72,8 +72,10 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             {
                 rgbtRedTemp = image[h1][w1].rgbtRed;
                 rgbtBlueTemp = image[h1][w1].rgbtBlue;
-                rgbtGreenTemp = image[h][w].rgbtGreen;
+                rgbtGreenTemp = image[h1][w1].rgbtGreen;
             }
+
+            average = rgbtRedTemp + rgbtBlueTemp + rgbtGreenTemp
 
             image[h][w] = image[h][w];
             image[h][w] = temp;
