@@ -123,7 +123,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
     float rgbtGreenTemp = 0;
     float rgbtRedTemp = 0;
     int counter = 0;
-    int muliplierArray[3][3] = {{-1, 0, 1},{-2, 0, 2},{-1, 0, 1}};
+    int muliplierArray[3][3] = {{-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1}};
 
     for (int h = 0; h < height; h++) // copy array to temp array
     {
@@ -166,10 +166,10 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                     rgbtGreenTemp = image[h1 + i][w1 + j].rgbtGreen * muliplierArray[i][j]; // get sum of all green
                     counter++;
                 }
-              /*  temp[h1][w1].rgbtRed = round(rgbtRedTemp / counter); // do average of all 9 pixels for red
+                temp[h1][w1].rgbtRed = round(rgbtRedTemp / counter); // do average of all 9 pixels for red
                 temp[h1][w1].rgbtGreen = round(rgbtGreenTemp /
                                                counter); // what if there aren't nine pixels, e.g. top left, bottom right, etc, use counter
-                temp[h1][w1].rgbtBlue = round(rgbtBlueTemp / counter);*/
+                temp[h1][w1].rgbtBlue = round(rgbtBlueTemp / counter);
             }
 
         }
