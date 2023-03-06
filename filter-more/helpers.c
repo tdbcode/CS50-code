@@ -119,9 +119,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 void edges(int height, int width, RGBTRIPLE image[height][width])
 {
     RGBTRIPLE temp[height][width];
-    float rgbtBlueTempG[2] = {0, 0}; // x, y, ans
-    float rgbtGreenTempG[2] = {0, 0}; // x, y, ans
-    float rgbtRedTempG[2] = {0, 0}; // x, y, ans
+    float rgbtBlueTempG[2] = {0, 0}; // x, y
+    float rgbtGreenTempG[2] = {0, 0}; // x, y
+    float rgbtRedTempG[2] = {0, 0}; // x, y
     int muliplierArrayGX[3][3] = {{-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1}}; // GX Array
     int muliplierArrayGY[3][3] = {{-1, -2, -1}, {0, 0, 0}, {1, 2, 1}}; // GY Array
 
