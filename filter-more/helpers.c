@@ -137,9 +137,6 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int w1 = 0; w1 < width; w1++) // get current pixel in temp array
         {
-            rgbtBlueTempG[2] = 0;
-            rgbtGreenTempG[2] = 0;
-            rgbtRedTempG[2] = 0;
             // Now need to select up and down but only if not edge pixels
             // this does up
             for (int i = -1; i < 2; i++)
@@ -172,8 +169,8 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                 }
             }
 
-            int rgbtRed = round(sqrt(rgbtRedTempG[0] * rgbtRedTempG[0]) + (rgbtRedTempG[1] * rgbtRedTempG[1]));
-            int rgbtBlue = round(round(sqrt(rgbtBlueTempG[0] * rgbtBlueTempG[0] + rgbtBlueTempG[1] * rgbtBlueTempG[1]));
+            int rgbtRed = round(sqrt(rgbtRedTempG[0] * rgbtRedTempG[0] + rgbtRedTempG[1] * rgbtRedTempG[1]));
+            int rgbtBlue = round(sqrt(rgbtBlueTempG[0] * rgbtBlueTempG[0] + rgbtBlueTempG[1] * rgbtBlueTempG[1]));
             int rgbtGreen = round(sqrt(rgbtGreenTempG[0] * rgbtGreenTempG[0] + rgbtGreenTempG[1] * rgbtGreenTempG[1]));
 
             if (rgbtRed > 255)
