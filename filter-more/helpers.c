@@ -170,6 +170,10 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                     rgbtGreenTempG[1] = image[h1 + i][w1 + j].rgbtGreen * muliplierArrayGY[i][j]; // get sum of all green
                     counter++;
                 }
+                temp[0][0] < from
+                temp[height][0]
+                temp[0][width] > from
+                temp[height][width]
                 temp[h1][w1].rgbtRed = round(rgbtRedTemp / counter); // do average of all 9 pixels for red
                 temp[h1][w1].rgbtGreen = round(rgbtGreenTemp /
                                                counter); // what if there aren't nine pixels, e.g. top left, bottom right, etc, use counter
