@@ -68,20 +68,25 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int w1 = 0; w1 < width; w1++) // get current pixel in temp array
         {
+            // Now need to select up and down but only if not edge pixels
             // this does up
             for(int i = -1; i < 2; i++)
             {
                 // this does across
                 for (int j = -1; j < 2; j++)
                 {
-                    // Now need to check up and down but only if not edge pixels
-                    if ((h1 + i + 1 >= 0 || h1 + i + 1 <= height) && (w1 + j + 1 >= 0 && w1 + j + 1 <= width))
+                    // can make a for loop skip a step using continue, reference : https://www.freecodecamp.org/news/c-break-and-continue-statements-loop-control-statements-in-c-explained/#:~:text=In%20C%2C%20if%20you%20want%20to%20skip%20iterations%20in%20which,which%20the%20condition%20is%20true.
+                    if ((h1 + i <= 0 || h1 + i >= height) || (w1 + j <= 0 && w1 + j >= width))
                     {
-                    // need to offset each pixel for calculation in array - so current pixel (height-1 width-1, height-1 width, height -1 width+1)
-                    // (then height width -1, height width, height width +1, then height + 1 width - 1, height + 1 width, height +1 width +1)
-                    rgbtRedTemp += image[h1+i][w1+j].rgbtRed; // get sum of all red
-                    rgbtBlueTemp += image[h1+i][w1+j].rgbtBlue; // get sum of all blue
-                    rgbtGreenTemp += image[h1+i][w1+j].rgbtGreen; // get sum of all green
+                        continue;
+                    }
+                    else
+                    {
+                        // need to offset each pixel for calculation in array - so current pixel (height-1 width-1, height-1 width, height -1 width+1)
+                        // (then height width -1, height width, height width +1, then height + 1 width - 1, height + 1 width, height +1 width +1)
+                        rgbtRedTemp += image[h1+i][w1+j].rgbtRed; // get sum of all red
+                        rgbtBlueTemp += image[h1+i][w1+j].rgbtBlue; // get sum of all blue
+                        rgbtGreenTemp += image[h1+i][w1+j].rgbtGreen; // get sum of all green
                     }
                 }
             }
