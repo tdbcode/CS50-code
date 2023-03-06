@@ -180,7 +180,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                 {
                     rgbtGreenTempG[2] = 255;
                 }
-                temp[h1][w1].rgbtRed = round(rgbtRedTempG[2]); // do average of all 9 pixels for red
+                temp[h1][w1].rgbtRed = round(rgbtRedTempG[2]); // round the calculated number
                 temp[h1][w1].rgbtGreen = round(rgbtGreenTempG[2]);
                 temp[h1][w1].rgbtBlue = round(rgbtBlueTempG[2]);
             }
