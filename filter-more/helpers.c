@@ -137,6 +137,12 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int w1 = 0; w1 < width; w1++) // get current pixel in temp array
         {
+            rgbtBlueTempG[0] = 0;
+            rgbtGreenTempG[0] = 0;
+            rgbtRedTempG[0] = 0;
+            rgbtBlueTempG[1] = 0;
+            rgbtGreenTempG[1] = 0;
+            rgbtRedTempG[1] = 0;
             // Now need to select up and down but only if not edge pixels
             // this does up
             for (int i = -1; i < 2; i++)
