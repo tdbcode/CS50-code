@@ -143,6 +143,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
             rgbtRedTemp = 0;
             rgbtBlueTemp = 0;
             rgbtGreenTemp = 0;
+            mulitplier = 0;
             for (int i = -1; i < 2; i++)
             {
                 // this does across
@@ -159,13 +160,13 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                         continue;
                     }
 
-                    if (h1 + i == 0)
+                    if (h1 + i == 0 & w1 + j == 0)
                     {
                         muliplier = 2;
                     }
-                    else if (h1 + i == -1 ||  1 + i == 1)
+                    else if (h1 + i == -1 ||  j + i == 1)
                     {
-                        muliplier = 2;
+                        muliplier = ;
                     }
                     // need to offset each pixel for calculation in array - so current pixel (height-1 width-1, height-1 width, height -1 width+1)
                     // (then height width -1, height width, height width +1, then height + 1 width - 1, height + 1 width, height +1 width +1)
