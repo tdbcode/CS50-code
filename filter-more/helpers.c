@@ -54,7 +54,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     float  rgbtBlueTemp = 0;
     float  rgbtGreenTemp = 0;
     float  rgbtRedTemp = 0;
-    float average = 0;
+    int counter = 0;
 
     for (int h = 0; h < height; h++) // copy array to temp array
     {
@@ -70,13 +70,14 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
         {
             // Now need to select up and down but only if not edge pixels
             // this does up
+            counter = 0;
             for(int i = -1; i < 2; i++)
             {
                 // this does across
                 for (int j = -1; j < 2; j++)
                 {
                     // can make a for loop skip a step using continue, reference : https://www.freecodecamp.org/news/c-break-and-continue-statements-loop-control-statements-in-c-explained/#:~:text=In%20C%2C%20if%20you%20want%20to%20skip%20iterations%20in%20which,which%20the%20condition%20is%20true.
-                    if ((h1 + i <= 0 || h1 + i >= height) || (w1 + j <= 0 && w1 + j >= width))
+                    if ((h1 + i <= 0 || h1 + i >= height) && (w1 + j <= 0 || w1 + j >= width))
                     {
                         continue;
                     }
@@ -87,20 +88,22 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                         rgbtRedTemp += image[h1+i][w1+j].rgbtRed; // get sum of all red
                         rgbtBlueTemp += image[h1+i][w1+j].rgbtBlue; // get sum of all blue
                         rgbtGreenTemp += image[h1+i][w1+j].rgbtGreen; // get sum of all green
+                        counter++;
                     }
+                temp[h1][w1].rgbtRed = round(rgbtRedTemp / counter); // do average of all 9 pixels for red
+                temp[h1][w1].rgbtGreen = round(rgbtGreenTemp / counter); // what if there aren't nine pixels, e.g. top left, bottom right, etc, use counter
+                temp[h1][w1].rgbtBlue = round(rgbtBlueTemp / counter);
                 }
+
             }
-            temp[h1][w1].rgbtRed = round(rgbtRedTemp / 9); // do average of all 9 pixels for red
-            temp[h1][w1].rgbtGreen = round(rgbtGreenTemp / 9);
-            temp[h1][w1].rgbtBlue = round(rgbtBlueTemp / 9);
         }
     }
 
-    for (int h = 0; h < height; h++) // copy temp array back to main image array
+    for (int h2 = 0; h2 < height; h2++) // copy temp array back to main image array
     {
-        for (int w = 0; w < width; w++)
+        for (int w2 = 0; w2 < width; w2++)
         {
-            image[h][w] = temp[h][w];
+            image[h2][w2] = temp[h2][w2];
         }
     }
     return;
