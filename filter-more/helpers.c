@@ -157,14 +157,14 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
 
                     // need to offset each pixel for calculation in array - so current pixel (height-1 width-1, height-1 width, height -1 width+1)
                     // (then height width -1, height width, height width +1, then height + 1 width - 1, height + 1 width, height +1 width +1)
-                    rgbtRedTempG[0] += image[h1 + i][w1 + j].rgbtRed * muliplierArrayGX[i + 1][j + 1]; // get sum of all red
-                    rgbtRedTempG[1] += image[h1 + i][w1 + j].rgbtRed * muliplierArrayGY[i + 1][j + 1];
+                    rgbtRedTempG[0] += image[h1 + i][w1 + j].rgbtRed * muliplierArrayGX[i + 1][j + 1]; // get sum of all red x with the matrix muliplication
+                    rgbtRedTempG[1] += image[h1 + i][w1 + j].rgbtRed * muliplierArrayGY[i + 1][j + 1]; // get sum of all red y with the matrix muliplication
 
-                    rgbtBlueTempG[0] += image[h1 + i][w1 + j].rgbtBlue * muliplierArrayGX[i + 1][j + 1]; // get sum of all blue
-                    rgbtBlueTempG[1] += image[h1 + i][w1 + j].rgbtBlue * muliplierArrayGY[i + 1][j + 1]; // get sum of all blue
+                    rgbtBlueTempG[0] += image[h1 + i][w1 + j].rgbtBlue * muliplierArrayGX[i + 1][j + 1]; // get sum of all blue x with the matrix muliplication
+                    rgbtBlueTempG[1] += image[h1 + i][w1 + j].rgbtBlue * muliplierArrayGY[i + 1][j + 1]; // get sum of all blue y with the matrix muliplication
 
-                    rgbtGreenTempG[0] += image[h1 + i][w1 + j].rgbtGreen * muliplierArrayGX[i + 1][j + 1]; // get sum of all green
-                    rgbtGreenTempG[1] += image[h1 + i][w1 + j].rgbtGreen * muliplierArrayGY[i + 1][j + 1]; // get sum of all green
+                    rgbtGreenTempG[0] += image[h1 + i][w1 + j].rgbtGreen * muliplierArrayGX[i + 1][j + 1]; // get sum of all green x with the matrix muliplication
+                    rgbtGreenTempG[1] += image[h1 + i][w1 + j].rgbtGreen * muliplierArrayGY[i + 1][j + 1]; // get sum of all green y with the matrix muliplication
 
                 }
             }
@@ -173,6 +173,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
             int rgbtBlue = round(sqrt(rgbtBlueTempG[0] * rgbtBlueTempG[0] + rgbtBlueTempG[1] * rgbtBlueTempG[1]));
             int rgbtGreen = round(sqrt(rgbtGreenTempG[0] * rgbtGreenTempG[0] + rgbtGreenTempG[1] * rgbtGreenTempG[1]));
 
+            // Make sure it doesn't overflow 255
             if (rgbtRed > 255)
             {
                 rgbtRed = 255;
