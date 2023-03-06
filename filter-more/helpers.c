@@ -75,7 +75,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                 for (int j = -1; j < 2; j++)
                 {
                     // Now need to check up and down but only if not edge pixels
-                    if ((h1 + i <= 0 || h1 + i >= height) && (w1 + j <= 0 && w1 + j >= width))
+                    if ((h1 + i + 1 >= 0 || h1 + i + 1 <= height) && (w1 + j + 1 >= 0 && w1 + j + 1 <= width))
                     {
                     // need to offset each pixel for calculation in array - so current pixel (height-1 width-1, height-1 width, height -1 width+1)
                     // (then height width -1, height width, height width +1, then height + 1 width - 1, height + 1 width, height +1 width +1)
