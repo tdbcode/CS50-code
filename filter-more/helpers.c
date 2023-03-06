@@ -119,9 +119,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 void edges(int height, int width, RGBTRIPLE image[height][width])
 {
     RGBTRIPLE temp[height][width];
-    float rgbtBlueTempG[2] = {0 , 0};
-    float rgbtGreenTempG[2] = {0 , 0};
-    float rgbtRedTempG[2] = {0 , 0};
+    float rgbtBlueTempG[3] = {0, 0, 0};
+    float rgbtGreenTempG[3] = {0, 0, 0};
+    float rgbtRedTempG[3] = {0, 0, 0};
     int counter = 0;
     int muliplierArrayGX[3][3] = {{-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1}};
     int muliplierArrayGY[3][3] = {{-1, -2, -1}, {0, 0, 0}, {1, 2, 1}};
@@ -164,20 +164,18 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                     // (then height width -1, height width, height width +1, then height + 1 width - 1, height + 1 width, height +1 width +1)
                     rgbtRedTempG[0] = image[h1 + i][w1 + j].rgbtRed * muliplierArrayGX[i][j]; // get sum of all red
                     rgbtRedTempG[1] = image[h1 + i][w1 + j].rgbtRed * muliplierArrayGY[i][j];
+                    rgbtRedTempG[2] = sqrt((rgbtRedTempG[0]*rgbtRedTempG[0]) + (rgbtRedTempG[1] * rgbtRedTempG[1]);
                     rgbtBlueTempG[0] = image[h1 + i][w1 + j].rgbtBlue * muliplierArrayGX[i][j]; // get sum of all blue
                     rgbtBlueTempG[1] = image[h1 + i][w1 + j].rgbtBlue * muliplierArrayGY[i][j]; // get sum of all blue
+                    rgbtBlueTempG[2] = sqrt((rgbtBlueTempG[0]*rgbtBlueTempG[0]) + (rgbtBlueTempG[1] * rgbtBlueTempG[1]);
                     rgbtGreenTempG[0] = image[h1 + i][w1 + j].rgbtGreen * muliplierArrayGX[i][j]; // get sum of all green
                     rgbtGreenTempG[1] = image[h1 + i][w1 + j].rgbtGreen * muliplierArrayGY[i][j]; // get sum of all green
+                    rgbtGreenTempG[2] = sqrt((rgbtGreenTempG[0]*rgbtGreenTempG[0]) + (rgbtGreenTempG[1] * rgbtGreenTempG[1]);
                     counter++;
                 }
-                temp[0][0] < from
-                temp[height][0]
-                temp[0][width] > from
-                temp[height][width]
-                temp[h1][w1].rgbtRed = round(rgbtRedTemp / counter); // do average of all 9 pixels for red
-                temp[h1][w1].rgbtGreen = round(rgbtGreenTemp /
-                                               counter); // what if there aren't nine pixels, e.g. top left, bottom right, etc, use counter
-                temp[h1][w1].rgbtBlue = round(rgbtBlueTemp / counter);
+                temp[h1][w1].rgbtRed = round(rgbtRedTempG[2]); // do average of all 9 pixels for red
+                temp[h1][w1].rgbtGreen = round(rgbtGreenTempG[2]);
+                temp[h1][w1].rgbtBlue = round(rgbtBlueTempG[2]);
             }
 
         }
