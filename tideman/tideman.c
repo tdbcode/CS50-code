@@ -236,7 +236,6 @@ bool checkcycle(pair p)
             if(locked[c][startcandidate])
             {
                 startcandidate = c;
-                break;
             }
         }
     }
