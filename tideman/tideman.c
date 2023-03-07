@@ -135,7 +135,7 @@ void add_pairs(void)
     // Iterate through winners in preferences
     for (int w = 0; w < candidate_count; w++)
     {
-        // Iterate through losers in preferences
+        // Iterate through losers in preferences without repeating checks in preference array (l = w + 1)
         for (int l = w + 1; l < candidate_count; l++)
         {
             //printf("Candidate : %i vs %i \n", w, l); //For testing and tracing only
