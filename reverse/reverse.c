@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
     int firstSample = filesize - ftell(input);
     int currentLocator = filesize - blocksize;
 
-    BYTE *currentSample = malloc(blocksize);
+    BYTE currentSample;
     //printf("Blocksize: %u\n", blocksize);
     printf("First Sample: %i\n", firstSample);
     printf("Current Locator: %i\n", currentLocator);
@@ -66,14 +66,13 @@ int main(int argc, char *argv[])
     printf("File Size: %i\n", filesize);
     printf("Ftell: %ld\n", ftell(input));
 
-    while (ftell(input) > firstSample)
+    while (ftell(input) > firstSample + 4)
     {
-        fseek(input, currentLocator, SEEK_CUR);
+        currentLocator = ftell(input) - (blocksize * 2);
+        fseek(input, currentLocator, SEEK_SET);
         printf("Ftell: %ld\n", ftell(input));
         fread(&currentSample, blocksize, 1, input);
         fwrite(&currentSample, blocksize, 1, output);
-        currentLocator = ftell(input) - (blocksize * 2);
-
     }
 
     fclose(input);
