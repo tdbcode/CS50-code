@@ -141,6 +141,7 @@ void add_pairs(void)
             //printf("Candidate : %i vs %i \n", w, l); //For testing and tracing only
             // Note to self: There can't be a [0][0] because it's the same candidate, also can't be a [1][1] either as this is a duplicate candidate and so on.
             // If [winner][loser], e.g. [0][1] is more than [loser][winner], e.g. [1], [0] then
+            // Nothing to run if there is a draw, a pair is not added
             if (preferences[w][l] > preferences[l][w]) // If current winner is more than the loser in preferences array then
             {
                 pairs[pair_count].winner = w;           // Add current winner to current pair in pair array
