@@ -206,7 +206,7 @@ bool checkcycle(pair p)
     }
     else
     {
-        
+
         return true
     }
 
@@ -217,16 +217,16 @@ bool checkcycle(pair p)
 // https://gist.github.com/nicknapoli82/6c5a1706489e70342e9a0a635ae738c9
 void lock_pairs(void)
 {
-    int startcandidate;
-    int endcandidate;
+  //  int startcandidate;
+ //   int endcandidate;
 
     // Repeat for each pair
     for (int p = 0; p < pair_count; p++)
     {
-        startcandidate = pairs[p].winner;
-        endcandidate = pairs[p].loser;
+     //   startcandidate = pairs[p].winner;
+     //   endcandidate = pairs[p].loser;
         // Repeat for each candidate
-        for (int c = 0; c < candidate_count; c++)
+     /*   for (int c = 0; c < candidate_count; c++)
         {
             if (!(startcandidate == endcandidate))
             {
@@ -238,7 +238,7 @@ void lock_pairs(void)
                 startcandidate = pairs[c].winner;
                 endcandidate = pairs[c].loser;
             }
-        }
+        } */
 
 // For testing, output locked array
         /* for (int i = 0; i < candidate_count; i++)
