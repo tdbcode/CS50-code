@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
     // Write reversed audio to file
     int filesize = sizeof(input) * 8;
     int firstSample = filesize - ftell(input);
-    int currentLocator = filesize - blocksize + 1;
+    int currentLocator = filesize - blocksize;
 
     BYTE *currentSample = malloc(blocksize);
     //printf("Blocksize: %u\n", blocksize);
@@ -70,7 +70,7 @@ int main(int argc, char *argv[])
     {
         fread(&currentSample, 1, blocksize, input);
         fwrite(&currentSample, 1, blocksize, output);
-        currentLocator = ftell(input) - (blocksize * 2) + 1;
+        currentLocator = ftell(input) - (blocksize * 2);
         fseek(input, currentLocator, SEEK_SET);
         printf("Ftell: %ld\n", ftell(input));
 
