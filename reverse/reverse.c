@@ -58,9 +58,7 @@ int main(int argc, char *argv[])
 
 int check_format(WAVHEADER header)
 {
-    string format = header.format;
-
-    if (format == "WAVE")
+    if (strcmp(header.format,"WAVE"))
     {
         return 0;
     }
