@@ -227,7 +227,8 @@ bool checkcycle(pair p)
         // Repeat for each candidate
         for (int c = 0; c < candidate_count; c++)
         {
-
+            // need to compare winner with all other winners
+            if()
         }
     }
 
