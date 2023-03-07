@@ -210,8 +210,8 @@ void lock_pairs(void)
     // Repeat for each pair
     for (int p = 0; p < pair_count; p++)
     {
-        startcandidate = pairs[c].winner;
-        endcandidate = pairs[c].loser;
+        startcandidate = pairs[p].winner;
+        endcandidate = pairs[p].loser;
         // Repeat for each candidate
         for (int c = 0; c < candidate_count; c++)
         {
@@ -221,11 +221,8 @@ void lock_pairs(void)
             }
             else if (endcandidate == startcandidate)
             {
-                
-            }
-            else
-            {
-                break;
+                startcandidate = pairs[c].winner;
+                endcandidate = pairs[c].loser;
             }
         }
 
