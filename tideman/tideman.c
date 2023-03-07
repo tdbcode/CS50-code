@@ -245,6 +245,17 @@ void lock_pairs(void)
 // Print the winner of the election
 void print_winner(void)
 {
-    // TODO
+    // Loop through all candidates to check for falses
+    for (int c = 0; c < candidate_count; c++)
+    {
+        for (int d = 0; d < candidate_count; d++)
+        {
+            // if locked is equal to false
+            if (locked[c][d] == false)
+            {
+
+            }
+        }
+    }
     return;
 }
