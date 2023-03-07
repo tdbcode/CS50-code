@@ -225,6 +225,11 @@ bool checkcycle(pair p)
     else
     {
         // Repeat for each candidate
+        /*
+        Does A go to D?
+        Does B go to D?
+        Does C go to D? Y
+        */
         for (int c = 0; c < candidate_count; c++)
         {
             // need to compare winner with all other winners
