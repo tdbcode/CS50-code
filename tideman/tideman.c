@@ -228,15 +228,19 @@ bool checkcycle(pair p)
         /*
         Does A go to D?
         Does B go to D?
-        Does C go to D? 
+        Does C go to D?
         */
         for (int c = 0; c < candidate_count; c++)
         {
             // need to compare winner with all other winners
-            if()
+            if(pairs[c][startcandidate])
+            {
+                startcandidate = c;
+                break;
+            }
         }
     }
-
+    return false;
 }
 
 // Lock pairs into the candidate graph in order, without creating cycles
