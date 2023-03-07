@@ -200,6 +200,16 @@ void sort_pairs(void)
 bool checkcycle(pair p)
 {
 
+    if (p.winner == p.loser)
+    {
+        return false;
+    }
+    else
+    {
+        
+        return true
+    }
+
 }
 
 // Lock pairs into the candidate graph in order, without creating cycles
