@@ -49,6 +49,11 @@ int main(int argc, char *argv[])
     DWORD blocksize = get_block_size(header);
 
     // Write reversed audio to file
+
+    int filesize = sizeof(input);
+    int currentLocator = filesize - blocksize;
+    fseek(currentLocator);
+    
     WORD currentSample;
     while (fread(&currentSample, blocksize, 1, input))
     {
