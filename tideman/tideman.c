@@ -210,7 +210,15 @@ void lock_pairs(void)
     {
         // Repeat for each candidate
         for (int c = 0; c < candidate_count; c++){
-            if (!(pairs[c].winner == pairs[c].loser))
+            startcandidate = pairs[c].winner;
+            endcandidate = pairs[c].loser;
+
+            if ((pairs[c].winner == pairs[c].loser))
+            {
+                break;
+
+            }
+            else if (!(pairs[c].winner == pairs[c].loser))
             {
                 locked[pairs[p].winner][pairs[p].loser] = true;
             }
