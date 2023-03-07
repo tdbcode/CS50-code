@@ -1,6 +1,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "wav.h"
 
@@ -57,10 +58,7 @@ int main(int argc, char *argv[])
 
 int check_format(WAVHEADER header)
 {
-    for (int i = 0; i < 4; i++)
-    {
-        
-    }
+    string format = header.format;
 
     if (format == "WAVE")
     {
