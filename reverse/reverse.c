@@ -69,7 +69,6 @@ int main(int argc, char *argv[])
     while (fread(&currentSample, blocksize, 1, input))
     {
         fwrite(&currentSample, blocksize, 1, output);
-      //  printf("Ftell: %ld\n", ftell(input));
         currentLocator = ftell(input) - (blocksize * 2);
         fseek(input, currentLocator, SEEK_SET);
         printf("Ftell: %ld\n", ftell(input));
