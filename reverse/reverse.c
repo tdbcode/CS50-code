@@ -57,23 +57,26 @@ int main(int argc, char *argv[])
     printf("Blocksize: %u\n", blocksize);
     printf("First Sample: %i\n", firstSample);
     printf("Current Locator: %i\n", currentLocator);
-    printf("File Size: %i\n", filesize);
+    //printf("File Size: %i\n", filesize);
     printf("Ftell: %ld\n", ftell(input));
-    fseek(input, blocksize, currentLocator);
+    fseek(input, currentLocator, SEEK_SET);
     printf("Blocksize: %u\n", blocksize);
     printf("First Sample: %i\n", firstSample);
     printf("Current Locator: %i\n", currentLocator);
     printf("File Size: %i\n", filesize);
-    printf("Ftell: %d\n", fseek(input, blocksize, currentLocator));
+    printf("Ftell: %ld\n", ftell(input));
 
     while (fread(&currentSample, blocksize, 1, input))
     {
         fwrite(&currentSample, blocksize, 1, output);
       //  printf("Ftell: %ld\n", ftell(input));
         currentLocator = ftell(input) - (blocksize * 2);
-        fseek(input, currentLocator, firstSample);
-     //   printf("Current Locator: %i\n", currentLocator);
-     //   printf("Ftell: %ld\n", ftell(input));
+        fseek(input, currentLocator, SEEK_SET);
+        printf("Ftell: %ld\n", ftell(input));
+        if(currentLocator <= firstSample)
+        {
+            break;
+        }
     }
 }
 
