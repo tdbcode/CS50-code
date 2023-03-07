@@ -49,10 +49,10 @@ int main(int argc, char *argv[])
 
     // Write reversed audio to file
     WORD currentSample;
-    while (fread(&currentSample, sizeof(int16_t), 1, input))
+    while (fread(&currentSample, blocksize, 1, input))
     {
         currentSample *= factor;
-        fwrite(&currentSample, sizeof(int16_t), 1, output);
+        fwrite(&currentSample, blocksize, 1, output);
     }
 }
 
