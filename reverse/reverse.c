@@ -10,10 +10,21 @@ int get_block_size(WAVHEADER header);
 int main(int argc, char *argv[])
 {
     // Ensure proper usage
-    // TODO #1
+    // Check command-line arguments
+    if (argc != 3)
+    {
+        printf("Usage: ./reverse input.wav output.wav \n");
+        return 1;
+    }
 
     // Open input file for reading
-    // TODO #2
+    // Open files and determine scaling factor
+    FILE *input = fopen(argv[1], "r");
+    if (input == NULL)
+    {
+        printf("Could not open file.\n");
+        return 1;
+    }
 
     // Read header
     // TODO #3
@@ -22,7 +33,12 @@ int main(int argc, char *argv[])
     // TODO #4
 
     // Open output file for writing
-    // TODO #5
+    FILE *output = fopen(argv[2], "w");
+    if (output == NULL)
+    {
+        printf("Could not open file.\n");
+        return 1;
+    }
 
     // Write header to file
     // TODO #6
