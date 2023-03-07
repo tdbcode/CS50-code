@@ -245,7 +245,7 @@ void lock_pairs(void)
 // Print the winner of the election
 void print_winner(void)
 {
-    int candidatesfalses[MAX];
+    int candidatesfalses[candidate_count];
     int falses = 0;
     // Loop through all candidates to check for falses
     for (int c = 0; c < candidate_count; c++)
@@ -255,14 +255,18 @@ void print_winner(void)
             // if locked is equal to false means no edge
             if (locked[c][d] == false)
             {
-                falses++; //count false for current candidate
+                candidatesfalses[c]++; //count false for current candidate
             }
         }
     }
 
-    if (falses / 3 == candidate_count)
+    for (int w = 0; w < candidate_count; w++)
     {
-        printf("%s\n", candidates[falses / 3]);
+        if (candidatesfalses[w] == candidate_count)
+        {
+            printf("%s\n", candidates[w]);
+            break;
+        }
     }
     return;
 }
