@@ -209,12 +209,12 @@ void lock_pairs(void)
     // Repeat for each pair
     for (int p = 0; p < pair_count; p++)
     {
+        startcandidate = pairs[c].winner;
+        endcandidate = pairs[c].loser;
         // Repeat for each candidate
         for (int c = 0; c < candidate_count; c++)
         {
-            startcandidate = pairs[c].winner;
-            endcandidate = pairs[c].loser;
-
+            
             if (startcandidate == endcandidate)
             {
                 break;
