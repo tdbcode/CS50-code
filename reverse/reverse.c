@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
 
     // Write reversed audio to file
     int filesize = sizeof(input);
-    int currentLocator = filesize - blocksize;
+    int currentLocator = ftell(input);
 
     WORD currentSample;
     fseek(input, 0, currentLocator);
