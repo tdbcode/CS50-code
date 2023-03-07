@@ -28,8 +28,9 @@ int main(int argc, char *argv[])
     }
 
     // Read header
+    int headersize = sizeof(WAVHEADER);
     WAVHEADER header;
-    fread(&header, sizeof(WAVHEADER), 1, input);
+    fread(&header, headersize, 1, input);
 
     // Use check_format to ensure WAV format
     check_format(header);
@@ -43,7 +44,7 @@ int main(int argc, char *argv[])
     }
 
     // Write header to file
-    fwrite(&header, sizeof(WAVHEADER), 1, output);
+    fwrite(&header, headersize, 1, output);
 
     // Use get_block_size to calculate size of block
     int blocksize = get_block_size(header);
