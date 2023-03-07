@@ -48,7 +48,12 @@ int main(int argc, char *argv[])
     WORD blocksize = get_block_size(header);
 
     // Write reversed audio to file
-    // TODO #8
+    WORD currentSample;
+    while (fread(&currentSample, sizeof(int16_t), 1, input))
+    {
+        currentSample *= factor;
+        fwrite(&currentSample, sizeof(int16_t), 1, output);
+    }
 }
 
 int check_format(WAVHEADER header)
