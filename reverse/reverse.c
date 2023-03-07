@@ -53,20 +53,19 @@ int main(int argc, char *argv[])
 
     WORD currentSample;
     fseek(input, 0, SEEK_END);
-    int currentLocator = ftell(input) - 4;
+    int currentLocator = ftell(input);
     //printf("Blocksize: %u\n", blocksize);
     //printf("First Sample: %i\n", firstSample);
     printf("Current Locator: %i\n", currentLocator);
     //printf("File Size: %i\n", filesize);
     printf("Ftell: %ld\n", ftell(input));
 
-    while (currentLocator >= firstSample)
+    while (ftell(input) >= firstSample)
     {
-
+        fseek(input, -blocksize, SEEK_CUR);
         //printf("Ftell: %ld\n", ftell(input));
         fread(&currentSample, blocksize, 1, input);
         fwrite(&currentSample, blocksize, 1, output);
-        fseek(input, -currentLocator, SEEK_END);
         currentLocator -= (blocksize * 2);
     }
 
@@ -98,7 +97,7 @@ int check_format(WAVHEADER header)
 
 int get_block_size(WAVHEADER header)
 {
-    WORD bytesPerSample = header.bitsPerSample / 8;
-    DWORD blocksize = bytesPerSample * header.numChannels;
+    int bytesPerSample = header.bitsPerSample / 8;
+    int blocksize = bytesPerSample * header.numChannels;
     return blocksize;
 }
