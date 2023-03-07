@@ -62,7 +62,6 @@ int check_format(WAVHEADER header)
         printf("Invalid file format.\n");
         return 1;
     }
-
 }
 
 int get_block_size(WAVHEADER header)
