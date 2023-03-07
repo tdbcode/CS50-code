@@ -27,8 +27,8 @@ int main(int argc, char *argv[])
     }
 
     // Read header
-    WAVHEADER header = NULL;
-    fread(header, sizeof(WAVEHEADER), 1, input);
+    WAVHEADER header;
+    fread(header, sizeof(WAVHEADER), 1, input);
 
     // Use check_format to ensure WAV format
     check_format(header);
@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
     }
 
     // Write header to file
-    fwrite(header, sizeof(WAVEHEADER), 1, output);
+    fwrite(header, sizeof(WAVHEADER), 1, output);
 
     // Use get_block_size to calculate size of block
     WORD blocksize = get_block_size(header);
