@@ -228,7 +228,7 @@ bool checkcycle(pair p)
         /*
         Does A go to D?
         Does B go to D?
-        Does C go to D? Y
+        Does C go to D? 
         */
         for (int c = 0; c < candidate_count; c++)
         {
