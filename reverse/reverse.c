@@ -52,9 +52,10 @@ int main(int argc, char *argv[])
 
     int filesize = sizeof(input);
     int currentLocator = filesize - blocksize;
-    fseek(currentLocator);
-    
+
+
     WORD currentSample;
+    fseek(input,0,);
     while (fread(&currentSample, blocksize, 1, input))
     {
         fwrite(&currentSample, blocksize, 1, output);
