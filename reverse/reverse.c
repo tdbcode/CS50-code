@@ -53,8 +53,16 @@ int main(int argc, char *argv[])
 
 int check_format(WAVHEADER header)
 {
-    // TODO #4
-    return 0;
+    if (header.format == "WAVE")
+    {
+        return 0;
+    }
+    else
+    {
+        printf("Invalid file format.\n");
+        return 1;
+    }
+
 }
 
 int get_block_size(WAVHEADER header)
