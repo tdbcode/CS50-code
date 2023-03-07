@@ -176,8 +176,8 @@ void sort_pairs(void)
         //Perform bubble sort on pairs array
         for (int p = 0; p <= back; p++)
         {
-            // got to compare with preferences now current pair to help sort the pair using the pair as a pointer for preference
-            // Compare to next item in the area to perform bubble sort
+            // comparing the current winner strength is less than next winner strength then switch items
+            // Compare to next item in the array to perform bubble sort
             if ((preferences[pairs[p].winner][pairs[p].loser]) < (preferences[pairs[p + 1].winner][pairs[p + 1].loser]))
             {
                 temp = pairs[p];
@@ -186,7 +186,7 @@ void sort_pairs(void)
                 flag = true; // Switches has been made, loop needs to run again
             }
         }
-        back -= 1; // minus one from back of array as its sorted
+        back -= 1; // minus one from back of array as it is already sorted and doesn't need to be checked again
     }
 
     /* used for tracking and testing only - outputting list
