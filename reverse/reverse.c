@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
     //printf("File Size: %i\n", filesize);
     printf("Ftell: %ld\n", ftell(input));
 
-    while (currentLocator > firstSample)
+    while (currentLocator >= firstSample)
     {
         printf("Ftell: %ld\n", ftell(input));
         fread(&currentSample, blocksize, 1, input);
