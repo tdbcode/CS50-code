@@ -233,7 +233,7 @@ bool checkcycle(pair p)
         for (int c = 0; c < candidate_count; c++)
         {
             // need to compare winner with all other winners
-            if(pairs[c][startcandidate])
+            if(locked[c][startcandidate])
             {
                 startcandidate = c;
                 break;
@@ -254,7 +254,7 @@ void lock_pairs(void)
     // Repeat for each pair
     for (int p = 0; p < pair_count; p++)
     {
-        bool result = checkcycle(pair[p]); //get result from
+        bool result = checkcycle(pairs[p]); //get result from
 
         if (!result)
         {
