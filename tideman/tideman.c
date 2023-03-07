@@ -244,7 +244,7 @@ void lock_pairs(void)
     // Repeat for each pair
     for (int p = 0; p < pair_count; p++)
     {
-        bool result = checkcycle(pair[p]);
+        bool result = checkcycle(pair[p]); //get result from
 
         if (result)
 
