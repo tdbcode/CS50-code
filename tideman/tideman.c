@@ -217,6 +217,7 @@ bool checkcycle(pair p)
 {
     int startcandidate = p.winner;
     int endcandidate = p.loser;
+    // if the winner is the same as the loser then we know there is a cycle, this ends recursive function
     if (startcandidate == endcandidate)
     {
         return true;
