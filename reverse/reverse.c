@@ -27,7 +27,8 @@ int main(int argc, char *argv[])
     }
 
     // Read header
-    // TODO #3
+    WAVHEADER header = NULL;
+    
 
     // Use check_format to ensure WAV format
     // TODO #4
