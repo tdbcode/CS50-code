@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
     fread(header, sizeof(WAVEHEADER), 1, input);
 
     // Use check_format to ensure WAV format
-    // TODO #4
+    check_format(header);
 
     // Open output file for writing
     FILE *output = fopen(argv[2], "w");
