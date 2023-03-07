@@ -205,15 +205,30 @@ void lock_pairs(void)
     int startcandidate;
     int endcandidate;
 
-    for (int c = 0; c < candidate_count; c++){
-        //
-        for(int p = 0; p < pair_count; p++)
-        {
-            if (!pairs[p].winner == pairs[p].loser)
+    // Repeat for each pair
+    for(int p = 0; p < pair_count; p++)
+    {
+        // Repeat for each candidate
+        for (int c = 0; c < candidate_count; c++){
+            if (!(pairs[c].winner == pairs[c].loser))
             {
                 locked[pairs[p].winner][pairs[p].loser] = true;
             }
+            else
+            {
+                break;
+            }
         }
+
+    // For testing, output locked array
+    for (int i = 0; i < candidate_count; i++)
+    {
+        for (int j = 0; j < candidate_count; j++)
+        {
+            printf("%d", locked[i][j]);
+        }
+        printf("\n");
+    }
 
     // locked[i][j] means i is locked in over j
     //locked[MAX][MAX]; // boolean
