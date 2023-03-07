@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
     fwrite(&header, sizeof(WAVHEADER), 1, output);
 
     // Use get_block_size to calculate size of block
-    WORD blocksize = get_block_size(header);
+    DWORD blocksize = get_block_size(header);
 
     // Write reversed audio to file
     WORD currentSample;
@@ -80,6 +80,6 @@ int check_format(WAVHEADER header)
 int get_block_size(WAVHEADER header)
 {
     WORD bytesPerSample = header.bitsPerSample / 8;
-    WORD blocksize = bytesPerSample * header.numChannels;
+    DWORD blocksize = bytesPerSample * header.numChannels;
     return blocksize;
 }
