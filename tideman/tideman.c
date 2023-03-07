@@ -223,6 +223,8 @@ void lock_pairs(void)
     // Repeat for each pair
     for (int p = 0; p < pair_count; p++)
     {
+        bool result = checkcycle(pair[p]);
+
      //   startcandidate = pairs[p].winner;
      //   endcandidate = pairs[p].loser;
         // Repeat for each candidate
@@ -232,7 +234,7 @@ void lock_pairs(void)
             {
                 locked[pairs[p].winner][pairs[p].loser] = true;
             }
-            if (endcandidate == startcandidate)
+            else if (endcandidate == startcandidate)
             {
                 locked[pairs[p].winner][pairs[p].loser] = false;
                 startcandidate = pairs[c].winner;
