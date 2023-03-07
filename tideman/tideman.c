@@ -142,17 +142,18 @@ void add_pairs(void)
             // Note to self: There can't be a [0][0] because it's the same candidate, also can't be a [1][1] either as this is a duplicate candidate and so on.
             // If [winner][loser], e.g. [0][1] is more than [loser][winner], e.g. [1], [0] then
             // Nothing to run if there is a draw, a pair is not added
-            if (preferences[w][l] > preferences[l][w]) // If first preference of people who prefer w to l is more than those who prefer l to w then
+            // If first preference of people who prefer w to l is more than those who prefer l to w then
+            if (preferences[w][l] > preferences[l][w])
             {
                 pairs[pair_count].winner = w;           // Add current winner to current pair in pair array
                 pairs[pair_count].loser = l;            // And add the loser as loser to current pair in pair array
-                pair_count++;                //Have to add one to paircount so total number of pairs is known
+                pair_count++;                           //Have to add one to paircount so total number of pairs is known
             }
             else if (preferences[w][l] < preferences[l][w]) // If the opposite, save as reverse
             {
                 pairs[pair_count].winner = l;               // Add next items winner, as winner in current pair
                 pairs[pair_count].loser = w;                // Add current loser as loser of current pair
-                pair_count++;                           //Have to add one to paircount so total number of pairs is known
+                pair_count++;                               //Have to add one to paircount so total number of pairs is known
             }
             //      printf("Pair: %i Winner : %i Loser: %i \n", pair_count, pairs[pair_count - 1].winner,
             //       pairs[pair_count - 1].loser); //For testing and tracing only
@@ -206,19 +207,20 @@ void lock_pairs(void)
     int endcandidate;
 
     // Repeat for each pair
-    for(int p = 0; p < pair_count; p++)
+    for (int p = 0; p < pair_count; p++)
     {
         // Repeat for each candidate
-        for (int c = 0; c < candidate_count; c++){
+        for (int c = 0; c < candidate_count; c++)
+        {
             startcandidate = pairs[c].winner;
             endcandidate = pairs[c].loser;
 
-            if (pairs[c].winner == pairs[c].loser)
+            if (startcandidate == endcandidate)
             {
                 break;
 
             }
-            else if (!(pairs[c].winner == pairs[c].loser))
+            else if (!(startcandidate == endcandidate))
             {
                 locked[pairs[p].winner][pairs[p].loser] = true;
             }
@@ -228,18 +230,15 @@ void lock_pairs(void)
             }
         }
 
-    // For testing, output locked array
-    for (int i = 0; i < candidate_count; i++)
-    {
-        for (int j = 0; j < candidate_count; j++)
+// For testing, output locked array
+        /* for (int i = 0; i < candidate_count; i++)
         {
+            for (int j = 0; j < candidate_count; j++)
+            {
             printf("Locked : %d ", locked[i][j]);
-        }
-        printf("\n");
-    }
-
-    // locked[i][j] means i is locked in over j
-    //locked[MAX][MAX]; // boolean
+            }
+            printf("\n");
+        } */
     }
 }
 
