@@ -8,6 +8,8 @@
         "numbers": "c",
         "typeinfo": "c",
         "stdio.h": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "initializer_list": "c",
+        "utility": "c"
     }
 }
