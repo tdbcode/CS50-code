@@ -2,6 +2,22 @@
 #include <stdio.h>
 #include <string.h>
 
+
+/*
+This was a tough task so I did research a lot surrounding the lock_pairs functions of Tideman. Below are the sources I used to help with understanding
+after trying multiple attempts using nested for loops and functions.
+
+I realised from this link that recursion made sense:
+https://gist.github.com/nicknapoli82/6c5a1706489e70342e9a0a635ae738c9
+
+Recursion source and explanation although I have done fibonacci with my own students before, I just wanted further examples in C:
+https://www.scaler.com/topics/c/recursion-in-c/
+
+Helping to test the algorithm:
+https://tideman.netlify.app/
+
+*/
+
 // Max number of candidates
 #define MAX 9
 
@@ -210,7 +226,7 @@ bool checkcycle(pair p)
         // Repeat for each candidate
         for (int c = 0; c < candidate_count; c++)
         {
-            
+
         }
     }
 
