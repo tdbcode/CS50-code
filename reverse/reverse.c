@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 
     // Read header
     WAVHEADER header;
-    fread(header, sizeof(WAVHEADER), 1, input);
+    fread(&header, sizeof(WAVHEADER), 1, input);
 
     // Use check_format to ensure WAV format
     check_format(header);
@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
     }
 
     // Write header to file
-    fwrite(header, sizeof(WAVHEADER), 1, output);
+    fwrite(&header, sizeof(WAVHEADER), 1, output);
 
     // Use get_block_size to calculate size of block
     WORD blocksize = get_block_size(header);
@@ -51,14 +51,19 @@ int main(int argc, char *argv[])
     WORD currentSample;
     while (fread(&currentSample, blocksize, 1, input))
     {
-        currentSample *= factor;
         fwrite(&currentSample, blocksize, 1, output);
     }
 }
 
 int check_format(WAVHEADER header)
 {
-    if (header.format == "WAVE")
+    String format = NULL;
+    for (int i = 0; i < 4; i++)
+    {
+        format += header.format[i]
+    }
+
+    if (format == "WAVE")
     {
         return 0;
     }
