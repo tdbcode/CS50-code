@@ -224,6 +224,10 @@ void lock_pairs(void)
                 startcandidate = pairs[c].winner;
                 endcandidate = pairs[c].loser;
             }
+            else
+            {
+                break;
+            }
         }
 
 // For testing, output locked array
