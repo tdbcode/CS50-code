@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
     printf("Current Locator: %i\n", currentLocator);
     //printf("File Size: %i\n", filesize);
 
-    while (currentLocator > headersize)
+    while (ftell(input) - blocksize > headersize)
     {
         fseek(input, - 2 * blocksize, SEEK_CUR);
         fread(&currentSample, blocksize, 1, input);
