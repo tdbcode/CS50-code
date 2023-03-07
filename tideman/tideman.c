@@ -199,15 +199,19 @@ void sort_pairs(void)
 
 bool checkcycle(pair p)
 {
-
-    if (p.winner == p.loser)
+    int startcandidate = p.winner;
+    int endcandidate = p.loser;
+    if (startcandidate == endcandidate)
     {
-        return false;
+        return true;
     }
     else
     {
-
-        return true
+        // Repeat for each candidate
+        for (int c = 0; c < candidate_count; c++)
+        {
+            
+        }
     }
 
 }
