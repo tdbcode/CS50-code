@@ -197,6 +197,11 @@ void sort_pairs(void)
     }*/
 }
 
+bool checkcycle(pair p)
+{
+
+}
+
 // Lock pairs into the candidate graph in order, without creating cycles
 // Source used for the lock_pair function only, as I was stuck and couldn't work this out:
 // https://gist.github.com/nicknapoli82/6c5a1706489e70342e9a0a635ae738c9
@@ -204,7 +209,6 @@ void lock_pairs(void)
 {
     int startcandidate;
     int endcandidate;
-    int pairno = 0;
 
     // Repeat for each pair
     for (int p = 0; p < pair_count; p++)
@@ -220,7 +224,6 @@ void lock_pairs(void)
             }
             if (endcandidate == startcandidate)
             {
-                pairno = p;
                 locked[pairs[p].winner][pairs[p].loser] = false;
                 startcandidate = pairs[c].winner;
                 endcandidate = pairs[c].loser;
