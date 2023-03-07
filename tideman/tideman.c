@@ -202,7 +202,6 @@ void sort_pairs(void)
 // https://gist.github.com/nicknapoli82/6c5a1706489e70342e9a0a635ae738c9
 void lock_pairs(void)
 {
-
     int startcandidate;
     int endcandidate;
     int pairno = 0;
@@ -221,6 +220,7 @@ void lock_pairs(void)
             }
             else if (endcandidate == startcandidate)
             {
+                pairno = p;
                 startcandidate = pairs[c].winner;
                 endcandidate = pairs[c].loser;
             }
