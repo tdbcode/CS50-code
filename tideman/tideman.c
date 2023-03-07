@@ -106,7 +106,7 @@ bool vote(int rank, string name, int ranks[])
         if (strcmp(name, candidates[c]) == 0) // if name entered matches a candidate
         {
             ranks[rank] = c; // Record index into rank array in rank location
-            // printf("%s %i\n", name,  ranks[rank]); // Output List for testing.
+            // printf("%s %i\n", name,  ranks[rank]); // Output list item for testing.
             return true;
             break;
         }
