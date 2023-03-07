@@ -246,7 +246,10 @@ void lock_pairs(void)
 void print_winner(void)
 {
     int candidatesfalses[candidate_count];
-    int falses = 0;
+    for (int a = 0; a < candidate_count; a++)
+    {
+        candidatesfalses[a] = 0;
+    }
     // Loop through all candidates to check for falses
     for (int c = 0; c < candidate_count; c++)
     {
@@ -262,11 +265,13 @@ void print_winner(void)
 
     for (int w = 0; w < candidate_count; w++)
     {
-      //  if (candidatesfalses[w] == candidate_count)
-      //  {
+        // printf("Name: %s Falses: %i\n", candidates[w], candidatesfalses[w]); // For testing purposes
+        // if candidates falses equals candidate count they must be the winner so output them from candidate list
+        if (candidatesfalses[w] == candidate_count)
+        {
             printf("%s\n", candidates[w]);
-     //       break;
-     //   }
+            break;
+        }
     }
     return;
 }
