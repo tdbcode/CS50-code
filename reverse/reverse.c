@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
     int currentLocator = filesize - blocksize;
 
     WORD currentSample;
-    printf("Blocksize: %u\n", blocksize);
+    //printf("Blocksize: %u\n", blocksize);
     printf("First Sample: %i\n", firstSample);
     printf("Current Locator: %i\n", currentLocator);
     //printf("File Size: %i\n", filesize);
