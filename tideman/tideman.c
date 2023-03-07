@@ -218,16 +218,12 @@ void lock_pairs(void)
             {
                 locked[pairs[p].winner][pairs[p].loser] = true;
             }
-            else if (endcandidate == startcandidate)
+            if (endcandidate == startcandidate)
             {
                 pairno = p;
                 locked[pairs[p].winner][pairs[p].loser] = false;
                 startcandidate = pairs[c].winner;
                 endcandidate = pairs[c].loser;
-            }
-            else
-            {
-                break;
             }
         }
 
