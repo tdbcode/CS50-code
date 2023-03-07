@@ -49,30 +49,25 @@ int main(int argc, char *argv[])
     DWORD blocksize = get_block_size(header);
 
     // Write reversed audio to file
-    int filesize = sizeof(input) * 8;
-    int firstSample = sizeof(header);
-    int currentLocator = filesize - blocksize;
+    int firstSample = sizeof(header) + blocksize;
 
     WORD currentSample;
     fseek(input, 0, SEEK_END);
+    int currentLocator = ftell(input) - 4;
     //printf("Blocksize: %u\n", blocksize);
-    printf("First Sample: %i\n", firstSample);
+    //printf("First Sample: %i\n", firstSample);
     printf("Current Locator: %i\n", currentLocator);
     //printf("File Size: %i\n", filesize);
     printf("Ftell: %ld\n", ftell(input));
-    printf("Blocksize: %u\n", blocksize);
-    printf("First Sample: %i\n", firstSample);
-    printf("Current Locator: %i\n", currentLocator);
-    printf("File Size: %i\n", filesize);
-    printf("Ftell: %ld\n", ftell(input));
 
-    while (ftell(input) > firstSample)
+    while (currentLocator >= firstSample)
     {
-        currentLocator = ftell(input) - (blocksize * 2);
-        fseek(input, currentLocator, SEEK_SET);
-        printf("Ftell: %ld\n", ftell(input));
+
+        //printf("Ftell: %ld\n", ftell(input));
         fread(&currentSample, blocksize, 1, input);
         fwrite(&currentSample, blocksize, 1, output);
+        fseek(input, -currentLocator, SEEK_END);
+        currentLocator -= (blocksize * 2);
     }
 
     fclose(input);
