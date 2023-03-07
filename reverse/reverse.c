@@ -58,7 +58,6 @@ int main(int argc, char *argv[])
     printf("First Sample: %i\n", headersize);
     printf("Current Locator: %i\n", currentLocator);
     //printf("File Size: %i\n", filesize);
-    printf("Ftell: %ld\n", ftell(input));
 
     while (currentLocator > headersize)
     {
