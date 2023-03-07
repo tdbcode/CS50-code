@@ -246,6 +246,8 @@ void lock_pairs(void)
     {
         bool result = checkcycle(pair[p]);
 
+        if (result)
+
      //   startcandidate = pairs[p].winner;
      //   endcandidate = pairs[p].loser;
         // Repeat for each candidate
