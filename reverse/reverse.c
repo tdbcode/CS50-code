@@ -56,12 +56,15 @@ int main(int argc, char *argv[])
 
     WORD currentSample;
     fseek(input, 0, currentLocator);
-    printf("%ld", ftell(input));
+    printf("%u\n", blocksize);
+    printf("%ld\n", ftell(input));
+
     while (fread(&currentSample, blocksize, 1, input))
     {
         fwrite(&currentSample, blocksize, 1, output);
+        currentLocator -= blocksize;
         fseek(input, -blocksize, currentLocator);
-        printf("%ld", ftell(input));
+        printf("%ld\n", ftell(input));
     }
 }
 
@@ -70,12 +73,12 @@ int check_format(WAVHEADER header)
     char wave[] = "WAVE";
     char format[4];
 
-    for(int i = 0; i < 4; i++)
+    for (int i = 0; i < 4; i++)
     {
         format[i] = header.format[i];
     }
 
-    if (strcmp(format,wave))
+    if (strcmp(format, wave))
     {
         return 0;
     }
