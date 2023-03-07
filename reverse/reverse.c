@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
     int firstSample = filesize - ftell(input);
     int currentLocator = filesize - blocksize;
 
-    WORD currentSample;
+    BYTE *currentSample = malloc(blocksize);
     //printf("Blocksize: %u\n", blocksize);
     printf("First Sample: %i\n", firstSample);
     printf("Current Locator: %i\n", currentLocator);
@@ -73,7 +73,12 @@ int main(int argc, char *argv[])
         currentLocator = ftell(input) - (blocksize * 2);
         fseek(input, currentLocator, SEEK_SET);
         printf("Ftell: %ld\n", ftell(input));
+
     }
+
+    fclose(input);
+    fclose(output);
+    return 0;
 }
 
 int check_format(WAVHEADER header)
