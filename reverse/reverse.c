@@ -49,22 +49,23 @@ int main(int argc, char *argv[])
     DWORD blocksize = get_block_size(header);
 
     // Write reversed audio to file
-
     int filesize = sizeof(input);
     int currentLocator = filesize - blocksize;
 
-
     WORD currentSample;
     fseek(input, 0, currentLocator);
-    printf("%u\n", blocksize);
-    printf("%ld\n", ftell(input));
+    printf("Blocksize: %u\n", blocksize);
+    printf("Current Locator: %i\n", currentLocator);
+    printf("File Size: %i\n", filesize);
+    printf("Ftell: %ld\n", ftell(input));
 
     while (fread(&currentSample, blocksize, 1, input))
     {
         fwrite(&currentSample, blocksize, 1, output);
         currentLocator -= blocksize;
         fseek(input, -blocksize, currentLocator);
-        printf("%ld\n", ftell(input));
+     //   printf("Current Locator: %i\n", currentLocator);
+     //   printf("Ftell: %ld\n", ftell(input));
     }
 }
 
