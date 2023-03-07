@@ -59,8 +59,9 @@ int main(int argc, char *argv[])
 int check_format(WAVHEADER header)
 {
     char wave[] = "WAVE";
-    char format = sprintf(str, "%b", header.format)
-    if (strcmp(header.format,wave))
+    char *format[4] = malloc(sizeof(BYTE));
+    strcpy(format, header.format);
+    if (strcmp(format,wave))
     {
         return 0;
     }
