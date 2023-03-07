@@ -57,10 +57,9 @@ int main(int argc, char *argv[])
 
 int check_format(WAVHEADER header)
 {
-    String format = NULL;
     for (int i = 0; i < 4; i++)
     {
-        format += header.format[i]
+        
     }
 
     if (format == "WAVE")
