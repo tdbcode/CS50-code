@@ -256,7 +256,10 @@ void lock_pairs(void)
     {
         bool result = checkcycle(pair[p]); //get result from
 
-        if (result)
+        if (!result)
+        {
+            locked[pairs[p].winner][pairs[p].loser] = true;
+        }
 
      //   startcandidate = pairs[p].winner;
      //   endcandidate = pairs[p].loser;
