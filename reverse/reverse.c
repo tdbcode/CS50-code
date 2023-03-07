@@ -55,7 +55,7 @@ int main(int argc, char *argv[])
 
 
     WORD currentSample;
-    fseek(input,0,);
+    fseek(input, 0, currentLocator);
     while (fread(&currentSample, blocksize, 1, input))
     {
         fwrite(&currentSample, blocksize, 1, output);
