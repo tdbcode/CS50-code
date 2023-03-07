@@ -262,11 +262,11 @@ void print_winner(void)
 
     for (int w = 0; w < candidate_count; w++)
     {
-        if (candidatesfalses[w] == candidate_count)
-        {
+      //  if (candidatesfalses[w] == candidate_count)
+      //  {
             printf("%s\n", candidates[w]);
-            break;
-        }
+     //       break;
+     //   }
     }
     return;
 }
