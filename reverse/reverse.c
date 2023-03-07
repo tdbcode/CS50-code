@@ -68,8 +68,8 @@ int main(int argc, char *argv[])
 
     while (ftell(input) > firstSample)
     {
-        fread(&currentSample, 1, blocksize, input);
-        fwrite(&currentSample, 1, blocksize, output);
+        fread(&currentSample, blocksize, 1, input);
+        fwrite(&currentSample, blocksize, 1, output);
         currentLocator = ftell(input) - (blocksize * 2);
         fseek(input, currentLocator, SEEK_SET);
         printf("Ftell: %ld\n", ftell(input));
