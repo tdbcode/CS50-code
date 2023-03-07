@@ -213,7 +213,7 @@ void lock_pairs(void)
             startcandidate = pairs[c].winner;
             endcandidate = pairs[c].loser;
 
-            if ((pairs[c].winner == pairs[c].loser))
+            if (pairs[c].winner == pairs[c].loser)
             {
                 break;
 
