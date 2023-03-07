@@ -49,6 +49,7 @@ void add_pairs(void);
 void sort_pairs(void);
 void lock_pairs(void);
 void print_winner(void);
+bool checkcycle(pair p);
 
 int main(int argc, string argv[])
 {
