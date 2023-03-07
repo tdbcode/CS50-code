@@ -60,13 +60,13 @@ int main(int argc, char *argv[])
     //printf("File Size: %i\n", filesize);
     printf("Ftell: %ld\n", ftell(input));
 
-    while (currentLocator >= firstSample)
+    while (currentLocator > firstSample)
     {
-        //printf("Ftell: %ld\n", ftell(input));
+        printf("Ftell: %ld\n", ftell(input));
         fread(&currentSample, blocksize, 1, input);
         fwrite(&currentSample, blocksize, 1, output);
         fseek(input, currentLocator, SEEK_SET);
-        currentLocator -= (blocksize * 2);
+        currentLocator -= (blocksize);
     }
 
     fclose(input);
