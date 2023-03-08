@@ -315,7 +315,7 @@ void lock_pairs(void)
 // Print the winner of the election
 void print_winner(void)
 {
-    int candidatesfalses[candidate_count];
+    int candidatesfalses[candidate_count]; // Array to count all candidate falses in locked array
     for (int a = 0; a < candidate_count; a++)
     {
         candidatesfalses[a] = 0;
