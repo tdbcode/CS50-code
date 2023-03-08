@@ -268,11 +268,10 @@ void lock_pairs(void)
 {
   //  int startcandidate;
  //   int endcandidate;
-
+    bool result = 0;
     // Repeat for each pair
     for (int p = 0; p < pair_count; p++)
     {
-        bool result = 0;
         result = checkcycle(pairs[p].winner, pairs[p].loser); //get result from checkcycle method
         //printf("%i", result);
         //result = checkcycle(pairs[p]); //get result from checkcycle method
