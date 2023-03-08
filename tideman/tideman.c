@@ -226,11 +226,17 @@ bool checkcycle(int startcandidate, int endcandidate)
     }
     else
     {
+        //for every candidate
         for (int c = 0; c < candidate_count; c++)
         {
-            if(locked[endcandidate][i])
+            // check if end candidate vs current has an edge
+            if(locked[endcandidate][c])
             {
-                result = checkcycle()
+                result = checkcycle(c, startcandidate); //if so current candidate with start candidate in recursive function
+                if (result) // if true, return true
+                {
+                    return true;
+                }
             }
         }
 
@@ -251,7 +257,7 @@ bool checkcycle(int startcandidate, int endcandidate)
             }
         } */
     }
-    return false;
+    return false; // if none above is true return false
 }
 
 // Lock pairs into the candidate graph in order, without creating cycles
