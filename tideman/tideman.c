@@ -326,7 +326,7 @@ void print_winner(void)
         for (int d = 0; d < candidate_count; d++)
         {
             // if locked is equal to false means no edge
-            if (locked[c][d] == false)
+            if (locked[c][d] == true)
             {
                 candidatesfalses[c]++; //count false for current candidate
             }
