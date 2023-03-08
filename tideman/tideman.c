@@ -326,20 +326,22 @@ void print_winner(void)
         for (int d = 0; d < candidate_count; d++)
         {
             // if locked is equal to false means no edge
-            if (locked[c][d] == false)
+            if (locked[d][c] == false)
             {
-                candidatesfalses[c]++; //count false for current candidate
-                //printf("Name: %s Falses: %i\n", candidates[w], candidatesfalses[w]); // For testing purposes
-        // if candidates falses equals candidate count they must be the winner so output them from candidate list
-        if (candidatesfalses[c] == candidate_count)
-        {
-            printf("%s\n", candidates[c]);
-            break;
-        }
+                candidatesfalses[c]++; //count falses for current candidate
             }
         }
     }
 
-
+    for (int w = 0; w < candidate_count; w++)
+    {
+        //printf("Name: %s Falses: %i\n", candidates[w], candidatesfalses[w]); // For testing purposes
+        // if candidates falses equals candidate count they must be the winner so output them from candidate list
+        if (candidatesfalses[w] == candidate_count)
+        {
+            printf("%s\n", candidates[w]);
+            break;
+        }
+    }
     return;
 }
