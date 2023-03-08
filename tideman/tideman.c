@@ -233,6 +233,7 @@ bool checkcycle(int startcandidate, int endcandidate)
         if(locked[endcandidate][c])
         {
             result = checkcycle(c, startcandidate); //if so current candidate with start candidate in recursive function
+            //printf("%i", result);
             if (result) // if true, return true
             {
                 return true;
@@ -273,9 +274,10 @@ void lock_pairs(void)
     {
         bool result = 0;
         result = checkcycle(pairs[p].winner, pairs[p].loser); //get result from checkcycle method
+        //printf("%i", result);
         //result = checkcycle(pairs[p]); //get result from checkcycle method
 
-        if (!result)
+        if (result == 0)
         {
             locked[pairs[p].winner][pairs[p].loser] = true;
         }
