@@ -220,8 +220,8 @@ bool checkcycle(int startcandidate, int endcandidate)
     // int startcandidate = p.winner;
     // int endcandidate = p.loser;
     bool result = 0;
-    // if the winner is the same as the loser then we know there is a cycle, this ends recursive function
-    if (lockedstartcandidate == endcandidate)
+    // if the loser is the same as the winner then we know there is a cycle, this ends recursive function
+    if (locked[endcandidate][winner])
     {
         return true;
     }
