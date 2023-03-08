@@ -241,7 +241,7 @@ bool checkcycle(int startcandidate, int endcandidate)
         }
     }
 
-    return false; // if none above is true return false
+    return false; // if no edge found above then return false
 
         // Repeat for each candidate
         /*
