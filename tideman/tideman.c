@@ -225,21 +225,20 @@ bool checkcycle(int startcandidate, int endcandidate)
     {
         return true;
     }
-    else
+
+    //for every candidate
+    for (int c = 0; c < candidate_count; c++)
     {
-        //for every candidate
-        for (int c = 0; c < candidate_count; c++)
+        // check if end candidate vs current has an edge
+        if(locked[endcandidate][c])
         {
-            // check if end candidate vs current has an edge
-            if(locked[endcandidate][c])
+            result = checkcycle(c, startcandidate); //if so current candidate with start candidate in recursive function
+            if (result) // if true, return true
             {
-                result = checkcycle(c, startcandidate); //if so current candidate with start candidate in recursive function
-                if (result) // if true, return true
-                {
-                    return true;
-                }
+                return true;
             }
         }
+    }
 
         // Repeat for each candidate
         /*
@@ -257,7 +256,7 @@ bool checkcycle(int startcandidate, int endcandidate)
                 break;
             }
         } */
-    }
+
     return false; // if none above is true return false
 }
 
