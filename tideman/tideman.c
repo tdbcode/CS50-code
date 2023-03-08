@@ -230,7 +230,7 @@ bool checkcycle(int startcandidate, int endcandidate)
     for (int c = 0; c < candidate_count; c++)
     {
         // check if end candidate vs current has an edge
-        if(locked[endcandidate][c])
+        if (locked[endcandidate][c])
         {
             result = checkcycle(startcandidate, c); //if so current candidate with start candidate in recursive function
             //printf("%i", result);
@@ -243,22 +243,22 @@ bool checkcycle(int startcandidate, int endcandidate)
 
     return false; // if no edge found above then return false
 
-        // Repeat for each candidate
-        /*
-        Does A go to D?
-        Does B go to D?
-        Does C go to D?
-        */
-        /* Redundant, didn't work
-        for (int c = 0; c < candidate_count; c++)
+    // Repeat for each candidate
+    /*
+    Does A go to D?
+    Does B go to D?
+    Does C go to D?
+    */
+    /* Redundant, didn't work
+    for (int c = 0; c < candidate_count; c++)
+    {
+        // need to compare winner with all other winners
+        if(locked[c][startcandidate])
         {
-            // need to compare winner with all other winners
-            if(locked[c][startcandidate])
-            {
-                startcandidate = c;
-                break;
-            }
-        } */
+            startcandidate = c;
+            break;
+        }
+    } */
 }
 
 // Lock pairs into the candidate graph in order, without creating cycles
@@ -284,32 +284,33 @@ void lock_pairs(void)
         }
     }
     return;
-     //   startcandidate = pairs[p].winner;
-     //   endcandidate = pairs[p].loser;
-        // Repeat for each candidate
-     /*   for (int c = 0; c < candidate_count; c++)
+
+//   startcandidate = pairs[p].winner;
+//   endcandidate = pairs[p].loser;
+// Repeat for each candidate
+/*   for (int c = 0; c < candidate_count; c++)
+    {
+        if (!(startcandidate == endcandidate))
         {
-            if (!(startcandidate == endcandidate))
-            {
-                locked[pairs[p].winner][pairs[p].loser] = true;
-            }
-            else if (endcandidate == startcandidate)
-            {
-                locked[pairs[p].winner][pairs[p].loser] = false;
-                startcandidate = pairs[c].winner;
-                endcandidate = pairs[c].loser;
-            }
-        } */
+            locked[pairs[p].winner][pairs[p].loser] = true;
+        }
+        else if (endcandidate == startcandidate)
+        {
+            locked[pairs[p].winner][pairs[p].loser] = false;
+            startcandidate = pairs[c].winner;
+            endcandidate = pairs[c].loser;
+        }
+    } */
 
 // For testing, output locked array
-       /* for (int i = 0; i < candidate_count; i++)
+    /* for (int i = 0; i < candidate_count; i++)
+    {
+        for (int j = 0; j < candidate_count; j++)
         {
-            for (int j = 0; j < candidate_count; j++)
-            {
-            printf("%d ", locked[i][j]);
-            }
-            printf("\n");
-        }*/
+        printf("%d ", locked[i][j]);
+        }
+        printf("\n");
+    }*/
 }
 
 // Print the winner of the election
