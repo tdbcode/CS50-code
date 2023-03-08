@@ -214,10 +214,10 @@ void sort_pairs(void)
     }*/
 }
 
-bool checkcycle(pair p)
+bool checkcycle(int startcandidate, int endcandidate)
 {
-    int startcandidate = p.winner;
-    int endcandidate = p.loser;
+    // int startcandidate = p.winner;
+    // int endcandidate = p.loser;
     bool result = 0;
     // if the winner is the same as the loser then we know there is a cycle, this ends recursive function
     if (startcandidate == endcandidate)
@@ -230,7 +230,7 @@ bool checkcycle(pair p)
         {
             if(locked[endcandidate][i])
             {
-                result = checkcycle(pairs[p])
+                result = checkcycle()
             }
         }
 
@@ -266,7 +266,8 @@ void lock_pairs(void)
     for (int p = 0; p < pair_count; p++)
     {
         bool result = 0;
-        result = checkcycle(pairs[p]); //get result from
+        result = checkcycle(pairs[p].winner, pairs[p].loser); //get result from checkcycle method
+        //result = checkcycle(pairs[p]); //get result from checkcycle method
 
         if (!result)
         {
