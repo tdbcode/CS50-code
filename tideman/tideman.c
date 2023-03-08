@@ -221,7 +221,7 @@ bool checkcycle(int startcandidate, int endcandidate)
     // int endcandidate = p.loser;
     bool result = 0;
     // if the loser is the same as the winner then we know there is a cycle, this ends recursive function
-    if (locked[endcandidate][winner])
+    if (locked[endcandidate][startcandidate])
     {
         return true;
     }
@@ -232,7 +232,7 @@ bool checkcycle(int startcandidate, int endcandidate)
         // check if end candidate vs current has an edge
         if(locked[endcandidate][c])
         {
-            result = checkcycle(c, startcandidate); //if so current candidate with start candidate in recursive function
+            result = checkcycle(startcandidate, c); //if so current candidate with start candidate in recursive function
             //printf("%i", result);
             if (result) // if true, return true
             {
@@ -240,6 +240,8 @@ bool checkcycle(int startcandidate, int endcandidate)
             }
         }
     }
+
+    return false; // if none above is true return false
 
         // Repeat for each candidate
         /*
@@ -257,8 +259,6 @@ bool checkcycle(int startcandidate, int endcandidate)
                 break;
             }
         } */
-
-    return false; // if none above is true return false
 }
 
 // Lock pairs into the candidate graph in order, without creating cycles
