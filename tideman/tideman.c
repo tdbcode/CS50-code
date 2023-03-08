@@ -237,6 +237,7 @@ bool checkcycle(pair p)
             if(locked[c][startcandidate])
             {
                 startcandidate = c;
+                break;
             }
         }
     }
@@ -256,7 +257,6 @@ void lock_pairs(void)
     {
         bool result = 0;
         result = checkcycle(pairs[p]); //get result from
-        printf("%i\n", result);
 
         if (!result)
         {
@@ -281,14 +281,14 @@ void lock_pairs(void)
         } */
 
 // For testing, output locked array
-        /* for (int i = 0; i < candidate_count; i++)
+       /* for (int i = 0; i < candidate_count; i++)
         {
             for (int j = 0; j < candidate_count; j++)
             {
-            printf("Locked : %d ", locked[i][j]);
+            printf("%d ", locked[i][j]);
             }
             printf("\n");
-        } */
+        }*/
     }
 }
 
