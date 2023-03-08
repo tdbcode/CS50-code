@@ -335,7 +335,7 @@ void print_winner(void)
 
     for (int w = 0; w < candidate_count; w++)
     {
-        // printf("Name: %s Falses: %i\n", candidates[w], candidatesfalses[w]); // For testing purposes
+        //printf("Name: %s Falses: %i\n", candidates[w], candidatesfalses[w]); // For testing purposes
         // if candidates falses equals candidate count they must be the winner so output them from candidate list
         if (candidatesfalses[w] == candidate_count)
         {
