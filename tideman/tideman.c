@@ -5,15 +5,15 @@
 
 /*
 This was a tough task so I did research a lot surrounding the lock_pairs functions of Tideman. Below are the sources I used to help with understanding
-after trying multiple attempts using nested for loops and functions.
+after trying multiple attempts using nested for loops and functions before trying recursion.
 
 I realised from this link that recursion made sense:
 https://gist.github.com/nicknapoli82/6c5a1706489e70342e9a0a635ae738c9
 
-Recursion source and explanation although I have done fibonacci with my own students before, I just wanted further examples in C:
+Recursion source and explanation although I have done fibonacci before, I just wanted further examples in C:
 https://www.scaler.com/topics/c/recursion-in-c/
 
-Helping to test the algorithm:
+Helping to test the algorithm and create test text files:
 https://tideman.netlify.app/
 
 */
@@ -288,19 +288,19 @@ void lock_pairs(void)
 //   startcandidate = pairs[p].winner;
 //   endcandidate = pairs[p].loser;
 // Repeat for each candidate
-/*   for (int c = 0; c < candidate_count; c++)
-    {
-        if (!(startcandidate == endcandidate))
+    /*   for (int c = 0; c < candidate_count; c++)
         {
-            locked[pairs[p].winner][pairs[p].loser] = true;
-        }
-        else if (endcandidate == startcandidate)
-        {
-            locked[pairs[p].winner][pairs[p].loser] = false;
-            startcandidate = pairs[c].winner;
-            endcandidate = pairs[c].loser;
-        }
-    } */
+            if (!(startcandidate == endcandidate))
+            {
+                locked[pairs[p].winner][pairs[p].loser] = true;
+            }
+            else if (endcandidate == startcandidate)
+            {
+                locked[pairs[p].winner][pairs[p].loser] = false;
+                startcandidate = pairs[c].winner;
+                endcandidate = pairs[c].loser;
+            }
+        } */
 
 // For testing, output locked array
     /* for (int i = 0; i < candidate_count; i++)
