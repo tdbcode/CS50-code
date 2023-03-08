@@ -218,6 +218,7 @@ bool checkcycle(pair p)
 {
     int startcandidate = p.winner;
     int endcandidate = p.loser;
+    bool result = 0;
     // if the winner is the same as the loser then we know there is a cycle, this ends recursive function
     if (startcandidate == endcandidate)
     {
@@ -225,12 +226,21 @@ bool checkcycle(pair p)
     }
     else
     {
+        for (int c = 0; c < candidate_count; c++)
+        {
+            if(locked[endcandidate][i])
+            {
+                result = checkcycle(pairs[p])
+            }
+        }
+
         // Repeat for each candidate
         /*
         Does A go to D?
         Does B go to D?
         Does C go to D?
         */
+        /* Redundant, didn't work
         for (int c = 0; c < candidate_count; c++)
         {
             // need to compare winner with all other winners
@@ -239,7 +249,7 @@ bool checkcycle(pair p)
                 startcandidate = c;
                 break;
             }
-        }
+        } */
     }
     return false;
 }
