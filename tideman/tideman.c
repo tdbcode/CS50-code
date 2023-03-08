@@ -221,7 +221,7 @@ bool checkcycle(int startcandidate, int endcandidate)
     // int endcandidate = p.loser;
     bool result = 0;
     // if the winner is the same as the loser then we know there is a cycle, this ends recursive function
-    if (startcandidate == endcandidate)
+    if (lockedstartcandidate == endcandidate)
     {
         return true;
     }
@@ -266,21 +266,24 @@ bool checkcycle(int startcandidate, int endcandidate)
 // https://gist.github.com/nicknapoli82/6c5a1706489e70342e9a0a635ae738c9
 void lock_pairs(void)
 {
-  //  int startcandidate;
- //   int endcandidate;
+    int startcandidate = 0;
+    int endcandidate = 0;
     bool result = 0;
     // Repeat for each pair
     for (int p = 0; p < pair_count; p++)
     {
-        result = checkcycle(pairs[p].winner, pairs[p].loser); //get result from checkcycle method
+        startcandidate = pairs[p].winner;
+        endcandidate = pairs[p].loser;
+        result = checkcycle(startcandidate, endcandidate); //get result from checkcycle method
         //printf("%i", result);
         //result = checkcycle(pairs[p]); //get result from checkcycle method
 
         if (result == 0)
         {
-            locked[pairs[p].winner][pairs[p].loser] = true;
+            locked[startcandidate][endcandidate] = true;
         }
-
+    }
+    return;
      //   startcandidate = pairs[p].winner;
      //   endcandidate = pairs[p].loser;
         // Repeat for each candidate
@@ -307,7 +310,6 @@ void lock_pairs(void)
             }
             printf("\n");
         }*/
-    }
 }
 
 // Print the winner of the election
