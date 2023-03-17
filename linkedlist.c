@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
         }
 
         no = get_int("Enter number for node: ");
-        n->number = number;
+        n->number = no;
         n->next = NULL;
 
     }
