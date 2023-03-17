@@ -5,5 +5,6 @@
 typedef struct node
 {
     int number;
-    struct node *next; //Memory address for
+    struct node *next; // Memory address for next node
 }
+
