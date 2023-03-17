@@ -1,4 +1,4 @@
-val// Implements a list of numbers with an array of dynamic size
+// Implements a list of numbers with an array of dynamic size using realloc
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,28 +17,17 @@ int main(void)
     list[1] = 2;
     list[2] = 3;
 
-    // List of size 4
-    int *tmp = malloc(4 * sizeof(int));
+    // Resize list to be of size 4
+    int *tmp = realloc(list, 4 * sizeof(int));
     if (tmp == NULL)
     {
         free(list);
         return 1;
     }
-
-    // Copy list of size 3 into list of size 4
-    for (int i = 0; i < 3; i++)
-    {
-        tmp[i] = list[i];
-    }
-
-    // Add number to list of size 4
-    tmp[3] = 4;
-
-    // Free list of size 3
-    free(list);
-
-    // Remember list of size 4
     list = tmp;
+
+    // Add number to list
+    list[3] = 4;
 
     // Print list
     for (int i = 0; i < 4; i++)
