@@ -31,9 +31,28 @@ int main(int argc, char *argv[])
         n->number = no1;
         n->next = NULL;
 
-        // Prepend node to list
-        n->next = head;c
-        head = n;
+        // If list is empty
+        if (head == NULL)
+        {
+            // This node is the whole list
+            head = n;
+        }
+
+        // If list has numbers already
+        else
+        {
+            // Iterate over nodes in list
+            for (node *ptr = head; ptr != NULL; ptr = ptr->next)
+            {
+                // If at end of list
+                if (ptr->next == NULL)
+                {
+                    // Append node
+                    ptr->next = n;
+                    break;
+                }
+            }
+        }c[p]
     }
 
     // Print numbers

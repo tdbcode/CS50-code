@@ -10,7 +10,7 @@
     "ms-python.python",
     "ms-vscode.cpptools",
     "ms-vscode.hexeditor",
-    "ms-vsliveshare.vsliveshare-pack",
+    "ms-vsliveshare.vsliveshare",
     "redhat.java",
     "tomoki1207.pdf",
     "vscjava.vscode-java-debug",
@@ -23,7 +23,7 @@
     8080,
     8082
   ],
-  "image": "ghcr.io/cs50/codespace:a1512cce2b4e39812d77ed10b61df3d9380b94f0",
+  "image": "ghcr.io/cs50/codespace:5d1c5738431b71b4dcc6db5369bdfa6e3618c5c7",
   "postCreateCommand": "/opt/cs50/bin/postCreateCommand",
   "remoteEnv": {
     "CS50_GH_USER": "${localEnv:GITHUB_USER}",
@@ -104,7 +104,7 @@
       {
         "default": true,
         "name": "JavaSE-18",
-        "path": "/opt/jdk-18.0.2.1"
+        "path": "/opt/jdk-19.0.2"
       }
     ],
     "java.debug.settings.enableRunDebugCodeLens": false,
