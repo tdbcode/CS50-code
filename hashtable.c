@@ -92,6 +92,7 @@ void outputTable()
             for (node *ptr = table[h]; ptr != NULL; ptr = ptr->next)
             {
                 printf("%s\n", ptr->phrase);
+                free(ptr);
             }
         }
     }
