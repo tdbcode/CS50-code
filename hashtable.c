@@ -39,8 +39,8 @@ int main(void)
         addPhrase(newnode, index);
     }
 
-   outputTable();
-   freehash();
+    outputTable();
+    freehash();
 }
 
 int hash(string phrase)
@@ -114,7 +114,7 @@ void freehash()
     // for each hash in hashtable
     for (int h = 0; h < 26; h++)
     {
-         // Free memory
+        // Free memory
         node *currentnode = table[h];
         while (currentnode != NULL)
         {
