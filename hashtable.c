@@ -34,8 +34,8 @@ int main(void)
 
         newnode->phrase = phrase;
         newnode->next = NULL;
-        printf("%s\n", newnode->phrase);
-        //addPhrase(newnode, index);
+        //printf("%s\n", newnode->phrase);
+        addPhrase(newnode, index);
     }
 
    // outputTable();
@@ -46,14 +46,19 @@ int hash(string phrase)
     return toupper(phrase[0]) - 'A';
 }
 
-void addPhrase(node *newnode, int index)
+int addPhrase(node *newnode, int index)
 {
     node *currentnode = malloc(sizeof(node));
+    if (currentnode == NULL)
+    {
+        return;
+    }
     currentnode = table[index];
 
     while (currentnode->next != NULL)
     {
-        currentnode = table[index]->next;
+        currentnode = currentnode->next;
+        printf("%s\n", currentnode->phrase);
     }
     currentnode->next = currentnode;
     free(currentnode);
