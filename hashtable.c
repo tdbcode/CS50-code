@@ -58,6 +58,18 @@ void addPhrase(node *newnode, int index)
         return;
     }
 
+    // repeat until next end of that current linked list
+    for (node *currentnode = table[index]; currentnode != NULL; currentnode = currentnode->next)
+    {
+        if (currentnode->next == NULL)
+        {
+            currentnode->next = newnode;
+            return;
+        }
+    }
+
+    /*
+    Caused memory leak - redundant
     // make a current node for temporary searching linked list
     node *currentnode = malloc(sizeof(node));
 
@@ -76,7 +88,7 @@ void addPhrase(node *newnode, int index)
         currentnode = currentnode->next;
     }
     currentnode->next = newnode;  // when correct spot found set current node next pointer to the new node
-    //printf("Phrase added \n");
+    //printf("Phrase added \n");*/
 }
 
 void outputTable()
@@ -89,9 +101,9 @@ void outputTable()
         {
             printf("%c\n", toupper(table[h]->phrase[0])); // output letter of current hash
             // repeat until next end of that current linked list
-            for (node *ptr = table[h]; ptr != NULL; ptr = ptr->next)
+            for (node *currentnode = table[h]; currentnode != NULL; currentnode = currentnode->next)
             {
-                printf("%s\n", ptr->phrase);
+                printf("%s\n", currentnode->phrase);
             }
         }
     }
@@ -103,12 +115,12 @@ void freehash()
     for (int h = 0; h < 26; h++)
     {
          // Free memory
-        node *ptr = table[h];
-        while (ptr != NULL)
+        node *currentnode = table[h];
+        while (currentnode != NULL)
         {
-            node *next = ptr->next;
-            free(ptr);
-            ptr = next;
+            node *currentnode = currentnode->next;
+            free(currentnode);
+            currentnode = next;
         }
     }
 }
