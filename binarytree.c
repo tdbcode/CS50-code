@@ -95,7 +95,6 @@ int main(void)
                 }
             }
         }
-        free(newleaf);
     }
 
     // Print tree
