@@ -37,7 +37,7 @@ int main(void)
         addPhrase(newnode, index);
     }
 
-    outputTable();
+   // outputTable();
 }
 
 int hash(string phrase)
@@ -55,6 +55,7 @@ void addPhrase(node *newnode, int index)
         currentnode = table[index]->next;
     }
     currentnode->next = currentnode;
+    free(currentnode);
 }
 
 void outputTable()
