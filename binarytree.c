@@ -58,13 +58,11 @@ int main(void)
 
 void free_tree(leaf *root)
 {
-    if (root->left == NULL && root->right == NULL)
+    if (root == NULL)
     {
-        return 0;
+        return;
     }
-    else
-        leaf *current = root->left;
-
-
-
+    free_tree(root->left);
+    free_tree(root->right);
+    free(root);
 }
