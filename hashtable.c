@@ -118,7 +118,7 @@ void freehash()
         node *currentnode = table[h];
         while (currentnode != NULL)
         {
-            node *currentnode = currentnode->next;
+            node *next = currentnode->next;
             free(currentnode);
             currentnode = next;
         }
