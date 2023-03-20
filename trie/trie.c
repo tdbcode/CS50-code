@@ -110,7 +110,7 @@ int main(int argc, char *argv[])
 // TODO: Complete the check function, return true if found, false if not found
 bool check(char* word)
 {
-    int length = get_length(word);
+    int length = strlen(word);
     node *cursor = malloc(get_size(node));
     if (cursor == NULL)
     {
@@ -119,9 +119,10 @@ bool check(char* word)
     }
 
     cursor = root;
+    int counter = 0;
     int currentindex = toupper(word[0]) - 'A';
 
-    while (cursor ! = NULL)
+    while (cursor ! = NULL && counter < length)
     {
         if (curson[currentindex]->children == NULL)
         {
@@ -131,6 +132,12 @@ bool check(char* word)
         {
             cursor = cursor[currentindex]->children;
         }
+        counter++;
+    }
+
+    if (cursor->is_word == true)
+    {
+        return true;
     }
 
     // need to get word - 1 from the front
