@@ -110,6 +110,13 @@ int main(int argc, char *argv[])
 // TODO: Complete the check function, return true if found, false if not found
 bool check(char* word)
 {
+    int length = get_length(word);
+
+    for (node *cursor = root; cursor != NULL; cursor = cursor->children)
+    {
+        printf("%s\n", currentnode->phrase);
+    }
+
     // need to get word - 1 from the front
     return false;
 }
