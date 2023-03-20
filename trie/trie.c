@@ -111,7 +111,7 @@ int main(int argc, char *argv[])
 bool check(char* word)
 {
     int length = strlen(word);
-    node *cursor = malloc(get_size(node));
+    node *cursor = malloc(sizeof(node));
     if (cursor == NULL)
     {
         unload();
@@ -122,15 +122,15 @@ bool check(char* word)
     int counter = 0;
     int currentindex = toupper(word[0]) - 'A';
 
-    while (cursor ! = NULL && counter < length)
+    while (cursor != NULL && counter < length)
     {
-        if (curson[currentindex]->children == NULL)
+        if (cursor->children == NULL)
         {
             return false;
         }
         else
         {
-            cursor = cursor[currentindex]->children;
+            cursor = cursor->children;
         }
         counter++;
     }
