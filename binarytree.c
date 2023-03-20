@@ -51,7 +51,7 @@ int main(void)
         l->left = NULL;
         l->right = NULL;
 
-        temp = root;
+        placed = false;
 
         while (placed == false)
         {
@@ -61,12 +61,9 @@ int main(void)
                 {
                     temp->right = l;
                     printf("%i\n added to the right", temp->number);
+                    placed = true;
                 }
-                else
-                {
-                    temp->right = temp->right->right;
-                }
-
+                temp->right = temp->right->right;
             }
             else
             {
@@ -74,11 +71,9 @@ int main(void)
                 {
                     temp->left = l;
                     printf("%i\n added to the left", temp->number);
+                    placed = true;
                 }
-                else
-                {
-                    temp->left = temp->left->left;
-                }
+                temp->left = temp->left->left;
             }
 
         }
