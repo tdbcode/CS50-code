@@ -12,7 +12,7 @@ typedef struct node
 node;
 
 int hash(string phrase);
-void addPhrase(node *newnode);
+void addPhrase(node *newnode, int index);
 void outputTable();
 
 node *table[26];
@@ -34,7 +34,7 @@ int main(void)
 
         newnode->phrase = phrase;
         newnode->next = NULL;
-        (addphrase(newnode));
+        addPhrase(newnode, index);
     }
 
     outputTable();
@@ -45,12 +45,12 @@ int hash(string phrase)
     return toupper(phrase[0]) - 'A';
 }
 
-void addPhrase(node *newnode)
+void addPhrase(node *newnode, int index)
 {
     node *currentnode = malloc(sizeof(node));
     currentnode = table[index];
 
-    while (currentNode->next != NULL){
+    while (currentnode->next != NULL)
     {
         currentnode = table[index]->next;
     }
@@ -61,7 +61,7 @@ void outputTable()
 {
     for (int j = 0; j < 26; j++)
     {
-        printf("%c\n", table[j]->phrase[0])
-        printf("%s\n", table[j]->phrase)
+        printf("%c\n", table[j]->phrase[0]);
+        printf("%s\n", table[j]->phrase);
     }
 }
