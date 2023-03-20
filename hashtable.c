@@ -48,23 +48,20 @@ int hash(string phrase)
 void addPhrase(node *newnode)
 {
     node *currentnode = malloc(sizeof(node));
-    currentnode = newnode;
+    currentnode = table[index];
 
-    if(table[index] = NULL){
-        table[index] = tempnode;
-        table[index]
-    }
-    else
+    while (currentNode->next != NULL){
     {
-
+        currentnode = table[index]->next;
     }
+    currentnode->next = currentnode;
 }
 
 void outputTable()
 {
     for (int j = 0; j < 26; j++)
     {
-        printf("%c\n", table[j])
-        printf("%s\n", table[j])
+        printf("%c\n", table[j]->phrase[0])
+        printf("%s\n", table[j]->phrase)
     }
 }
