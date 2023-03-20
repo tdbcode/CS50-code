@@ -72,12 +72,10 @@ int main(void)
                 // Check if current leaf pointer to the right is empty
                 if (temp->right == NULL)
                 {
-                    // if so assign the new leaf there
-                    temp->right = l;
+                    temp->right = l; // if so assign the new leaf there
                     // Output that it was added
                     printf("%i added to the right\n", temp->number);
-                    // updated placed to true
-                    placed = true;
+                    placed = true; // updated placed to true
                 }
                 else
                 {
@@ -91,8 +89,7 @@ int main(void)
                 // Check if current leaf pointer to the right is empty
                 if (temp->left == NULL)
                 {
-                    // if so assign the new leaf there
-                    temp->left = l;
+                    temp->left = l; // if so assign the new leaf there
                     // Output that it was added
                     printf("%i added to the left\n", temp->number);
                     placed = true; // updated placed to true
@@ -100,9 +97,8 @@ int main(void)
                 else
                 {
                     // Else update current pointer
-                    temp = temp->right;
+                    temp = temp->left;
                 }
-                temp- = temp->left;
             }
 
             // Print tree
@@ -156,4 +152,5 @@ bool search(leaf *tree, int number)
     {
         return true;
     }
+    return 1;
 }
