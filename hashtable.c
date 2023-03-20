@@ -78,7 +78,6 @@ void addPhrase(node *newnode, int index)
     currentnode->next = newnode;  // when correct spot found set current node next pointer to the new node
     //printf("Phrase added \n");
     free(currentnode);
-    free(newnode);
 }
 
 void outputTable()
