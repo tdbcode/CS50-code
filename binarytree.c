@@ -99,7 +99,14 @@ int main(void)
 
     no1 = get_int("What number would you like to search for?");
 
-    printf(search(root, no1));
+    if (search(root, no1))
+    {
+        printf("Number found\n");
+    }
+    else
+    {
+        printf("Number not found\n");
+    }
 
     // Print tree
     print_tree(root);
