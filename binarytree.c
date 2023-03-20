@@ -42,24 +42,25 @@ int main(void)
         l = malloc(sizeof(leaf));
         if (l == NULL)
         {
-            free_tree();
+            free_tree(root);
             return 1;
         }
 
         no1 = get_int("Enter your next number");
         l->number = no1;
-        l->left == NULL;
-        l->right == NULL;
+        l->left = NULL;
+        l->right = NULL;
 
         temp = root;
 
-        while placed = false
+        while (placed == false)
         {
             if (l->number > temp->number)
             {
                 if (temp->right == NULL)
                 {
                     temp->right = l;
+                    printf("%i\n added to the right", temp->number);
                 }
                 else
                 {
@@ -69,7 +70,15 @@ int main(void)
             }
             else
             {
-                temp->left = l;
+                if (temp->left == NULL)
+                {
+                    temp->left = l;
+                    printf("%i\n added to the left", temp->number);
+                }
+                else
+                {
+                    temp->left = temp->left->left;
+                }
             }
 
         }
@@ -83,6 +92,7 @@ void free_tree(leaf *root)
     {
         return;
     }
+
     free_tree(root->left);
     free_tree(root->right);
     free(root);
@@ -94,6 +104,7 @@ void print_tree(leaf *root)
     {
         return;
     }
+
     print_tree(root->left);
     printf("%i\n", root->number);
     print_tree(root->right);
