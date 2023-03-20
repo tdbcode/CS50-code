@@ -38,7 +38,7 @@ int main(void)
         addPhrase(newnode, index);
     }
 
-   // outputTable();
+   outputTable();
 }
 
 int hash(string phrase)
@@ -46,29 +46,54 @@ int hash(string phrase)
     return toupper(phrase[0]) - 'A';
 }
 
-int addPhrase(node *newnode, int index)
+void addPhrase(node *newnode, int index)
 {
+    // If first item in hash is empty then add new node
+    if (table[index] == NULL)
+    {
+        table[index] = newnode;
+        return;
+    }
+
+    // make a current node for temporary searching linked list
     node *currentnode = malloc(sizeof(node));
+
+    // if problem assigning memory, exit program
     if (currentnode == NULL)
     {
         return;
     }
-    currentnode = table[index];
 
+    currentnode = table[index]; // set current node to first item in hashtable
+
+    // while there are items in hash set current not to the next item
     while (currentnode->next != NULL)
     {
         currentnode = currentnode->next;
         printf("%s\n", currentnode->phrase);
     }
-    currentnode->next = currentnode;
-    free(currentnode);
+    currentnode->next = newnode;  // when correct spot found set current node next pointer to the new node
+    free(currentnode); // free memory for current node
 }
 
 void outputTable()
 {
-    for (int j = 0; j < 26; j++)
+    // make a current node for temporary searching linked list
+    node *currentnode = malloc(sizeof(node));
+
+    // if problem assigning memory, exit program
+    if (currentnode == NULL)
     {
-        printf("%c\n", table[j]->phrase[0]);
-        printf("%s\n", table[j]->phrase);
+        return;
+    }
+
+    // for each hash in hashtable
+    for (int h = 0; h < 26; h++)
+    {
+        currentnode = table[h];
+        // repeat until next end of that current linked list
+        while ()
+        printf("%c\n", table[h]->phrase[0]);
+        printf("%s\n", table[h]->phrase);
     }
 }
