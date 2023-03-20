@@ -13,13 +13,14 @@ leaf;
 
 void free_tree(leaf *root);
 void print_tree(leaf *root);
-bool search(node *tree, int number);
+bool search(leaf *tree, int number);
 
 int main(void)
 {
     leaf *root = NULL; // Create root of tree
 
-    leaf *l = malloc(sizeof(leaf));
+    leaf *l = malloc(sizeof(leaf)); // Assign memory for new leaf
+    // If memory not allocated free memory and exit program
     if (l == NULL)
     {
         return 1;
@@ -32,30 +33,40 @@ int main(void)
     l->left = NULL;
     l->right = NULL;
 
-    root = l;
+    root = l; // Set root to new leaf
 
+    // Ask how many items the user wants to add to tree
     int no2 = get_int("How many items do you want to add to the tree?\n");
-    leaf *temp = NULL; // Temp leaf
-    temp = root;
-    bool placed = false;
+    leaf *temp = NULL; // Create a temporary leaf for story
+    temp = root; // Set temp to root of tree
+    bool placed = false; // Set leaf placed as false
+
+    // Start loop for as many items as the user wants to add
     for (int i = 0; i < no2; i++)
     {
-        l = malloc(sizeof(leaf));
+        l = malloc(sizeof(leaf)); // Assign memory for new leaf
+        // If memory not allocated free memory and exit program
         if (l == NULL)
         {
             free_tree(root);
             return 1;
         }
 
+        // Ask user to enter next number
         no1 = get_int("Enter your next number\n");
+
+        // Assign values to leaf
         l->number = no1;
         l->left = NULL;
         l->right = NULL;
 
+        // Set placed as false;
         placed = false;
 
+        // While leaf isn't placed, find location within tree
         while (placed == false)
         {
+            // If new number is more than temp number
             if (l->number > temp->number)
             {
                 if (temp->right == NULL)
@@ -110,7 +121,7 @@ void print_tree(leaf *root)
     print_tree(root->right);
 }
 
-bool search(node *tree, int number)
+bool search(leaf *tree, int number)
 {
     if (tree == NULL)
     {
