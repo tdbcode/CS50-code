@@ -38,14 +38,12 @@ int main(void)
     // Ask how many items the user wants to add to tree
     int no2 = get_int("How many items do you want to add to the tree?\n");
     leaf *temp = NULL; // Create a temporary leaf for story
-    temp = root; // Set temp to root of tree
     bool placed = false; // Set leaf placed as false
 
     // Start loop for as many items as the user wants to add
     for (int i = 0; i < no2; i++)
     {
         l = malloc(sizeof(leaf)); // Assign memory for new leaf
-
         // If memory not allocated free memory and exit program
         if (l == NULL)
         {
@@ -60,6 +58,8 @@ int main(void)
         l->left = NULL;
         l->right = NULL;
         placed = false; // Set placed as false;
+
+        temp = root; // reset temp to root of tree
 
         // While leaf isn't placed, find location within tree
         while (placed == false)
