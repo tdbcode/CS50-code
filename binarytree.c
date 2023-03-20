@@ -41,6 +41,7 @@ int main(void)
         if (l == NULL)
         {
             free_tree();
+            return 1;
         }
 
         no1 = get_int("Enter your next number");
