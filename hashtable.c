@@ -52,7 +52,7 @@ void addPhrase(node *newnode, int index)
     if (table[index] == NULL)
     {
         table[index] = newnode;
-        printf("%s added \n", table[index]->phrase);
+        printf("Phrase added \n");
         return;
     }
 
@@ -73,7 +73,7 @@ void addPhrase(node *newnode, int index)
         currentnode = currentnode->next;
     }
     currentnode->next = newnode;  // when correct spot found set current node next pointer to the new node
-    printf("%s added \n", currentnode->phrase);
+    printf("Phrase added \n");
     free(currentnode); // free memory for current node
 }
 
@@ -91,12 +91,17 @@ void outputTable()
     // for each hash in hashtable
     for (int h = 0; h < 26; h++)
     {
-        currentnode = table[h]; // assign current hash to temporary node
-        printf("%c\n", table[h]->phrase[0]); // output letter of current hash
-        // repeat until next end of that current linked list
-        while (table[h]->next != NULL)
+        // If the current hash isn't empty
+        if (table[h] != NULL)
         {
-            printf("%s\n", table[h]->phrase);
+            currentnode = table[h]; // assign current hash to temporary node
+            printf("%c\n", table[h]->phrase[0]); // output letter of current hash
+            // repeat until next end of that current linked list
+            while (currentnode->next != NULL)
+            {
+                printf("%s\n", currentnode->phrase); // output phrase of current hash
+                currentnode = currentnode->next;
+            }
         }
     }
     free(currentnode);
