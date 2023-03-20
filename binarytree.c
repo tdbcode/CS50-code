@@ -11,14 +11,13 @@ typedef struct leaf
 }
 leaf;
 
-leaf *root = NULL; // Create root of tree
-
-void free_tree(leaf *tree);
-void print_tree(leaf *tree);
+void free_tree(leaf *root);
+void print_tree(leaf *root);
 bool search(leaf *tree, int number);
 
 int main(void)
 {
+    leaf *root = NULL; // Create root of tree
 
     leaf *l = malloc(sizeof(leaf)); // Assign memory for new leaf
     // If memory not allocated free memory and exit program
@@ -116,7 +115,7 @@ int main(void)
     free_tree(root);
 }
 
-void free_tree(leaf *tree)
+void free_tree(leaf *root)
 {
     if (root == NULL)
     {
@@ -128,24 +127,16 @@ void free_tree(leaf *tree)
     free(root);
 }
 
-void print_tree(leaf *tree)
+void print_tree(leaf *root)
 {
-    if (tree == NULL)
+    if (root == NULL)
     {
         return;
     }
-    else if (tree == root)
-    {
-        printf("%i\n", root->number);
-    }
-    else
-    {
-        printf("%i\n", tree->number);
-    }
 
-    print_tree(tree->left);
-    printf("%i\n", tree->number);
-    print_tree(tree->right);
+    print_tree(root->left);
+    printf("%i\n", root->number);
+    print_tree(root->right);
 }
 
 bool search(leaf *tree, int number)
