@@ -73,8 +73,7 @@ void addPhrase(node *newnode, int index)
         currentnode = currentnode->next;
     }
     currentnode->next = newnode;  // when correct spot found set current node next pointer to the new node
-    printf("Phrase added \n");
-    free(currentnode); // free memory for current node
+    //printf("Phrase added \n");
 }
 
 void outputTable()
@@ -100,7 +99,14 @@ void outputTable()
             while (currentnode->phrase != NULL)
             {
                 printf("%s\n", currentnode->phrase); // output phrase of current hash
-                currentnode = currentnode->next; // set currentnode to next item
+                if (currentnode->next == NULL)
+                {
+                    currentnode = currentnode->next; // set currentnode to next item
+                }
+                else
+                {
+                    break;
+                }
             }
         }
     }
