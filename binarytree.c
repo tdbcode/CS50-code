@@ -43,7 +43,7 @@ int main(void)
     // Start loop for as many items as the user wants to add
     for (int i = 0; i < no2; i++)
     {
-        l = malloc(sizeof(leaf)); // Assign memory for new leaf
+        leaf *l = malloc(sizeof(leaf)); // Assign memory for new leaf
         // If memory not allocated free memory and exit program
         if (l == NULL)
         {
