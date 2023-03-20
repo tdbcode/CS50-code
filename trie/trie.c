@@ -126,7 +126,7 @@ bool check(char* word)
     {
         if (cursor->children == NULL)
         {
-            return false;
+            break;
         }
         else
         {
@@ -137,9 +137,11 @@ bool check(char* word)
 
     if (cursor->is_word == true)
     {
+        free(cursor);
         return true;
     }
 
+    free(cursor);
     // need to get word - 1 from the front
     return false;
 }
