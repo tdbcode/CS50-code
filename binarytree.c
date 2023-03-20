@@ -13,6 +13,7 @@ leaf;
 
 void free_tree(leaf *root);
 void print_tree(leaf *root);
+bool search(node *tree, int number);
 
 int main(void)
 {
@@ -107,4 +108,24 @@ void print_tree(leaf *root)
     print_tree(root->left);
     printf("%i\n", root->number);
     print_tree(root->right);
+}
+
+bool search(node *tree, int number)
+{
+    if (tree == NULL)
+    {
+        return false;
+    }
+    else if (number < tree->number)
+    {
+        return search(tree->left, number);
+    }
+    else if (number > tree->number)
+    {
+        return search(tree->right, number);
+    }
+    else if (number == tree->number)
+    {
+        return true;
+    }
 }
