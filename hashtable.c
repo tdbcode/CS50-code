@@ -77,6 +77,7 @@ void addPhrase(node *newnode, int index)
     }
     currentnode->next = newnode;  // when correct spot found set current node next pointer to the new node
     //printf("Phrase added \n");
+    free(currentnode);
 }
 
 void outputTable()
@@ -92,7 +93,6 @@ void outputTable()
             for (node *ptr = table[h]; ptr != NULL; ptr = ptr->next)
             {
                 printf("%s\n", ptr->phrase);
-                free(ptr);
             }
         }
     }
