@@ -23,7 +23,7 @@ int main(void)
 
     for (int i = 0; i < numberOfWords; i++)
     {
-        string phrase = get_string("Enter phrase number %i :\n", i + 1);
+        string phrase = get_string("Enter phrase number %i ", i + 1);
         int index = hash(phrase);
         //printf("%s hashes to %i\n", phrase, index);
         node *newnode = malloc(sizeof(node));
