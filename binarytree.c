@@ -45,6 +45,7 @@ int main(void)
     for (int i = 0; i < no2; i++)
     {
         l = malloc(sizeof(leaf)); // Assign memory for new leaf
+
         // If memory not allocated free memory and exit program
         if (l == NULL)
         {
@@ -52,16 +53,13 @@ int main(void)
             return 1;
         }
 
-        // Ask user to enter next number
-        no1 = get_int("Enter your next number\n");
+        no1 = get_int("Enter your next number\n"); // Ask user to enter next number
 
-        // Assign values to leaf
+        // Assign values to new leaf
         l->number = no1;
         l->left = NULL;
         l->right = NULL;
-
-        // Set placed as false;
-        placed = false;
+        placed = false; // Set placed as false;
 
         // While leaf isn't placed, find location within tree
         while (placed == false)
@@ -73,14 +71,12 @@ int main(void)
                 if (temp->right == NULL)
                 {
                     temp->right = l; // if so assign the new leaf there
-                    // Output that it was added
-                    printf("%i added to the right\n", temp->number);
+                    printf("%i added to the right\n", temp->number); // Output that it was added
                     placed = true; // updated placed to true
                 }
                 else
                 {
-                    // Else update current pointer
-                    temp = temp->right;
+                    temp = temp->right; // Else update current pointer
                 }
             }
             // Else, number is more than current leaf, try assign to right
@@ -90,14 +86,12 @@ int main(void)
                 if (temp->left == NULL)
                 {
                     temp->left = l; // if so assign the new leaf there
-                    // Output that it was added
-                    printf("%i added to the left\n", temp->number);
+                    printf("%i added to the left\n", temp->number); // Output that it was added
                     placed = true; // updated placed to true
                 }
                 else
                 {
-                    // Else update current pointer
-                    temp = temp->left;
+                    temp = temp->left; // Else update current pointer
                 }
             }
 
