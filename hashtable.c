@@ -37,7 +37,6 @@ int main(void)
         newnode->next = NULL;
         //printf("%s\n", newnode->phrase);
         addPhrase(newnode, index);
-        free(newnode);
     }
 
    outputTable();
