@@ -64,7 +64,7 @@ void addPhrase(node *newnode, int index)
     // if problem assigning memory, exit program
     if (currentnode == NULL)
     {
-        void freehash();
+        freehash();
         return;
     }
 
