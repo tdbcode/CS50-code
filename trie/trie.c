@@ -124,7 +124,7 @@ bool check(char* word)
 
     while (cursor != NULL && counter < length)
     {
-        if (cursor->children == NULL)
+      /*  if (cursor->children == NULL)
         {
             break;
         }
@@ -132,7 +132,7 @@ bool check(char* word)
         {
             cursor = cursor->children;
         }
-        counter++;
+        counter++;*/
     }
 
     if (cursor->is_word == true)
