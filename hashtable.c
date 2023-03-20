@@ -97,10 +97,10 @@ void outputTable()
             currentnode = table[h]; // assign current hash to temporary node
             printf("%c\n", table[h]->phrase[0]); // output letter of current hash
             // repeat until next end of that current linked list
-            while (currentnode->next != NULL)
+            while (currentnode->phrase != NULL)
             {
                 printf("%s\n", currentnode->phrase); // output phrase of current hash
-                currentnode = currentnode->next;
+                currentnode = currentnode->next; // set currentnode to next item
             }
         }
     }
