@@ -129,39 +129,41 @@ void free_tree(leaf *root)
 
 void print_tree(leaf *root)
 {
-    bool placed = false;
+    bool endoftree = false;
 
-    while (placed == false)
+    leaf *templeaf = malloc(sizeof(leaf)); // Assign memory for new leaf
+    templeaf = root;
+
+    if (root == NULL)
     {
-        if (temp->right == NULL)
-                {
-                    temp->right = newleaf; // if so assign the new leaf there
-                    printf("%i added to the right\n", newleaf->number); // Output that it was added
-                    placed = true; // updated placed to true
-                }
-                else
-                {
-                    temp = temp->right; // Else update current pointer
-                }
+        return;
+    }
+
+    while (endoftree == false)
+    {
+        endoftree = false;
+        if (templeaf->left == NULL)
+        {
+            printf("%i\n", templeaf->number); // Output that it was added
+            endoftree = true; // updated placed to true
+        }
+        else
+        {
+            if (templeaf->right == NULL)
+            {
+                printf("%i added to the left\n", newleaf->number); // Output that it was added
+                endoftree = true; // updated placed to true
             }
-            // Else, number is more than current leaf, try assign to right
             else
             {
-                // Check if current leaf pointer to the right is empty
-                if (temp->left == NULL)
-                {
-                    temp->left = newleaf; // if so assign the new leaf there
-                    printf("%i added to the left\n", newleaf->number); // Output that it was added
-                    placed = true; // updated placed to true
-                }
-                else
-                {
-                    temp = temp->left; // Else update current pointer
-                }
+                templeaf = templeaf->left; // Else update current pointer
             }
+        templeaf = templeaf->left; // Else update current pointer
         }
 
+    }
 }
+
 
 /*
 void print_tree(leaf *root)
