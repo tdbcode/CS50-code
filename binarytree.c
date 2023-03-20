@@ -24,7 +24,7 @@ int main(void)
         return 1;
     }
 
-    int no1 = get_int("Enter your first number");
+    int no1 = get_int("Enter your first number\n");
 
     // Create root of tree
     l->number = no1;
@@ -33,7 +33,7 @@ int main(void)
 
     root = l;
 
-    int no2 = get_int("How many items do you want to add to the tree?");
+    int no2 = get_int("How many items do you want to add to the tree?\n");
     leaf *temp = NULL; // Temp leaf
     temp = root;
     bool placed = false;
@@ -46,7 +46,7 @@ int main(void)
             return 1;
         }
 
-        no1 = get_int("Enter your next number");
+        no1 = get_int("Enter your next number\n");
         l->number = no1;
         l->left = NULL;
         l->right = NULL;
@@ -60,7 +60,7 @@ int main(void)
                 if (temp->right == NULL)
                 {
                     temp->right = l;
-                    printf("%i\n added to the right", temp->number);
+                    printf("%i added to the right\n", temp->number);
                     placed = true;
                 }
                 temp->right = temp->right->right;
@@ -70,14 +70,18 @@ int main(void)
                 if (temp->left == NULL)
                 {
                     temp->left = l;
-                    printf("%i\n added to the left", temp->number);
+                    printf("%i added to the left\n", temp->number);
                     placed = true;
                 }
                 temp->left = temp->left->left;
             }
 
-        }
+            // Print tree
+            print_tree(root);
 
+            // Free tree
+            free_tree(root);
+        }
     }
 }
 
