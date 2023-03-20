@@ -25,7 +25,7 @@ int main(void)
     {
         string phrase = get_string("Enter phrase number %i :\n", i + 1);
         int index = hash(phrase);
-        printf("%s hashes to %i\n", phrase, index);
+        //printf("%s hashes to %i\n", phrase, index);
         node *newnode = malloc(sizeof(node));
         if (newnode == NULL)
         {
@@ -34,7 +34,8 @@ int main(void)
 
         newnode->phrase = phrase;
         newnode->next = NULL;
-        addPhrase(newnode, index);
+        printf("%s\n", newnode->phrase);
+        //addPhrase(newnode, index);
     }
 
    // outputTable();
