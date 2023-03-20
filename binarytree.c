@@ -43,9 +43,9 @@ int main(void)
     // Start loop for as many items as the user wants to add
     for (int i = 0; i < no2; i++)
     {
-        leaf *l = malloc(sizeof(leaf)); // Assign memory for new leaf
+        leaf *newleaf = malloc(sizeof(leaf)); // Assign memory for new leaf
         // If memory not allocated free memory and exit program
-        if (l == NULL)
+        if (newleaf == NULL)
         {
             free_tree(root);
             return 1;
@@ -54,9 +54,9 @@ int main(void)
         no1 = get_int("Enter your next number\n"); // Ask user to enter next number
 
         // Assign values to new leaf
-        l->number = no1;
-        l->left = NULL;
-        l->right = NULL;
+        newleaf->number = no1;
+        newleaf->left = NULL;
+        newleaf->right = NULL;
         placed = false; // Set placed as false;
 
         temp = root; // reset temp to root of tree
@@ -65,13 +65,13 @@ int main(void)
         while (placed == false)
         {
             // If new number is more than current leaf, try assign to right
-            if (l->number > temp->number)
+            if (newleaf->number > temp->number)
             {
                 // Check if current leaf pointer to the right is empty
                 if (temp->right == NULL)
                 {
-                    temp->right = l; // if so assign the new leaf there
-                    printf("%i added to the right\n", l->number); // Output that it was added
+                    temp->right = newleaf; // if so assign the new leaf there
+                    printf("%i added to the right\n", newleaf->number); // Output that it was added
                     placed = true; // updated placed to true
                 }
                 else
@@ -85,8 +85,8 @@ int main(void)
                 // Check if current leaf pointer to the right is empty
                 if (temp->left == NULL)
                 {
-                    temp->left = l; // if so assign the new leaf there
-                    printf("%i added to the left\n", l->number); // Output that it was added
+                    temp->left = newleaf; // if so assign the new leaf there
+                    printf("%i added to the left\n", newleaf->number); // Output that it was added
                     placed = true; // updated placed to true
                 }
                 else
@@ -94,14 +94,15 @@ int main(void)
                     temp = temp->left; // Else update current pointer
                 }
             }
-
-            // Print tree
-            print_tree(root);
-
-            // Free tree
-            free_tree(root);
         }
+        free(newleaf);
     }
+
+    // Print tree
+    print_tree(root);
+
+    // Free tree
+    free_tree(root);
 }
 
 void free_tree(leaf *root)
