@@ -10,6 +10,8 @@ typedef struc leaf
 }
 leaf;
 
+void free_tree(leaf *root);
+
 int main(void)
 {
     node *root = NULL; // First node
@@ -34,6 +36,10 @@ int main(void)
     for (int i = 0; i < no2; i++)
     {
         l = malloc(sizeof(leaf));
+        if (l == NULL)
+        {
+            free_tree();
+        }
         no1 = get_int("Enter your next number");
         l->number = no1;
 
@@ -42,5 +48,12 @@ int main(void)
         l->right = NULL;
 
     }
+}
+
+void free_tree(leaf *root)
+{
+    if ()
+    leaf *current = root->left;
+
 
 }
