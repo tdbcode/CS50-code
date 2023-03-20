@@ -28,5 +28,5 @@ int main(void){
 
 int hash(string phrase)
 {
-    return 0;
+    return toupper(phrase[0] - 'A');
 }
