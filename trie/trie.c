@@ -119,7 +119,7 @@ bool check(char* word)
     }
 
     cursor = root;
-    int currentindex = toupper(word[0]_ - 'A';
+    int currentindex = toupper(word[0]) - 'A';
 
     while (cursor ! = NULL)
     {
