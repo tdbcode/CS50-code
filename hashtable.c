@@ -37,7 +37,6 @@ int main(void)
         newnode->next = NULL;
         //printf("%s\n", newnode->phrase);
         addPhrase(newnode, index);
-        free(newnode);
     }
 
    outputTable();
@@ -55,7 +54,7 @@ void addPhrase(node *newnode, int index)
     if (table[index] == NULL)
     {
         table[index] = newnode;
-        printf("Phrase added \n");
+        //printf("Phrase added \n");
         return;
     }
 
@@ -77,7 +76,6 @@ void addPhrase(node *newnode, int index)
         currentnode = currentnode->next;
     }
     currentnode->next = newnode;  // when correct spot found set current node next pointer to the new node
-    free(currentnode);
     //printf("Phrase added \n");
 }
 
