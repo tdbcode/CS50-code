@@ -119,19 +119,17 @@ bool check(char* word)
     }
 
     cursor = root;
-    int pointer = 0;
-    char currentletter = word[0];
+    int currentindex = toupper(word[0]_ - 'A';
 
     while (cursor ! = NULL)
     {
-        pointer = currentletter;
-        if (curson[pointer]->children == NULL)
+        if (curson[currentindex]->children == NULL)
         {
             return false;
         }
         else
         {
-            cursor = cursor[pointer]->children;
+            cursor = cursor[currentindex]->children;
         }
     }
 
