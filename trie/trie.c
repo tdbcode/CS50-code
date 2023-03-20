@@ -111,10 +111,19 @@ int main(int argc, char *argv[])
 bool check(char* word)
 {
     int length = get_length(word);
-
-    for (node *cursor = root; cursor != NULL; cursor = cursor->children)
+    node *cursor = malloc(get_size(node));
+    
+    if (cursor == NULL)
     {
-        printf("%s\n", currentnode->phrase);
+        unload();
+        return 1;
+    }
+
+    cursor = root;
+
+    while (cursor ! = NULL)
+    {
+
     }
 
     // need to get word - 1 from the front
