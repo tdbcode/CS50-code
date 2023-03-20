@@ -66,26 +66,43 @@ int main(void)
         // While leaf isn't placed, find location within tree
         while (placed == false)
         {
-            // If new number is more than temp number
+            // If new number is more than current leaf, try assign to right
             if (l->number > temp->number)
             {
+                // Check if current leaf pointer to the right is empty
                 if (temp->right == NULL)
                 {
+                    // if so assign the new leaf there
                     temp->right = l;
+                    // Output that it was added
                     printf("%i added to the right\n", temp->number);
+                    // updated placed to true
                     placed = true;
                 }
-                temp->right = temp->right->right;
+                else
+                {
+                    // Else update current pointer
+                    temp = temp->right;
+                }
             }
+            // Else, number is more than current leaf, try assign to right
             else
             {
+                // Check if current leaf pointer to the right is empty
                 if (temp->left == NULL)
                 {
+                    // if so assign the new leaf there
                     temp->left = l;
+                    // Output that it was added
                     printf("%i added to the left\n", temp->number);
-                    placed = true;
+                    placed = true; // updated placed to true
                 }
-                temp->left = temp->left->left;
+                else
+                {
+                    // Else update current pointer
+                    temp = temp->right;
+                }
+                temp- = temp->left;
             }
 
             // Print tree
