@@ -20,5 +20,27 @@ int main(void)
         return 1;
     }
 
-    // Create root of tre
+    int no1 = get_int("Enter your first number");
+
+    // Create root of tree
+    l->number = no1;
+    l->left = NULL;
+    l->right = NULL;
+
+    root = l;
+
+    int no2 = get_int("How many items do you want to add to the tree?");
+
+    for (int i = 0; i < no2; i++)
+    {
+        l = malloc(sizeof(leaf));
+        no1 = get_int("Enter your next number");
+        l->number = no1;
+
+        if (l->number > )
+        l->left = NULL;
+        l->right = NULL;
+
+    }
+
 }
