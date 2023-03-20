@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <cs50.h>
 
 // Define a leaf
-typedef struc leaf
+typedef struct leaf
 {
     int number;
     struct leaf *left;
@@ -35,6 +36,7 @@ int main(void)
     int no2 = get_int("How many items do you want to add to the tree?");
     leaf *temp = NULL; // Temp leaf
     temp = root;
+    bool placed = false;
     for (int i = 0; i < no2; i++)
     {
         l = malloc(sizeof(leaf));
@@ -46,15 +48,32 @@ int main(void)
 
         no1 = get_int("Enter your next number");
         l->number = no1;
+        l->left == NULL;
+        l->right == NULL;
 
-        if (l->number > temp = root->number)
+        temp = root;
+
+        while placed = false
         {
-            temp->right = l;
+            if (l->number > temp->number)
+            {
+                if (temp->right == NULL)
+                {
+                    temp->right = l;
+                }
+                else
+                {
+                    temp->right = temp->right->right;
+                }
+
+            }
+            else
+            {
+                temp->left = l;
+            }
+
         }
-        else
-        {
-            temp->left = l;
-        }
+
     }
 }
 
