@@ -78,37 +78,18 @@ void addPhrase(node *newnode, int index)
 
 void outputTable()
 {
-    // make a current node for temporary searching linked list
-    node *currentnode = malloc(sizeof(node));
-
-    // if problem assigning memory, exit program
-    if (currentnode == NULL)
-    {
-        return;
-    }
-
     // for each hash in hashtable
     for (int h = 0; h < 26; h++)
     {
         // If the current hash isn't empty
         if (table[h] != NULL)
         {
-            currentnode = table[h]; // assign current hash to temporary node
-            printf("%c\n", table[h]->phrase[0]); // output letter of current hash
+            printf("%c\n", toupper(table[h]->phrase[0])); // output letter of current hash
             // repeat until next end of that current linked list
-            while (currentnode->phrase != NULL)
+            for (node *ptr = table[h]; ptr != NULL; ptr = ptr->next)
             {
-                printf("%s\n", currentnode->phrase); // output phrase of current hash
-                if (currentnode->next == NULL)
-                {
-                    currentnode = currentnode->next; // set currentnode to next item
-                }
-                else
-                {
-                    break;
-                }
+                printf("%s\n", ptr->phrase);
             }
         }
     }
-    free(currentnode);
 }
