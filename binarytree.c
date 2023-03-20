@@ -97,6 +97,10 @@ int main(void)
         }
     }
 
+    no1 = get_int("What number would you like to search for?");
+
+    printf(search(root, no1));
+
     // Print tree
     print_tree(root);
 
