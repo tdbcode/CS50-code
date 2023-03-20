@@ -14,6 +14,7 @@ node;
 int hash(string phrase);
 void addPhrase(node *newnode, int index);
 void outputTable();
+void freehash();
 
 node *table[26];
 
@@ -39,6 +40,7 @@ int main(void)
     }
 
    outputTable();
+   freehash();
 }
 
 int hash(string phrase)
@@ -62,6 +64,7 @@ void addPhrase(node *newnode, int index)
     // if problem assigning memory, exit program
     if (currentnode == NULL)
     {
+        void freehash();
         return;
     }
 
@@ -90,6 +93,22 @@ void outputTable()
             {
                 printf("%s\n", ptr->phrase);
             }
+        }
+    }
+}
+
+void freehash()
+{
+    // for each hash in hashtable
+    for (int h = 0; h < 26; h++)
+    {
+         // Free memory
+        node *ptr = table[h];
+        while (ptr != NULL)
+        {
+            node *next = ptr->next;
+            free(ptr);
+            ptr = next;
         }
     }
 }
