@@ -54,6 +54,7 @@ void addPhrase(node *newnode, int index)
     if (table[index] == NULL)
     {
         table[index] = newnode;
+        free(newnode);
         //printf("Phrase added \n");
         return;
     }
