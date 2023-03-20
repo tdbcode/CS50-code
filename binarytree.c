@@ -71,7 +71,7 @@ int main(void)
                 if (temp->right == NULL)
                 {
                     temp->right = l; // if so assign the new leaf there
-                    printf("%i added to the right\n", temp->number); // Output that it was added
+                    printf("%i added to the right\n", l->number); // Output that it was added
                     placed = true; // updated placed to true
                 }
                 else
@@ -86,7 +86,7 @@ int main(void)
                 if (temp->left == NULL)
                 {
                     temp->left = l; // if so assign the new leaf there
-                    printf("%i added to the left\n", temp->number); // Output that it was added
+                    printf("%i added to the left\n", l->number); // Output that it was added
                     placed = true; // updated placed to true
                 }
                 else
