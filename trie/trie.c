@@ -112,7 +112,6 @@ bool check(char* word)
 {
     int length = get_length(word);
     node *cursor = malloc(get_size(node));
-    
     if (cursor == NULL)
     {
         unload();
@@ -120,10 +119,20 @@ bool check(char* word)
     }
 
     cursor = root;
+    int pointer = 0;
+    char currentletter = word[0];
 
     while (cursor ! = NULL)
     {
-
+        pointer = currentletter;
+        if (curson[pointer]->children == NULL)
+        {
+            return false;
+        }
+        else
+        {
+            cursor = cursor[pointer]->children;
+        }
     }
 
     // need to get word - 1 from the front
