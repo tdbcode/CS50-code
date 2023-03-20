@@ -129,6 +129,43 @@ void free_tree(leaf *root)
 
 void print_tree(leaf *root)
 {
+    bool placed = false;
+
+    while (placed == false)
+    {
+        if (temp->right == NULL)
+                {
+                    temp->right = newleaf; // if so assign the new leaf there
+                    printf("%i added to the right\n", newleaf->number); // Output that it was added
+                    placed = true; // updated placed to true
+                }
+                else
+                {
+                    temp = temp->right; // Else update current pointer
+                }
+            }
+            // Else, number is more than current leaf, try assign to right
+            else
+            {
+                // Check if current leaf pointer to the right is empty
+                if (temp->left == NULL)
+                {
+                    temp->left = newleaf; // if so assign the new leaf there
+                    printf("%i added to the left\n", newleaf->number); // Output that it was added
+                    placed = true; // updated placed to true
+                }
+                else
+                {
+                    temp = temp->left; // Else update current pointer
+                }
+            }
+        }
+
+}
+
+/*
+void print_tree(leaf *root)
+{
     if (root == NULL)
     {
         return;
@@ -137,7 +174,7 @@ void print_tree(leaf *root)
     print_tree(root->left);
     printf("%i\n", root->number);
     print_tree(root->right);
-}
+} */
 
 bool search(leaf *tree, int number)
 {
