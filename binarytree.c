@@ -11,6 +11,7 @@ typedef struc leaf
 leaf;
 
 void free_tree(leaf *root);
+void print_tree(leaf *root);
 
 int main(void)
 {
@@ -65,4 +66,15 @@ void free_tree(leaf *root)
     free_tree(root->left);
     free_tree(root->right);
     free(root);
+}
+
+void print_tree(leaf *root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+    print_tree(root->left);
+    printf("%i\n", root->number);
+    print_tree(root->right);
 }
