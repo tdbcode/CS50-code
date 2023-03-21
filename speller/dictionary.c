@@ -61,14 +61,8 @@ bool check(const char *word)
 // Hashes word to a number
 unsigned int hash(const char *word)
 {
-    int hashtotal = 0;
     // TODO: Improve this hash function - more buckets maybe means more efficient?
-    for (int h = 0; h < word[0]; h++)
-    {
-        hashtotal += tolower(word[h]);
-    }
-    // return toupper(word[0]) - 'A'; // too inefficient
-    return hashtotal % N;
+     return toupper(word[0]) - 'A'; // too inefficient
 
 }
 
