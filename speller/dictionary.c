@@ -30,7 +30,7 @@ const unsigned int N = 26;
 
 // Hash table
 node *table[N];
-int dictionary_size;
+int dictionary_size = 0; // global variable for size of the dictionary
 
 // Returns true if word is in dictionary, else false
 bool check(const char *word)
@@ -89,6 +89,7 @@ bool load(const char *dictionary)
         {
             currentword->next = table[hashvalue]; // Otherwise point the current item's next pointer to that value
             table[hashvalue] = currentword; // then replace the first item
+            dictionary_size++; // add one to dictionary size
         }
 
     }
