@@ -90,7 +90,8 @@ bool load(const char *dictionary)
             return false; // has to return false and not 1 as it is a boolean value and the word was not loaded
         }
 
-        strcpy(currentword->word, word); //set current word to word loaded from file
+        strcpy(currentword->word, word); // set current word to word loaded from file
+        currentword->next = NULL; // set next pointer of new word to NULL
         // have to find location in dictionary for current word so needs hash value
         int hashvalue = hash(word);
 
