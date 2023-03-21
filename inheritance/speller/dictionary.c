@@ -1,5 +1,11 @@
 // Implements a dictionary's functionality
 
+/* Sources used:
+
+https://www.tutorialspoint.com/c_standard_library/c_function_fscanf.htm
+
+*/
+
 #include <ctype.h>
 #include <stdbool.h>
 #include <string.h>
