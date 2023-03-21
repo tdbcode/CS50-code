@@ -48,7 +48,6 @@ bool check(const char *word)
     {
         //printf("%s\n", currentword->word); //testing purposes only
         // If word passed in matches the current word in the dictionary
-       /* IT's ALL RETURNING TRUE*/
        if (strcasecmp(word, currentword->word) == 0)
         {
             return true;    // return true
