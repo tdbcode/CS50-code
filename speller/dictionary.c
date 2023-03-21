@@ -44,12 +44,12 @@ bool check(const char *word)
     //printf("%i\n", hashvalue); //testing purposes only
 
     // Go through the whole dictionary list
-    for (node *currentword = table[hashvalue]; currentword == NULL; currentword = currentword->next)
+    for (node *currentword = table[hashvalue]; currentword != NULL; currentword = currentword->next)
     {
         //printf("%s\n", currentword->word); //testing purposes only
         // If word passed in matches the current word in the dictionary
-       /* IT's ALL RETURNING FALSE*/
-       if (strcasecmp(word, currentword->word))
+       /* IT's ALL RETURNING TRUE*/
+       if (strcasecmp(word, currentword->word) == 0)
         {
             return true;    // return true
         }
