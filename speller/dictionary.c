@@ -65,7 +65,7 @@ unsigned int hash(const char *word)
     // TODO: Improve this hash function - more buckets maybe means more efficient?
     for (int h = 0; h < word[0]; h++)
     {
-        hashtotal += toupper(word[h]);
+        hashtotal += tolower(word[h]);
     }
     // return toupper(word[0]) - 'A'; // too inefficient
     return hashtotal % N;
