@@ -131,10 +131,18 @@ bool check(char* word)
         //cursor = cursor->children[currentindex];
         counter++;
 
-        if (cursor->is_word == true)
+        if (cursor == NULL)
+        {
+            found = false;
+            break;
+        }
+
+        else if (cursor->is_word == true)
         {
             found = true;
+            break;
         }
+
     }
 
    /*
