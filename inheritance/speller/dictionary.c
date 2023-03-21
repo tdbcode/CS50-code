@@ -62,7 +62,7 @@ bool load(const char *dictionary)
     // while word is loaded from file and saved as word
     while(fscanf(dictionary_pointer, %s, word) != EOF)
     {
-        if (word = "")
+        if (word == "")
         {
             //lastword = true;
             break;
