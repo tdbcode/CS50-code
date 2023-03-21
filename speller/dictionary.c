@@ -14,6 +14,7 @@ https://www.tutorialspoint.com/explain-the-end-of-file-eof-with-a-c-program
 #include <ctype.h>
 #include <stdbool.h>
 #include <string.h>
+#include <stdio.h>
 
 #include "dictionary.h"
 
@@ -60,7 +61,7 @@ bool load(const char *dictionary)
 
     //bool lastword = false; // identifies if it's the last word
     // while word is loaded from file and saved as word
-    while(fscanf(dictionary_pointer, %s, word) != EOF)
+    while(fscanf(dictionary_pointer, "%s", word) != EOF)
     {
         if (word == "")
         {
