@@ -6,6 +6,10 @@ Didn't want to read line by line for load function as it wasn't easy to identify
 was without checking for \n. Easier to just read in word using:
 https://www.tutorialspoint.com/c_standard_library/c_function_fscanf.htm
 
+Used this source to work out how to detect end of file in a while loop rather than if statement
+which was breaking the algorithm:
+https://www.tutorialspoint.com/explain-the-end-of-file-eof-with-a-c-program
+
 */
 
 #include <ctype.h>
@@ -40,7 +44,7 @@ bool check(const char *word)
     for (node *currentword = table[hash(word)]; counter < size(); currentword = currentword->next)
     {
         // If word passed in matches the word in the dictionary
-        
+
         if (strcmp(word, currentword->word) == 0)
         {
             return true;    // return true
