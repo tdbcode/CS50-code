@@ -64,7 +64,7 @@ bool load(const char *dictionary)
     // while word is loaded from file and saved as word
     while(fscanf(dictionary_pointer, "%s", word) != EOF)
     {
-        if (word == "")
+        if (strcmp(word,""))
         {
             //lastword = true;
             break;
@@ -73,7 +73,7 @@ bool load(const char *dictionary)
         // If memory was not allocated, end the program
         if (currentword == NULL)
         {
-            return false; // hast to return false and not 1 as it is a boolean value and the word was not loaded
+            return false; // has to return false and not 1 as it is a boolean value and the word was not loaded
         }
 
         currentword->n = word; //set current word to word loaded from file
