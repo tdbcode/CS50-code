@@ -118,22 +118,16 @@ bool check(char* word)
         return 1;
     }
 
-    cursor = root;
-    int counter = 0;
-    int currentindex = toupper(word[0]) - 'A';
 
-    while (cursor != NULL && counter < length)
+    int counter = 1;
+    int currentindex = toupper(word[0]) - 'A';
+    cursor = root[currentindex];
+
+    while (cursor->children[currentindex] != NULL && counter < length)
     {
-        
-      /*  if (cursor->children == NULL)
-        {
-            break;
-        }
-        else
-        {
-            cursor = cursor->children;
-        }
-        counter++;*/
+        currentindex = toupper(word[counter]) - 'A';
+        cursor = cursor->children[currentindex];
+        counter++;
     }
 
     if (cursor->is_word == true)
