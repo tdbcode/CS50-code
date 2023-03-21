@@ -90,6 +90,14 @@ void free_family(person *p)
 
     // TODO: Free child
 
+    for (int i = 0; i < SIZE_OF_ALPHABET; i++)
+    {
+        if (current->children[i] != NULL)
+        {
+            unloader(current->children[i]);
+        }
+    }
+
 }
 
 // Print each family member and their alleles.
