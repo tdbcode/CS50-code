@@ -6,9 +6,6 @@ Didn't want to read line by line for load function as it wasn't easy to identify
 was without checking for \n. Easier to just read in word using:
 https://www.tutorialspoint.com/c_standard_library/c_function_fscanf.htm
 
-Rather than using bool lastword replaced this with !=EOF in while function as it fulfils that purpose:
-https://www.tutorialspoint.com/explain-the-end-of-file-eof-with-a-c-program
-
 */
 
 #include <ctype.h>
@@ -63,8 +60,9 @@ bool load(const char *dictionary)
 
     //bool lastword = false; // identifies if it's the last word
     // while word is loaded from file and saved as word
-    while(fscanf(dictionary_pointer, "%s", word) != EOF)
+    while(fscanf(dictionary_pointer, "%s", word))
     {
+        // compare if word is equal to blank, if so, exit loop as end of file
         if (strcmp(word,""))
         {
             //lastword = true;
