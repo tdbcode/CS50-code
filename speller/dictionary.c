@@ -40,12 +40,12 @@ bool check(const char *word)
 {
     int counter = 0; // Create counter and set to 0
     int hashvalue = hash(word);
-    printf("%i\n", hashvalue);
+    //printf("%i\n", hashvalue); //testing purposes only
 
     // Go through the whole dictionary list
     for (node *currentword = table[hashvalue]; currentword == NULL; currentword = currentword->next)
     {
-        printf("%s\n", word);
+        //printf("%s\n", currentword->word); //testing purposes only
         // If word passed in matches the current word in the dictionary
         if (strcmp(word, currentword->word) == 0)
         {
