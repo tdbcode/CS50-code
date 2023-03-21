@@ -17759,11 +17759,11 @@ THE
 END
 
 WORDS MISSPELLED:     17756
-WORDS IN DICTIONARY:  0
+WORDS IN DICTIONARY:  143091
 WORDS IN TEXT:        17756
-TIME IN load:         0.00
+TIME IN load:         0.02
 TIME IN check:        0.01
 TIME IN size:         0.00
 TIME IN unload:       0.00
-TIME IN TOTAL:        0.01
+TIME IN TOTAL:        0.04
 
