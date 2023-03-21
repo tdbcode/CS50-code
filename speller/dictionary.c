@@ -54,7 +54,7 @@ bool check(const char *word)
     {
         //printf("%s\n", currentword->word); //testing purposes only
         // If word passed in matches the current word in the dictionary
-       if (strcasecmp(word, currentword->word) == 0)
+        if (strcasecmp(word, currentword->word) == 0)
         {
             return true;    // return true
         }
@@ -69,7 +69,7 @@ unsigned int hash(const char *word)
 {
     // TODO: Improve this hash function - more buckets maybe means more efficient?
 
-    unsigned int hashresult = (toupper(word[0]) - 'A') + (toupper(word[1]) - 'A') + (toupper(word[2]) - 'A');
+    unsigned int hashresult = (toupper(word[0]) - 'A') + (toupper(word[1]) - 'A');
     return hashresult % N;
     //return toupper(word[0]) - 'A'; // inefficient but works
 
