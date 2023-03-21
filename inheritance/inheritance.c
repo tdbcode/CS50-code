@@ -71,12 +71,13 @@ person *create_family(int generations)
         tempperson->parents[1] = NULL;
 
         // TODO: Randomly assign alleles
-        tempperson->alleles[0] = random_allele()
+        tempperson->alleles[0] = random_allele();
+        tempperson->alleles[1] = random_allele();
 
     }
 
     // TODO: Return newly created person
-    return NULL;
+    return tempperson;
 }
 
 // Free `p` and all ancestors of `p`.
