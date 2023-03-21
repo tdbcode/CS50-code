@@ -74,6 +74,7 @@ bool load(const char *dictionary)
     // while word is loaded from file and saved as word
     while (fscanf(dictionary_pointer, "%s", word) != EOF)
     {
+        //printf("%s\n", word); // for testing
         /* Might mean dictionary adds no wordd
         // compare if word is equal to blank, if so, exit loop as end of file
         if (strcmp(word, ""))
@@ -92,8 +93,10 @@ bool load(const char *dictionary)
 
         strcpy(currentword->word, word); // set current word to word loaded from file
         currentword->next = NULL; // set next pointer of new word to NULL
+        //printf("%s\n", currentword->word); // for testing
         // have to find location in dictionary for current word so needs hash value
         int hashvalue = hash(word);
+        printf("%i\n", hashvalue); // for testing
 
         // If the first item in the table at that hashvalue is empty
         if (table[hashvalue] == NULL)
