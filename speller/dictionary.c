@@ -35,7 +35,6 @@ int dictionary_size = 0; // global variable for size of the dictionary
 bool check(const char *word)
 {
     int counter = 0; // Create counter and set to 0
-    // Make a temporary node to track which dictionary word using hashing to get current word
 
     // Go through the whole dictionary list
     for (node *currentword = table[hash(word)]; counter < size(); currentword = currentword->next)
