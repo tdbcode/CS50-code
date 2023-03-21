@@ -101,7 +101,7 @@ bool load(const char *dictionary)
 // Returns number of words in dictionary if loaded, else 0 if not yet loaded
 unsigned int size(void)
 {
-    return dictionary_size;
+    return dictionary_size; // what is the point of this if it's a global variable?
 }
 
 // Unloads dictionary from memory, returning true if successful, else false
