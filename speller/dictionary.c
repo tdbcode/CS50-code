@@ -118,5 +118,5 @@ bool unload(void)
             currentnode = next;
         }
     }
-    return false;
+    return true;
 }
