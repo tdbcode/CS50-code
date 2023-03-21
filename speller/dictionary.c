@@ -59,7 +59,7 @@ bool load(const char *dictionary)
         return false; // has to return false and not 1 as it is a boolean value and dictionary was not loaded
     }
 
-    string word = NULL;  // Create string to store word
+    char word[LENGTH + 1]; // Create string to store word
 
     //bool lastword = false; // identifies if it's the last word
     // while word is loaded from file and saved as word
