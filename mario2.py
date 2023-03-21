@@ -3,3 +3,5 @@
 for i in range(4):
     print("?", end="") #end replaces new line with blank line
 print()
+
+print("?" * 4)
