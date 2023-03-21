@@ -85,11 +85,16 @@ person *create_family(int generations)
 void free_family(person *p)
 {
     // TODO: Handle base case
-
+    if (p == NULL)
+    {
+        return;
+    }
     // TODO: Free parents recursively
-
+    free_family
     // TODO: Free child
 
+     // Iterate over all the children to see if they point to anything and go
+    // there if they do point
     for (int i = 0; i < SIZE_OF_ALPHABET; i++)
     {
         if (current->children[i] != NULL)
@@ -97,6 +102,10 @@ void free_family(person *p)
             unloader(current->children[i]);
         }
     }
+
+    // After we check all the children point to null we can get rid of the node
+    // and return to the previous iteration of this function.
+    free(current);
 
 }
 
