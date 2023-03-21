@@ -104,8 +104,8 @@ bool load(const char *dictionary)
         {
             currentword->next = table[hashvalue]; // Otherwise point the current item's next pointer to that value
             table[hashvalue] = currentword; // then replace the first item
-            dictionary_size++; // add one to dictionary size
         }
+        dictionary_size++; // add one to dictionary size
 
     }
 
