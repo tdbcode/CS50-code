@@ -121,7 +121,7 @@ bool check(char* word)
 
     int counter = 1;
     int currentindex = toupper(word[0]) - 'A';
-    cursor = root[currentindex];
+    cursor = &root[currentindex];
 
     while (cursor->children[currentindex] != NULL && counter < length)
     {
@@ -132,11 +132,9 @@ bool check(char* word)
 
     if (cursor->is_word == true)
     {
-        free(cursor);
         return true;
     }
 
-    free(cursor);
     // need to get word - 1 from the front
     return false;
 }
