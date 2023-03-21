@@ -45,9 +45,28 @@ bool load(const char *dictionary)
         return 1;
     }
 
-    string word = "";
+    string word = "";  // Create string to store word
 
-    fscanf(dictionary_pointer, %s, word);
+    while(fscanf(dictionary_pointer, %s, word))
+    {
+        node *currentword = malloc(sizeof(node)); // set currentword pointer to size of node to contain pointer for current word loaded from dictionary
+        // If memory was not allocated, end the program
+        if (currentword == NULL)
+        {
+            return 1;
+        }
+
+        currentword->n = word; //set current word to word loaded from file
+        // have to find location in dictionary for current word so needs hash value
+        int hashvalue = hash(word);
+
+        if (table[hashvalue] == NULL)
+        {
+            table[hashvalue] = currentword;
+        }
+        else if()
+
+    }
     return false;
 }
 
