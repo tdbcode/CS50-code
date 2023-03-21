@@ -111,26 +111,32 @@ int main(int argc, char *argv[])
 bool check(char* word)
 {
     int length = strlen(word);
-    node *cursor = malloc(sizeof(node));
+  /*  node *cursor = malloc(sizeof(node));
     if (cursor == NULL)
     {
         unload();
         return 1;
-    }
+    }*/
 
     int counter = 1;
     int currentindex = toupper(word[0]) - 'A';
+    bool found = false;
     //cursor = root;
 
-    for (node *currentnode = root; counter < length; currentnode = currentnode->children[currentindex])
+    for (node *cursor = root; counter < length; cursor = cursor->children[currentindex])
     //while (counter < length && cursor != NULL)
     {
         currentindex = toupper(word[counter]) - 'A';
         //cursor = cursor->children[currentindex];
         counter++;
+
+        if (cursor->is_word == true)
+        {
+            found = true;
+        }
     }
 
-    bool found = false;
+   /*
     if (cursor == NULL)
     {
         found = false;
@@ -139,7 +145,7 @@ bool check(char* word)
     {
         found = true;
     }
-    //free(cursor);
+    //free(cursor);*/
     return found;
 }
 
