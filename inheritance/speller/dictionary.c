@@ -2,6 +2,7 @@
 
 #include <ctype.h>
 #include <stdbool.h>
+#include <string.h>
 
 #include "dictionary.h"
 
@@ -44,7 +45,8 @@ bool load(const char *dictionary)
         return 1;
     }
 
-    string word
+    string word = "";
+
 
     return false;
 }
