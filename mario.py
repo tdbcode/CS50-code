@@ -1,7 +1,4 @@
-# Prints a column of bricks, using a helper function to get input
-
-from cs50 import get_int
-
+# Prints a column of bricks, catching exceptions
 
 def main():
     height = get_height()
@@ -11,9 +8,12 @@ def main():
 
 def get_height():
     while True:
-        n = get_int("Height: ")
-        if n > 0:
-            return n
+        try:
+            n = int(input("Height: "))
+            if n > 0:
+                return n
+        except ValueError:
+            print("Not an integer")
 
 
 main()
