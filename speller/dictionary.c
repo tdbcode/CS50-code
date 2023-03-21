@@ -110,13 +110,15 @@ bool unload(void)
     for (int h = 0; h < 26; h++)
     {
         // Free memory
-        node *currentnode = table[h];
+        node *currentnode = table[h]; // load first node in hashtable
+
+        //while current selected node is not null
         while (currentnode != NULL)
         {
-            node *next = currentnode->next;
-            free(currentnode);
-            currentnode = next;
+            node *next = currentnode->next; // set next to current pointer for switch
+            free(currentnode); // free memory for current node
+            currentnode = next; // switch next to current node to continue clearing
         }
     }
-    return true;
+    return true; // return true when complete
 }
