@@ -120,9 +120,9 @@ bool check(char* word)
 
     int counter = 0;
     int currentindex = toupper(word[0]) - 'A';
-    cursor = root;
+    //cursor = root;
 
-    for (node *currentnode = root; currentnode != NULL; currentnode = cursor->children[currentindex])
+    for (node *currentnode = root; counter < length; currentnode = currentnode->children[currentindex])
     //while (counter < length && cursor != NULL)
     {
         currentindex = toupper(word[counter]) - 'A';
