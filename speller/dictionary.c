@@ -69,7 +69,8 @@ unsigned int hash(const char *word)
 {
     // TODO: Improve this hash function - more buckets maybe means more efficient?
 
-    unsigned int hashresult = (toupper(word[0]) - 'A') + (toupper(word[1]) - 'A'); // tried the first two characters approach which almost halfed the time.
+    unsigned int hashresult = (toupper(word[0]) - 'A') + (toupper(word[1]) - 'A');
+    // tried the first two characters approach which almost halfed the time.
     return hashresult % N;
     //return toupper(word[0]) - 'A'; // inefficient but works
 
