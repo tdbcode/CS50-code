@@ -54,7 +54,7 @@ bool check(const char *word)
 unsigned int hash(const char *word)
 {
     // TODO: Improve this hash function
-    return tolower(word[0]) - 'A';
+    return tolower(word[0]) - 'a';
 }
 
 // Loads dictionary into memory, returning true if successful, else false
@@ -96,7 +96,7 @@ bool load(const char *dictionary)
         //printf("%s\n", currentword->word); // for testing
         // have to find location in dictionary for current word so needs hash value
         int hashvalue = hash(word);
-        printf("%i\n", hashvalue); // for testing
+        //printf("%i\n", hashvalue); // for testing
 
         // If the first item in the table at that hashvalue is empty
         if (table[hashvalue] == NULL)
