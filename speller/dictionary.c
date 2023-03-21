@@ -36,7 +36,7 @@ typedef struct node
 node;
 
 // TODO: Choose number of buckets in hash table
-const unsigned int N = 10000;
+const unsigned int N = 5000;
 
 // Hash table
 node *table[N];
@@ -69,7 +69,7 @@ unsigned int hash(const char *word)
 {
     // TODO: Improve this hash function - more buckets maybe means more efficient?
 
-    unsigned int hashresult = (toupper(word[0]) - 'A') + (toupper(word[1]) - 'A');
+    unsigned int hashresult = (toupper(word[0]) - 'A') + (toupper(word[1]) - 'A') + (toupper(word[2]) - 'A');
     return hashresult % N;
     //return toupper(word[0]) - 'A'; // inefficient but works
 
