@@ -61,7 +61,9 @@ bool check(const char *word)
 // Hashes word to a number
 unsigned int hash(const char *word)
 {
-    // TODO: Improve this hash function
+    // TODO: Improve this hash function - more buckets maybe means more efficient?
+
+    
     return toupper(word[0]) - 'A';
 }
 
@@ -133,7 +135,7 @@ unsigned int size(void)
 bool unload(void)
 {
     // for each hash in hashtable
-    for (int h = 0; h < 26; h++)
+    for (int h = 0; h < N; h++)
     {
         // Free memory
         node *currentnode = table[h]; // load first node in hashtable
