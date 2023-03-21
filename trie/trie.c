@@ -121,7 +121,7 @@ bool check(char* word)
 
     int currentindex = toupper(word[0]) - 'A';
     bool found = false;
-    int counter = 1;
+    int counter = 0;
     //cursor = root;
 
     for (node *cursor = root->children[currentindex]; counter < length; cursor = cursor->children[currentindex])
