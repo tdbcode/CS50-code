@@ -118,13 +118,13 @@ bool check(char* word)
         return 1;
     }*/
 
-    int counter = 0;
-    int currentindex = toupper(word[counter]) - 'A';
+
+    int currentindex = toupper(word[0]) - 'A';
     bool found = false;
-    counter++;
+    int counter = 1;
     //cursor = root;
 
-    for (node *cursor = root; counter < length; cursor = cursor->children[currentindex])
+    for (node *cursor = root->children[currentindex]; counter < length; cursor = cursor->children[currentindex])
     //while (counter < length && cursor != NULL)
     {
         currentindex = toupper(word[counter]) - 'A';
