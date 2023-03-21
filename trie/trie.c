@@ -118,7 +118,6 @@ bool check(char* word)
         return 1;
     }
 
-
     int counter = 0;
     int currentindex = toupper(word[0]) - 'A';
     cursor = root;
