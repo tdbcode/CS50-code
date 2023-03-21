@@ -35,10 +35,11 @@ int dictionary_size = 0; // global variable for size of the dictionary
 // Returns true if word is in dictionary, else false
 bool check(const char *word)
 {
+    
     int counter = 0;
     for (node *currentword = word->word; counter <= size; currentword = currentword->next)
     {
-        
+
         if (strcmp(word,))
         {
 
