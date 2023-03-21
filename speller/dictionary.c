@@ -39,7 +39,7 @@ bool check(const char *word)
     // Go through the whole dictionary list
     for (node *currentword = word->word; counter <= size(); currentword = currentword->next)
     {
-        node *dictionary_word = table[hash(word)]; // Make a temporary node to track which dictionary word using hashing to get current word
+        node *dictionary_word = table[hash(currentword)]; // Make a temporary node to track which dictionary word using hashing to get current word
         // If word passed in matches the word in the dictionary
         if (strcmp(currentword, dictionary_word))
         {
