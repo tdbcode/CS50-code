@@ -61,7 +61,7 @@ unsigned int hash(const char *word)
 bool load(const char *dictionary)
 {
     // create memory location for loading dictionary
-    FILE *dictionary_pointer = fopen(dictionary, "r"); // Open dictionary passed in, in read mode
+    FILE *dictionary_pointer = fopen(dictionary, "r"); // Open dictionary in read mode
     // If memory was not allocated, end the program
     if (dictionary_pointer == NULL)
     {
@@ -74,7 +74,7 @@ bool load(const char *dictionary)
     // while word is loaded from file and saved as word
     while (fscanf(dictionary_pointer, "%s", word))
     {
-        // compare if word is equal to blank, if so, exit loop as end of file
+        /**/ // compare if word is equal to blank, if so, exit loop as end of file
         if (strcmp(word, ""))
         {
             //lastword = true;
