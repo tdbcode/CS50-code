@@ -16,6 +16,7 @@ https://www.tutorialspoint.com/explain-the-end-of-file-eof-with-a-c-program
 #include <string.h>
 #include <stdio.h>
 #include <cs50.h>
+#include <stdlib.h>
 
 #include "dictionary.h"
 
@@ -76,7 +77,7 @@ bool load(const char *dictionary)
             return false; // has to return false and not 1 as it is a boolean value and the word was not loaded
         }
 
-        currentword->n = word; //set current word to word loaded from file
+        strcpy(currentword->word,word); //set current word to word loaded from file
         // have to find location in dictionary for current word so needs hash value
         int hashvalue = hash(word);
 
