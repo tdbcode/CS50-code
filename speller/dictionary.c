@@ -38,7 +38,11 @@ bool check(const char *word)
     int counter = 0;
     for (node *currentword = word->word; counter <= size; currentword = currentword->next)
     {
-        if (strcmp(word,""))
+        
+        if (strcmp(word,))
+        {
+
+        }
         counter++;
     }
 
