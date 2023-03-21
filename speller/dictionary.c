@@ -106,6 +106,17 @@ unsigned int size(void)
 // Unloads dictionary from memory, returning true if successful, else false
 bool unload(void)
 {
-    // TODO
+    // for each hash in hashtable
+    for (int h = 0; h < 26; h++)
+    {
+        // Free memory
+        node *currentnode = table[h];
+        while (currentnode != NULL)
+        {
+            node *next = currentnode->next;
+            free(currentnode);
+            currentnode = next;
+        }
+    }
     return false;
 }
