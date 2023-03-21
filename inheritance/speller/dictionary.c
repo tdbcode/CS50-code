@@ -90,8 +90,9 @@ bool load(const char *dictionary)
         }
 
     }
-    fclose(dictionary_pointer);
-    return false;
+
+    fclose(dictionary_pointer); // Close file
+    return true; // Function complete
 }
 
 // Returns number of words in dictionary if loaded, else 0 if not yet loaded
