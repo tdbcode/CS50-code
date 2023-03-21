@@ -30,7 +30,7 @@ typedef struct node
 node;
 
 // TODO: Choose number of buckets in hash table
-const unsigned int N = 26;
+const unsigned int N = 1000;
 
 // Hash table
 node *table[N];
@@ -61,11 +61,15 @@ bool check(const char *word)
 // Hashes word to a number
 unsigned int hash(const char *word)
 {
+    int hashtotal = 0;
     // TODO: Improve this hash function - more buckets maybe means more efficient?
-
+    for (int h = 0; h < word[0]; h++)
+    {
+        hashtotal += toupper(word[h]);
+    }
     // return toupper(word[0]) - 'A'; // too inefficient
+    return hashtotal % N;
 
-    
 }
 
 // Loads dictionary into memory, returning true if successful, else false
