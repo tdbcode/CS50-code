@@ -124,6 +124,7 @@ bool check(char* word)
 
     while (cursor != NULL && counter < length)
     {
+        
       /*  if (cursor->children == NULL)
         {
             break;
