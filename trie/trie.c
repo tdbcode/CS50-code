@@ -129,7 +129,11 @@ bool check(char* word)
         counter++;
     }
 
-    if (cursor->is_word == true)
+    if (cursor == NULL)
+    {
+        return false;
+    }
+    else if (cursor->is_word == true)
     {
         return true;
     }
