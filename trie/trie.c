@@ -123,7 +123,7 @@ bool check(char* word)
     int currentindex = toupper(word[0]) - 'A';
     cursor = root;
 
-    while (cursor->children[currentindex] != NULL && counter < length)
+    while (counter < length)
     {
         currentindex = toupper(word[counter]) - 'A';
         cursor = cursor->children[currentindex];
