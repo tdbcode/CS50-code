@@ -35,22 +35,24 @@ int dictionary_size = 0; // global variable for size of the dictionary
 // Returns true if word is in dictionary, else false
 bool check(const char *word)
 {
-    
-    int counter = 0;
-    for (node *currentword = word->word; counter <= size; currentword = currentword->next)
+    int counter = 0; // Create counter and set to 0
+    // Go through the whole dictionary list
+    for (node *currentword = word->word; counter <= size(); currentword = currentword->next)
     {
-
-        if (strcmp(word,))
+        node *dictionary_word = table[hash(word)]; // Make a temporary node to track which dictionary word using hashing to get current word
+        // If word passed in matches the word in the dictionary
+        if (strcmp(currentword, dictionary_word))
         {
-
+            return true;    // return true
         }
-        counter++;
+        else
+        {
+            dictionary_word = dictionary_word->next; // else set next word to next item in list
+        }
+        counter++; // add one to counter
     }
 
-
-
-    if (word == table[N]->word)
-    return false;
+    return false; // if it gets to this point the word is not found, return false
 }
 
 // Hashes word to a number
