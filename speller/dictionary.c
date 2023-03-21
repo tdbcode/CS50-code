@@ -42,7 +42,7 @@ bool check(const char *word)
     for (node *currentword = table[hash(word)]; counter <= size(); currentword = currentword->next)
     {
         // If word passed in matches the word in the dictionary
-        if (strcmp(word, currentword->word))
+        if (strcmp(word, currentword->word) == 0)
         {
             return true;    // return true
         }
