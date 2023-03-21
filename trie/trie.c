@@ -138,7 +138,7 @@ bool check(char* word)
     {
         found = true;
     }
-
+    free(cursor);
     return found;
 }
 
