@@ -10,6 +10,12 @@ Used this source to work out how to detect end of file in a while loop rather th
 which was breaking the algorithm:
 https://www.tutorialspoint.com/explain-the-end-of-file-eof-with-a-c-program
 
+I read about collision handling here:
+
+https://craftinginterpreters.com/hash-tables.html#collision-resolution
+
+However found it tough to implement another working hash function with my algorithm so stuck with the slower less efficient one which 100% works.
+
 */
 
 #include <ctype.h>
@@ -30,7 +36,7 @@ typedef struct node
 node;
 
 // TODO: Choose number of buckets in hash table
-const unsigned int N = 1000;
+const unsigned int N = 26;
 
 // Hash table
 node *table[N];
@@ -62,7 +68,7 @@ bool check(const char *word)
 unsigned int hash(const char *word)
 {
     // TODO: Improve this hash function - more buckets maybe means more efficient?
-     return toupper(word[0]) - 'A'; // too inefficient
+     return toupper(word[0]) - 'A'; // inefficient but works
 
 }
 
