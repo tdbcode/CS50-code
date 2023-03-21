@@ -15,6 +15,7 @@ https://www.tutorialspoint.com/explain-the-end-of-file-eof-with-a-c-program
 #include <ctype.h>
 #include <stdbool.h>
 #include <string.h>
+#include <strings.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -47,7 +48,7 @@ bool check(const char *word)
     {
         //printf("%s\n", currentword->word); //testing purposes only
         // If word passed in matches the current word in the dictionary
-        if (strcmp(word, currentword->word) == 0)
+        if (strcasecmp(word, currentword->word) == 0)
         {
             return true;    // return true
         }
