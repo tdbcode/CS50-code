@@ -63,8 +63,9 @@ unsigned int hash(const char *word)
 {
     // TODO: Improve this hash function - more buckets maybe means more efficient?
 
+    // return toupper(word[0]) - 'A'; // too inefficient
+
     
-    return toupper(word[0]) - 'A';
 }
 
 // Loads dictionary into memory, returning true if successful, else false
