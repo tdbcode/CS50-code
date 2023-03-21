@@ -2,7 +2,12 @@
 
 /* Sources used:
 
+Didn't want to read line by line for load function as it wasn't easy to identify how each word\
+was without checking for \n. Easier to just read in word using:
 https://www.tutorialspoint.com/c_standard_library/c_function_fscanf.htm
+
+Rather than using bool lastword replaced this with !=EOF in while function as it fulfils that purpose:
+https://www.tutorialspoint.com/explain-the-end-of-file-eof-with-a-c-program
 
 */
 
@@ -53,13 +58,14 @@ bool load(const char *dictionary)
 
     string word = "";  // Create string to store word
 
-    bool lastword = false; // identifies if it's the last word
+    //bool lastword = false; // identifies if it's the last word
     // while word is loaded from file and saved as word
-    while(fscanf(dictionary_pointer, %s, word))
+    while(fscanf(dictionary_pointer, %s, word) != EOF)
     {
         if (word = "")
         {
-            return true;
+            //lastword = true;
+            break;
         }
         node *currentword = malloc(sizeof(node)); // set currentword pointer to size of node to contain pointer for current word loaded from dictionary
         // If memory was not allocated, end the program
@@ -84,6 +90,7 @@ bool load(const char *dictionary)
         }
 
     }
+    fclose(dictionary_pointer);
     return false;
 }
 
