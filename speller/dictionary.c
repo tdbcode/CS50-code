@@ -12,7 +12,6 @@ https://www.tutorialspoint.com/c_standard_library/c_function_fscanf.htm
 #include <stdbool.h>
 #include <string.h>
 #include <stdio.h>
-#include <cs50.h>
 #include <stdlib.h>
 
 #include "dictionary.h"
