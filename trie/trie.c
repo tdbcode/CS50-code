@@ -129,17 +129,17 @@ bool check(char* word)
         counter++;
     }
 
+    bool found = false;
     if (cursor == NULL)
     {
-        return false;
+        found = false;
     }
     else if (cursor->is_word == true)
     {
-        return true;
+        found = true;
     }
 
-    // need to get word - 1 from the front
-    return false;
+    return found;
 }
 
 // Unload trie from memory
