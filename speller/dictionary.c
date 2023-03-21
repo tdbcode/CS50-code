@@ -74,22 +74,24 @@ bool load(const char *dictionary)
 
     //bool lastword = false; // identifies if it's the last word
     // while word is loaded from file and saved as word
-    while(fscanf(dictionary_pointer, "%s", word))
+    while (fscanf(dictionary_pointer, "%s", word))
     {
         // compare if word is equal to blank, if so, exit loop as end of file
-        if (strcmp(word,""))
+        if (strcmp(word, ""))
         {
             //lastword = true;
             break;
         }
-        node *currentword = malloc(sizeof(node)); // set currentword pointer to size of node to contain pointer for current word loaded from dictionary
+
+        // set currentword pointer to size of node to contain pointer for current word loaded from dictionary
+        node *currentword = malloc(sizeof(node));
         // If memory was not allocated, end the program
         if (currentword == NULL)
         {
             return false; // has to return false and not 1 as it is a boolean value and the word was not loaded
         }
 
-        strcpy(currentword->word,word); //set current word to word loaded from file
+        strcpy(currentword->word, word); //set current word to word loaded from file
         // have to find location in dictionary for current word so needs hash value
         int hashvalue = hash(word);
 
