@@ -39,12 +39,14 @@ int dictionary_size = 0; // global variable for size of the dictionary
 bool check(const char *word)
 {
     int counter = 0; // Create counter and set to 0
+    int hashvalue = hash(word);
+    printf("%i\n", hashvalue);
 
     // Go through the whole dictionary list
-    for (node *currentword = table[hash(word)]; counter < size(); currentword = currentword->next)
+    for (node *currentword = table[hashvalue]; currentword == NULL; currentword = currentword->next)
     {
-        // If word passed in matches the word in the dictionary
-
+        printf("%s\n", word);
+        // If word passed in matches the current word in the dictionary
         if (strcmp(word, currentword->word) == 0)
         {
             return true;    // return true
