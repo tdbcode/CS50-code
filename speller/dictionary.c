@@ -39,7 +39,7 @@ int dictionary_size = 0; // global variable for size of the dictionary
 // Returns true if word is in dictionary, else false
 bool check(const char *word)
 {
-    int counter = 0; // Create counter and set to 0
+    //int counter = 0; // Create counter and set to 0
     int hashvalue = hash(word);
     //printf("%i\n", hashvalue); //testing purposes only
 
@@ -52,7 +52,7 @@ bool check(const char *word)
         {
             return true;    // return true
         }
-        counter++; // add one to counter
+        //counter++; // add one to counter
     }
 
     return false; // if it gets to this point the word is not found, return false
@@ -117,7 +117,6 @@ bool load(const char *dictionary)
             table[hashvalue] = currentword; // then replace the first item
         }
         dictionary_size++; // add one to dictionary size
-
     }
 
     fclose(dictionary_pointer); // Close file
