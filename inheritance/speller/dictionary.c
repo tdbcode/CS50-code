@@ -47,7 +47,7 @@ bool load(const char *dictionary)
 
     string word = "";
 
-    fread(word, blocksize, 1, dictionary_pointer);
+    fscanf(dictionary_pointer, %s, word);
     return false;
 }
 
