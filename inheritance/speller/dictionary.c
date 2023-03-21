@@ -36,7 +36,16 @@ unsigned int hash(const char *word)
 // Loads dictionary into memory, returning true if successful, else false
 bool load(const char *dictionary)
 {
-    // TODO
+    // create memory location for loading dictionary
+    FILE *dictionary_pointer = fopen(dictionary, "r"); // Open dictionary passed in, in read mode
+    // If memory was not allocated, end the program
+    if (dictionary_pointer == NULL)
+    {
+        return 1;
+    }
+
+    string word
+
     return false;
 }
 
