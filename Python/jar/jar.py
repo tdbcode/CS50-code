@@ -1,7 +1,7 @@
 import sys
 
 class Jar:
-    def __init__(self, capacity=12):
+    def __init__(self, capacity):
         try:
             self._capacity = capacity
             self._size = 0
@@ -27,8 +27,13 @@ class Jar:
         return self._size
 
 def main():
-    size = int(input("Enter size of cookie jar:"))
-    jar = Jar()
+    try:
+        size = int(input("Enter size of cookie jar:"))
+    except ValueError:
+        print("Positive integer expected")
+        sys.exit(1)
+
+    jar = Jar(size)
     print(str(jar.capacity))
     print(str(jar))
 
