@@ -3,10 +3,12 @@ import sys
 class Jar:
     def __init__(self, capacity):
         try:
+            if capacity < 1:
+                raise ValueError
             self._capacity = capacity
             self._size = 0
         except ValueError:
-            print("Positive integer expected")
+            print("You must entered an integer larger than 0")
             sys.exit(1)
 
     def __str__(self):
