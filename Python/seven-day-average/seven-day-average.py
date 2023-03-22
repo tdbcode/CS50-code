@@ -35,15 +35,19 @@ def main():
 
 # TODO: Create a dictionary to store 14 most recent days of new cases by state
 def calculate(reader):
-    new_cases = {'state','average'}
+    new_cases = dict()
     for row in reader:
         states = row['state']
-        for states in reader
-        cases = row['cases']
+        date = row['date']
+        cases = int(row['cases'])
         new_cases[state,case]
-        print(cases)
-        #new_cases[state] = states
-        #print(new_cases)
+
+        if state not in previous_cases:
+            previous_cases[state] = cases
+            new_cases[state] = []
+        else:
+            new_cases = cases - previous_cases[state]
+            previous_cases[state] = case
     return new_cases
 
 
