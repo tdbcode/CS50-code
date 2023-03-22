@@ -40,7 +40,6 @@ def calculate(reader):
         states = row['state']
         date = row['date']
         cases = int(row['cases'])
-        new_cases[state,case]
 
         if state not in previous_cases:
             previous_cases[state] = cases
