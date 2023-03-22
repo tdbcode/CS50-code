@@ -35,12 +35,13 @@ def main():
 
 # TODO: Create a dictionary to store 14 most recent days of new cases by state
 def calculate(reader):
-    states[50][14]
-    for row in range (1,50):
-        states = [row][0]
+    states = []
+    i = 0
     for row in reader:
+        if (i < 49):
+            states[i] = row['state']
         date = row["date"]
-        state = row['state']
+        states[] = row['state']
         fibs = row['fips']
         cases = row['cases']
         death = row['deaths']
