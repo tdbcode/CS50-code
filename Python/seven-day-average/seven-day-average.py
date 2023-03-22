@@ -39,7 +39,6 @@ def calculate(reader):
 
     for row in reader: # for each row in the dictionary file
         state = row['state']    # Assign state to variable
-        date = row['date'] # Assign date to variable
         cases = int(row['cases']) # Assign number of cases to variable
 
         if state not in new_cases: #if state doesn't exist in new case
@@ -52,7 +51,11 @@ def calculate(reader):
 
 # TODO: Calculate and print out seven day average for given state
 def comparative_averages(new_cases, states):
-    firstavg =
+    firstavg = 0
+    lastavg = 0
+    for row in new_cases:
+        state =
+        firstavg = new_cases["Alabama"]
     lastavg =
 
 
