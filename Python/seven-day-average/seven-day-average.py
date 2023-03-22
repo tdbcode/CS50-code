@@ -37,8 +37,9 @@ def main():
 def calculate(reader):
     new_cases = {}
     for row in reader:
-        state = row['state']
-        new_cases[state] += row['cases']
+        states = row['state']
+        print(states)
+        #new_cases[states] += row['cases']
         print(new_cases)
     return new_cases
 
