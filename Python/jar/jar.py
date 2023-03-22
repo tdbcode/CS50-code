@@ -4,7 +4,7 @@ class Jar:
         self.size = 0
 
     def __str__(self):
-        ...
+        return f"{self.capacity}({self.size})"
 
     def deposit(self, n):
         ...
@@ -18,11 +18,11 @@ class Jar:
 
     @property
     def size(self):
-        ...
+        return size
 
 def main():
     Jar jar = Jar()
-    print(str(jar.capacity))
+    print(str(jar))
 
 if __name__ == "__main__":
     main()
