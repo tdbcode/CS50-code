@@ -1,5 +1,5 @@
 class Jar:
-    def __init__(self, capacity=12):
+    def __init__(self, capacity):
         self.capacity = capacity
         self.size = 0
 
@@ -7,10 +7,10 @@ class Jar:
         return f"{self.capacity}({self.size})"
 
     def deposit(self, n):
-        ...
+        print("placeholder")
 
     def withdraw(self, n):
-        ...
+        print("placeholder")
 
     @property
     def capacity(self):
@@ -21,7 +21,7 @@ class Jar:
         return size
 
 def main():
-    Jar jar = Jar()
+    Jar jar = Jar(12)
     print(str(jar))
 
 if __name__ == "__main__":
