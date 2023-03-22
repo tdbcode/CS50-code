@@ -52,8 +52,7 @@ def calculate(reader):
 # TODO: Calculate and print out seven day average for given state
 def comparative_averages(new_cases, states):
 
-    for row in new_cases:
-        state = states[states]
-        firstlist = sum(slice(new_cases[state][1:8]))
+    for row in states:
+        firstlist = sum(new_cases[row][1:8])
         print(firstlist)
 main()
