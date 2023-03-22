@@ -14,6 +14,6 @@ else:
     rand = random.randint(1,len(fonts)) - 1
     figlet.setFont(font=fonts[rand])
 
-
+print(figlet.font)
 s = input("Enter text:" )
 print(figlet.renderText(s))
