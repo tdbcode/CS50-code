@@ -4,7 +4,7 @@
 scores = []
 for i in range(3):
     score = int(input("Score: "))
-    scores += [score]
+    scores += [score] #adds a list to another list
 
 # Print average
 average = sum(scores) / len(scores)
