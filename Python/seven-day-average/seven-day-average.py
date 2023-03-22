@@ -45,10 +45,9 @@ def calculate(reader):
 
         if state not in new_cases: #if state doesn't exist in new case
             new_cases[state] = [] # add state to dictionary
-        if len(new_cases[state]) >=14: #check if the state data length is equal to or more than 14
-            new_cases.pop(0)
-
-
+        if len(new_cases[state]) >=14: #check if the current state data is at 14 days
+            new_cases[state].pop(0) # If so remove an item from current state
+        new_cases[state].append(cases) # Add todays case to current stack
 
     return new_cases
 
