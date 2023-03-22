@@ -38,23 +38,17 @@ def calculate(reader):
     new_cases = dict()
     previous_cases = dict()
 
-    for row in reader:
-        state = row['state']
-        date = row['date']
-        cases = int(row['cases'])
+    for row in reader: # for each row in the dictionary file
+        state = row['state']    # Assign state to variable
+        date = row['date'] # Assign date to variable
+        cases = int(row['cases']) # Assign number of cases to variable
 
-        if state not in previous_cases:
-            previous_cases[state] = cases
-            new_cases[state] = []
-        else:
-            new_cases = cases - previous_cases[state]
-            previous_cases[state] = cases
+        if state not in new_cases: #if state doesn't exist in new case
+            new_cases[state] = [] # add state to dictionary
+        if len(new_cases[state]) >=14: #check if the state data length is equal to or more than 14
+            new_cases.pop(0)
 
-            if state not in new_cases:
-                new_state[state] = []
-            if len(new_state[state]) >= 14:
-                new_state[state].pop(0)
-            new_cases[state].append(new_case)
+
 
     return new_cases
 
