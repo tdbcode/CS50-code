@@ -20,11 +20,11 @@ class Jar:
 
     @property
     def capacity(self):
-        return capacity
+        return self._capacity
 
     @property
     def size(self):
-        return size
+        return self._size
 
 def main():
     size = int(input("Enter size of cookie jar:"))
