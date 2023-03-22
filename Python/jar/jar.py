@@ -19,3 +19,6 @@ class Jar:
     def size(self):
         ...
 
+main():
+
+
