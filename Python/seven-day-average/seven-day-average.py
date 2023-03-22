@@ -34,10 +34,17 @@ def main():
 
 # TODO: Create a dictionary to store 14 most recent days of new cases by state
 def calculate(reader):
-    states = {}
+    date = ""
+    fips = 0
+    state = ""
+    cases = 0
+    deaths = 0
     for case in reader:
-        (key , val) = case.split()
-        states[int(key)] = val
+        date = reader['date']
+        state = reader['state']
+        fibs = reader['fibs']
+        cases = reader['cases']
+        death = reader['deaths']
 
 
 # TODO: Calculate and print out seven day average for given state
