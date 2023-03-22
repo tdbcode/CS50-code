@@ -1,10 +1,10 @@
 class Jar:
     def __init__(self, capacity):
-        self.capacity = capacity
-        self.size = 0
+        self._capacity = capacity
+        self._size = 0
 
     def __str__(self):
-        return f"{self.capacity}({self.size})"
+        return '🍪' * self.size
 
     def deposit(self, n):
         print("placeholder")
