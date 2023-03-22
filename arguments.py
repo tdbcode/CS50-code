@@ -14,4 +14,9 @@ from sys import argv
 for i in range(len(argv)):
     print(argv[i])
 
-    
+# Printing command-line arguments using a slice
+
+from sys import argv
+
+for arg in argv[1:]:
+    print(arg)
