@@ -10,4 +10,4 @@ elif (first[0].lower() == 'h'):
 else:
     amount = 100
 
-print(s"${amount}",end="")
+print(f"${amount}",end="")
