@@ -54,7 +54,8 @@ def comparative_averages(new_cases, states):
     firstavg = 0
     lastavg = 0
     for row in new_cases:
-        state =
+        state = new_cases[states]
+
         firstavg = new_cases["Alabama"]
     lastavg =
 
