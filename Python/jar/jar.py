@@ -1,7 +1,10 @@
 class Jar:
     def __init__(self, capacity):
-        self.capacity = capacity
-        self.size = 0
+        try:
+            self.capacity = capacity
+            self.size = 0
+        except ValueError:
+            print("Positive number expected for capacity")
 
     def __str__(self):
         return '🍪' * self.size
@@ -22,6 +25,7 @@ class Jar:
 
 def main():
     Jar jar = Jar(12)
+    print(str(jar.capacity))
     print(str(jar))
 
 if __name__ == "__main__":
