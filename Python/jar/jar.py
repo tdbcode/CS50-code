@@ -15,13 +15,13 @@ class Jar:
         return '🍪' * self.size
 
     def deposit(self, n):
-        if self._size + n < self._capacity:
+        if self._size + n <= self._capacity:
             self._size = self._size + n
         else:
             print("Cookie Jar Full")
 
     def withdraw(self, n):
-        if self.size + n > 0:
+        if self._size - n >= 0:
             self._size = self._size - n
         else:
             print("Not enough cookies")
@@ -42,10 +42,10 @@ def main():
         sys.exit(1)
 
     jar = Jar(size)
-    jar.deposit(4)
-    print(str(jar))
-    jar.withdraw(6)
-    print(str(jar))
+    jar.deposit(2)
+    print("Added ", str(jar))
+    jar.withdraw(2)
+    print("Withdrawn ", str(jar))
 
 if __name__ == "__main__":
     main()
