@@ -1,6 +1,7 @@
 import csv
 import requests
 
+# Source used to help : https://courses.cs.washington.edu/courses/cse140/13wi/csv-parsing.html
 
 def main():
     # Read NYTimes Covid Database
@@ -34,17 +35,16 @@ def main():
 
 # TODO: Create a dictionary to store 14 most recent days of new cases by state
 def calculate(reader):
-    date = ""
-    fips = 0
-    state = ""
-    cases = 0
-    deaths = 0
-    for case in reader:
-        date = reader['date']
-        state = reader['state']
-        fibs = reader['fibs']
-        cases = reader['cases']
-        death = reader['deaths']
+    states[50][14]
+    for row in range (1,50):
+        states = [row][0]
+    for row in reader:
+        date = row["date"]
+        state = row['state']
+        fibs = row['fips']
+        cases = row['cases']
+        death = row['deaths']
+        print(state, ": ", cases)
 
 
 # TODO: Calculate and print out seven day average for given state
