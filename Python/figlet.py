@@ -5,8 +5,9 @@ import random
 random.seed()
 figlet = Figlet()
 fonts = figlet.getFonts()
+arglength = int(len(argv))
 
-if int(len(argv)) == 3:
+if arglength == 3 or arglength > 1 and <3::
     if (argv[1] != "-f" and argv[1] != "-font"):
         print("Enter -f or -font followed by font name")
         sys.exit(1)
