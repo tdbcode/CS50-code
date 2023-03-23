@@ -5,7 +5,8 @@ def spaces(spaces, bricks):
 
 def brick(bricks):
     for i in range(bricks):
-        print("#",end="")
+        print("#", end="")
+
 
 bricks = 0
 height = 0
