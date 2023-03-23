@@ -42,11 +42,8 @@ for a in range(0,clength, 2):  # run loop in reverse skipping every other number
         currentNo = product  # set new number to current number
     twotimed.append(currentNo)
     regular.append(int(ccno[a]))
-print(twotimed)
-print(regular)
 
 checksum = sum(twotimed) + sum(regular)  # add current number to checksum
-print(checksum)
 
 if (checksum % 10) == 0:
     if (clength == 13 or clength == 16) and ccno[0] == 4:
