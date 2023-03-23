@@ -52,5 +52,7 @@ if (checksum % 10) == 0:
         print("MASTERCARD")
     elif clength == 15 and (ccno[0] == 3 and (ccno[1] == 4 or ccno[1] == 7)):
         print("AMEX")
+    else:
+        print("INVALID")
 else:
     print("INVALID")
