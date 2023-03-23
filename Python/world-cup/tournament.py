@@ -20,12 +20,15 @@ def main():
     teams = []
     file = open(sys.argv[1], "r")
     data = csv.DictReader(file)
+    # data = file.read().split("\n") # use DictReader instead
     for row in data:
-        team = row['team']
-        rating = int(row['rating'])
-        teams.append(team)
-    print(teams)
-    # data = file.read().split("\n")
+        row['rating'] = int(row['rating'])  # replace string with int for each team's rating in dictionary
+        # team = row['team']  # for testing
+        # rating = row['rating']  # for testing
+        # print(rating) # for testing
+        teams.append(row) # Add team's row to teams list
+    # print(teams)  # for testing
+
 
     # TODO: Read teams into memory from file
     counts = {}
