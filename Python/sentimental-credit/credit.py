@@ -42,6 +42,7 @@ for a in reversed(range(0,clength,-2)):  # run loop in reverse skipping every ot
     currentNo = ccno[a]
     checksum += currentNo  # add current number to checksum
 
+print(checksum)
 
 if (checksum % 10) == 0:
     if (clength == 13 or clength == 16) and ccno[0] == 4:
