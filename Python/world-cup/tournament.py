@@ -33,6 +33,7 @@ def main():
 
     # TODO: Simulate N tournaments and keep track of win counts
     counts = {}
+    winner = []
     # run simulation to number of simulations value (N)
     for t in range(N):
         # collect winners in winner list after running simulation of tournament
