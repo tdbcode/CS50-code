@@ -15,7 +15,7 @@ while valid != True:
     try:
         creditno = input("Enter the credit card number: ")
         clength = int(len(creditno))
-        print(clength)
+        # print(clength)  # for testing only
 
         if clength < 13 or clength > 16 or clength == 14:
             raise ValueError
