@@ -42,8 +42,6 @@ for a in range(0,clength, 2):  # run loop in reverse skipping every other number
         currentNo = product  # set new number to current number
     twotimed.append(currentNo)
     regular.append(int(ccno[a]))
-    print(a)
-    print(a+1)
 print(twotimed)
 print(regular)
 
