@@ -18,6 +18,7 @@ def main():
     if len(sys.argv) != 2:
         sys.exit("Usage: python tournament.py FILENAME")
 
+    # TODO: Read teams into memory from file
     teams = []
     file = open(sys.argv[1], "r")
     data = csv.DictReader(file)
@@ -30,16 +31,14 @@ def main():
         teams.append(row) # Add team's row to teams list
     # print(teams)  # for testing
 
-
-    # TODO: Read teams into memory from file
-    counts = {}
-    winningteams = simulate_tournament(teams)
-    for t in winningteams:
-        if winningteams in counts:
-            counts[t] += 1
-        else:
-            counts[t] = 1
     # TODO: Simulate N tournaments and keep track of win counts
+    counts = {}
+    winner = simulate_tournament(teams)
+    for t in range(N):
+        if winner in counts:
+            counts[winner] += 1
+        else:
+            counts[winner] = 1
 
     # Print each team's chances of winning, according to simulation
     for team in sorted(counts, key=lambda team: counts[team], reverse=True):
@@ -75,6 +74,7 @@ def simulate_tournament(teams):
     results = []
     length = len(teams)  # get length of teams array
     if length % 2 == 0:  # if the number of teams is a power of two
+        print(length)
         while length > 1:  # while there is more than 1 team in the passed in list
             results.append(simulate_round(teams))
             length = len(results)
