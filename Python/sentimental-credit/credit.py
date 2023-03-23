@@ -1,3 +1,6 @@
+import sys
+
+
 creditno = 0
 creditno2 = 0
 clength = 0
@@ -20,6 +23,7 @@ while valid != True:
             valid = True
     except ValueError:
         print("INVALID")
+        sys.exit(1)
 
 creditno2 = creditno
 
