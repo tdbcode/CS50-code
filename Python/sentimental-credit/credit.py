@@ -5,13 +5,14 @@ currentNo = 0
 product =  0
 checksum = 0
 
-ccno = [0] * 16
+ccno = [0] * 15
 valid = False
 
 while valid != True:
     try:
         creditno = input("Enter the credit card number: ")
         clength = int(len(creditno))
+        print(clength)
 
         if clength < 13 or clength > 16 or clength == 14:
             print("INVALID")
@@ -22,13 +23,12 @@ while valid != True:
 
 creditno2 = creditno
 
-for c in reversed(range(1,clength)):
-    print(c)
+for c in reversed(range(0,clength)):
     currentNo = int(creditno2) % 10
     creditno2 = int(creditno2) / 10
     ccno[c] = currentNo
 
-for a in reversed(range(1,clength,-2)):
+for a in reversed(range(0,clength,-2)):
     currentNo = ccno[a -1] * 2
     if (currentNo > 9):
         product = (currentNo % 10) + (currentNo / 10)
@@ -38,7 +38,7 @@ for a in reversed(range(1,clength,-2)):
 
     creditno2 = creditno
 
-for b in reversed(range(1,clength,-2)):
+for b in reversed(range(0,clength,-2)):
     currentNo = ccno[b]
     checksum += currentNo
 
