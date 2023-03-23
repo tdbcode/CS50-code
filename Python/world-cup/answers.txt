@@ -9,7 +9,8 @@ Times:
 
 Questions:
 
-Which predictions, if any, proved incorrect as you increased the number of simulations?: TODO
+Which predictions, if any, proved incorrect as you increased the number of simulations?: I expected that the smaller number of simulations would be faster - this is mostly true
+except for when we get below 100 simulations, the timings are practically the same.
 
 Suppose you're charged a fee for each second of compute time your program uses.
-After how many simulations would you call the predictions "good enough"?: TODO
+After how many simulations would you call the predictions "good enough"?: It seems like predictions stablise after 100 simulations. So a range of 100 to 1000 simulations seems ideal.
