@@ -23,8 +23,8 @@ while valid != True:
 creditno2 = creditno
 
 for c in reversed(range(0,clength)):
-    currentNo = creditno2  10
-    creditno2 = creditno2 / 10
+    currentNo = int(creditno2) % 10
+    creditno2 = int(creditno2) / 10
     ccno[c] = currentNo
 
 for a in reversed(range(0,clength,-2)):
