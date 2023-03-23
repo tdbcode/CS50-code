@@ -41,8 +41,8 @@ for a in reversed(range(0,clength, 2)):  # run loop in reverse skipping every ot
         currentNo = product  # set new number to current number
 
     twotimed.append(currentNo)
-    print(twotimed)
-    checksum += currentNo  # add current number to checksum
+    checksum = sum(twotimed)  # add current number to checksum
+    print(checksum)
     currentNo = ccno[a+1]
     checksum += currentNo  # add current number to checksum
 
