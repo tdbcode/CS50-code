@@ -6,7 +6,7 @@ creditno2 = 0
 clength = 0
 currentNo = 0
 product =  0
-checksum = 0
+checksum = int(0)
 
 ccno = [0] * 16
 valid = False
