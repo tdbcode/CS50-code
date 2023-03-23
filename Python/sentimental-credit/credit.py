@@ -33,7 +33,7 @@ for c in reversed(range(0,clength)):  # run loop in reverse to go from back of c
     creditno2 = int(int(creditno2) / 10)  # remove last number
     ccno[c] = currentNo  # add last number back in it's possition in the array
 
-for a in reversed(range(0,clength , -2)):  # run loop in reverse skipping every other number
+for a in reversed(range(1,clength -1, -2)):  # run loop in reverse skipping every other number
     currentNo = ccno[a-1] * 2  # double the current number in the array
     while (currentNo > 9):  # check if current number as more than 1 digit
         product = (currentNo % 10) + (currentNo / 10)  # if so then add them together
