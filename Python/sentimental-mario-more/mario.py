@@ -1,3 +1,5 @@
+import sys
+
 def spaces(spaces, bricks):
     for i in reversed(range(bricks, spaces)):
         print(" ", end="")
@@ -13,7 +15,10 @@ height = 0
 
 
 while (height < 1 or height > 8):
-    height = int(input("Height:"))
+    try:
+        height = int(input("Height:"))
+    except ValueError:
+        print("You must enter a number")
 
 for x in range(height):
     bricks += 1
