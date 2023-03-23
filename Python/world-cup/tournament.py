@@ -75,15 +75,15 @@ def simulate_round(teams):
 def simulate_tournament(teams):
     """Simulate a tournament. Return name of winning team."""
     results = []
-    length = len(teams)  # get length of teams array
-    if length % 2 == 0:  # if the number of teams is a power of two
-        while length > 1:  # while there is more than 1 team in the passed in list
+    # length = len(teams)  # get length of teams array
+    while len(teams) > 1:  # while there is more than 1 team in the passed in list
+        if len(teams) % 2 == 0:  # if the number of teams is a power of two
             results.append(simulate_round(teams))  # add simulate round result to results list
-            length -= 1
-            # print(length) # for testing only
-    else:
-        print("Not enough teams")
-        sys.exit(1)
+            # length -= 2
+        else:
+            print("Not enough teams")
+            sys.exit(1)
+        # print(length) # for testing only
 
     print(results[0][0])
     return results[0][0] # has to return 1 winner not whole list
