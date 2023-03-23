@@ -5,7 +5,7 @@ currentNo = 0
 product =  0
 checksum = 0
 
-ccno = [0] * 15
+ccno = [0] * 16
 valid = False
 
 while valid != True:
