@@ -40,7 +40,7 @@ for a in reversed(range(0,clength-1,2)):  # run loop in reverse skipping every o
 
     checksum += currentNo  # add current number to checksum
 
-for b in reversed(range(0,clength,2)):  # run loop in reverse skipping every other number
+for b in reversed(range(0,clength-1,2)):  # run loop in reverse skipping every other number
     currentNo = ccno[b]
     checksum += currentNo
 
