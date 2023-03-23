@@ -72,8 +72,11 @@ def simulate_round(teams):
 def simulate_tournament(teams):
     """Simulate a tournament. Return name of winning team."""
     length = len(teams)  # get length of teams array
-    while length > 1 and teams % 2 == 0):  # while there is more than 1 team in the passed in list
-        
+    if length > 1 and teams % 2 == 0:  # if there is more than 1 team in the passed in list
+        result = simulate_round(teams)
+        length = len(result)
+
+    return result
 
 
 
