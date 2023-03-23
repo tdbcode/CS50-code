@@ -3,6 +3,7 @@ import requests
 
 # Source used to help : https://courses.cs.washington.edu/courses/cse140/13wi/csv-parsing.html
 
+
 def main():
     # Read NYTimes Covid Database
     download = requests.get(
@@ -35,27 +36,29 @@ def main():
 
 # TODO: Create a dictionary to store 14 most recent days of new cases by state
 def calculate(reader):
-    new_cases = dict() # New dictionary for new cases
+    new_cases = dict()  # New dictionary for new cases
 
-    for row in reader: # for each row in the dictionary file
+    for row in reader:  # for each row in the dictionary file
         state = row['state']    # Assign state to variable
-        cases = int(row['cases']) # Assign number of cases to variable
+        cases = int(row['cases'])  # Assign number of cases to variable
 
-        if state not in new_cases: #if state doesn't exist in new case
-            new_cases[state] = [] # add state to dictionary
-        if len(new_cases[state]) >=14: #check if the current state data is at 14 days
-            new_cases[state].pop(0) # If so remove an item from current state
-        new_cases[state].append(cases) # Add todays case to current stack
-    #print(new_cases) # for testing purposes
+        if state not in new_cases:  # if state doesn't exist in new case
+            new_cases[state] = []  # add state to dictionary
+        if len(new_cases[state]) >= 14:  # check if the current state data is at 14 days
+            new_cases[state].pop(0)  # If so remove an item from current state
+        new_cases[state].append(cases)  # Add todays case to current stack
+    # print(new_cases) # for testing purposes
     return new_cases
 
-# TODO: Calculate and print out seven day average for given state
+
 def comparative_averages(new_cases, states):
     firstlist = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     firstavg = 0
-    i=1
+    i = 1
     for state in states:
         firstlist[i] = sum(new_cases[row][1:8])
         firstavg = firstlist[i] / 7
         print(firstavg)
+
+
 main()
