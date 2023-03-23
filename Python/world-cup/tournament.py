@@ -15,6 +15,7 @@ def main():
         sys.exit("Usage: python tournament.py FILENAME")
 
     teams = []
+    
     # TODO: Read teams into memory from file
 
     counts = {}
