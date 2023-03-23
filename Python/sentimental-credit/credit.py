@@ -21,7 +21,7 @@ while valid == False:  # while an invalid number has been entered
 
 creditno2 = creditno  # copy credit card number to temp varible for analysis
 
-ccno = [int(0)] * clength
+ccno = [0] * clength
 
 for c in reversed(range(0,clength)):  # run loop in reverse to go from back of credit card number
     ccno[c] = int(creditno2[c])  # take the end number to add to new array
@@ -29,12 +29,12 @@ for c in reversed(range(0,clength)):  # run loop in reverse to go from back of c
     #ccno[c] = int(currentNo)  # add last number back in it's possition in the array
 
 for a in range(0,clength, 2):  # run loop in reverse skipping every other number
-    currentNo = ccno[a+1] * 2  # double the current number in the array
+    currentNo = ccno[a] * 2  # double the current number in the array
     while (currentNo > 9):  # check if current number as more than 1 digit
         product = int(currentNo % 10) + int(currentNo / 10)  # if so then add them together
         currentNo = product  # set new number to current number
     twotimed.append(currentNo)
-    regular.append(int(ccno[a]))
+    regular.append(int(ccno[a+1]))
 
 checksum = sum(twotimed) + sum(regular)  # add current number to checksum
 
