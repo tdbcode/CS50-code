@@ -10,6 +10,7 @@ checksum = 0
 
 ccno = [0] * 16
 twotimed = []
+regular = []
 
 valid = False
 
@@ -40,8 +41,14 @@ for a in reversed(range(0,clength, 2)):  # run loop in reverse skipping every ot
         product = int(currentNo % 10) + int(currentNo / 10)  # if so then add them together
         currentNo = product  # set new number to current number
     twotimed.append(currentNo)
-    twotimed.append(int(ccno[a+1]))
-    checksum = sum(twotimed)  # add current number to checksum
+print(twotimed)
+
+for b in range(0,clength,2):
+    regular.append(int(ccno[b]))
+
+print(regular)
+
+checksum = sum(twotimed) + sum(regular)  # add current number to checksum
     #print(checksum)
 
 if (checksum % 10) == 0:
