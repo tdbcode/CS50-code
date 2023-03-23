@@ -33,16 +33,15 @@ def main():
 
     # TODO: Simulate N tournaments and keep track of win counts
     counts = {}
-    winner = []
     # run simulation to number of simulations value (N)
     for t in range(N):
         # collect winners in winner list after running simulation of tournament
         winner = simulate_tournament(teams)  # this runs up to 1000 times inside loop so needs to pass back a single winner not whole list
-        print(winner)
+        print(winner['team'])
         if winner in counts:
-            counts[winner] += 1
+            counts[winner['team']] += 1
         else:
-            counts[winner] = 1
+            counts[winner['team']] = 1
 
     # Print each team's chances of winning, according to simulation
     for team in sorted(counts, key=lambda team: counts[team], reverse=True):
@@ -86,7 +85,8 @@ def simulate_tournament(teams):
         print("Not enough teams")
         sys.exit(1)
 
-    return results[0] # has to return 1 winner not whole list
+    print(results[0][0])
+    return results[0][0] # has to return 1 winner not whole list
 
 
 if __name__ == "__main__":
