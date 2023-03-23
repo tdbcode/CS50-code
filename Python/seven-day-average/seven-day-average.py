@@ -67,9 +67,9 @@ def comparative_averages(new_cases, states):
         try:
             comparative_average = (difference / lastavg) * 100
         except ZeroDivisionError:
-            print("Error, 0 change.")
+            raise ZeroDivisionError
 
-        print(f"{state} had a 7-day average of {lastavg:.2f} and a {change} of {comparative_average:.2f}%.")
+        print(f"{state} had a 7-day average of {lastavg:.2f} and {change} of {comparative_average:.2f}%.")
 
 
 main()
