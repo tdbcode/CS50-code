@@ -74,7 +74,6 @@ def simulate_tournament(teams):
     results = []
     length = len(teams)  # get length of teams array
     if length % 2 == 0:  # if the number of teams is a power of two
-        print(length)
         while length > 1:  # while there is more than 1 team in the passed in list
             results.append(simulate_round(teams))
             length = len(results)
