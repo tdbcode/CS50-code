@@ -1,14 +1,6 @@
 import sys
 
-
-creditno = 0
-creditno2 = 0
-clength = 0
-currentNo = 0
-product =  0
-checksum = 0
-
-ccno = [0] * 16
+ccno = []
 twotimed = []
 regular = []
 
