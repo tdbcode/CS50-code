@@ -54,8 +54,8 @@ def calculate(reader):
 def comparative_averages(new_cases, states):
     i = 0
     for state in states:
-        firstlist = new_cases[state][0:8]
-        lastlist = new_cases[state][9:15]
+        firstlist = new_cases[state][0:7]
+        lastlist = new_cases[state][9:14]
         firstavg = sum(firstlist) / 7
         lastavg = sum(lastlist) / 7
         difference = lastavg - firstavg
@@ -70,7 +70,7 @@ def comparative_averages(new_cases, states):
         except ZeroDivisionError:
             print("Error, 0 change.")
 
-        print(f"{state} had a 7-day average of {lastavg} and a {change} of {comparative_average:.}%.")
+        print(f"{state} had a 7-day average of {lastavg:.2f} and a {change} of {comparative_average:.2f}%.")
 
 
 main()
