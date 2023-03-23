@@ -15,7 +15,7 @@ while (height < 1 or height > 8):
 
     for x in range(height):
         bricks += 1
-        spaces(height,bricks)
+        spaces(height, bricks)
         brick(bricks)
         print(" ", end="")
         brick(bricks)
