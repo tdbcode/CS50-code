@@ -52,15 +52,16 @@ def calculate(reader):
 
 
 def comparative_averages(new_cases, states):
-    firstlist = 0;
-    firstavg = 0
     i = 0
-    # for state in states:
-    state = states[California]
-    firstlist = (sum(new_cases[state][1:8]))
-    firstavg = firstlist / 7
-    i = i + 1
-    print(firstavg)
+    for state in states:
+        firstlist = new_cases[state][0:8]
+        lastlist = new_cases[state][9:15]
+        firstavg = sum(firstlist) / 7
+        lastavg = sum(lastlist) / 7
+        difference = lastavg - firstavg
+        print(firstavg)
+        print(lastavg)
+        print(difference)
 
 
 main()
