@@ -34,8 +34,8 @@ def main():
     # TODO: Read teams into memory from file
     counts = {}
     winningteams = simulate_tournament(teams)
-    for t in teams:
-        if t in counts:
+    for t in winningteams:
+        if winningteams in counts:
             counts[t] += 1
         else:
             counts[t] = 1
@@ -72,6 +72,7 @@ def simulate_round(teams):
 
 def simulate_tournament(teams):
     """Simulate a tournament. Return name of winning team."""
+    results = []
     length = len(teams)  # get length of teams array
     if length % 2 == 0:  # if the number of teams is a power of two
         while length > 1:  # while there is more than 1 team in the passed in list
