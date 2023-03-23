@@ -38,7 +38,8 @@ def main():
     for t in range(N):
         # collect winners in winner list after running simulation of tournament
         winner = simulate_tournament(teams)
-        if winner[t] in counts:
+        print(winner)
+        if winner[0][t] in counts:
             counts[winner] += 1
         else:
             counts[winner] = 1
