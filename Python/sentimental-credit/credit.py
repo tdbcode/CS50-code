@@ -1,6 +1,5 @@
 import sys
 
-ccno = []
 twotimed = []
 regular = []
 
@@ -21,6 +20,8 @@ while valid == False:  # while an invalid number has been entered
         sys.exit(1)
 
 creditno2 = creditno  # copy credit card number to temp varible for analysis
+
+ccno = [0] * clength
 
 for c in reversed(range(0,clength)):  # run loop in reverse to go from back of credit card number
     ccno[c] = int(creditno2[c])  # take the end number to add to new array
