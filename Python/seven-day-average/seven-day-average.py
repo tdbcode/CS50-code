@@ -52,7 +52,7 @@ def calculate(reader):
 
 
 def comparative_averages(new_cases, states):
-    firstlist = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    firstlist = []
     firstavg = 0
     i = 1
     for state in states:
