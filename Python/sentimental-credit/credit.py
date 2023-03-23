@@ -33,8 +33,8 @@ for c in reversed(range(0,clength)):  # run loop in reverse to go from back of c
     ccno[c] = currentNo  # add last number back in it's possition in the array
     print(ccno)
 
-for a in reversed(range(0,clength,-2)):
-    currentNo = ccno[a -1] * 2
+for a in reversed(range(0,clength,-2)):  # run loop in reverse skipping every other number
+    currentNo = ccno[a -1] * 2  # double the current number in the array
     if (currentNo > 9):
         product = (currentNo % 10) + (currentNo / 10)
         currentNo = product
