@@ -11,13 +11,17 @@ menu = {
 }
 
 print(menu)
+total = 0
 
 running = True
 while (running):
     try:
         choice = input("Please select a menu item. Press Ctrl + D to end choice.")
+        if choice is in menu:
+            total += menu[choice]
+            print(f"${total:.2f}")
     except EOFError:
         print()
         running = False
-        print(choice)
+        print(total)
 
