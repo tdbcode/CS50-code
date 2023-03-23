@@ -28,7 +28,7 @@ def main():
         # team = row['team']  # for testing
         # rating = row['rating']  # for testing
         # print(rating) # for testing
-        teams.append(row) # Add team's row to teams list
+        teams.append(row)  # Add team's row to teams list
     # print(teams)  # for testing
 
     # TODO: Simulate N tournaments and keep track of win counts
@@ -37,7 +37,7 @@ def main():
     for t in range(N):
         # collect winners in winner list after running simulation of tournament
         winner = simulate_tournament(teams)  # this runs up to 1000 times inside loop so needs to pass back a single winner not whole list
-        print(winner)
+        # print(winner)  # for testing purposes only
         if winner['team'] in counts:
             counts[winner['team']] += 1
         else:
@@ -53,7 +53,7 @@ def simulate_game(team1, team2):
     """Simulate a game. Return True if team1 wins, False otherwise."""
     rating1 = team1["rating"]  # gets passed in team1 rating
     rating2 = team2["rating"]  # gets passed in team2 rating
-    probability = 1 / (1 + 10 ** ((rating2 - rating1) / 600))  #calculates probability of winning
+    probability = 1 / (1 + 10 ** ((rating2 - rating1) / 600))  # calculates probability of winning
     return random.random() < probability  # returns which team wins
 
 
@@ -64,7 +64,7 @@ def simulate_round(teams):
 
     # Simulate games for all pairs of teams
     for i in range(0, len(teams), 2):
-        if simulate_game(teams[i], teams[i + 1]): ## for each adjacent team in list, call simulate game to get winner
+        if simulate_game(teams[i], teams[i + 1]):  # for each adjacent team in list, call simulate game to get winner
             winners.append(teams[i])  # if returns true, add team 1 to winners array
         else:
             winners.append(teams[i + 1])  # if returns false, add team 2 to winners array
@@ -87,7 +87,7 @@ def simulate_tournament(teams):
         # print(length) # for testing only
 
     print(teams)
-    return teams[0] # has to return 1 winner not whole list
+    return teams[0]  # has to return 1 winner not whole list
 
 
 if __name__ == "__main__":
