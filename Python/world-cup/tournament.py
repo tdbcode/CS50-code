@@ -33,9 +33,11 @@ def main():
 
     # TODO: Simulate N tournaments and keep track of win counts
     counts = {}
+    # run simulation to number of simulations value (N)
     for t in range(N):
+        # collect winners in winner list after running simulation of tournament
         winner = simulate_tournament(teams)
-        if winner[t] in counts[t]:
+        if winner[t] in counts:
             counts[winner] += 1
         else:
             counts[winner] = 1
@@ -75,8 +77,9 @@ def simulate_tournament(teams):
     length = len(teams)  # get length of teams array
     if length % 2 == 0:  # if the number of teams is a power of two
         while length > 1:  # while there is more than 1 team in the passed in list
-            results.append(simulate_round(teams))
+            results.append(simulate_round(teams))  # add simulate round result to results list
             length -= 2
+            # print(length) # for testing only
     else:
         print("Not enough teams")
         sys.exit(1)
