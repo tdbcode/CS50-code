@@ -39,10 +39,10 @@ def main():
         # this runs up to 1000 times inside loop so needs to pass back a single winner not whole list
         winner = simulate_tournament(teams)
         # print(winner)  # for testing purposes only
-        if winner['team'] in counts:
-            counts[winner['team']] += 1
+        if winner in counts:  # if winner is already in dictionary counts
+            counts[winner] += 1  # add 1 to that winners total wins
         else:
-            counts[winner['team']] = 1
+            counts[winner] = 1  # otherwise set wins to 1
 
     # Print each team's chances of winning, according to simulation
     for team in sorted(counts, key=lambda team: counts[team], reverse=True):
@@ -88,7 +88,7 @@ def simulate_tournament(teams):
         # print(length) # for testing only
 
     print(teams)
-    return teams[0]  # has to return 1 winner not whole list
+    return teams[0]['team']  # has to return 1 winner not whole list - can't return [0] only, has to be 'team' here too else Check50 errors
 
 
 if __name__ == "__main__":
