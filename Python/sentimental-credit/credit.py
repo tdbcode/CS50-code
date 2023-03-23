@@ -11,26 +11,29 @@ checksum = 0
 ccno = [0] * 16
 valid = False
 
-while valid != True:
+while valid == False:  # while an invalid number has been entered
     try:
-        creditno = input("Enter the credit card number: ")
-        clength = int(len(creditno))
+        creditno = input("Enter the credit card number: ")  # ask the user to enter credit card number
+        clength = int(len(creditno))  # get length of credit card number
         # print(clength)  # for testing only
 
-        if clength < 13 or clength > 16 or clength == 14:
-            raise ValueError
+        if clength < 13 or clength > 16 or clength == 14:  # if credit card length is less than 13, more than 16 or 14
+            raise ValueError  # then throw a Value Error
         else:
-            valid = True
+            valid = True  # if no error, exit loop
     except ValueError:
-        print("INVALID")
+        print("INVALID")  # if a value error, output INVALID and exit
         sys.exit(1)
 
-creditno2 = creditno
+creditno2 = creditno  # copy credit card number to temp varible for analysis
 
-for c in reversed(range(0,clength)):
+for c in reversed(range(0,clength)):  # run loop in reverse to go from back of credit card number
     currentNo = int(creditno2) % 10
+    print(currentNo)
     creditno2 = int(creditno2) / 10
+    print(creditno2)
     ccno[c] = currentNo
+    print(ccno)
 
 for a in reversed(range(0,clength,-2)):
     currentNo = ccno[a -1] * 2
