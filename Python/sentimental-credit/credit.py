@@ -41,7 +41,7 @@ for a in reversed(range(1,clength,-2)):  # run loop in reverse skipping every ot
     checksum += currentNo  # add current number to checksum
 
 for b in reversed(range(0,clength,-2)):  # run loop in reverse skipping every other number
-    currentNo = ccno[b]
+    currentNo = ccno[b-1]
     checksum += currentNo
 
 
