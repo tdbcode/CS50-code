@@ -1,5 +1,5 @@
 def spaces(spaces, bricks):
-    for i in range(spaces, bricks):
+    for i in reversed(range(bricks, spaces)):
         print(" ", end="")
 
 
