@@ -10,17 +10,17 @@ menu = {
     "Tortilla Salad": 8.00
 }
 
-print(menu)
 total = 0
 
 running = True
 while (running):
     try:
         choice = input("Please select a menu item. Press Ctrl + D to end choice.")
+        choice = choice.title()
         if choice in menu:
             total += menu[choice]
             print(f"${total:.2f}")
     except EOFError:
         print()
-        running = False
+        running = False;
 
