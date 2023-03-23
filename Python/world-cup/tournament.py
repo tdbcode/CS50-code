@@ -1,5 +1,8 @@
 # Simulate a sports tournament
 
+# Sources used for reading files: https://www.geeksforgeeks.org/how-to-read-text-file-into-list-in-python/
+
+
 import csv
 import sys
 import random
@@ -15,8 +18,9 @@ def main():
         sys.exit("Usage: python tournament.py FILENAME")
 
     file = open(sys.argv[1], "r")
-    teams = file.split("\n")
-    print(teams)
+    teams = file.read().split("\n")
+    # print(teams) # for testing only
+
     # TODO: Read teams into memory from file
 
     counts = {}
