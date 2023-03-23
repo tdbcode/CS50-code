@@ -59,9 +59,18 @@ def comparative_averages(new_cases, states):
         firstavg = sum(firstlist) / 7
         lastavg = sum(lastlist) / 7
         difference = lastavg - firstavg
-        print(firstavg)
-        print(lastavg)
-        print(difference)
+
+        if difference > 0:
+            change = "an increase"
+        else:
+            change = "a decrease"
+
+        try:
+            comparative_average = (difference / lastavg) * 100
+        except ZeroDivisionError:
+            print("Error, 0 change.")
+
+        print(f"{state} had a 7-day average of {lastavg} and a {change} of {comparative_average:.}%.")
 
 
 main()
