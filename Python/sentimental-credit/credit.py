@@ -39,14 +39,10 @@ for a in reversed(range(0,clength, 2)):  # run loop in reverse skipping every ot
     while (currentNo > 9):  # check if current number as more than 1 digit
         product = int(currentNo % 10) + int(currentNo / 10)  # if so then add them together
         currentNo = product  # set new number to current number
-
     twotimed.append(currentNo)
+    twotimed.append(int(ccno[a+1]))
     checksum = sum(twotimed)  # add current number to checksum
-    print(checksum)
-    currentNo = ccno[a+1]
-    checksum += currentNo  # add current number to checksum
-
-#print(checksum)
+    #print(checksum)
 
 if (checksum % 10) == 0:
     if (clength == 13 or clength == 16) and ccno[0] == 4:
