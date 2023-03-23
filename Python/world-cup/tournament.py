@@ -38,7 +38,7 @@ def main():
         # collect winners in winner list after running simulation of tournament
         winner = simulate_tournament(teams)  # this runs up to 1000 times inside loop so needs to pass back a single winner not whole list
         print(winner['team'])
-        if winner in counts:
+        if winner['team'] in counts:
             counts[winner['team']] += 1
         else:
             counts[winner['team']] = 1
@@ -79,14 +79,14 @@ def simulate_tournament(teams):
     if length % 2 == 0:  # if the number of teams is a power of two
         while length > 1:  # while there is more than 1 team in the passed in list
             results.append(simulate_round(teams))  # add simulate round result to results list
-            length -= 2
+            length -= 1
             # print(length) # for testing only
     else:
         print("Not enough teams")
         sys.exit(1)
 
     print(results[0][0])
-    return results[0][length] # has to return 1 winner not whole list
+    return results[0][0] # has to return 1 winner not whole list
 
 
 if __name__ == "__main__":
