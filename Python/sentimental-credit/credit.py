@@ -18,7 +18,7 @@ while valid != True:
         print(clength)
 
         if clength < 13 or clength > 16 or clength == 14:
-            print("INVALID")
+            raise ValueError
         else:
             valid = True
     except ValueError:
