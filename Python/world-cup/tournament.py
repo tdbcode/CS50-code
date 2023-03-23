@@ -86,7 +86,7 @@ def simulate_tournament(teams):
         sys.exit(1)
 
     print(results[0][0])
-    return results[0][0] # has to return 1 winner not whole list
+    return results[0][length] # has to return 1 winner not whole list
 
 
 if __name__ == "__main__":
