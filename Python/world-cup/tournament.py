@@ -14,9 +14,9 @@ def main():
     if len(sys.argv) != 2:
         sys.exit("Usage: python tournament.py FILENAME")
 
-    teams = []
-    with open("phonebook.csv", "r") as file:
-        teams[]
+    file = open(sys.argv[1], "r")
+    teams = file.split("\n")
+    print(teams)
     # TODO: Read teams into memory from file
 
     counts = {}
