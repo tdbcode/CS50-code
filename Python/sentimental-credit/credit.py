@@ -18,7 +18,6 @@ while valid == False:  # while an invalid number has been entered
         # print(clength)  # for testing only
 
         if clength < 13 or clength > 16 or clength == 14:  # if credit card length is less than 13, more than 16 or 14
-            print("INVALID")
             raise ValueError  # then throw a Value Error
         else:
             valid = True  # if no error, exit loop
@@ -45,6 +44,7 @@ for b in reversed(range(1,clength,2)):  # run loop in reverse skipping every oth
     currentNo = ccno[b]
     checksum += currentNo
 
+print(checksum)
 
 if (checksum % 10) == 0:
     if (clength == 13 or clength == 16) and ccno[0] == 4:
@@ -53,5 +53,5 @@ if (checksum % 10) == 0:
         print("MASTERCARD")
     elif clength == 15 and (ccno[0] == 3 and (ccno[1] == 4 or ccno[1] == 7)):
         print("AMEX")
-    else:
-        print("INVALID")
+else:
+    print("INVALID")
