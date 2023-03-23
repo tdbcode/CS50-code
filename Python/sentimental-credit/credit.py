@@ -9,18 +9,24 @@ product =  0
 checksum = 0
 
 ccno = []
+valid = False
 
-creditno = int(input("Enter the credit card number: "))
-length = len(creditno)
+while not True:
+    try:
+        creditno = int(input("Enter the credit card number: "))
+        length = len(creditno)
 
-if length < 13 or length > 16 or length == 14:
-    print("Invalid")
-    sys.exit(1)
+        if length < 13 or length > 16 or length == 14:
+            print("Invalid")
+        else:
+            valid = True
+    except ValueError:
+        print("Invalid")
 
 creditno2 = creditno
 
 for c in reversed(range(0,length)):
-    
+
 
 
     creditno2 = creditno; // Set temp variable for credit card processing into the carry
