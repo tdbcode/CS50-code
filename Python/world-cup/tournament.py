@@ -87,7 +87,7 @@ def simulate_tournament(teams):
             sys.exit(1)
         # print(length) # for testing only
 
-    print(teams)
+    # print(teams)  # for testing only
     return teams[0]['team']  # has to return 1 winner not whole list - can't return [0] only, has to be 'team' here too else Check50 errors
 
 
