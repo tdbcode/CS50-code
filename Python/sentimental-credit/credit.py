@@ -28,11 +28,9 @@ while valid == False:  # while an invalid number has been entered
 creditno2 = creditno  # copy credit card number to temp varible for analysis
 
 for c in reversed(range(0,clength)):  # run loop in reverse to go from back of credit card number
-    currentNo = int(creditno2) % 10
-    print(currentNo)
-    creditno2 = int(creditno2) / 10
-    print(creditno2)
-    ccno[c] = currentNo
+    currentNo = int(creditno2) % 10  # take the end number to add to new array
+    creditno2 = int(int(creditno2) / 10)  # remove last number
+    ccno[c] = currentNo  # add last number back in it's possition in the array
     print(ccno)
 
 for a in reversed(range(0,clength,-2)):
