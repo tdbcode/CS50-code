@@ -42,19 +42,20 @@ for a in range(0,clength, 2):  # run loop in reverse skipping every other number
         currentNo = product  # set new number to current number
     twotimed.append(currentNo)
     regular.append(int(ccno[a]))
-print(twotimed)
-print(regular)
+print(sum(twotimed))
+print(sum(regular))
 
 checksum = sum(twotimed) + sum(regular)  # add current number to checksum
 print(checksum)
+print(ccno[0])
 
 if (checksum % 10) == 0:
-    if (clength == 13 or clength == 16) and ccno[0] == 4:
-        print("VISA")
-    elif clength == 16 and (ccno[0] == 5 and (ccno[1] > 0 and ccno[1] <6)):
-        print("MASTERCARD")
-    elif clength == 15 and (ccno[0] == 3 and (ccno[1] == 4 or ccno[1] == 7)):
+    if clength == 15 and ccno[0] == 3 and ccno[1] == 4 or ccno[1] == 7:
         print("AMEX")
+    elif clength == 16 and ccno[0] == 5 and ccno[1] > 0 and ccno[1] < 6:
+        print("MASTERCARD")
+    elif (clength == 13 or clength == 16) and ccno[0] == 4:
+        print("VISA")
     else:
         print("INVALID")
 else:
