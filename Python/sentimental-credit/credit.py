@@ -18,6 +18,7 @@ while valid == False:  # while an invalid number has been entered
         # print(clength)  # for testing only
 
         if clength < 13 or clength > 16 or clength == 14:  # if credit card length is less than 13, more than 16 or 14
+            print("INVALID")
             raise ValueError  # then throw a Value Error
         else:
             valid = True  # if no error, exit loop
@@ -32,7 +33,7 @@ for c in reversed(range(0,clength)):  # run loop in reverse to go from back of c
     creditno2 = int(int(creditno2) / 10)  # remove last number
     ccno[c] = currentNo  # add last number back in it's possition in the array
 
-for a in reversed(range(0,clength-1,2)):  # run loop in reverse skipping every other number
+for a in reversed(range(1,clength-1,2)):  # run loop in reverse skipping every other number
     currentNo = ccno[a] * 2  # double the current number in the array
     if (currentNo > 9):  # check if current number as more than 1 digit
         product = (currentNo % 10) + (currentNo / 10)  # if so then add them together
@@ -40,7 +41,7 @@ for a in reversed(range(0,clength-1,2)):  # run loop in reverse skipping every o
 
     checksum += currentNo  # add current number to checksum
 
-for b in reversed(range(0,clength,2)):  # run loop in reverse skipping every other number
+for b in reversed(range(1,clength,2)):  # run loop in reverse skipping every other number
     currentNo = ccno[b]
     checksum += currentNo
 
