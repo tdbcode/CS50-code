@@ -6,7 +6,6 @@ creditno2 = 0
 clength = 0
 currentNo = 0
 product =  0
-checksum = 0
 
 ccno = [0] * 16
 valid = False
@@ -42,7 +41,7 @@ for a in reversed(range(0,clength,-2)):  # run loop in reverse skipping every ot
     currentNo = ccno[a]
     checksum += currentNo  # add current number to checksum
 
-print(checksum)
+
 
 if (checksum % 10) == 0:
     if (clength == 13 or clength == 16) and ccno[0] == 4:
