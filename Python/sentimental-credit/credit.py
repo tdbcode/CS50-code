@@ -35,21 +35,20 @@ for c in reversed(range(0,clength)):  # run loop in reverse to go from back of c
     #creditno2 = creditno2 / 10  # remove last number
     #ccno[c] = int(currentNo)  # add last number back in it's possition in the array
 
-for a in reversed(range(0,clength-1, 2)):  # run loop in reverse skipping every other number
+for a in reversed(range(0,clength, 2)):  # run loop in reverse skipping every other number
     currentNo = ccno[a] * 2  # double the current number in the array
     while (currentNo > 9):  # check if current number as more than 1 digit
         product = int(currentNo % 10) + int(currentNo / 10)  # if so then add them together
         currentNo = product  # set new number to current number
     twotimed.append(currentNo)
+    regular.append(int(ccno[a+1]))
+    print(a)
+    print(a+1)
 print(twotimed)
-
-for b in range(0,clength,2):
-    regular.append(int(ccno[b]))
-
 print(regular)
 
 checksum = sum(twotimed) + sum(regular)  # add current number to checksum
-    #print(checksum)
+print(checksum)
 
 if (checksum % 10) == 0:
     if (clength == 13 or clength == 16) and ccno[0] == 4:
