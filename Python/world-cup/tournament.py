@@ -1,6 +1,7 @@
 # Simulate a sports tournament
 
 # Sources used for reading files: https://www.geeksforgeeks.org/how-to-read-text-file-into-list-in-python/
+# Used seven-day-average and other practice tasks code as examples and reference
 
 
 import csv
@@ -32,6 +33,11 @@ def main():
 
     # TODO: Read teams into memory from file
     counts = {}
+    for t in teams:
+        if t in counts:
+            counts[t] += 1
+        else:
+            counts[t] = 1
     # TODO: Simulate N tournaments and keep track of win counts
 
     # Print each team's chances of winning, according to simulation
