@@ -5,7 +5,7 @@ currentNo = 0
 product =  0
 checksum = 0
 
-ccno = []
+ccno = [0] * 16
 valid = False
 
 while valid != True:
@@ -22,12 +22,13 @@ while valid != True:
 
 creditno2 = creditno
 
-for c in reversed(range(0,clength)):
+for c in reversed(range(1,clength)):
+    print(c)
     currentNo = int(creditno2) % 10
     creditno2 = int(creditno2) / 10
     ccno[c] = currentNo
 
-for a in reversed(range(0,clength,-2)):
+for a in reversed(range(1,clength,-2)):
     currentNo = ccno[a -1] * 2
     if (currentNo > 9):
         product = (currentNo % 10) + (currentNo / 10)
@@ -37,7 +38,7 @@ for a in reversed(range(0,clength,-2)):
 
     creditno2 = creditno
 
-for b in reversed(range(0,clength,-2)):
+for b in reversed(range(1,clength,-2)):
     currentNo = ccno[b]
     checksum += currentNo
 
