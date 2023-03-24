@@ -23,16 +23,16 @@ def main():
         DNA = file.read()
     except FileNotFoundError:
         sys.exit("Usage: python dna.py databases/filename.csv sequences/filename.txt")
-
     # print(DNA) # for testing only
 
     # TODO: Find longest match of each STR in DNA sequence
-    for row in data:  # Format: name,AGATC,AATG,TATC
-        row['rating'] = int(row['rating'])  # replace string with int for each team's rating in dictionary
-        # team = row['team']  # for testing
-        # rating = row['rating']  # for testing
-        # print(rating) # for testing
-        teams.append(row)  # Add team's row to teams list
+    for row in database:  # Format: name,AGATC,AATG,TATC
+        AGATC = row['AGATC']  # replace string with int for each team's rating in dictionary
+        AATG = row['AATG']
+        TATC = row['TATC']
+        print(AGATC) # for testing
+        print(AATG) # for testing
+        print(TATC)# for testing
 
     # TODO: Check database for matching profiles
 
