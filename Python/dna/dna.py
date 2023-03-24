@@ -14,8 +14,8 @@ def main():
     try:
         file = open(sys.argv[1], "r")
         database = csv.DictReader(file)
-        dlength = database.readlines()
-        print(dlength)
+        rows = list(database)
+        dlength = len(rows)
     except FileNotFoundError:
         sys.exit("Usage: python dna.py databases/filename.csv sequences/filename.txt")
 
