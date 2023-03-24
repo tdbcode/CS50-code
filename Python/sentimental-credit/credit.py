@@ -22,25 +22,25 @@ while valid == False:  # while an invalid number has been entered
 
 ccno = [0] * clength  # make list with 0s as placeholders at the length of credit card number
 
-for c in range(0, clength):  # run loop in reverse to go from back of credit card number
-    ccno[c] = int(creditno[c])  # take the end number to add to new array
+#for c in range(0, clength):  # run loop in reverse to go from back of credit card number
+   # ccno[c] = int(creditno[c])  # take the end number to add to new array
     # creditno2 = creditno2 / 10  # remove last number
     # ccno[c] = int(currentNo)  # add last number back in it's possition in the array
 
 locator = clength - 2
-print(clength)
+# print(clength)
 
 for a in range(0, clength, 2):  # run loop in reverse skipping every other number
     if (locator < 0):
         currentNo = 0
     else:
-        currentNo = ccno[locator] * 2  # double the current number in the array
+        currentNo = int(creditno[locator]) * 2  # double the current number in the array
 
     while (currentNo > 9):  # check if current number as more than 1 digit
         product = int(currentNo % 10) + int(currentNo / 10)  # if so then add them together
         currentNo = product  # set new number to current number
     checksum += currentNo
-    checksum += int(ccno[locator + 1])
+    checksum += int(creditno[locator + 1])
     print("Position ", locator, " : ", currentNo, ", Position ", locator+1, ": ", ccno[locator + 1], ". Checksum:", checksum)
     locator -= 2
 
