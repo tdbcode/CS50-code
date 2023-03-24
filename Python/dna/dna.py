@@ -33,10 +33,13 @@ def main():
     for k in range (1, rlength):  # loop through database and save fieldnames to keys
         keys[k] = database.fieldnames[k]
     # print(keys) # for testing purposes only
-    longestmatches = [] * rlength
-    for row in database:  # Format: name,AGATC,AATG,TATC
-        for i in range (1, int(rlength/len(keys))):
-            longestmatches[i] = longest_match(sequence,row[keys[i]])
+    longestmatches = [0] * rlength
+
+    for i in range(1, rlength):
+        tempkey = keys[i]
+        for row in database:  # Format: name,AGATC,AATG,TATC
+            longestmatches[i] = longest_match(DNA,row[tempkey])
+
     print(longestmatches)
 
             # replace string with int for each team's rating in dictionary
