@@ -1,5 +1,3 @@
-
-
 def count_letters(text):
     letters = 0
 
@@ -14,6 +12,25 @@ def count_letters(text):
     return letters;
 
 
+def count_words(text):
+    words = 0;
+
+    # Iterate through each character in the sentence
+    for c in range(len(text)):
+        temp = text[c]  # Set the current character to a temp variable
+
+        # Check if current character is either a space or and not a hypen (-) and add 1 to words
+        if temp.isspace() && temp != 45)
+        {
+            words++;
+        }
+    }
+
+    words++; // Add one word to include end of sentence (which isn't counter otherwise)
+    return words;
+}
+
+
 sentence = input("Text: ")
 
 letter = 0
@@ -22,14 +39,8 @@ sentences = 0
 index = 0
 grade = 0
 
-
-
-
-
-
-    letters = count_letters(sentence);       // Save number of letters using count letters function
-
-    words = count_words(sentence);          // Save number of words using count words function
+letters = count_letters(sentence)  # Save number of letters using count letters function
+words = count_words(sentence)  # Save number of words using count words function
 
     sentences = count_sentences(sentence); // Save number of sentences using count sentences function
 
@@ -54,27 +65,6 @@ grade = 0
 }
 
 
-
-int count_words(string text)
-{
-    char temp;
-    int words = 0;
-
-    //Iterate through each character in the sentence
-    for (int c = 0; c < strlen(text); c++)
-    {
-        temp = text[c]; // Set the current character to a temp variable
-
-        // Check if current character is either a space or and not a hypen (-) and add 1 to words
-        if (isblank(temp) && temp != 45)
-        {
-            words++;
-        }
-    }
-
-    words++; // Add one word to include end of sentence (which isn't counter otherwise)
-    return words;
-}
 
 int count_sentences(string text)
 {
