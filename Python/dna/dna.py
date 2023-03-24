@@ -38,7 +38,6 @@ def main():
     keys.remove('name')
     # print(keys)  # for testing purposes only
     longestmatch = [0] * int(clength - 1)
-    pmatch = [[0] * int(clength - 1)] * rlength
 
     for i in range(0, clength - 1):
         tempkey = keys[i]
@@ -48,6 +47,7 @@ def main():
     print(longestmatch)  # for testing purposes only
 
     # Check database for matching profiles
+    pmatch = [[0] * int(clength - 1)] * rlength
     r = 0
     for rows in database:  # Short Format: AGATC,AATG,TATC
         if rows['name'] != "name":
