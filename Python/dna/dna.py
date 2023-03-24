@@ -35,12 +35,15 @@ def main():
     keys.remove('name')
     # print(keys)  # for testing purposes only
     longestmatch = [0] * rlength
+    r = 0
 
-    for i in range(0, rlength - 1):
-        tempkey = keys[i]
-        # print(tempkey)  # for testing purposes only
-        # for row in database:  # Short Format: AGATC,AATG,TATC
-        longestmatch[i] = longest_match(DNA,tempkey)
+    for rows in database:  # Short Format: AGATC,AATG,TATC
+        rows.count
+        for i in range(0, rlength - 1):
+            tempkey = keys[i]
+            # print(tempkey)  # for testing purposes only
+            longestmatch[i] = longest_match(DNA,tempkey)
+        r += 1
 
     # print(longestmatch)  # for testing purposes only
 
