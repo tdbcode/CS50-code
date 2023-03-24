@@ -34,16 +34,13 @@ for a in range(0,clength-1, 2):  # run loop in reverse skipping every other numb
         product = int(currentNo % 10) + int(currentNo / 10)  # if so then add them together
         currentNo = product  # set new number to current number
     checksum += currentNo
-    print("a", ccno[a])
-    print("Checksum:", checksum)
     checksum += int(ccno[a+1])
-    print("a+1", ccno[a+1])
-    print("Checksum:", checksum)
+print("Checksum:", checksum)
 
 #checksum = sum(twotimed) + sum(regular)  # add current number to checksum
 
 if (checksum % 10) == 0:
-    if clength == 15 and ccno[0] == 3 and ccno[1] == 4 or ccno[1] == 7:
+    if clength == 15 and ccno[0] == 3 and (ccno[1] == 4 or ccno[1] == 7):
         print("AMEX")
     elif clength == 16 and ccno[0] == 5 and ccno[1] > 0 and ccno[1] < 6:
         print("MASTERCARD")
