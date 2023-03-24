@@ -28,19 +28,18 @@ def main():
 
 
     # Find longest match of each STR in DNA sequence
-    keys = database.fieldnames
+    rlength = len(database.fieldnames)  # get length of a row in the database using fieldnames
+    keys = [""] * rlength  # set up temporary key with length of database row
+    for k in range (1, rlength):  # loop through database and save fieldnames to keys
+        keys[k] = database.fieldnames[k]
+    # print(keys) # for testing purposes only
     sequences = [""] * len(keys)
-    dlength = sys.getsizeof(database)
+    clength = sys.getsizeof(database)
     print(sequences)
-    print(dlength)
-    for row in database:  # Format: name,AGATC,AATG,TATC
-        for i in range (len(key)):
-            sequences[i] = row[keys[i]]  # replace string with int for each team's rating in dictionary
-        AATG = row['AATG']
-        TATC = row['TATC']
-        print(sequences[0]) # for testing
-        print(AATG) # for testing
-        print(TATC)# for testing
+    print(clength)
+
+    
+
 
     # TODO: Check database for matching profiles
 
