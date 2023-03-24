@@ -34,13 +34,15 @@ locator = clength - 2
 for a in range(0, clength, 2):  # run loop in reverse skipping every other number
     currentNo = ccno[locator] * 2  # double the current number in the array
     print(locator)
-    print(currentNo)
+
     while (currentNo > 9):  # check if current number as more than 1 digit
         product = int(currentNo % 10) + int(currentNo / 10)  # if so then add them together
         currentNo = product  # set new number to current number
+    print(currentNo)
     checksum += currentNo
     checksum += int(ccno[locator + 1])
     print(locator+1)
+    print(ccno[locator + 1])
     locator -= 2
 print("Checksum:", checksum)
 
