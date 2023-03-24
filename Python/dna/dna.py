@@ -14,6 +14,8 @@ def main():
     try:
         file = open(sys.argv[1], "r")
         database = csv.DictReader(file)
+        dlength = database.readlines()
+        print(dlength)
     except FileNotFoundError:
         sys.exit("Usage: python dna.py databases/filename.csv sequences/filename.txt")
 
@@ -34,11 +36,10 @@ def main():
         keys[k] = database.fieldnames[k]
     keys.remove('name')
     # print(keys)  # for testing purposes only
-    longestmatch = [0] * rlength
+    longestmatch = [0] * rlength [0] * dlength
     r = 0
 
     for rows in database:  # Short Format: AGATC,AATG,TATC
-        rows.count
         for i in range(0, rlength - 1):
             tempkey = keys[i]
             # print(tempkey)  # for testing purposes only
@@ -48,7 +49,7 @@ def main():
     # print(longestmatch)  # for testing purposes only
 
     # Check database for matching profiles
-    for m in range(len):
+    #for m in range(len):
 
     return
 
