@@ -30,9 +30,9 @@ def main():
     # Find longest match of each STR in DNA sequence
     rlength = len(database.fieldnames)  # get length of a row in the database using fieldnames
     keys = [""] * rlength  # set up temporary key with length of database row
-    for k in range (1, rlength):  # loop through database and save fieldnames to keys
+    for k in range (0, rlength):  # loop through database and save fieldnames to keys
         keys[k] = database.fieldnames[k]
-    # print(keys) # for testing purposes only
+    print(keys) # for testing purposes only
     longestmatches = [0] * rlength
 
     for i in range(1, rlength):
