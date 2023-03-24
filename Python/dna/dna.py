@@ -42,11 +42,6 @@ def main():
 
     print(longestmatches)
 
-            # replace string with int for each team's rating in dictionary
-            # temp = row[keys[i]]
-            # TATC = row['TATC']
-
-
 
     # TODO: Check database for matching profiles
 
