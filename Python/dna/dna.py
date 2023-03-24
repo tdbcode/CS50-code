@@ -15,7 +15,8 @@ def main():
         file = open(sys.argv[1], "r")
         database = csv.DictReader(file)
         rows = list(database)
-        dlength = len(rows)
+        rlength = len(rows)
+        file.seek(0)
     except FileNotFoundError:
         sys.exit("Usage: python dna.py databases/filename.csv sequences/filename.txt")
 
@@ -30,23 +31,24 @@ def main():
 
 
     # Find longest match of each STR in DNA sequence
-    rlength = len(database.fieldnames)  # get length of a row in the database using fieldnames
-    keys = [""] * rlength  # set up temporary key with length of database row
-    for k in range (0, rlength):  # loop through database and save fieldnames to keys
+    clength = len(database.fieldnames)  # get length of a row in the database using fieldnames
+    keys = [""] * clength  # set up temporary key with length of database row
+    for k in range (0, clength):  # loop through database and save fieldnames to keys
         keys[k] = database.fieldnames[k]
     keys.remove('name')
     # print(keys)  # for testing purposes only
-    longestmatch = [0] * rlength [0] * dlength
+    longestmatch = [[0] * clength] * rlength
+
     r = 0
-
     for rows in database:  # Short Format: AGATC,AATG,TATC
-        for i in range(0, rlength - 1):
+        print(rows)
+        for i in range(0, clength - 1):
             tempkey = keys[i]
-            # print(tempkey)  # for testing purposes only
-            longestmatch[i] = longest_match(DNA,tempkey)
-        r += 1
+            print(tempkey)  # for testing purposes only
+            longestmatch[r][i] = longest_match(DNA,tempkey)
 
-    # print(longestmatch)  # for testing purposes only
+        r += 1
+    print(longestmatch)  # for testing purposes only
 
     # Check database for matching profiles
     #for m in range(len):
