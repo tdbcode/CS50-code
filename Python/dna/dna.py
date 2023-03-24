@@ -4,8 +4,7 @@ import sys
 
 def main():
 
-    # TODO: Check for command-line usage
-    # Ensure correct usage
+    # Check for command-line usage
     if len(sys.argv) != 3:
         sys.exit("Usage: python dna.py databases/filename.csv sequences/filename.txt")
 
@@ -59,6 +58,9 @@ def main():
 
         if matches == len(longestmatch):
             print(person["name"])
+            break
+        else:
+            print("No match")
             break
 
     return
