@@ -34,7 +34,7 @@ def main():
     print(sequences)
     print(dlength)
     for row in database:  # Format: name,AGATC,AATG,TATC
-        for i in range (len(key):
+        for i in range (len(key)):
             sequences[i] = row[keys[i]]  # replace string with int for each team's rating in dictionary
         AATG = row['AATG']
         TATC = row['TATC']
