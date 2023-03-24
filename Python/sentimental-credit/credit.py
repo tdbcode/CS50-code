@@ -30,6 +30,7 @@ for c in reversed(range(0,clength)):  # run loop in reverse to go from back of c
     #ccno[c] = int(currentNo)  # add last number back in it's possition in the array
 
 locator = clength - 2
+print(clength)
 
 for a in range(0, clength, 2):  # run loop in reverse skipping every other number
     if (locator > 0):
@@ -42,7 +43,7 @@ for a in range(0, clength, 2):  # run loop in reverse skipping every other numbe
         currentNo = product  # set new number to current number
     checksum += currentNo
     checksum += int(ccno[locator + 1])
-    #print("Position ", locator, " : ", currentNo, ", Position ", locator+1, ": ", ccno[locator + 1], ". Checksum:", checksum)
+    print("Position ", locator, " : ", currentNo, ", Position ", locator+1, ": ", ccno[locator + 1], ". Checksum:", checksum)
     locator -= 2
 
 #checksum = sum(twotimed) + sum(regular)  # add current number to checksum
