@@ -42,7 +42,7 @@ def main():
         # for row in database:  # Short Format: AGATC,AATG,TATC
         longestmatch[i] = longest_match(DNA,tempkey)
 
-    print(longestmatch)
+    # print(longestmatch)  # for testing purposes only
 
 
     # TODO: Check database for matching profiles
