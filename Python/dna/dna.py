@@ -49,8 +49,8 @@ def main():
     # Check database for matching profiles
     pmatch = [[0] * int(clength - 1)] * rlength
     r = 0
-    for rows in database:  # Short Format: AGATC,AATG,TATC
-        if rows['name'] != "name":
+    for person in database:  # Short Format: AGATC,AATG,TATC
+        if person['name'] != "name":
             for i in range (0,clength-1):
                 tempkey = keys[i]
                 klength = len(tempkey)
