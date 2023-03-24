@@ -40,7 +40,7 @@ for a in range(0,clength-1, 2):  # run loop in reverse skipping every other numb
     print("a+1", ccno[a+1])
     print("Checksum:", checksum)
 
-checksum = sum(twotimed) + sum(regular)  # add current number to checksum
+#checksum = sum(twotimed) + sum(regular)  # add current number to checksum
 
 if (checksum % 10) == 0:
     if clength == 15 and ccno[0] == 3 and ccno[1] == 4 or ccno[1] == 7:
