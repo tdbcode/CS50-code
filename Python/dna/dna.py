@@ -16,7 +16,7 @@ def main():
         database = csv.DictReader(file)
     except FileNotFoundError:
         sys.exit("Usage: python dna.py databases/filename.csv sequences/filename.txt")
-
+    print(list(database.keys()))
     # TODO: Read DNA sequence file into a variable
     try:
         file = open(sys.argv[2], "r")
@@ -24,7 +24,6 @@ def main():
     except FileNotFoundError:
         sys.exit("Usage: python dna.py databases/filename.csv sequences/filename.txt")
     # print(DNA) # for testing only
-
     # TODO: Find longest match of each STR in DNA sequence
     for row in database:  # Format: name,AGATC,AATG,TATC
         AGATC = row['AGATC']  # replace string with int for each team's rating in dictionary
