@@ -30,14 +30,14 @@ def main():
     # Find longest match of each STR in DNA sequence
     keys = database.fieldnames
     sequences = [""] * len(keys)
-    dlength = len(database)
+    dlength = sys.getsizeof(database)
     print(sequences)
     print(dlength)
     for row in database:  # Format: name,AGATC,AATG,TATC
         sequences[0] = row[keys[1]]  # replace string with int for each team's rating in dictionary
         AATG = row['AATG']
         TATC = row['TATC']
-        print(AGATC) # for testing
+        print(sequences[0]) # for testing
         print(AATG) # for testing
         print(TATC)# for testing
 
