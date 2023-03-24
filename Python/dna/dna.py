@@ -30,40 +30,40 @@ def main():
 
 
     # Find longest match of each STR in DNA sequence
-    clength = len(database.fieldnames)  # get length of a row in the database using fieldnames
-    keys = [""] * clength  # set up temporary key with length of database row
+    clength = len(database.fieldnames)  # get length of a row in the database using the fieldnames
+    keys = [""] * clength  # set up key list with placeholders of the length of database row
     for k in range (0, clength):  # loop through database and save fieldnames to keys
         keys[k] = database.fieldnames[k]
-    keys.remove('name')
+    keys.remove('name')  # remove name from keys as it isn't needed
     # print(keys)  # for testing purposes only
-    longestmatch = [0] * int(clength - 1)
+    longestmatch = [0] * int(clength - 1)  # create longest match list witj the length of the keys (minus names (so - 1))
 
-    for i in range(0, clength - 1):
-        tempkey = keys[i]
+    for i in range(0, clength - 1):  # loop through the keys
+        tempkey = keys[i]  # assign current key to temp variable
         #print(tempkey)  # for testing purposes only
-        longestmatch[i] = longest_match(DNA,tempkey)
+        longestmatch[i] = longest_match(DNA,tempkey)  # save in list the longest match for current key
 
     #print(longestmatch)  # for testing purposes only
 
     # Check database for matching profiles
-    pmatch = [[0] * int(clength - 1)] * rlength
-    for person in database:  # Short Format: AGATC,AATG,TATC
-        matches = 0
-        if person['name'] != "name":
-            for i in range (0,clength-1):
-                tempkey = keys[i]
-                if int(person[tempkey]) == longestmatch[i]:
-                    matches += 1
+    # pmatch = [[0] * int(clength - 1)] * rlength  # redundant, was going to build DNA list for all people but not needed
+    for person in database:  # For each person in the database (Short Format: AGATC,AATG,TATC)
+        matches = 0  # set current matches to 0
+        if person['name'] != "name":  # if person name does not equal name (so ignore first row after seek used at top)
+            for i in range (0, clength-1):  # repeat til end of keylist
+                tempkey = keys[i]  # assign current key as  temporary key
+                if int(person[tempkey]) == longestmatch[i]:  # see if person's key count matches the longest match count
+                    matches += 1  # if so add 1 to matches
                     # print(matches)  # for testing purposes only
 
-        if matches == len(longestmatch):
-            print(person["name"])
-            break
+        if matches == len(longestmatch):  # if matches equals the length of longest match then it must be this person
+            print(person["name"])  # print persons name
+            return
         else:
-            print("No match")
+            print("No match")  # else print no match
             break
 
-    return
+    return 0
 
 
 def longest_match(sequence, subsequence):
