@@ -59,11 +59,10 @@ def main():
         if matches == len(longestmatch):  # if matches equals the length of longest match then it must be this person
             print(person["name"])  # print persons name
             return
-        else:
-            print("No match")  # else print no match
-            break
 
-    return 0
+        print("No match")  # else print no match
+
+    return
 
 
 def longest_match(sequence, subsequence):
