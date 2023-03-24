@@ -1,5 +1,9 @@
 import sys
 
+
+def luhn_calc(number):
+    
+
 twotimed = []
 regular = []
 checksum = 0
