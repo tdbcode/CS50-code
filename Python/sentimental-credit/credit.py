@@ -44,7 +44,7 @@ for a in range(0, clength, 2):  # run loop in reverse skipping every other numbe
     print(locator+1)
     print(ccno[locator + 1])
     locator -= 2
-print("Checksum:", checksum)
+    print("Checksum:", checksum)
 
 #checksum = sum(twotimed) + sum(regular)  # add current number to checksum
 
