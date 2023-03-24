@@ -44,21 +44,22 @@ def main():
         #print(tempkey)  # for testing purposes only
         longestmatch[i] = longest_match(DNA,tempkey)
 
-    print(longestmatch)  # for testing purposes only
+    #print(longestmatch)  # for testing purposes only
 
     # Check database for matching profiles
     pmatch = [[0] * int(clength - 1)] * rlength
-    r = 0
     for person in database:  # Short Format: AGATC,AATG,TATC
+        matches = 0
         if person['name'] != "name":
             for i in range (0,clength-1):
                 tempkey = keys[i]
-                klength = len(tempkey)
-                print(klength)
-                pmatch[r][i] = DNA[1:klength] * int(rows[tempkey])
-                print(pmatch[r][i] )
-            #print(rows)
-            r += 1
+                if int(person[tempkey]) == longestmatch[i]:
+                    matches += 1
+                    # print(matches)  # for testing purposes only
+
+        if matches == len(longestmatch):
+            print(person["name"])
+            break
 
     return
 
