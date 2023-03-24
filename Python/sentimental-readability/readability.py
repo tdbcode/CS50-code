@@ -1,4 +1,10 @@
 
+
+sentence = input("Text: ")
+
+
+
+
 int main(void)
 {
     string sentence = get_string("Text: ");     // Ask the user for the text passage
