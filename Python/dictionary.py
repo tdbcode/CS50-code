@@ -6,7 +6,8 @@ pizzas = {
 }
 
 pizzas["cheese"] = 8
-print(pizzas["cheese"])
 
 pizzas["bacon"] = 14
-print(pizzas["bacon"])
+
+for pie, price in pizzas.items():
+    print("A whole {} pizza costs ${}".format(pie,price))
