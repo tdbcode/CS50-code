@@ -44,8 +44,8 @@ def main():
 
     # print(longestmatch)  # for testing purposes only
 
-
-    # TODO: Check database for matching profiles
+    # Check database for matching profiles
+    for i in range(len)
 
     return
 
