@@ -29,8 +29,9 @@ for c in reversed(range(0,clength)):  # run loop in reverse to go from back of c
     #creditno2 = creditno2 / 10  # remove last number
     #ccno[c] = int(currentNo)  # add last number back in it's possition in the array
 print(ccno)
+print(len(ccno))
 
-for a in reversed(range(len(ccno), 0 -2)):  # run loop in reverse skipping every other number
+for a in ccno), 0 -2)):  # run loop in reverse skipping every other number
     print(a)
     currentNo = ccno[a] * 2  # double the current number in the array
     print(currentNo)
