@@ -1,8 +1,8 @@
 import sys
 
 
-twotimed =  0
-regular = 0
+# twotimed = 0
+# regular = 0
 checksum = 0
 valid = False
 
@@ -24,19 +24,19 @@ creditno2 = creditno  # copy credit card number to temp varible for analysis
 
 ccno = [0] * clength
 
-for c in reversed(range(0,clength)):  # run loop in reverse to go from back of credit card number
+for c in reversed(range(0, clength)):  # run loop in reverse to go from back of credit card number
     ccno[c] = int(creditno2[c])  # take the end number to add to new array
-    #creditno2 = creditno2 / 10  # remove last number
-    #ccno[c] = int(currentNo)  # add last number back in it's possition in the array
+    # creditno2 = creditno2 / 10  # remove last number
+    # ccno[c] = int(currentNo)  # add last number back in it's possition in the array
 
 locator = clength - 2
 print(clength)
 
 for a in range(0, clength, 2):  # run loop in reverse skipping every other number
-    if (locator > 0):
-        currentNo = ccno[locator] * 2  # double the current number in the array
-    else:
+    if (locator < 0):
         currentNo = 0
+    else:
+        currentNo = ccno[locator] * 2  # double the current number in the array
 
     while (currentNo > 9):  # check if current number as more than 1 digit
         product = int(currentNo % 10) + int(currentNo / 10)  # if so then add them together
@@ -46,7 +46,7 @@ for a in range(0, clength, 2):  # run loop in reverse skipping every other numbe
     print("Position ", locator, " : ", currentNo, ", Position ", locator+1, ": ", ccno[locator + 1], ". Checksum:", checksum)
     locator -= 2
 
-#checksum = sum(twotimed) + sum(regular)  # add current number to checksum
+# checksum = sum(twotimed) + sum(regular)  # add current number to checksum
 
 if (checksum % 10) == 0:
     if (clength == 13 or clength == 16) and ccno[0] == 4:
