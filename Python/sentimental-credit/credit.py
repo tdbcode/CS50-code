@@ -40,12 +40,12 @@ print("Checksum:", checksum)
 #checksum = sum(twotimed) + sum(regular)  # add current number to checksum
 
 if (checksum % 10) == 0:
-    if clength == 15 and ccno[0] == 3 and (ccno[1] == 4 or ccno[1] == 7):
-        print("AMEX")
-    elif clength == 16 and ccno[0] == 5 and ccno[1] > 0 and ccno[1] < 6:
-        print("MASTERCARD")
-    elif (clength == 13 or clength == 16) and ccno[0] == 4:
+    if (clength == 13 or clength == 16) and ccno[0] == 4:
         print("VISA")
+    elif clength == 16 and (ccno[0] == 5 and ccno[1] > 0 and ccno[1] < 6):
+        print("MASTERCARD")
+    elif clength == 15 and (ccno[0] == 3 and (ccno[1] == 4 or ccno[1] == 7)):
+        print("AMEX")
     else:
         print("INVALID")
 else:
