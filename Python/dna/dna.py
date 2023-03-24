@@ -11,19 +11,23 @@ def main():
 
 
     # TODO: Read database file into a variable
-    file = open(sys.argv[1], "r")
-    database = csv.DictReader(file)
+    try:
+        file = open(sys.argv[1], "r")
+        database = csv.DictReader(file)
+    except FileNotFoundError:
+        sys.exit("Usage: python dna.py databases/filename.csv sequences/filename.txt")
 
     # TODO: Read DNA sequence file into a variable
     try:
         file = open(sys.argv[2], "r")
         DNA = file.read()
     except FileNotFoundError:
-     
+        sys.exit("Usage: python dna.py databases/filename.csv sequences/filename.txt")
+
     # print(DNA) # for testing only
 
     # TODO: Find longest match of each STR in DNA sequence
-     for row in data:  # Format: name,AGATC,AATG,TATC
+    for row in data:  # Format: name,AGATC,AATG,TATC
         row['rating'] = int(row['rating'])  # replace string with int for each team's rating in dictionary
         # team = row['team']  # for testing
         # rating = row['rating']  # for testing
