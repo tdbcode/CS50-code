@@ -1,18 +1,31 @@
 
 
+def count_letters(text):
+    letters = 0
+
+    # Iterate through each character in the sentence
+    for c in range(len(text):
+        temp = text[c];  # Set the current character to a temp variable
+
+        # Check if current character is either not a space or a puncuation and add 1 to letters
+        if isalnum(temp):
+            letters += 1;
+
+    return letters;
+
+
 sentence = input("Text: ")
 
+letter = 0
+words = 0
+sentences = 0
+index = 0
+grade = 0
 
 
 
-int main(void)
-{
-    string sentence = get_string("Text: ");     // Ask the user for the text passage
-    int letters = 0;
-    int words = 0;
-    int sentences = 0;
-    float index = 0;
-    int grade = 0;
+
+
 
     letters = count_letters(sentence);       // Save number of letters using count letters function
 
@@ -40,25 +53,7 @@ int main(void)
 
 }
 
-int count_letters(string text)
-{
-    char temp;
-    int letters = 0;
 
-    //Iterate through each character in the sentence
-    for (int c = 0; c < strlen(text); c++)
-    {
-        temp = text[c]; // Set the current character to a temp variable
-
-        // Check if current character is either not a space or a puncuation and add 1 to letters
-        if (isalnum(temp))
-        {
-            letters++;
-        }
-    }
-
-    return letters;
-}
 
 int count_words(string text)
 {
