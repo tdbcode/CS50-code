@@ -8,7 +8,6 @@ def main():
     if len(sys.argv) != 3:
         sys.exit("Usage: python dna.py databases/filename.csv sequences/filename.txt")
 
-
     # Read database file into a variable
     try:
         file = open(sys.argv[1], "r")
@@ -18,7 +17,6 @@ def main():
         file.seek(0)
     except FileNotFoundError:
         sys.exit("Usage: python dna.py databases/filename.csv sequences/filename.txt")
-
     # Read DNA sequence file into a variable
     try:
         file = open(sys.argv[2], "r")
