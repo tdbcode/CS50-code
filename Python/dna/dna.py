@@ -33,15 +33,15 @@ def main():
     for k in range (1, rlength):  # loop through database and save fieldnames to keys
         keys[k] = database.fieldnames[k]
     # print(keys) # for testing purposes only
-    sequences = [""] * rlength
+    longestmatches = [] * rlength
     for row in database:  # Format: name,AGATC,AATG,TATC
-        for i in range (1, rlength/len(keys)):
-             # replace string with int for each team's rating in dictionary
-        AATG = row['AATG']
-        TATC = row['TATC']
-        print(sequences[0]) # for testing
-        print(AATG) # for testing
-        print(TATC)# for testing
+        for i in range (1, int(rlength/len(keys))):
+            longestmatches[i] = longest_match(sequence,row[keys[i]])
+    print(longestmatches)
+
+            # replace string with int for each team's rating in dictionary
+            # temp = row[keys[i]]
+            # TATC = row['TATC']
 
 
 
