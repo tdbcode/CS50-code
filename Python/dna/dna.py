@@ -46,7 +46,6 @@ def main():
 
     # Check database for matching profiles
     for m in range(len):
-        if
 
     return
 
