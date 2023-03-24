@@ -33,12 +33,16 @@ def main():
     for k in range (1, rlength):  # loop through database and save fieldnames to keys
         keys[k] = database.fieldnames[k]
     # print(keys) # for testing purposes only
-    sequences = [""] * len(keys)
-    clength = sys.getsizeof(database)
-    print(sequences)
-    print(clength)
+    sequences = [""] * rlength
+    for row in database:  # Format: name,AGATC,AATG,TATC
+        for i in range (1, rlength/len(keys)):
+             # replace string with int for each team's rating in dictionary
+        AATG = row['AATG']
+        TATC = row['TATC']
+        print(sequences[0]) # for testing
+        print(AATG) # for testing
+        print(TATC)# for testing
 
-    
 
 
     # TODO: Check database for matching profiles
