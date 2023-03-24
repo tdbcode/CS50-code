@@ -32,13 +32,18 @@ def main():
     keys = [""] * rlength  # set up temporary key with length of database row
     for k in range (0, rlength):  # loop through database and save fieldnames to keys
         keys[k] = database.fieldnames[k]
-    print(keys) # for testing purposes only
+    keys.remove('name')
+    # print(keys)  # for testing purposes only
     longestmatches = [0] * rlength
 
-    for i in range(1, rlength):
+    for i in range(0, rlength - 1):
         tempkey = keys[i]
-        for row in database:  # Format: name,AGATC,AATG,TATC
-            longestmatches[i] = longest_match(DNA,row[tempkey])
+        # print(tempkey)  # for testing purposes only
+        for row in database:  # Short Format: AGATC,AATG,TATC
+            slength = row[tempkey]
+            subsequence = DNA[1:slength]
+            print(subsequence)
+            longestmatches[i] = longest_match(DNA,subsequence)
 
     print(longestmatches)
 
