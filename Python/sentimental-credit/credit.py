@@ -30,7 +30,7 @@ for c in reversed(range(0,clength)):  # run loop in reverse to go from back of c
     #ccno[c] = int(currentNo)  # add last number back in it's possition in the array
 print(ccno)
 
-for a in reversed(range(0,len(ccno) - 1, 2)):  # run loop in reverse skipping every other number
+for a in reversed(range(0,len(ccno), 2)):  # run loop in reverse skipping every other number
     print(a)
     currentNo = ccno[a] * 2  # double the current number in the array
     print(currentNo)
