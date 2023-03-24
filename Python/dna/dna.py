@@ -50,8 +50,15 @@ def main():
     # Check database for matching profiles
     r = 0
     for rows in database:  # Short Format: AGATC,AATG,TATC
-        print(rows)
-        r += 1
+        if rows['name'] != "name":
+            for i in range (0,clength-1):
+                tempkey = keys[i]
+                klength = len(tempkey)
+                print(klength)
+                pmatch[r][i] = DNA[1:klength] * int(rows[tempkey])
+                print(pmatch[r][i] )
+            #print(rows)
+            r += 1
 
     return
 
