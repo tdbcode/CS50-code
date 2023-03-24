@@ -18,14 +18,12 @@ while valid == False:  # while an invalid number has been entered
             valid = True  # if no error, exit loop
     except ValueError:
         print("INVALID")  # if a value error, output INVALID and exit
-        sys.exit(1)
+        sys.exit(1)  # exit program with error code 1
 
-creditno2 = creditno  # copy credit card number to temp varible for analysis
+ccno = [0] * clength  # make list with 0s as placeholders at the length of credit card number
 
-ccno = [0] * clength
-
-for c in reversed(range(0, clength)):  # run loop in reverse to go from back of credit card number
-    ccno[c] = int(creditno2[c])  # take the end number to add to new array
+for c in range(0, clength):  # run loop in reverse to go from back of credit card number
+    ccno[c] = int(creditno[c])  # take the end number to add to new array
     # creditno2 = creditno2 / 10  # remove last number
     # ccno[c] = int(currentNo)  # add last number back in it's possition in the array
 
