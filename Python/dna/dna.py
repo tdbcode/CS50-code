@@ -13,15 +13,19 @@ def main():
     # TODO: Read database file into a variable
     file = open(sys.argv[1], "r")
     database = csv.DictReader(file)
-    print(database)
 
     # TODO: Read DNA sequence file into a variable
     file = open(sys.argv[2], "r")
     DNA = file.read()
-    print(DNA)
+    # print(DNA) # for testing only
 
     # TODO: Find longest match of each STR in DNA sequence
-    
+     for row in data:  # Format: name,AGATC,AATG,TATC
+        row['rating'] = int(row['rating'])  # replace string with int for each team's rating in dictionary
+        # team = row['team']  # for testing
+        # rating = row['rating']  # for testing
+        # print(rating) # for testing
+        teams.append(row)  # Add team's row to teams list
 
     # TODO: Check database for matching profiles
 
