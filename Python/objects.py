@@ -11,5 +11,6 @@ class Student():
         print("{} - {}".format(self.name, self.id))
 
 jane = Student("Jane", 10)
-
-o.print()
+jane.print()
+jane.changeID(11)
+jane.print()
