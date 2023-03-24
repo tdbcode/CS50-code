@@ -2,7 +2,7 @@ import sys
 
 twotimed = []
 regular = []
-
+checksum = 0
 valid = False
 
 while valid == False:  # while an invalid number has been entered
@@ -33,8 +33,12 @@ for a in range(0,clength-1, 2):  # run loop in reverse skipping every other numb
     while (currentNo > 9):  # check if current number as more than 1 digit
         product = int(currentNo % 10) + int(currentNo / 10)  # if so then add them together
         currentNo = product  # set new number to current number
-    twotimed.append(currentNo)
-    regular.append(int(ccno[a+1]))
+    checksum += currentNo
+    print("a", ccno[a])
+    print("Checksum:", checksum)
+    checksum += int(ccno[a+1])
+    print("a+1", ccno[a+1])
+    print("Checksum:", checksum)
 
 checksum = sum(twotimed) + sum(regular)  # add current number to checksum
 
