@@ -34,18 +34,15 @@ def main():
         keys[k] = database.fieldnames[k]
     keys.remove('name')
     # print(keys)  # for testing purposes only
-    longestmatches = [0] * rlength
+    longestmatch = [0] * rlength
 
     for i in range(0, rlength - 1):
         tempkey = keys[i]
         # print(tempkey)  # for testing purposes only
-        for row in database:  # Short Format: AGATC,AATG,TATC
-            slength = row[tempkey]
-            subsequence = DNA[1:slength]
-            print(subsequence)
-            longestmatches[i] = longest_match(DNA,subsequence)
+        # for row in database:  # Short Format: AGATC,AATG,TATC
+        longestmatch[i] = longest_match(DNA,tempkey)
 
-    print(longestmatches)
+    print(longestmatch)
 
 
     # TODO: Check database for matching profiles
