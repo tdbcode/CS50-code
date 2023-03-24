@@ -44,8 +44,8 @@ def main():
         print(rows)
         for i in range(0, clength - 1):
             tempkey = keys[i]
-            print(tempkey)  # for testing purposes only
-            longestmatch[r][i] = longest_match(DNA,tempkey)
+            #print(tempkey)  # for testing purposes only
+            longestmatch[r-1][i] = longest_match(DNA,tempkey)
 
         r += 1
     print(longestmatch)  # for testing purposes only
