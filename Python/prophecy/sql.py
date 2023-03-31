@@ -10,23 +10,21 @@ db = SQL("sqlite:///roster.db")
 with open("students.csv", "r") as file:
 
     # Create DictReader
-    reader = csv.DictReader(file)
+    students = csv.DictReader(file)
 
     # Counts
     counts = {}
 
-    # Iterate over CSV file, counting favorites
-    for row in reader:
-        favorite = row["problem"]
-        if favorite in counts:
-            counts[favorite] += 1
-        else:
-            counts[favorite] = 1
+    INSERT INTO table_name (column1, column2, column3, ...)
+    VALUES (value1, value2, value3, ...);
 
-# Print count
-favorite = input("Favorite: ")
-if favorite in counts:
-    print(f"{favorite}: {counts[favorite]}")
+    # Iterate over CSV file, counting favorites
+    for student in students:
+        id = student["id"]
+        name = student["name"]
+        house = student["house"]
+        head = student["head"]
+        db.execute("INSERT INTO student (id, student_name, houseID) VALUES (?, ?, ?);)
 
 # Prompt user for favorite
 favorite = input("Favorite: ")
