@@ -19,16 +19,15 @@ with open("students.csv", "r") as file:
 
     # Iterate over CSV file, counting favorites
     for student in students:
-        sid = student["id"]
-        name = student["student_name"]
         house = student["house"]
         head = student["head"]
-        print(house)
 
         if house not in houses:
+            houses[id] = hid
+            houses[id] = head
 
-            houses[name] = house
-            houses[head] = head
+        sid = student["id"]
+        name = student["student_name"]
 
     print(houses)
 
