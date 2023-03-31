@@ -4,4 +4,5 @@ CREATE TABLE students (
     house TEXT,
     head INTEGER,
     PRIMARY KEY(id)
+    FOREIGN KEY (houseID) REFERENCES Persons(PersonID)
 );
