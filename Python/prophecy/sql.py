@@ -35,6 +35,6 @@ with open("students.csv", "r") as file:
         print(temphouse)
 
         db.execute("INSERT INTO houseref (studentid, houseid) VALUES (?, ?, ?);", studentid, temphouse)
-        db.execute("INSERT INTO studentsnew (id, student_name, houseID) VALUES (?, ?, ?);", studentid, temphouse)
+        db.execute("INSERT INTO studentsnew (id, student_name, houseID) VALUES (?, ?, ?);", studentid, name, temphouse)
 
     print(houses)
