@@ -1,3 +1,4 @@
 select name from songs
-WHERE artist_id = select id from artists
-where name = "Post Malone"
+WHERE artist_id IN (
+    select id from artists
+    where name = "Post Malone");
