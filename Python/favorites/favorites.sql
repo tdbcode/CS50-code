@@ -12,5 +12,8 @@ UPDATE shows SET title = "Squid Game" WHERE title = "squid game";
 UPDATE shows SET title = "The Untamed" WHERE title = "the Untamed";
 UPDATE shows SET title = "The Bachelorette" WHERE title = "the bachelorette";
 UPDATE shows SET title = "The Office" WHERE title = "the office";
+UPDATE shows SET title = "Billions" WHERE title = "billions";
+UPDATE shows SET title = "Criminal Minds" WHERE title = "criminal minds";
+UPDATE shows SET title = "Sherlock Holmes" WHERE title LIKE "sherlock %";
 
 SELECT * FROM shows ORDER BY title;
