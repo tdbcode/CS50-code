@@ -12,7 +12,7 @@ db.execute("DROP TABLE houseref;")
 db.execute("CREATE TABLE studentsnew (id INTEGER, student_name TEXT, PRIMARY KEY(id));")
 db.execute("CREATE TABLE houses (id INTEGER, house_name TEXT, head TEXT, PRIMARY KEY(id));")
 db.execute("CREATE TABLE houses (id INTEGER, house_name TEXT, head TEXT, PRIMARY KEY(id));")
-db.execute("CREATE TABLE houseref (studentid INTEGER, houseid INTEGER, FOREIGN KEY (studentid) REFERENCES studentsnew(id) FOREIGN KEY (houseid) REFERENCES houses(id));")
+db.execute("CREATE TABLE houseref (studentid INTEGER, houseid INTEGER, FOREIGN KEY (studentid) REFERENCES studentsnew(id), FOREIGN KEY (houseid) REFERENCES houses(id));")
 
 # Open CSV file
 with open("students.csv", "r") as file:
@@ -24,7 +24,6 @@ with open("students.csv", "r") as file:
     houses = {}
     hid = 1
     temphouse = 0
-
 
     # Iterate over CSV file, counting favorites
     for student in students:
@@ -44,16 +43,5 @@ with open("students.csv", "r") as file:
             temphouse1 = house["id"]
         db.execute("INSERT INTO studentsnew (id, student_name) VALUES (?, ?);", studentid, name)
         db.execute("INSERT INTO houseref (studentid, houseid) VALUES (?, ?);", studentid, temphouse1)
-
-SELECT
-t1.*,
-t2.staff_name
-FROM Clients t1
-LEFT JOIN Staff t2
-ON (t2.id = t1.staff);
-
-newstudents = db.execute("SELECT t1.id, t2.house_name FROM studentsnew t1 LEFT JOIN houses t2 ON (t2.id = );")
-for students in newstudents:
-    print(students["name"])
 
 
