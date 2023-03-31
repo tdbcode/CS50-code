@@ -12,7 +12,7 @@ db.execute("DROP TABLE houseref;")
 db.execute("CREATE TABLE studentsnew (id INTEGER, student_name TEXT, PRIMARY KEY(id));")
 db.execute("CREATE TABLE houses (id INTEGER, house_name TEXT, head TEXT, PRIMARY KEY(id));")
 db.execute("CREATE TABLE houses (id INTEGER, house_name TEXT, head TEXT, PRIMARY KEY(id));")
-db.execute("CREATE TABLE houseref (studentid INTEGER, houseid INTEGER, FOREIGN KEY (studentid) REFERENCES studentsnew(id), FOREIGN KEY (houseid) REFERENCES houses(id));")
+db.execute("CREATE TABLE houseref (studentid INTEGER, houseid INTEGER, FOREIGN KEY (studentid) REFERENCES studentsnew(id) FOREIGN KEY (houseid) REFERENCES houses(id));")
 
 # Open CSV file
 with open("students.csv", "r") as file:
