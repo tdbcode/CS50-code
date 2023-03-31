@@ -1,2 +1,1 @@
-select ROUND(AVG(rating),2) from ratings where movie_id IN (
-    select id from movies);
+select AVG(rating) from ratings where movie_id = (select id from movies where movies.year = 2012);
