@@ -1,1 +1,1 @@
-select title, ratings.rating from movies JOIN ratings ON movies.id = ratings.movie_id where year = 2010 ORDER BY ratings.rating DESC, movies.title;
+select title, ratings.rating from movies JOIN ratings ON movies.id = ratings.movie_id where year = 2010 AND ratings.rating >= 0 ORDER BY ratings.rating DESC, movies.title;
