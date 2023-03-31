@@ -45,6 +45,6 @@ with open("students.csv", "r") as file:
 
 newstudents = db.execute("SELECT student_name, houses.house_name FROM houseref JOIN studentsnew ON houseref.studentid = studentsnew.id JOIN houses ON houseref.houseid = houses.id;")
 for students in newstudents:
-    print(students["student_name"])
+    print(f"{students['student_name']} is in {students['house_name']}")
 
 
