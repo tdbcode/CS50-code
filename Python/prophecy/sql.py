@@ -43,7 +43,7 @@ with open("students.csv", "r") as file:
         db.execute("INSERT INTO studentsnew (id, student_name) VALUES (?, ?);", studentid, name)
         db.execute("INSERT INTO houseref (studentid, houseid) VALUES (?, ?);", studentid, temphouse1)
 
-newstudents = db.execute("SELECT name FROM studentsnew LEFT JOIN houseref.studentid = studentsnew.id;")
+newstudents = db.execute("SELECT studentsnew.student_name, houses.house_name FROM  JOIN houseref ON houseref.studentid JOIN houses ON houseref.houseid;")
 for students in newstudents:
     print(students["name"])
 
