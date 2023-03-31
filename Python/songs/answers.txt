@@ -1,1 +1,25 @@
-select AVG(energy), AVG(valence), AVG(danceability) from songs;
+If songs.db contains the top 100 songs of one listener from 2018, how would you characterize their audio aura?
+
+An audio aura from this database could be calculated by running the query "select AVG(energy), AVG(valence), AVG(danceability) from songs;" In the article:
+https://newsroom.spotify.com/2021-12-01/learn-more-about-the-audio-aura-in-your-spotify-2021-wrapped-with-aura-reader-mystic-michaela/
+
+Mystic Michaela claims that people have auras that represent a color. Spotify mention that they calculate the aura on the 'aura spectrum' by "assigning a color to each of
+six mood descriptor categories (including “happy,” “calm,” and “hopeful,”) and matching them with tracks on Spotify."
+
+In this way you could take the values from running this query "select AVG(energy), AVG(valence), AVG(danceability) from songs;" which outputs:
+
+ AVG(energy) | AVG(valence) | AVG(danceability) |
++-------------+--------------+-------------------+
+| 0.65906     | 0.484443     | 0.71646
+
+You could then multiply by 255 and store as an integer. These could represent color values for RGB. This could translate to 168, 124, 183 which could be color code
+#A87CB7
+
+Which would translate to this shade of purple:
+
+https://www.color-hex.com/color/a87cb7
+
+This could arguably be used to explain the user's aura.
+
+Hypothesize about why the way you’ve calculated this aura might not be very representative of the listener. What better ways of calculating this aura would you propose?
+
