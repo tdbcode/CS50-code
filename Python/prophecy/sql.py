@@ -32,7 +32,7 @@ with open("students.csv", "r") as file:
         name = student["student_name"]
 
         temphouse = db.execute("SELECT id FROM houses WHERE house_name = ?;", house)
-        chouse = temphouse[0]
+        chouse = temphouse[1]
         print(chouse)
 
         #db.execute("INSERT INTO houseref (studentid, houseid) VALUES (?, ?, ?);", studentid, temphouse)
