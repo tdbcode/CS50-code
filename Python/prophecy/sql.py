@@ -6,6 +6,14 @@ from cs50 import SQL
 # Open database
 db = SQL("sqlite:///roster.db")
 
+db.execute("DROP TABLE studentsnew;")
+db.execute("DROP TABLE houses;")
+db.execute("DROP TABLE houseref;")
+db.execute("CREATE TABLE studentsnew (id INTEGER, student_name TEXT, PRIMARY KEY(id));")
+db.execute("CREATE TABLE houses (id INTEGER, house_name TEXT, head TEXT, PRIMARY KEY(id));")
+db.execute("CREATE TABLE houses (id INTEGER, house_name TEXT, head TEXT, PRIMARY KEY(id));")
+db.execute("CREATE TABLE houseref (studentid INTEGER, houseid INTEGER, FOREIGN KEY (studentid) REFERENCES studentsnew(id) FOREIGN KEY (houseid) REFERENCES houses(id));")
+
 # Open CSV file
 with open("students.csv", "r") as file:
 
@@ -44,7 +52,7 @@ FROM Clients t1
 LEFT JOIN Staff t2
 ON (t2.id = t1.staff);
 
-newstudents = db.execute("SELECT t1.*, t2.house_name FROM studentsnew t1 LEFT JOIN houses t2 ON (t2.id );")
+newstudents = db.execute("SELECT t1.id, t2.house_name FROM studentsnew t1 LEFT JOIN houses t2 ON (t2.id = );")
 for students in newstudents:
     print(students["name"])
 
