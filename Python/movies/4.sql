@@ -1,1 +1,1 @@
-select count(*) from
+select count(*) from ratings where rating = 10;
