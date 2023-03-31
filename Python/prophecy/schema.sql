@@ -5,7 +5,6 @@ DROP TABLE houseref;
 CREATE TABLE studentsnew (
     id INTEGER,
     student_name TEXT,
-    houseID INTEGER,
     PRIMARY KEY(id)
 );
 

@@ -32,11 +32,11 @@ with open("students.csv", "r") as file:
         name = student["student_name"]
 
         temphouse = db.execute("SELECT id FROM houses WHERE house_name = ?;", house)
-        for cids in temphouse:
-            chouse = cids
-            print(chouse)
+        for house in temphouse:
+            temphouse1 = house["id"]
+        db.execute("INSERT INTO studentsnew (id, student_name) VALUES (?, ?);", studentid, name)
+        db.execute("INSERT INTO houseref (studentid, houseid) VALUES (?, ?);", studentid, temphouse1)
 
-        #db.execute("INSERT INTO houseref (studentid, houseid) VALUES (?, ?, ?);", studentid, temphouse)
-        #db.execute("INSERT INTO studentsnew (id, student_name, houseID) VALUES (?, ?, ?);", studentid, name, temphouse)
-
-    print(houses)
+newstudents = db.execute("SELECT * FROM studentsnew;")
+for students in newstudents:
+    print(students["name"])
