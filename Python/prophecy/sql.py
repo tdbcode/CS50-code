@@ -19,12 +19,12 @@ with open("students.csv", "r") as file:
     # Iterate over CSV file, counting favorites
     for student in students:
         id = student["id"]
-        name = student["name"]
+        name = student["student_name"]
         house = student["house"]
-        if house in houses:
-            houses[house] += 1
-        else:
-            houses[house] = 1
+        if house not in houses:
+            houses[house] = house
+
+        print(houses)
 
         if house == "Slytherin":
             houseID = 1
@@ -32,12 +32,12 @@ with open("students.csv", "r") as file:
             houseID = 2
         elif house == "Hufflepuff":
             houseID = 3
-        elif house == "Gryffindor:
+        elif house == "Gryffindor":
             houseID = 4
 
         head = student["head"]
 
-        db.execute("INSERT INTO student (id, student_name, houseID) VALUES (id, name, );)
+       # db.execute("INSERT INTO student (id, student_name, houseID) VALUES (id, name, );)
 
 # Prompt user for favorite
 favorite = input("Favorite: ")
