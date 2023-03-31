@@ -30,4 +30,6 @@ with open("students.csv", "r") as file:
         sid = student["id"]
         name = student["student_name"]
 
+        db.execute("INSERT INTO studentsnew (id, student_name, head) VALUES (?, ?, ?);", hid, house, head)
+
     print(houses)
