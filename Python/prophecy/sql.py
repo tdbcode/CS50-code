@@ -23,8 +23,18 @@ with open("students.csv", "r") as file:
         id = student["id"]
         name = student["name"]
         house = student["house"]
+        if house == "Slytherin":
+            houseID = 1
+        elif house == "Ravenclaw":
+            houseID = 2
+        elif house == "Hufflepuff":
+            houseID = 3
+        elif house == "Gryffindor:
+            houseID = 4
+
         head = student["head"]
-        db.execute("INSERT INTO student (id, student_name, houseID) VALUES (?, ?, ?);)
+        db.execute("INSERT INTO houses (id, house_name, head) VALUES (houseID, house, );)
+        db.execute("INSERT INTO student (id, student_name, houseID) VALUES (id, name, );)
 
 # Prompt user for favorite
 favorite = input("Favorite: ")
