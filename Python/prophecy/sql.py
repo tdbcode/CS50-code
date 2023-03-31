@@ -23,14 +23,14 @@ with open("students.csv", "r") as file:
         name = student["student_name"]
         house = student["house"]
         head = student["head"]
+        print(house)
 
         if house not in houses:
-            houses[id] = hid
+
             houses[name] = house
             houses[head] = head
-            hid += 1
 
-    print(houses[name])
+    print(houses)
 
 
 
