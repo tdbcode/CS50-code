@@ -1,6 +1,6 @@
 DROP TABLE studentsnew;
 DROP TABLE houses;
-DROP TABLE housesreferences;
+DROP TABLE houseref;
 
 CREATE TABLE studentsnew (
     id INTEGER,

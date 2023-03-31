@@ -24,9 +24,10 @@ with open("students.csv", "r") as file:
 
         if house not in houses:
             houses[house] = head
+            db.execute("INSERT INTO houses (id, house_name, head) VALUES (?, ?, ?);", hid, house, head)
+            hid += 1
 
         sid = student["id"]
         name = student["student_name"]
 
     print(houses)
-    db.execute("INSERT INTO houses (id, house_name, head) VALUES (?, ?, ?)", hid, house, head)
