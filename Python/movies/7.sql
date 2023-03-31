@@ -1,0 +1,1 @@
+select * from ratings where movie_id IN (select id from movies where movies.year = 2010);
