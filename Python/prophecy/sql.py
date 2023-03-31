@@ -11,7 +11,6 @@ db.execute("DROP TABLE houses;")
 db.execute("DROP TABLE houseref;")
 db.execute("CREATE TABLE studentsnew (id INTEGER, student_name TEXT, PRIMARY KEY(id));")
 db.execute("CREATE TABLE houses (id INTEGER, house_name TEXT, head TEXT, PRIMARY KEY(id));")
-db.execute("CREATE TABLE houses (id INTEGER, house_name TEXT, head TEXT, PRIMARY KEY(id));")
 db.execute("CREATE TABLE houseref (studentid INTEGER, houseid INTEGER, FOREIGN KEY (studentid) REFERENCES studentsnew(id) FOREIGN KEY (houseid) REFERENCES houses(id));")
 
 # Open CSV file
@@ -43,5 +42,9 @@ with open("students.csv", "r") as file:
             temphouse1 = house["id"]
         db.execute("INSERT INTO studentsnew (id, student_name) VALUES (?, ?);", studentid, name)
         db.execute("INSERT INTO houseref (studentid, houseid) VALUES (?, ?);", studentid, temphouse1)
+
+newstudents = db.execute("SELECT name FROM studentsnew LEFT JOIN houseref.studentid = studentsnew.id;")
+for students in newstudents:
+    print(students["name"])
 
 
