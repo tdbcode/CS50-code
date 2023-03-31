@@ -29,4 +29,4 @@ with open("students.csv", "r") as file:
         name = student["student_name"]
 
     print(houses)
-    db.execute("INSERT INTO houses (id, house_name, head) VALUES (hid, name, );)
+    db.execute("INSERT INTO houses (id, house_name, head) VALUES (?, ?, ?)", hid, house, head)
