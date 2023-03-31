@@ -1,0 +1,1 @@
+select name from directors JOIN stars ON people.id = stars.person_id JOIN movies ON stars.movie_id = movies.id where movies.year = 2004 ORDER BY people.birth DESC;
