@@ -13,16 +13,19 @@ with open("students.csv", "r") as file:
     students = csv.DictReader(file)
 
     # Counts
-    counts = {}
+    houses = {}
 
-    INSERT INTO table_name (column1, column2, column3, ...)
-    VALUES (value1, value2, value3, ...);
 
     # Iterate over CSV file, counting favorites
     for student in students:
         id = student["id"]
         name = student["name"]
         house = student["house"]
+        if house in houses:
+            houses[house] += 1
+        else:
+            houses[house] = 1
+
         if house == "Slytherin":
             houseID = 1
         elif house == "Ravenclaw":
@@ -33,7 +36,7 @@ with open("students.csv", "r") as file:
             houseID = 4
 
         head = student["head"]
-        db.execute("INSERT INTO houses (id, house_name, head) VALUES (houseID, house, );)
+
         db.execute("INSERT INTO student (id, student_name, houseID) VALUES (id, name, );)
 
 # Prompt user for favorite
