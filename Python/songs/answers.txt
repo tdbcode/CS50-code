@@ -22,4 +22,6 @@ https://www.color-hex.com/color/a87cb7
 This could arguably be used to explain the user's aura.
 
 Hypothesize about why the way you’ve calculated this aura might not be very representative of the listener. What better ways of calculating this aura would you propose?
-
+This method does not take into account the number of times these songs have been listened too. While they are the top 100 songs, this is an average of all the songs and
+not the frequency of being listened to. A better way to calculate this, might be to look at the number of listens for each track, and then factor this into the equation
+as a weighting for each value before averaging.
