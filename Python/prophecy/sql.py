@@ -21,10 +21,10 @@ with open("students.csv", "r") as file:
         id = student["id"]
         name = student["student_name"]
         house = student["house"]
-        if house not in houses:
-            houses[house] = house
+        head = student["head"]
 
-        print(houses)
+        if house not in houses:
+            houses[house] = head
 
         if house == "Slytherin":
             houseID = 1
@@ -35,18 +35,13 @@ with open("students.csv", "r") as file:
         elif house == "Gryffindor":
             houseID = 4
 
-        head = student["head"]
+    print(houses)
+
+    for house in houses:
+        db.execute("INSERT INTO houses (id, house_name, houseID) VALUES (id, name, );)
+id INTEGER,
+    house_name TEXT,
+    head TEXT,
+    PRIMARY KEY(id)
 
        # db.execute("INSERT INTO student (id, student_name, houseID) VALUES (id, name, );)
-
-# Prompt user for favorite
-favorite = input("Favorite: ")
-
-# Search for title
-rows = db.execute("SELECT COUNT(*) FROM favorites WHERE problem LIKE ?", "%" + favorite + "%")
-
-# Get first (and only) row
-row = rows[0]
-
-# Print popularity
-print(row["COUNT(*)"])
