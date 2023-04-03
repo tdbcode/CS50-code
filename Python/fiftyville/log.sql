@@ -6,8 +6,24 @@ select description from crime_scene_reports where month = 7 and day = 28 and str
 -- Find interviews on or after the date of 28th July
 select name, day, month, transcript from interviews where month >= 7 and day >= 28;
 
--- Ruth saw the thief get into a car in bakery parking lot within 10 minutes of theft and drove away. Security footage may have cars leaving the parking lot within that time frame
--- Eugene saw the thief at an ATM on Leggett Street withdrawing money
--- Raymond saw the thief call someone for less than 1 minute. He head the thief say they were planning to take earliest flight out of fiftyville on the 29th - asked the person to purchase the ticket for the thief.
+-- Ruth saw the thief get into a car in bakery parking lot within 10 minutes of theft and drive away. Security footage may have cars leaving the parking lot within that time frame
 
+select hour, minute, activity, license_plate from bakery_security_logs where hour = 10 and minute > 15 and minute < 25 and day = 28 and month = 7;
+--License plates during that time frame:
+--+------+--------+----------+---------------+
+--| hour | minute | activity | license_plate |
+--+------+--------+----------+---------------+
+--| 10   | 16     | exit     | 5P2BI95       |
+--| 10   | 18     | exit     | 94KL13X       |
+--| 10   | 18     | exit     | 6P58WS2       |
+--| 10   | 19     | exit     | 4328GD8       |
+--| 10   | 20     | exit     | G412CB7       |
+--| 10   | 21     | exit     | L93JTIZ       |
+--| 10   | 23     | exit     | 322W7JE       |
+--| 10   | 23     | exit     | 0NTHK55       |
+--+------+--------+----------+---------------+
+
+-- Eugene recognised the thief (but didn't know who) at an ATM on Leggett Street withdrawing money
+-- Raymond saw the thief call someone for less than 1 minute. He head the thief say they were planning to take earliest flight out of fiftyville on the 29th - asked the person to purchase the ticket for the thief.
+select caller, receiver, duration from phone_calls where  month = 7 and day = 28 and duration < 60;
 
