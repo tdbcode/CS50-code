@@ -102,4 +102,49 @@ select name from people where phone_number IN(select receiver from phone_calls w
 | Doris      |
 +------------+
 
-select name, phone_number from people join phone_calls ON people.phone_number = phone_calls.caller where people.phone_number IN (select phone_number from phone_calls where  month = 7 and day = 28 and duration < 60) and license_plate IN (select license_plate from bakery_security_logs where hour = 10 and minute > 15 and minute < 25 and day = 28 and month = 7 and activity='exit');
+-- Look for earliest flight from Fiftyville airport that day
+
+select MIN(hour) from flights
+    where day = 29 and month = 7 and
+    origin_airport_id IN (select id from airports where city = 'Fiftyville');
+
++-----------+
+| MIN(hour) |
++-----------+
+| 8         |
++-----------+
+
+-- Now we know the hour we can use this query to select the flights with this hour.
+
+select destination_airport_id from flights where hour <= (select MIN(hour) from flights
+    where day = 29 and month = 7 and
+    origin_airport_id IN (select id from airports where city = 'Fiftyville'));
+
++------------------------+
+| destination_airport_id |
++------------------------+
+| 1                      |
+| 8                      |
+| 1                      |
+| 4                      |
+| 3                      |
+| 6                      |
++------------------------+
+
+-- Now we have the destination airport ids we can get the names
+
+select full_name, city from airports where id in (select destination_airport_id from flights where hour <= (select MIN(hour) from flights
+    where day = 29 and month = 7 and
+    origin_airport_id IN (select id from airports where city = 'Fiftyville')));
+
++-----------------------------------+---------------+
+|             full_name             |     city      |
++-----------------------------------+---------------+
+| O'Hare International Airport      | Chicago       |
+| Los Angeles International Airport | Los Angeles   |
+| LaGuardia Airport                 | New York City |
+| Logan International Airport       | Boston        |
+| Fiftyville Regional Airport       | Fiftyville    |
++-----------------------------------+---------------+
+
+
