@@ -40,4 +40,18 @@ select caller, receiver, duration from phone_calls where  month = 7 and day = 28
 --| (338) 555-6650 | (704) 555-2131 | 54       |
 --+----------------+----------------+----------+
 
--- Eugene recognised the thief (but didn't know who) at an ATM on Leggett Street withdrawing money
+-- Eugene recognised the thief (but didn't know who) at an ATM earlier in the day on Leggett Street withdrawing money
+select account_number, amount from atm_transactions where month = 7 and day = 28 and atm_location = 'Leggett Street' and transaction_type = 'withdraw';
+
+--+----------------+--------+
+--| account_number | amount |
+--+----------------+--------+
+--| 28500762       | 48     |
+--| 28296815       | 20     |
+--| 76054385       | 60     |
+--| 49610011       | 50     |
+--| 16153065       | 80     |
+--| 25506511       | 20     |
+--| 81061156       | 30     |
+--| 26013199       | 35     |
+--+----------------+--------+
