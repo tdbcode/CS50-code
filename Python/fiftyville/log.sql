@@ -71,3 +71,4 @@ select name, phone_number from people where license_plate IN (select license_pla
 --| Bruce   | (367) 555-5533 |
 --+---------+----------------+
 
+select name from people where phone_number IN(select caller from phone_calls where  month = 7 and day = 28 and duration < 60);
