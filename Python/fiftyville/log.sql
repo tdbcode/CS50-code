@@ -114,6 +114,14 @@ select city from airports where id IN (
 --| New York City |
 --+---------------+
 
+
+-- Now we have to look at flights to New York
+
+select id from flights where IN (
+    select destination_airport_id from flights where day = 29 and month = 7 and origin_airport_id IN (
+        select id from airports where city = 'Fiftyville') ORDER BY hour, minute ASC LIMIT 1);
+
+
 --REDUNDANT:
 --select MIN(hour) from flights
   --  where day = 29 and month = 7 and
