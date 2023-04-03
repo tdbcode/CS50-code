@@ -102,15 +102,22 @@ select name from people where phone_number IN(select receiver from phone_calls w
 --| Doris      |
 --+------------+
 
--- Look for earliest flight from Fiftyville airport that day
+-- Look for earliest flight from Fiftyville airport that day and where it goes to
 
-select city from airports where city.id IN (
-    select destination_airport_id in flights where day = 29 and month = 7 and origin_airport_id IN (
-        select id from airports where city = 'Fiftyville'));
+select city from airports where id IN (
+    select destination_airport_id from flights where day = 29 and month = 7 and origin_airport_id IN (
+        select id from airports where city = 'Fiftyville') ORDER BY hour, minute ASC LIMIT 1);
 
-select hour, minute from flights
-    where day = 29 and month = 7 and
-    origin_airport_id IN (select id from airports where city = 'Fiftyville');
+--+---------------+
+--|     city      |
+--+---------------+
+--| New York City |
+--+---------------+
+
+--REDUNDANT:
+--select MIN(hour) from flights
+  --  where day = 29 and month = 7 and
+    --origin_airport_id IN (select id from airports where city = 'Fiftyville');
 
 --+-----------+
 --| MIN(hour) |
@@ -118,12 +125,13 @@ select hour, minute from flights
 --| 8         |
 --+-----------+
 
+--REDUNDANT:
 -- Now we know the hour we can use this query to select the first flight from Fiftyville with this hour.
 
-select city from airports where id in (
-select destination_airport_id from flights where hour = (select MIN(hour) from flights
-    where day = 29 and month = 7 and
-    origin_airport_id IN (select id from airports where city = 'Fiftyville')) ORDER BY hour, minute ASC LIMIT 1);
+--select city from airports where id in (
+--select destination_airport_id from flights where hour = (select MIN(hour) from flights
+  --  where day = 29 and month = 7 and
+    --origin_airport_id IN (select id from airports where city = 'Fiftyville')) ORDER BY hour, minute ASC LIMIT 1);
 
 --+------------------------+
 --| destination_airport_id |
@@ -132,9 +140,9 @@ select destination_airport_id from flights where hour = (select MIN(hour) from f
 --+------------------------+
 
 -- get passport numbers of all the passengers on that flight
-select passport_number from passengers where flight_id in (select destination_airport_id from flights where hour <= (select MIN(hour) from flights
-    where day = 29 and month = 7 and
-    origin_airport_id IN (select id from airports where city = 'Fiftyville')) ORDER BY hour, minute ASC LIMIT 1);
+select passport_number from passengers where flight_id in (
+    select destination_airport_id from flights where day = 29 and month = 7 and origin_airport_id IN(
+    id from airports where city = 'Fiftyville') ORDER BY hour, minute ASC LIMIT 1);
 
 --+-----------------+
 --| passport_number |
