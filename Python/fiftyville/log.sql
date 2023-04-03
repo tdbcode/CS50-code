@@ -102,4 +102,4 @@ select name from people where phone_number IN(select receiver from phone_calls w
 | Doris      |
 +------------+
 
-select name, phone_number from people join phone_calls ON people.phone_number = phone_calls.caller where people.phonenumber IN  license_plate IN (select license_plate from bakery_security_logs where hour = 10 and minute > 15 and minute < 25 and day = 28 and month = 7 and activity='exit');
+select name, phone_number from people join phone_calls ON people.phone_number = phone_calls.caller where people.phone_number IN (select phone_number from phone_calls where  month = 7 and day = 28 and duration < 60) and license_plate IN (select license_plate from bakery_security_logs where hour = 10 and minute > 15 and minute < 25 and day = 28 and month = 7 and activity='exit');
