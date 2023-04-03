@@ -73,34 +73,34 @@ select name, phone_number from people where license_plate IN (select license_pla
 
 select name from people where phone_number IN(select caller from phone_calls where  month = 7 and day = 28 and duration < 60);
 --List of suspects who made calls that day under 1 minute long
-+---------+
-|  name   |
-+---------+
-| Kenny   |
-| Sofia   |
-| Benista |
-| Taylor  |
-| Diana   |
-| Kelsey  |
-| Bruce   |
-| Carina  |
-+---------+
+--+---------+
+--|  name   |
+--+---------+
+--| Kenny   |
+--| Sofia   |
+--| Benista |
+--| Taylor  |
+--| Diana   |
+--| Kelsey  |
+--| Bruce   |
+--| Carina  |
+--+---------+
 
 select name from people where phone_number IN(select receiver from phone_calls where  month = 7 and day = 28 and duration < 60);
 --List of potential accomplices
-+------------+
-|    name    |
-+------------+
-| James      |
-| Larry      |
-| Anna       |
-| Jack       |
-| Melissa    |
-| Jacqueline |
-| Philip     |
-| Robin      |
-| Doris      |
-+------------+
+--+------------+
+--|    name    |
+--+------------+
+--| James      |
+--| Larry      |
+--| Anna       |
+--| Jack       |
+--| Melissa    |
+--| Jacqueline |
+--| Philip     |
+--| Robin      |
+--| Doris      |
+--+------------+
 
 -- Look for earliest flight from Fiftyville airport that day
 
@@ -108,51 +108,39 @@ select MIN(hour) from flights
     where day = 29 and month = 7 and
     origin_airport_id IN (select id from airports where city = 'Fiftyville');
 
-+-----------+
-| MIN(hour) |
-+-----------+
-| 8         |
-+-----------+
+--+-----------+
+--| MIN(hour) |
+--+-----------+
+--| 8         |
+--+-----------+
 
--- Now we know the hour we can use this query to select the flights with this hour.
+-- Now we know the hour we can use this query to select the first flight from Fiftyville with this hour.
 
 select destination_airport_id from flights where hour <= (select MIN(hour) from flights
     where day = 29 and month = 7 and
-    origin_airport_id IN (select id from airports where city = 'Fiftyville'));
+    origin_airport_id IN (select id from airports where city = 'Fiftyville')) ORDER BY hour, minute ASC LIMIT 1;
 
-+------------------------+
-| destination_airport_id |
-+------------------------+
-| 1                      |
-| 8                      |
-| 1                      |
-| 4                      |
-| 3                      |
-| 6                      |
-+------------------------+
+--+------------------------+
+--| destination_airport_id |
+--+------------------------+
+--| 1                      |
+--+------------------------+
 
--- Now we have the destination airport ids we can get the names
-
-select full_name, city from airports where id in (select destination_airport_id from flights where hour <= (select MIN(hour) from flights
+-- get passport numbers of all the passengers on that flight
+select passport_number from passengers where flight_id in (select destination_airport_id from flights where hour <= (select MIN(hour) from flights
     where day = 29 and month = 7 and
-    origin_airport_id IN (select id from airports where city = 'Fiftyville')));
+    origin_airport_id IN (select id from airports where city = 'Fiftyville')) ORDER BY hour, minute ASC LIMIT 1);
 
-+-----------------------------------+---------------+
-|             full_name             |     city      |
-+-----------------------------------+---------------+
-| O'Hare International Airport      | Chicago       |
-| Los Angeles International Airport | Los Angeles   |
-| LaGuardia Airport                 | New York City |
-| Logan International Airport       | Boston        |
-| Fiftyville Regional Airport       | Fiftyville    |
-+-----------------------------------+---------------+
-
-select passport_number from passengers where flight_id in (select id in flights (select flights.destination_airport_id from flights where hour <= (select MIN(hour) from flights
-    where day = 29 and month = 7 and
-    flights.origin_airport_id IN (select id from airports where city = 'Fiftyville'))));
+--+-----------------+
+--| passport_number |
+--+-----------------+
+--| 2400516856      |
+--| 9183348466      |
+--| 9628244268      |
+--| 3412604728      |
+--+-----------------+
 
 -- start bringing it all together by merging queries
-
 
 select name from people
 where people.license_plate IN (select license_plate from bakery_security_logs where hour = 10 and minute >= 15 and minute <= 25 and day = 28 and month = 7)
@@ -171,9 +159,8 @@ Reducing suspects down
 
 -- then we need to include transactions and flight passenger lists
 
-
-
-select name from people
-where people.license_plate IN (select license_plate from bakery_security_logs where hour = 10 and minute >= 15 and minute <= 25 and day = 28 and month = 7)
-AND
-people.phone_number IN (select caller from phone_calls where  month = 7 and day = 28 and duration < 60);
+select name, passport_number from people
+where people.license_plate IN (
+    select license_plate from bakery_security_logs where hour = 10 and minute >= 15 and minute <= 25 and day = 28 and month = 7)
+AND people.phone_number IN (
+    select caller from phone_calls where  month = 7 and day = 28 and duration < 60);
