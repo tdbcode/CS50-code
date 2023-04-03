@@ -116,9 +116,10 @@ select MIN(hour) from flights
 
 -- Now we know the hour we can use this query to select the first flight from Fiftyville with this hour.
 
-select destination_airport_id from flights where hour <= (select MIN(hour) from flights
+select city from airports where id in (
+select destination_airport_id from flights where hour = (select MIN(hour) from flights
     where day = 29 and month = 7 and
-    origin_airport_id IN (select id from airports where city = 'Fiftyville')) ORDER BY hour, minute ASC LIMIT 1;
+    origin_airport_id IN (select id from airports where city = 'Fiftyville')) ORDER BY hour, minute ASC LIMIT 1);
 
 --+------------------------+
 --| destination_airport_id |
