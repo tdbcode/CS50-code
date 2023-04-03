@@ -56,4 +56,17 @@ select account_number, amount from atm_transactions where month = 7 and day = 28
 --| 26013199       | 35     |
 --+----------------+--------+
 
--- find people's license plates
+-- find people's name and phone numbers from the licence plate 
+select name, phone_number from people where license_plate IN (select license_plate from bakery_security_logs where hour = 10 and minute > 15 and minute < 25 and day = 28 and month = 7 and activity='exit');
++---------+----------------+
+|  name   |  phone_number  |
++---------+----------------+
+| Vanessa | (725) 555-4692 |
+| Barry   | (301) 555-4174 |
+| Iman    | (829) 555-5269 |
+| Sofia   | (130) 555-0289 |
+| Luca    | (389) 555-5198 |
+| Diana   | (770) 555-1861 |
+| Kelsey  | (499) 555-9472 |
+| Bruce   | (367) 555-5533 |
++---------+----------------+
