@@ -104,6 +104,10 @@ select name from people where phone_number IN(select receiver from phone_calls w
 
 -- Look for earliest flight from Fiftyville airport that day
 
+select city from airports where city.id IN (
+    select destination_airport_id in flights where day = 29 and month = 7 and origin_airport_id IN (
+        select id from airports where city = 'Fiftyville'));
+
 select hour, minute from flights
     where day = 29 and month = 7 and
     origin_airport_id IN (select id from airports where city = 'Fiftyville');
