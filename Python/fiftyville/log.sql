@@ -23,7 +23,21 @@ select hour, minute, activity, license_plate from bakery_security_logs where hou
 --| 10   | 23     | exit     | 0NTHK55       |
 --+------+--------+----------+---------------+
 
--- Eugene recognised the thief (but didn't know who) at an ATM on Leggett Street withdrawing money
 -- Raymond saw the thief call someone for less than 1 minute. He head the thief say they were planning to take earliest flight out of fiftyville on the 29th - asked the person to purchase the ticket for the thief.
 select caller, receiver, duration from phone_calls where  month = 7 and day = 28 and duration < 60;
+-- Short calls from that day:
+--+----------------+----------------+----------+
+--|     caller     |    receiver    | duration |
+--+----------------+----------------+----------+
+--| (130) 555-0289 | (996) 555-8899 | 51       |
+--| (499) 555-9472 | (892) 555-8872 | 36       |
+--| (367) 555-5533 | (375) 555-8161 | 45       |
+--| (499) 555-9472 | (717) 555-1342 | 50       |
+--| (286) 555-6063 | (676) 555-6554 | 43       |
+--| (770) 555-1861 | (725) 555-3243 | 49       |
+--| (031) 555-6622 | (910) 555-3251 | 38       |
+--| (826) 555-1652 | (066) 555-9701 | 55       |
+--| (338) 555-6650 | (704) 555-2131 | 54       |
+--+----------------+----------------+----------+
 
+-- Eugene recognised the thief (but didn't know who) at an ATM on Leggett Street withdrawing money
