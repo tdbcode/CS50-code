@@ -42,7 +42,7 @@ select caller, receiver, duration from phone_calls where  month = 7 and day = 28
 
 -- Eugene recognised the thief (but didn't know who) at an ATM earlier in the day on Leggett Street withdrawing money
 select account_number, amount from atm_transactions where month = 7 and day = 28 and atm_location = 'Leggett Street' and transaction_type = 'withdraw';
-
+-- account numbers and amount withdrawn from leggett street on that day
 --+----------------+--------+
 --| account_number | amount |
 --+----------------+--------+
@@ -55,3 +55,5 @@ select account_number, amount from atm_transactions where month = 7 and day = 28
 --| 81061156       | 30     |
 --| 26013199       | 35     |
 --+----------------+--------+
+
+-- find people's license plates
