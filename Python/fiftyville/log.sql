@@ -72,3 +72,34 @@ select name, phone_number from people where license_plate IN (select license_pla
 --+---------+----------------+
 
 select name from people where phone_number IN(select caller from phone_calls where  month = 7 and day = 28 and duration < 60);
+--List of suspects who made calls that day under 1 minute long
++---------+
+|  name   |
++---------+
+| Kenny   |
+| Sofia   |
+| Benista |
+| Taylor  |
+| Diana   |
+| Kelsey  |
+| Bruce   |
+| Carina  |
++---------+
+
+select name from people where phone_number IN(select receiver from phone_calls where  month = 7 and day = 28 and duration < 60);
+--List of potential accomplices
++------------+
+|    name    |
++------------+
+| James      |
+| Larry      |
+| Anna       |
+| Jack       |
+| Melissa    |
+| Jacqueline |
+| Philip     |
+| Robin      |
+| Doris      |
++------------+
+
+select name, phone_number from people where license_plate IN (select license_plate from bakery_security_logs where hour = 10 and minute > 15 and minute < 25 and day = 28 and month = 7 and activity='exit');
