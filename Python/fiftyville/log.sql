@@ -8,7 +8,7 @@ select name, day, month, transcript from interviews where month >= 7 and day >= 
 
 -- Ruth saw the thief get into a car in bakery parking lot within 10 minutes of theft and drive away. Security footage may have cars leaving the parking lot within that time frame
 
-select hour, minute, activity, license_plate from bakery_security_logs where hour = 10 and minute > 15 and minute < 25 and day = 28 and month = 7;
+select hour, minute, activity, license_plate from bakery_security_logs where hour = 10 and minute >= 15 and minute <= 25 and day = 28 and month = 7;
 --License plates during that time frame:
 --+------+--------+----------+---------------+
 --| hour | minute | activity | license_plate |
