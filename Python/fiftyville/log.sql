@@ -147,7 +147,9 @@ select full_name, city from airports where id in (select destination_airport_id 
 | Fiftyville Regional Airport       | Fiftyville    |
 +-----------------------------------+---------------+
 
-
+select passport_number from passengers where flight_id in (select id in flights (select destination_airport_id from flights where hour <= (select MIN(hour) from flights
+    where day = 29 and month = 7 and
+    origin_airport_id IN (select id from airports where city = 'Fiftyville'))))
 
 -- start bringing it all together by merging queries
 
