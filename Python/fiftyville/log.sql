@@ -104,7 +104,7 @@ select name from people where phone_number IN(select receiver from phone_calls w
 
 -- Look for earliest flight from Fiftyville airport that day and where it goes to
 
-select city from airports where id IN (
+select name from airports where id IN (
     select destination_airport_id from flights where day = 29 and month = 7 and origin_airport_id IN (
         select id from airports where city = 'Fiftyville') ORDER BY hour, minute ASC LIMIT 1);
 
@@ -115,10 +115,11 @@ select city from airports where id IN (
 --+---------------+
 
 
--- Now we have to look at flights to New York
+-- Now we get the ID and use it 
 
-select id from flights where origin_airport_id IN (
-        select id from airports where city = 'Fiftyville' ORDER BY hour, minute ASC LIMIT 1) ;
+select id from airports where id IN (
+    select destination_airport_id from flights where day = 29 and month = 7 and origin_airport_id IN (
+        select id from airports where city = 'Fiftyville') ORDER BY hour, minute ASC LIMIT 1);
 
 
 --REDUNDANT:
