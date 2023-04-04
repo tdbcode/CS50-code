@@ -239,13 +239,17 @@ people.id IN (
     select person_id from bank_accounts where account_number IN (
         select account_number from atm_transactions where month = 7 and day = 28 and atm_location = 'Leggett Street' and transaction_type = 'withdraw')
     )
-
 );
 
-Number 1 suspect is:
+--Number 1 suspect is:
 --+-------+
 --| name  |
 --+-------+
 --| Bruce |
 --+-------+
 
+-- Now to find who Bruce called on the day
+
+select name, phone_number from people where phone_number IN (
+    select caller from phone_calls where month = 7 and day = 28 and hour = 10
+);
