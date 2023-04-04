@@ -204,7 +204,7 @@ people.passport_number IN (
 --| Bruce  |
 --+--------+
 
---Now we need to include the license plate
+--Now we need to work out the ATM transaction
 
 select name from people
 where people.license_plate IN (select license_plate from bakery_security_logs where hour = 10 and minute >= 15 and minute <= 25 and day = 28 and month = 7)
@@ -217,23 +217,11 @@ people.passport_number IN (
             select id from airports where city = 'Fiftyville')
                 ORDER BY hour, minute ASC LIMIT 1)
 AND
-people.license_plate IN(
-    select license_plate from bakery_security_logs where hour = 10 and minute >= 15 and minute <= 25 and day = 28 and month = 7)
+
+select account_number, amount from atm_transactions where month = 7 and day = 28 and atm_location = 'Leggett Street' and transaction_type = 'withdraw';
+
+
 );
 
---Now we finally need to work out the account number
 
-select name from people
-where people.license_plate IN (select license_plate from bakery_security_logs where hour = 10 and minute >= 15 and minute <= 25 and day = 28 and month = 7)
-AND
-people.phone_number IN (select caller from phone_calls where  month = 7 and day = 28 and duration < 60)
-AND
-people.passport_number IN (
-    select passport_number from passengers where flight_id in (
-        select id from flights where day = 29 and month = 7 and origin_airport_id IN (
-            select id from airports where city = 'Fiftyville')
-                ORDER BY hour, minute ASC LIMIT 1)
-AND
-people.license_plate IN(
-    select license_plate from bakery_security_logs where hour = 10 and minute >= 15 and minute <= 25 and day = 28 and month = 7)
-);
+
