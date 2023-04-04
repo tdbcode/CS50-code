@@ -250,7 +250,7 @@ people.id IN (
 
 -- Now to find who Bruce called on the day
 
-select receiver from phone_calls where phone_number IN(
+select receiver from phone_calls where caller IN(
 
 select phone_number from people
 where people.license_plate IN (select license_plate from bakery_security_logs where hour = 10 and minute >= 15 and minute <= 25 and day = 28 and month = 7)
@@ -268,4 +268,6 @@ people.id IN (
         select account_number from atm_transactions where month = 7 and day = 28 and atm_location = 'Leggett Street' and transaction_type = 'withdraw')
     )
 )
+AND
+month = 7 and day = 28 and duration < 60
 );
