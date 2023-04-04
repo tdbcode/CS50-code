@@ -115,11 +115,10 @@ select name from airports where id IN (
 --+---------------+
 
 
--- Now we get the ID and use it 
-
-select id from airports where id IN (
-    select destination_airport_id from flights where day = 29 and month = 7 and origin_airport_id IN (
-        select id from airports where city = 'Fiftyville') ORDER BY hour, minute ASC LIMIT 1);
+-- Now we get the ID of that flight as we know the city for the answers.txt
+select id from flights where day = 29 and month = 7 and origin_airport_id IN (
+    select id from airports where city = 'Fiftyville')
+        ORDER BY hour, minute ASC LIMIT 1;
 
 
 --REDUNDANT:
@@ -149,16 +148,21 @@ select id from airports where id IN (
 
 -- get passport numbers of all the passengers on that flight
 select passport_number from passengers where flight_id in (
-    select destination_airport_id from flights where day = 29 and month = 7 and origin_airport_id IN(
-    id from airports where city = 'Fiftyville') ORDER BY hour, minute ASC LIMIT 1);
+    select id from flights where day = 29 and month = 7 and origin_airport_id IN (
+    select id from airports where city = 'Fiftyville')
+        ORDER BY hour, minute ASC LIMIT 1);
 
 --+-----------------+
 --| passport_number |
 --+-----------------+
---| 2400516856      |
---| 9183348466      |
---| 9628244268      |
---| 3412604728      |
+--| 7214083635      |
+--| 1695452385      |
+--| 5773159633      |
+--| 1540955065      |
+--| 8294398571      |
+--| 1988161715      |
+--| 9878712108      |
+--| 8496433585      |
 --+-----------------+
 
 -- start bringing it all together by merging queries
@@ -178,10 +182,58 @@ Reducing suspects down
 | Bruce  |
 +--------+
 
--- then we need to include transactions and flight passenger lists
+-- then we need to include flight passenger passport number
 
-select name, passport_number from people
-where people.license_plate IN (
+select name from people
+where people.license_plate IN (select license_plate from bakery_security_logs where hour = 10 and minute >= 15 and minute <= 25 and day = 28 and month = 7)
+AND
+people.phone_number IN (select caller from phone_calls where  month = 7 and day = 28 and duration < 60)
+AND
+people.passport_number IN (
+    select passport_number from passengers where flight_id in (
+        select id from flights where day = 29 and month = 7 and origin_airport_id IN (
+            select id from airports where city = 'Fiftyville')
+                ORDER BY hour, minute ASC LIMIT 1)
+);
+
+--+--------+
+--|  name  |
+--+--------+
+--| Sofia  |
+--| Kelsey |
+--| Bruce  |
+--+--------+
+
+--Now we need to include the license plate
+
+select name from people
+where people.license_plate IN (select license_plate from bakery_security_logs where hour = 10 and minute >= 15 and minute <= 25 and day = 28 and month = 7)
+AND
+people.phone_number IN (select caller from phone_calls where  month = 7 and day = 28 and duration < 60)
+AND
+people.passport_number IN (
+    select passport_number from passengers where flight_id in (
+        select id from flights where day = 29 and month = 7 and origin_airport_id IN (
+            select id from airports where city = 'Fiftyville')
+                ORDER BY hour, minute ASC LIMIT 1)
+AND
+people.license_plate IN(
     select license_plate from bakery_security_logs where hour = 10 and minute >= 15 and minute <= 25 and day = 28 and month = 7)
-AND people.phone_number IN (
-    select caller from phone_calls where  month = 7 and day = 28 and duration < 60);
+);
+
+--Now we finally need to work out the account number
+
+select name from people
+where people.license_plate IN (select license_plate from bakery_security_logs where hour = 10 and minute >= 15 and minute <= 25 and day = 28 and month = 7)
+AND
+people.phone_number IN (select caller from phone_calls where  month = 7 and day = 28 and duration < 60)
+AND
+people.passport_number IN (
+    select passport_number from passengers where flight_id in (
+        select id from flights where day = 29 and month = 7 and origin_airport_id IN (
+            select id from airports where city = 'Fiftyville')
+                ORDER BY hour, minute ASC LIMIT 1)
+AND
+people.license_plate IN(
+    select license_plate from bakery_security_logs where hour = 10 and minute >= 15 and minute <= 25 and day = 28 and month = 7)
+);
