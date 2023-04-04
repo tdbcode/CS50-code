@@ -250,11 +250,22 @@ people.id IN (
 
 -- Now to find who Bruce called on the day
 
-select receiver from phone_calls where caller IN(
-    select phone_number from people where receiver month = 7 and day = 28 and duration < 60
+select name from people where phone_number IN(
+
+select phone_number from people
+where people.license_plate IN (select license_plate from bakery_security_logs where hour = 10 and minute >= 15 and minute <= 25 and day = 28 and month = 7)
+AND
+people.phone_number IN (select caller from phone_calls where  month = 7 and day = 28 and duration < 60)
+AND
+people.passport_number IN (
+    select passport_number from passengers where flight_id in (
+        select id from flights where day = 29 and month = 7 and origin_airport_id IN (
+            select id from airports where city = 'Fiftyville')
+                ORDER BY hour, minute ASC LIMIT 1)
+AND
+people.id IN (
+    select person_id from bank_accounts where account_number IN (
+        select account_number from atm_transactions where month = 7 and day = 28 and atm_location = 'Leggett Street' and transaction_type = 'withdraw')
+    )
 )
-AND month = 7 and day = 28 and duration < 60;
-
-
-
-    select caller, receiver from phone_calls where month = 7 and day = 28 and duration < 60;
+);
