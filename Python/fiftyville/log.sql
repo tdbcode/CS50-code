@@ -56,6 +56,24 @@ select account_number, amount from atm_transactions where month = 7 and day = 28
 --| 26013199       | 35     |
 --+----------------+--------+
 
+-- Who's accounts are these?
+select name from people where id IN (
+    select person_id from bank_accounts where account_number IN (
+        select account_number from atm_transactions where month = 7 and day = 28 and atm_location = 'Leggett Street' and transaction_type = 'withdraw')
+);
+--+---------+
+--|  name   |
+--+---------+
+--| Kenny   |
+--| Iman    |
+--| Benista |
+--| Taylor  |
+--| Brooke  |
+--| Luca    |
+--| Diana   |
+--| Bruce   |
+--+---------+
+
 -- find people's name and phone numbers from the licence plate's found in the bakery logs on that day and time of exit
 select name, phone_number from people where license_plate IN (select license_plate from bakery_security_logs where hour = 10 and minute > 15 and minute < 25 and day = 28 and month = 7 and activity='exit');
 --+---------+----------------+
@@ -217,11 +235,17 @@ people.passport_number IN (
             select id from airports where city = 'Fiftyville')
                 ORDER BY hour, minute ASC LIMIT 1)
 AND
-
-select account_number, amount from atm_transactions where month = 7 and day = 28 and atm_location = 'Leggett Street' and transaction_type = 'withdraw';
-
+people.id IN (
+    select person_id from bank_accounts where account_number IN (
+        select account_number from atm_transactions where month = 7 and day = 28 and atm_location = 'Leggett Street' and transaction_type = 'withdraw')
+    )
 
 );
 
-
+Number 1 suspect is:
+--+-------+
+--| name  |
+--+-------+
+--| Bruce |
+--+-------+
 
