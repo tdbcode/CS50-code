@@ -254,4 +254,4 @@ select name, phone_number from people join phone_call on  where phone_number IN 
     select caller from phone_calls where month = 7 and day = 28 and duration < 60
 )
 
-    select receiver from phone_calls where month = 7 and day = 28 and duration < 60;
+    select caller, receiver from phone_calls where month = 7 and day = 28 and duration < 60;
