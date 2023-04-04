@@ -250,7 +250,7 @@ people.id IN (
 
 -- Now to find who Bruce called on the day
 
-select name from people where phone_number IN(
+select receiver from phone_calls where phone_number IN(
 
 select phone_number from people
 where people.license_plate IN (select license_plate from bakery_security_logs where hour = 10 and minute >= 15 and minute <= 25 and day = 28 and month = 7)
