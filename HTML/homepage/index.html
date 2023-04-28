@@ -7,6 +7,7 @@
         <link href="styles.css" rel="stylesheet">
         <title>TDB Site</title>
 
+        <!-- Script for loading the pages from the nav bar links -->
         <script>
             // Load the homepage as the first page
             function homePage(){
@@ -51,11 +52,25 @@
                 }
             }
         </script>
+        <!-- Script for validating the form on the contact page -->
         <script>
             // Script for simulating that the message on the contact page has been submitted (It won't be as it's just a mock website)
             function submitMessage(){
-                var name = document.getElementById('name').value
-                alert(name + ", your message has been sent. Thank you!", "Message sent!")
+                var name = document.getElementById('name').value;
+                var email = document.getElementById('email').value;
+                var message = document.getElementById('message').value;
+                if (name == "") {
+                    alert("You must enter a name!");
+                }
+                else if (email == ""){
+                    alert("You must enter a valid e-mail address!");
+                }
+                else if (message == ""){
+                    alert("You must enter a message!");
+                }
+                else{
+                    alert(name + ", your message has been sent. Thank you!", "Message sent!")
+                }
             }
         </script>
 
