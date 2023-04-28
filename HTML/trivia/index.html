@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+
+        <script>
+            // Source: https://linuxhint.com/change-button-color-on-click-javascript/
+            // https://www.w3schools.com/js/js_output.asp
+            // https://www.techiedelight.com/run-javascript-code-on-page-load/
+
+            // Run script continually after page is loaded - listening for events below.
+            window.addEventListener("load", function() {
+                // ('Page is loaded');  //for testing only
+
+                // Make variable linking correct item
+                let correct = document.querySelector('.correct');
+                // Check to see if correct is clicked, if so, change color to green and update answer one to say Correct!
+                correct.addEventListener('click', function() {
+                    correct.style.backgroundColor = 'green';
+                    document.querySelector('#answer1').innerHTML = 'Correct!';
+                });
+
+                // Selects all when one is wrong, which adds it to an array
+                // Check to see if wrong is clicked, if so, change color to red and update answer one to say Incorrect
+                //Initially this only selected the first item regardless what was clicked, so had to look up how to select all items of wrong
+                // Source: https://linuxhint.com/get-all-elements-containing-a-class-with-queryselector/
+                let wrong = document.querySelectorAll('.wrong');
+
+                /* For testing purposes only
+                // Source: https://javascript.info/searching-elements-dom
+                // For loops: https://www.w3schools.com/js/js_loop_for.asp
+                for (let w of wrong) {
+                    alert(w.innerHTML); // "test", "passed"
+                    w.style.backgroundColor = 'red';
+                } */
+
+                //Array can be iterated through using a for loop and each item of the wrong class can be updated
+                for (let w of wrong) {
+                    w.addEventListener('click', function() {
+                        w.style.backgroundColor = 'red';
+                        document.querySelector('#answer1').innerHTML = 'Incorrect';
+                    });
+                }
+
+
+                // Source for if: https://www.w3schools.com/js/js_if_else.asp
+                // For text : https://stackoverflow.com/questions/42319247/how-to-compare-two-strings-in-javascript-if-condition needs triple equals
+                // Make variable to get user answer from textbox
+
+                let openanswer = document.querySelector('.submitanswer');
+
+                openanswer.addEventListener('click', function() {
+                    //alert('Button Clicked'); // Testing only
+                    let uanswer = document.querySelector('#textanswer');
+
+                    if (uanswer.value === "Springfield"){
+                        textanswer.style.backgroundColor = 'green';
+                        document.querySelector('#answer2').innerHTML = 'Correct!';
+                    }
+                    else {
+                        textanswer.style.backgroundColor = 'red';
+                        document.querySelector('#answer2').innerHTML = 'Incorrect';
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <h3>What is the capital of Ghana?</h3>
+                <button class="wrong">London</button>
+                <button class="wrong">Istanbul</button>
+                <button class="correct">Accra</button>
+                <button class="wrong">Lusaka</button>
+                <button class="wrong">Lima</button>
+
+                <p id="answer1"></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>What is the capitol of the state of Illinois?</h3>
+                <input type="text" id="textanswer"></input>
+                <button class="submitanswer">Submit Answer</button>
+
+                <p id="answer2"></p>
+            </div>
+
+        </div>
+    </body>
+</html>
