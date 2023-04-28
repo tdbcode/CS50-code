@@ -16,7 +16,7 @@
                 if ( file ) {
                     xhttp = new XMLHttpRequest();
                     xhttp.onreadstatechange = function() {
-                        if (this.readState == 4) {
+                        if (this.readyState == 4) {
                             if (this.status == 200) {
                                 element.innerHTML = this.responseText;
                             }
@@ -52,9 +52,9 @@
         </nav>
 
         <a href="#" onclick='loadPage("template","home.html")'>Home</a>
-                <a href="#" onclick='loadPage("template","travel.html")'>Travel</a>
-                <a href="#" onclick='loadPage("template","hobbies.html")'>Hobbies</a>
-                <a href="#" onclick='loadPage("template","contact.html")'>Contact</a>
+                <a href="#" onclick='loadHtml("template","travel.html")'>Travel</a>
+                <a href="#" onclick='loadHtml("template","hobbies.html")'>Hobbies</a>
+                <a href="#" onclick='loadHtml("template","contact.html")'>Contact</a>
         <div id='template' class='template'>Template here</div>
     </body>
 </html>
