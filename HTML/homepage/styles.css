@@ -30,10 +30,8 @@
 
   /* Style the navigation menu */
   .navbar {
-    background-color: var(--primary-color);
-    color: white;
-    border-radius: 0;
-    margin-bottom: 1rem;
+    background-color: #6c757d;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
   }
 
   .navbar a:hover {
