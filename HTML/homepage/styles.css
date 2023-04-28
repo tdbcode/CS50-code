@@ -51,13 +51,14 @@
     margin-bottom: 1rem;
   }
 
-  /* Style the footer */
-  .footer {
-    background-color: var(--primary-color);
-    color: white;
+  footer {
+    background-color: #333;
+    color: #fff;
     text-align: center;
-    padding: 1rem;
-    font-size: 0.8rem;
+    padding: 20px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
   }
 
   .Hobbies {
