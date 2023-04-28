@@ -25,7 +25,7 @@
     color: var(--secondary-color);
   }
 
-/* For headers use color scheme primary color */
+/* For headers use color scheme primary color by default */
   h1, h2, h3, h4, h5, h6 {
     color: var(--primary-color);
   }
@@ -53,8 +53,67 @@
     margin-bottom: 1rem;
   }
 
-  /* Style the footer area */
-  footer {
+   /* Set div row style */
+   .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Set div column style */
+  .col {
+    flex-basis: 48%;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Set site paragraph style */
+  p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  /* Set site unordered list style */
+  ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+  }
+
+  /* Set site list item style */
+  li {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Set site image style */
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-bottom: 1.5rem;
+    border:1px solid #000000;
+  }
+
+
+  /* Styling for the container on the pages that get loaded in */
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    margin-bottom: 100px; /* add some bottom margin */
+}
+
+  /* Overwrite H2 heading style for loaded pages */
+  h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+   /* Style the footer area for all pages */
+   footer {
     background-color: #333;
     color: #fff;
     text-align: center;
@@ -65,86 +124,3 @@
     height: 50px; /* set a height for the footer */
     margin-top: 1rem; /* add margin-top to the content area */
   }
-
-  .Hobbies {
-    background-color: #f7f7f7;
-    padding: 50px 0;
-    text-align: center;
-  }
-
-  .Hobbies h2 {
-    font-size: 36px;
-    font-weight: 600;
-    margin-bottom: 30px;
-  }
-
-  .Hobbies p {
-    font-size: 18px;
-    line-height: 1.8;
-    margin-bottom: 30px;
-  }
-
-  .Hobbies img {
-    max-width: 100%;
-    height: auto;
-    margin-top: 30px;
-  }
-
-  /* Container for the travels section */
-  .container {
-    max-width: 800px;
-    margin: 0 auto;
-    margin-bottom: 100px; /* add some bottom margin */
-}
-
-  /* Heading style */
-  h2 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 1.5rem;
-  }
-
-  /* Row style */
-  .row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  /* Column style */
-  .col {
-    flex-basis: 48%;
-    margin-bottom: 1.5rem;
-  }
-
-  /* Paragraph style */
-  p {
-    font-size: 1.1rem;
-    line-height: 1.5;
-    margin-bottom: 1rem;
-  }
-
-  /* Unordered list style */
-  ul {
-    list-style-type: disc;
-    margin-left: 1.5rem;
-  }
-
-  /* List item style */
-  li {
-    font-size: 1.1rem;
-    line-height: 1.5;
-    margin-bottom: 0.5rem;
-  }
-
-  /* Image style */
-  img {
-    display: block;
-    width: 100%;
-    height: auto;
-    margin-bottom: 1.5rem;
-  }
-
-
