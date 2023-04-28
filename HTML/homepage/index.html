@@ -8,14 +8,15 @@
         <title>Thomas D Brady</title>
 
         <script>
-           function loadHtml(id, filename){
+            // Source for this code: https://www.youtube.com/watch?v=woE-wZXiY-Q
+           function loadPage(filename){
                 let xhttp;
-                let element = document.getElementById(id);
+                let element = document.getElementById('content');
                 let file = filename;
 
                 if ( file ) {
                     xhttp = new XMLHttpRequest();
-                    xhttp.onreadstatechange = function() {
+                    xhttp.onreadystatechange = function() {
                         if (this.readyState == 4) {
                             if (this.status == 200) {
                                 element.innerHTML = this.responseText;
@@ -42,19 +43,15 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div class="navbar-nav">
-                <a href="#" class="nav-link" onclick='loadHtml("template","home.html")'>Home</a>
-                <a href="#" class="nav-link" onclick='loadHtml("template","travel.html")'>Travel</a>
-                <a href="#" class="nav-link" onclick='loadHtml("template","hobbies.html")'>Hobbies</a>
-                <a href="#" class="nav-link" onclick='loadHtml("template","contact.html")'>Contact</a>
+                <a href="#" class="nav-link" onclick='loadPage("home.html")'>Home</a>
+                <a href="#" class="nav-link" onclick='loadPage("travel.html")'>Travel</a>
+                <a href="#" class="nav-link" onclick='loadPage("hobbies.html")'>Hobbies</a>
+                <a href="#" class="nav-link" onclick='loadPage("contact.html")'>Contact</a>
               </div>
             </div>
           </div>
         </nav>
 
-        <a href="#" onclick='loadPage("template","home.html")'>Home</a>
-                <a href="#" onclick='loadHtml("template","travel.html")'>Travel</a>
-                <a href="#" onclick='loadHtml("template","hobbies.html")'>Hobbies</a>
-                <a href="#" onclick='loadHtml("template","contact.html")'>Contact</a>
-        <div id='template' class='template'>Template here</div>
+        <div id='content' class='content'>Template here</div>
     </body>
 </html>
