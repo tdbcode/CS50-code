@@ -125,6 +125,18 @@
     margin-top: 1rem; /* add margin-top to the content area */
   }
 
+    /* Styling for the form container on the pages that get loaded in */
+  .form-container {
+        max-width: 800px;
+        margin: 0 auto;
+        margin-bottom: 100px; /* add some bottom margin */
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
   /* Style the contact form */
   form {
     display: flex;
@@ -136,8 +148,6 @@
     margin-bottom: 5px;
   }
 
-  input[type="text"],
-  input[type="email"],
   textarea {
     padding: 10px;
     margin-bottom: 10px;
