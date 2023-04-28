@@ -59,8 +59,11 @@
                 var name = document.getElementById('name').value;
                 var email = document.getElementById('email').value;
                 var message = document.getElementById('message').value;
+                var atSymbol = email.indexOf("@");
+                var dotSymbol = email.lastIndexOf(".");
+                var spaceSymbol = email.indexOf(" ");
+                var valid = 0;
 
-                
                 if (name == "") {
                     alert("You must enter a name!");
                 }
@@ -71,7 +74,13 @@
                     alert("You must enter a message!");
                 }
                 else{
-                    alert(name + ", your message has been sent. Thank you!", "Message sent!")
+                    if ((!atSymbol <= 0) && (!dotSymbol <= 0) && (dotSymbol > atSymbol + 1) && (emailAddress.length > dotSymbol + 1) && (spaceSymbol == -1)) {
+                        alert(name + ", your message has been sent. Thank you!", "Message sent!")
+                    }
+                    else {
+                        alert("E-mail address is not a valid format!");
+                    }
+
                 }
             }
         </script>
