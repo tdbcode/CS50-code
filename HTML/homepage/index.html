@@ -8,29 +8,44 @@
         <title>Thomas D Brady</title>
 
         <script>
+            // This function loads the contents of a specified file into a designated HTML element
             // Source for this code: https://www.youtube.com/watch?v=woE-wZXiY-Q
-           function loadPage(filename){
+            function loadPage(filename){
+                // Create a new XMLHttpRequest object to retrieve the file contents
                 let xhttp;
+                // Get the HTML element where the file contents will be loaded
                 let element = document.getElementById('content');
+                // Set the name of the file to be retrieved
                 let file = filename;
 
+                // Check if a file name was provided
                 if ( file ) {
+                    // Create a new XMLHttpRequest object
                     xhttp = new XMLHttpRequest();
+
+                    // Define a callback function to handle the response from the server
                     xhttp.onreadystatechange = function() {
+                        // Check if the request has been completed
                         if (this.readyState == 4) {
+                            // Check if the response status is OK
                             if (this.status == 200) {
+                                // Load the response into the designated HTML element
                                 element.innerHTML = this.responseText;
                             }
+                            // If the response status is not OK, display an error message
                             if (this.status == 404) {
                                 element.innerHTML = "<h1>Page not found.</h1>";
                             }
                         }
                     }
+
+                    // Send a GET request to the server to retrieve the specified file
                     xhttp.open("GET", `${file}`, true);
                     xhttp.send();
+                    // Exit the function
                     return;
                 }
-           }
+            }
         </script>
 
     </head>
