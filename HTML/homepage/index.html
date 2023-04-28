@@ -56,30 +56,41 @@
         <script>
             // Script for simulating that the message on the contact page has been submitted (It won't be as it's just a mock website)
             function submitMessage(){
+                // Get name, email and message from form
                 var name = document.getElementById('name').value;
                 var email = document.getElementById('email').value;
                 var message = document.getElementById('message').value;
+                // Get indexes of @ . symbols and of space
                 var atSymbol = email.indexOf("@");
                 var dotSymbol = email.lastIndexOf(".");
                 var spaceSymbol = email.indexOf(" ");
 
+                // If name field is blank alert the user
                 if (name == "") {
                     alert("You must enter a name!");
                 }
+                // If email field is blank alert the user
                 else if (email == ""){
                     alert("You must enter a valid e-mail address!");
                 }
+                // If message field is blank alert the user
                 else if (message == ""){
                     alert("You must enter a message!");
                 }
+                // Else now check if email is valid
+                // Source used to assist with this: https://www.geeksforgeeks.org/how-to-validate-email-address-without-using-regular-expression-in-javascript/
                 else{
-                    if ((!atSymbol <= 0) && (!dotSymbol <= 0) && (dotSymbol > atSymbol + 1) && (emailAddress.length > dotSymbol + 1) && (spaceSymbol == -1)) {
-                        alert(name + ", your message has been sent. Thank you!", "Message sent!")
+                    // If @ symbol position is not at the start (0) / does not exist (-1) and same for dot
+                    // and email length is more than dot + 1 (so the dot isn't at the end)
+                    // and no spaces exist
+                    // then email is valid, output message of "message sent" (not actually set, just simulated)
+                    if ((!atSymbol <= 0) && (!dotSymbol <= 0) && (dotSymbol > atSymbol + 1) && (email.length > dotSymbol + 1) && (spaceSymbol == -1)) {
+                        alert(name + ", your message has been sent. Thank you!", "Message sent!");
                     }
+                    // Else inform use of invalid format of email address
                     else {
                         alert("E-mail address is not a valid format!");
                     }
-
                 }
             }
         </script>
