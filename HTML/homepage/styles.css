@@ -1,13 +1,63 @@
-body {
-    background-color: #f5f5f5;
-    color: #333;
-    font-family: 'Open Sans', sans-serif;
+/* Apply the color scheme */
+:root {
+    --primary-color: #607d8b; /* teal */
+    --secondary-color: #ff9800; /* orange */
+    --background-color: #f4f4f4; /* light gray */
+    --text-color: #333; /* dark gray */
+    --link-color: #1976d2; /* blue */
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat', sans-serif;
+  /* Set some basic styles */
+  body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
   }
 
   a {
-    color: #007bff;
+    color: var(--link-color);
+  }
+
+  a:hover {
+    color: var(--secondary-color);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--primary-color);
+  }
+
+  /* Style the navigation menu */
+  .navbar {
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 0;
+    margin-bottom: 1rem;
+  }
+
+  .navbar a:hover {
+    color: var(--secondary-color);
+  }
+
+  .navbar-brand {
+    font-weight: bold;
+  }
+
+  /* Style the content area */
+  .content {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Style the footer */
+  .footer {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.8rem;
   }
