@@ -1,8 +1,7 @@
-<!DOCTYPE html>
 <html>
-   <head>
-   </head>
    <body>
+      <section class="about">
+         <div class="container">
        <h3>Contact Form</h3>
        <section class="about">
          <div class="container">
@@ -21,43 +20,11 @@
                </div>
                <button type="button" id="submit-btn">Send</button>
              </form>
+            </div>
+         </section>
 
        <footer>
          <p>&copy; 2023 TDB. All rights reserved.</p>
        </footer>
-
-      <script>
-        document.addEventListener("DOMContentLoaded", function() {
-          document.getElementById("submit-btn").addEventListener("click", function(event) {
-            event.preventDefault(); // prevent form from submitting
-
-            // get form data
-            var name = document.getElementById("name").value;
-            var email = document.getElementById("email").value;
-            var message = document.getElementById("message").value;
-
-            // validate form data
-            if (name === "" || email === "" || message === "") {
-              alert("Please fill in all fields");
-              return;
-            }
-
-            // send form data to server
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "/send-email", true);
-            xhr.setRequestHeader("Content-Type", "application/json");
-            xhr.onreadystatechange = function() {
-              if (xhr.readyState === 4 && xhr.status === 200) {
-                alert("Email sent successfully");
-                document.getElementById("contact-form").reset();
-              } else if (xhr.readyState === 4) {
-                alert("Email failed to send");
-              }
-            };
-            var data = JSON.stringify({ name: name, email: email, message: message });
-            xhr.send(data);
-          });
-        });
-      </script>
     </body>
 </html>
