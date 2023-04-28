@@ -8,25 +8,27 @@
         <title>TDB Site</title>
 
         <script>
+            // Load the homepage as the first page
             function homePage(){
                 loadPage("home.html");
             }
-            // This function loads the contents of a specified file into a designated HTML element
+
+            // This function loads the contents of a HTML file into the content element on this page, which acts as a frame around it.
             // Source for this code: https://www.youtube.com/watch?v=woE-wZXiY-Q
             function loadPage(filename){
                 // Create a new XMLHttpRequest object to retrieve the file contents
                 let xhttp;
-                // Get the HTML element where the file contents will be loaded
+                // Select the HTML element where the file contents will be loaded
                 let element = document.getElementById('content');
-                // Set the name of the file to be retrieved
+                // Set the name of the file to be retrieved (passed in from the function being called)
                 let file = filename;
 
                 // Check if a file name was provided
-                if ( file ) {
+                if (file) {
                     // Create a new XMLHttpRequest object
                     xhttp = new XMLHttpRequest();
 
-                    // Define a callback function to handle the response from the server
+                    // Make a callback function to handle the response from the server
                     xhttp.onreadystatechange = function() {
                         // Check if the request has been completed
                         if (this.readyState == 4) {
@@ -35,14 +37,14 @@
                                 // Load the response into the designated HTML element
                                 element.innerHTML = this.responseText;
                             }
-                            // If the response status is not OK, display an error message
+                            // If the response status is not OK, display a page not found message
                             if (this.status == 404) {
                                 element.innerHTML = "<h1>Page not found.</h1>";
                             }
                         }
                     }
 
-                    // Send a GET request to the server to retrieve the specified file
+                    // Send a GET request to the server to retrieve the specified file which will then display it.
                     xhttp.open("GET", `${file}`, true);
                     xhttp.send();
                     return;
@@ -51,7 +53,7 @@
         </script>
 
     </head>
-    <body onload="homePage()">
+    <body onload="homePage()"> <!-- test*/
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
             <a class="navbar-brand" href="#">TDB Nav</a>
