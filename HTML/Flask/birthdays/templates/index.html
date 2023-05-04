@@ -14,7 +14,18 @@
             <div class="section">
 
                 <h2>Add a Birthday</h2>
-                <!-- TODO: Create a form for users to submit a name, a month, and a day -->
+                {% for registrant in registrants %}
+                <tr>
+                    <td>{{ registrant.name }}</td>
+                    <td>{{ registrant.sport }}</td>
+                    <td>
+                        <form action="/deregister" method="post">
+                            <input name="id" type="hidden" value="{{ registrant.id }}">
+                            <button type="submit">Deregister</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
             </div>
 
             <div class="section">
