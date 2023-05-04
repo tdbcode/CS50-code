@@ -25,7 +25,7 @@ def after_request(response):
     return response
 
 
-@app.route("/", months=MONTHS, days=DAYS, methods=["GET", "POST"])
+@app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
 
