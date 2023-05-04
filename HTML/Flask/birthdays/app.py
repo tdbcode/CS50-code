@@ -42,6 +42,6 @@ def index():
     else:
 
         birthdays = db.execute("SELECT * FROM birthdays")
-        return render_template("index.html",birthdays=birthdays)
+        return render_template("index.html",birthdays=birthdays, months=MONTHS, days=DAYS)
 
 
