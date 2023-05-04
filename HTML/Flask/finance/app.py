@@ -133,7 +133,7 @@ def register():
             return apology("Passwords do not match", 403)
 
         # Query database for username
-        rows = db.execute("INSERT INTO users (username, password) VALUES (? ?)", request.form.get("username"), generate_password_hash(request.form.get("password")))
+        rows = db.execute("INSERT INTO users (username, password) VALUES (?, ?)", request.form.get("username"), generate_password_hash(request.form.get("password")))
 
         # Redirect user to home page
         return redirect("/")
