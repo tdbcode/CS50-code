@@ -70,6 +70,8 @@
                                         December
                                 {% endif %}
                                     {{ birthday.day }}</td>
+                                    <td><input name="id" type="hidden" value="{{ birthday.id }}">
+                                        <button type="submit">Delete</button></td>
                             </tr>
                         {% endfor %}
                     </tbody>
