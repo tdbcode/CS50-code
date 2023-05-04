@@ -25,8 +25,9 @@ def after_request(response):
     return response
 
 
-@app.route("/", methods=["GET", "POST"], months=MONTHS, days=DAYS)
+@app.route("/", methods=["GET", "POST"])
 def index():
+    return render_template("index.html",months=MONTHS, days=DAYS)
     if request.method == "POST":
 
         # Validate submission
