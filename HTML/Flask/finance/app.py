@@ -132,7 +132,7 @@ def register():
         elif request.form.get("password") != request.form.get("password2"):
             return apology("Passwords do not match", 403)
 
-        hashpw = generate_password_hash(request.form.get("password"))
+        hashpw = generate_password_hash(request.form.get("password"),method='pbkdf2:sha256', salt_length=8)
 
         # Query database for username
         rows = db.execute("INSERT INTO users (username, password) VALUES (?, ?)", request.form.get("username"), hashpw)
