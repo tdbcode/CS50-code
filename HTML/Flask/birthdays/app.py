@@ -12,6 +12,9 @@ app.config["TEMPLATES_AUTO_RELOAD"] = True
 # Configure CS50 Library to use SQLite database
 db = SQL("sqlite:///birthdays.db")
 
+MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"]
+DAYS = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
+
 
 @app.after_request
 def after_request(response):
@@ -34,7 +37,7 @@ def index():
         # Remember registrant
         db.execute("INSERT INTO birthdays (name, month day) VALUES(?, ?)", name, month, day)
 
-        return redirect("/")
+        return redirect("/",months=MONTHS, days=DAYS)
 
     else:
 

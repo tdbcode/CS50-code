@@ -41,12 +41,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            {% for birthday in birthdays %}
-                            <td>{{ birthday.name }}</td>
-                            <td>{{ birthday.month }} {{ birthday.day }}</td>
-                            {% endfor %}
-                        </tr>
+                        {% for birthday in birthdays %}
+                            <tr>
+                                <td>{{ birthday.name }}</td>
+                                <td>{{ birthday.month }} {{ birthday.day }}</td>
+                            </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>
