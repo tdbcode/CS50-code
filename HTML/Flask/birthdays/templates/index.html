@@ -44,7 +44,7 @@
                         {% for birthday in birthdays %}
                             <tr>
                                 <td>{{ birthday.name }}</td>
-                                <td>{% if birthday.month="7" %}
+                                <td>{% if birthday.month==7 %}
                                         July
                                 {% endif %}
                                     {{ birthday.day }}</td>
