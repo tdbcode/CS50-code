@@ -24,6 +24,15 @@ def after_request(response):
     response.headers["Pragma"] = "no-cache"
     return response
 
+@app.route("/deleteitem", methods=["POST"])
+def deleteitem():
+
+    # Forget registrant
+    id = request.form.get("id")
+    if id:
+        db.execute("DELETE FROM birthdays WHERE id = ?", id)
+    return redirect("/")
+
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -44,13 +53,3 @@ def index():
 
         birthdays = db.execute("SELECT * FROM birthdays")
         return render_template("index.html",birthdays=birthdays, months=MONTHS, days=DAYS)
-
-
-@app.route("/deleteitem", methods=["POST"])
-def deleteitem():
-
-    # Forget registrant
-    id = request.form.get("id")
-    if id:
-        db.execute("DELETE FROM birthdays WHERE id = ?", id)
-    return redirect("/")
