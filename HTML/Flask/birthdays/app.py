@@ -26,7 +26,13 @@ def after_request(response):
 def index():
     if request.method == "POST":
 
-        # TODO: Add the user's entry into the database
+        # Validate submission
+        name = request.form.get("name")
+        month = request.form.get("month")
+        day = request.form.get("day")
+
+        # Remember registrant
+        db.execute("INSERT INTO birthdays (name, month day) VALUES(?, ?)", name, month, day)
 
         return redirect("/")
 
