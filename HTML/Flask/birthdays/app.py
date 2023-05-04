@@ -46,3 +46,11 @@ def index():
         return render_template("index.html",birthdays=birthdays, months=MONTHS, days=DAYS)
 
 
+@app.route("/deleteitem", methods=["POST"])
+def deleteitem():
+
+    # Forget registrant
+    id = request.form.get("id")
+    if id:
+        db.execute("DELETE FROM birthdays WHERE id = ?", id)
+    return redirect("/")
