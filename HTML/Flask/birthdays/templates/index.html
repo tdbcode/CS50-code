@@ -44,8 +44,30 @@
                         {% for birthday in birthdays %}
                             <tr>
                                 <td>{{ birthday.name }}</td>
-                                <td>{% if birthday.month==7 %}
+                                <td>{% if birthday.month==1 %}
+                                        January
+                                    {% elif birthday.month==2 %}
+                                        February
+                                    {% elif birthday.month==3 %}
+                                        March
+                                    {% elif birthday.month==4 %}
+                                        April
+                                    {% elif birthday.month==5 %}
+                                        May
+                                    {% elif birthday.month==6 %}
+                                        June
+                                    {% elif birthday.month==7 %}
                                         July
+                                    {% elif birthday.month==8 %}
+                                        August
+                                    {% elif birthday.month==9 %}
+                                        September
+                                    {% elif birthday.month==10 %}
+                                        October
+                                    {% elif birthday.month==11 %}
+                                        November
+                                    {% elif birthday.month==12 %}
+                                        December
                                 {% endif %}
                                     {{ birthday.day }}</td>
                             </tr>
