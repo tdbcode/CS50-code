@@ -32,13 +32,7 @@ def index():
 
     else:
 
-        birthdays = db.execute("SELECT * FROM)
-
-        return render_template("index.html")
-
-@app.route("/registrants")
-def registrants():
-    registrants = db.execute("SELECT * FROM registrants")
-    return render_template("registrants.html", registrants=registrants)
+        birthdays = db.execute("SELECT * FROM birthdays")
+        return render_template("index.html",birthdays=birthdays)
 
 
