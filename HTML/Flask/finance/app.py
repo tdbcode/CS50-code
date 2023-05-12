@@ -122,14 +122,14 @@ def register():
         password2 = request.form.get("password2")
 
         # Needed to check if user exists in database
-        userexists = db.execute("SELECT * FROM users where username=",username)
+        userexists = db.execute("SELECT * FROM users WHERE username = ?", username)
 
         # Ensure username was submitted
         if not username:
             return apology("must enter username")
 
         # Ensure user does not exist in database
-        elif userexists != "":
+        elif not len(userexists) == 0:
             return apology("Username taken")
 
         # Ensure password was submitted
@@ -146,7 +146,7 @@ def register():
         else:
             hashpw = generate_password_hash(request.form.get("password"), method='pbkdf2:sha256', salt_length=8)
             # Query database for username
-            db.execute("INSERT INTO users (username, hash) VALUES (?, ?)", request.form.get("username"), hashpw)
+            db.execute("INSERT INTO users (username, hash) VALUES (?, ?)", username, hashpw)
             rows = db.execute("SELECT * from users where username=",username)
             # Remember which user has logged in
             session["user_id"] = rows[0]["id"]
