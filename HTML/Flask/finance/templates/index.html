@@ -16,7 +16,7 @@
             <thead>
                 <tr>
                     <th>Stock</th>
-                    <th>Shares</th>
+                    <th>No of Shares</th>
                     <th>Current price per share</th>
                     <th>Total value of holding</th>
                 </tr>
@@ -25,8 +25,11 @@
                 {% for share in shares %}
                     <tr>
                         <td>{{ share.symbol }}</td>
+                        <td>{{ share.quantity }}</td>
+                        <td>{{ share.symbol }}</td>
+                        <td>{{ share.symbol }}</td>
                         <td>
-                        <form action="/sell" method="post"><input name="id" type="hidden" value="{{ share.shareid }}">
+                        <form action="/sell" method="get"><input name="id" type="hidden" value="{{ share.shareid }}">
                             <button type="submit">Sell</button>
                         </form>
                         </td>
