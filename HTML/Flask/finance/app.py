@@ -109,6 +109,12 @@ def quote():
     if request.method == "POST":
         symbol = request.form.get("symbol")
 
+        if symbol == "":
+            return apology("Please enter a stock symbol")
+        else:
+            results = lookup(symbol)
+            
+
     # User reached route via GET (as by clicking a link or via redirect)
     else:
         return render_template("quote.html")
