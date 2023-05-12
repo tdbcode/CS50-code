@@ -8,6 +8,10 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from helpers import apology, login_required, lookup, usd
 
+from datetime import datetime # Source: https://www.w3schools.com/python/python_datetime.asp
+
+date = datetime.date
+
 # Configure application
 app = Flask(__name__)
 
@@ -62,9 +66,10 @@ def buy():
             # List Formatting : {'name': 'Forward Industries, Inc.', 'price': 1.02, 'symbol': 'FORD'}
             cash = db.execute("SELECT cash FROM users where id=?",session["user_id"])
             price = float(results["price"])
+            #print(cash[0]["cash"])#for testing only
             totalprice = price * int(shares)
 
-            if totalcash < totalprice:
+            if cash[0]["cash"] < totalprice:
                 return apology("Not enough funds. Please purchase funds and try again.")
             else:
                 # SQLite datetime formatting source: https://www.tutorialspoint.com/sqlite/sqlite_date_time.htm
