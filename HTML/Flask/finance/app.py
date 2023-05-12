@@ -50,21 +50,21 @@ def buy():
     db.execute("CREATE TABLE IF NOT EXISTS transactions (transactionID INTEGER NOT NULL, date TEXT NOT NULL, time TEXT NOT NULL, price REAL NOT NULL, amount INTEGER NOT NULL, total REAL NOT NULL, PRIMARY KEY (transactionID));")
     if request.method == "POST":
         symbol = request.form.get("symbol")
-        shares = int(request.form.get("shares"))
+        shares = request.form.get("shares")
         results = lookup(symbol) # Lookup symbol using function which returns list of stock details
 
         # If no results then symbol wrong or empty - tell use to enter a valid symbol
         if results == None:
             return apology("Please enter a valid stock symbol")
-        elif shares == 0:
+        elif shares == "" or int(shares) < 1:
             return apology("Invalid shares quantity entered")
         else:
             # List Formatting : {'name': 'Forward Industries, Inc.', 'price': 1.02, 'symbol': 'FORD'}
             cash = db.execute("SELECT cash FROM users where id=?",session["user_id"])
-            price = results["price"]
+            price = float(results["price"])
             totalprice = price * int(shares)
 
-            if cash < totalprice:
+            if totalcash < totalprice:
                 return apology("Not enough funds. Please purchase funds and try again.")
             else:
                 # SQLite datetime formatting source: https://www.tutorialspoint.com/sqlite/sqlite_date_time.htm
