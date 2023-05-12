@@ -44,7 +44,7 @@ def index():
     shares = db.execute("SELECT * FROM shares where userid=?;", session["user_id"])
     print(shares)
 
-    sharesdict = {}
+    sharesdict = []
 
     for i in range(0,len(shares)):
         shareid = shares[i]["shareID"]
@@ -57,8 +57,9 @@ def index():
 
         # Creating a new dictionary to pass thbrough as shares, source: https://www.geeksforgeeks.org/appending-to-list-in-python-dictionary/
         # Adding new key pairs source: https://thispointer.com/add-key-value-pairs-to-an-empty-dictionary-in-python/
-        sharesdict[shareid] = {'symbol':symbol, 'quantity':quantity, 'price':price, 'totalprice':totalprice}
-    print(sharesdict)
+        sharesdict.append({'shareid': shareid, 'symbol':symbol, 'quantity':quantity, 'price':usd(price), 'totalprice':usd(totalprice)})
+    ## print(shares) # for testing only
+    ## print(sharesdict) # for testing only
 
     return render_template("index.html",shares=sharesdict)
 
