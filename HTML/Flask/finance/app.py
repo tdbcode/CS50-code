@@ -52,17 +52,16 @@ def index():
     price = []
     totalprice = [] """
 
-    items = {}
-    i=0
-    for share in shares:
+
+    for i in range(0,len(shares)):
         symbol = shares[i]["symbol"]
         results = lookup(symbol)
         quantity = int(shares[i]["quantity"])
         price = int(results["price"])
         total = price * quantity
+        shares["price"].append(price)
 
-        print(symbol, quantity, price, total)
-        i=i+1
+        items.append(symbol, quantity, price, total)
 
         """ Redundant code """
         """
@@ -79,7 +78,8 @@ def index():
         print(sharesdict)
         """
 
-    return render_template("index.html",shares="sharesdict")
+
+    return render_template("index.html",shares=shares)
 
 
 @app.route("/buy", methods=["GET", "POST"])
