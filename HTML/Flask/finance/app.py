@@ -73,7 +73,7 @@ def buy():
                 # SQLite datetime formatting source: https://www.tutorialspoint.com/sqlite/sqlite_date_time.htm
                 date = date.today().strftime("%d/%m/%y")
                 time = datetime.now().strftime("%H:%M:%S")
-                db.execute("INSERT INTO transactions (date, time, price, quantity, total) VALUES (?,?,?,?,?);", date, time, price, shares, totalprice))
+                db.execute("INSERT INTO transactions (date, time, price, quantity, total) VALUES (?,?,?,?,?);", date, time, price, shares, totalprice)
                 # redirect to home
                 return redirect("/")
 
