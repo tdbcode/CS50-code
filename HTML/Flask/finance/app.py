@@ -113,7 +113,7 @@ def quote():
             return apology("Please enter a stock symbol")
         else:
             results = lookup(symbol)
-            
+            return render_template("quoted.html", results=results)
 
     # User reached route via GET (as by clicking a link or via redirect)
     else:
