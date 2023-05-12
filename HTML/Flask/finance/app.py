@@ -42,16 +42,17 @@ def after_request(response):
 @login_required
 def index():
     shares = db.execute("SELECT * FROM shares where userid=?;", session["user_id"])
-    for i in range(len(shares)):
+    print(shares)
+    for i in range(0,len(shares)):
+        shareid = shares[i]["shareID"]
         symbol = shares[i]["symbol"]
         quantity = int(shares[i]["quantity"])
         results = lookup(symbol) # Lookup symbol using function which returns list of stock details
-        price = float(results["price"]) # Lookup symbol using function which returns list of stock details
-        totalprice = price * quantity
-        Dict = {'symbol': symbol, 'quantity': quantity, 'cost': str(usd("price")), 'totalprice': str(usd(totalprice))}
+        price = results["price"] # Lookup symbol using function which returns list of stock details
+        totalprice = float(price) * quantity
+        Dict = {'shareid': shareid, 'symbol': symbol, 'quantity': quantity, 'cost': usd(price), 'totalprice': usd(totalprice)}
 
-
-
+    print(Dict)
     return render_template("index.html",shares=Dict)
 
 
