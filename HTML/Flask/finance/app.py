@@ -48,8 +48,8 @@ def buy():
     # Sources for SQL: https://www.w3schools.com/sql/sql_foreignkey.asp
 
 
-    db.execute("CREATE TABLE IF NOT EXISTS shares (ShareID INTEGER NOT NULL, Symbol TEXT NOT NULL, Quantity INTEGER NOT NULL, userid int NOT NULL, PRIMARY KEY (OrderID), FOREIGN KEY (userID) REFERENCES users(id));")
-    db.execute("CREATE TABLE IF NOT EXISTS transactions (TransactionID INTEGER NOT NULL, Date Date NOT NULL, Time Time NOT NULL, PRIMARY KEY (transactionID);")
+    db.execute("CREATE TABLE IF NOT EXISTS shares (sharID INTEGER NOT NULL, symbol TEXT NOT NULL, quantity INTEGER NOT NULL, userid int NOT NULL, PRIMARY KEY (shareID), FOREIGN KEY (userID) REFERENCES users(id));")
+    db.execute("CREATE TABLE IF NOT EXISTS transactions (transactionID INTEGER NOT NULL, Date TEXT NOT NULL, time TEXT NOT NULL, PRIMARY KEY (transactionID);")
     if request.method == "POST":
         symbol = request.form.get("symbol")
         shares = request.form.get("shares")
@@ -71,7 +71,10 @@ def buy():
             if cash < totalprice:
                 return apology("Not enough funds. Please purchase funds and try again.")
             else:
-                date = datetime.now()
+                # SQLite datetime formatting source: https://www.tutorialspoint.com/sqlite/sqlite_date_time.htm
+                date = date.today().strftime("%d/%m/%y")
+                time = datetime.now().strftime("%H:%M:%S")
+                db.execute("INSERT INTO transactions (transactionID, ))
                 # redirect to home
                 return redirect("/")
 
