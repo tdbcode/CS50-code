@@ -140,9 +140,10 @@ def register():
             hashpw = generate_password_hash(request.form.get("password"), method='pbkdf2:sha256', salt_length=8)
             # Query database for username
             db.execute("INSERT INTO users (username, hash) VALUES (?, ?)", request.form.get("username"), hashpw)
-            test = db.execute("SELECT * from users where username=",username)
+            rows = db.execute("SELECT * from users where username=",username)
+            # Remember which user has logged in
+            session["user_id"] = rows[0]["id"]
 
-            
             # Redirect user to home page
             return redirect("/")
 
