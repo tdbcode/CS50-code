@@ -45,7 +45,11 @@ def index():
 @app.route("/buy", methods=["GET", "POST"])
 @login_required
 def buy():
-    db.execute("CREATE TABLE IF NOT EXISTS shares (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, symbol TEXT NOT NULL, quantity INTEGER NOT NULL, user_id INT NOT NULL, transaction_id INT);")
+    # Sources for SQL: https://www.w3schools.com/sql/sql_foreignkey.asp
+
+
+    db.execute("CREATE TABLE IF NOT EXISTS shares (ShareID INTEGER NOT NULL, Symbol TEXT NOT NULL, Quantity INTEGER NOT NULL, userid int NOT NULL, PRIMARY KEY (OrderID), FOREIGN KEY (userID) REFERENCES users(id));)
+    db.execute("CREATE TABLE IF NOT EXISTS shares (ShareID INTEGER NOT NULL, Symbol TEXT NOT NULL, Quantity INTEGER NOT NULL, userid int NOT NULL, PRIMARY KEY (OrderID), FOREIGN KEY (userID) REFERENCES users(id));)
     db.execute("CREATE TABLE IF NOT EXISTS transactions (transaction_id INT, datetime datetime);")
     if request.method == "POST":
         symbol = request.form.get("symbol")
