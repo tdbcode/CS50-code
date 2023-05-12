@@ -49,8 +49,8 @@ def index():
 def buy():
     # Sources for SQL: https://www.w3schools.com/sql/sql_foreignkey.asp
     # If tables don't exist, then create them for this function
-    db.execute("CREATE TABLE IF NOT EXISTS shares (shareID INTEGER NOT NULL, symbol TEXT NOT NULL, quantity INTEGER NOT NULL, userid int NOT NULL, PRIMARY KEY (shareID), FOREIGN KEY (userID) REFERENCES users(id));")
-    db.execute("CREATE TABLE IF NOT EXISTS transactions (transactionID INTEGER NOT NULL, date TEXT NOT NULL, time TEXT NOT NULL, price REAL NOT NULL, amount INTEGER NOT NULL, total REAL NOT NULL, PRIMARY KEY (transactionID));")
+    db.execute("CREATE TABLE IF NOT EXISTS shares (shareID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, symbol TEXT NOT NULL, quantity INTEGER NOT NULL, userid int NOT NULL, FOREIGN KEY (userID) REFERENCES users(id));")
+    db.execute("CREATE TABLE IF NOT EXISTS transactions (transactionID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, date TEXT NOT NULL, time TEXT NOT NULL, price REAL NOT NULL, amount INTEGER NOT NULL, total REAL NOT NULL);")
 
     # If method is POST
     if request.method == "POST":
@@ -80,8 +80,8 @@ def buy():
             else:
                 # SQLite datetime formatting source: https://www.tutorialspoint.com/sqlite/sqlite_date_time.htm
                 # get todays date and time in d/m/y and h:m:s format
-                tod = dates.today().strftime("%d/%m/%y")
-                tim = dates.now().strftime("%H:%M:%S")
+                tod = date.today().strftime("%d/%m/%y")
+                tim = date.now().strftime("%H:%M:%S")
                 db.execute("INSERT INTO transactions (date, time, price, quantity, total) VALUES (?,?,?,?,?);", tod, tim, price, shares, totalprice)
                 # redirect to home
                 return redirect("/")
