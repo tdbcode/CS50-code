@@ -85,7 +85,7 @@ def buy():
                 # Add the transaction log to the database table, transactions
                 transaction = db.execute("INSERT INTO transactions (date, time, price, quantity, total) VALUES (?,?,?,?,?);", tod, tim, price, shares, totalprice)
 
-                transactionid = transaction["transactionid"]
+                transactionid = transaction[0]["transactionid"]
                 # Add the shares to the shares table and assign the user ID and link to the transaction ID using the foreign keys
                 share = db.execute("INSERT INTO shares (symbol, quantity, userid, transactionID) VALUES (?,?,?,?,?);", tod, tim, price, shares, totalprice)
                 # Flash message
