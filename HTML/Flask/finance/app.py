@@ -43,6 +43,7 @@ def after_request(response):
 def index():
     shares = db.execute("SELECT * FROM shares where userid=?;", session["user_id"])
     print(shares)
+    sharesdict = {}
     for i in range(0,len(shares)):
         shareid = shares[i]["shareID"]
         symbol = shares[i]["symbol"]
@@ -50,7 +51,7 @@ def index():
         results = lookup(symbol) # Lookup symbol using function which returns list of stock details
         price = results["price"] # Lookup symbol using function which returns list of stock details
         totalprice = float(price) * quantity
-        Dict = {'shareid': shareid, 'symbol': symbol, 'quantity': quantity, 'cost': usd(price), 'totalprice': usd(totalprice)}
+        Dict.add {'shareid': shareid, 'symbol': symbol, 'quantity': quantity, 'cost': usd(price), 'totalprice': usd(totalprice)}
 
     print(Dict)
     return render_template("index.html",shares=Dict)
