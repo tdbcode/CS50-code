@@ -44,12 +44,15 @@ def index():
     shares = db.execute("SELECT * FROM shares where userid=?;", session["user_id"])
     print(shares)
 
+    sharesdict = {}
+
     for i in range(0,len(shares)):
         shareid = shares[i]["shareID"]
         symbol = shares[i]["symbol"]
         quantity = int(shares[i]["quantity"])
         results = lookup(symbol) # Lookup symbol using function which returns list of stock details
-        price = results[i]["price"] # Lookup symbol using function which returns list of stock details
+        price = results["price"] # Lookup symbol using function which returns list of stock details
+
         totalprice = float(price) * quantity
 
         # Creating a new dictionary to pass thbrough as shares, source: https://www.geeksforgeeks.org/appending-to-list-in-python-dictionary/
