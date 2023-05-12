@@ -124,8 +124,8 @@ def register():
         # Need to see if the user current exists
         userexists = db.execute("SELECT * FROM users where username=",username)
 
-        if not userexists:
-            
+        if userexists:
+
 
 
         # Ensure username was submitted
