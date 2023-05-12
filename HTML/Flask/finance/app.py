@@ -45,8 +45,8 @@ def index():
 @app.route("/buy", methods=["GET", "POST"])
 @login_required
 def buy():
-    db.execute("CREATE TABLE IF NOT EXISTS shares (share_id INT, symbol TEXT, quantity INT, userid INT);")
-    db.execute("CREATE TABLE IF NOT EXISTS transactions (transaction_id INT, date date, time INT, userid INT);")
+    db.execute("CREATE TABLE IF NOT EXISTS shares (share_id INT, symbol TEXT, quantity INT, userid INT, transaction_id INT);")
+    db.execute("CREATE TABLE IF NOT EXISTS transactions (transaction_id INT, datetime datetime);")
     if request.method == "POST":
         symbol = request.form.get("symbol")
         shares = request.form.get("shares")
