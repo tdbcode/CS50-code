@@ -64,7 +64,8 @@ def buy():
             text = results["symbol"] + " are currently $" + str(usd(results["price"])) + " per share (" + results["name"] + ")"
 
             cash = db.execute("SELECT cash FROM users where id=",session["user_id"])
-            totalprice = results["price"] * int(shares)
+            price = results["price"]
+            totalprice = price * int(shares)
 
             if cash < totalprice:
                 return apology("Not enough funds. Please purchase funds and try again.")
@@ -72,7 +73,7 @@ def buy():
                 # SQLite datetime formatting source: https://www.tutorialspoint.com/sqlite/sqlite_date_time.htm
                 date = date.today().strftime("%d/%m/%y")
                 time = datetime.now().strftime("%H:%M:%S")
-                db.execute("INSERT INTO transactions (date, time, price, amount, total) VALUES (?,?,?,?,?);", date, time, price, amount, totalprice);")
+                db.execute("INSERT INTO transactions (date, time, price, quantity, total) VALUES (?,?,?,?,?);", date, time, price, shares, totalprice))
                 # redirect to home
                 return redirect("/")
 
