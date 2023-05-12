@@ -45,7 +45,7 @@ def index():
     symbol = shares["symbol"]
     results = lookup(symbol) # Lookup symbol using function which returns list of stock details
 
-    return render_template("index.html",shares=shares,results=results)
+    return render_template("index.html",shares=shares,price=str(usd(results["price"])))
 
 
 @app.route("/buy", methods=["GET", "POST"])
