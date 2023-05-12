@@ -108,14 +108,16 @@ def logout():
 def quote():
     if request.method == "POST":
         symbol = request.form.get("symbol")
+        results = lookup(symbol) # Lookup symbol using function which returns list of stock details
 
-        if symbol == "":
-            return apology("Please enter a stock symbol")
+        # If no results then symbol wrong or empty - tell use to enter a valid symbol
+        if results == None:
+            return apology("Please enter a valid stock symbol")
         else:
-            results = lookup(symbol)
-            # Formatting : {'name': 'Forward Industries, Inc.', 'price': 1.02, 'symbol': 'FORD'}
-            text = results[name], " are currently 
-            return render_template("quoted.html", results=results)
+            # List Formatting : {'name': 'Forward Industries, Inc.', 'price': 1.02, 'symbol': 'FORD'}
+            # Set page text to output symbol and how much per share converting price to string for display
+            text = results["symbol"] + " are currently $" + str(results["price"]) + " per share (" + results["name"] + ")"
+            return render_template("quoted.html", results=text) # Load quoted page with text above as body text
 
     # User reached route via GET (as by clicking a link or via redirect)
     else:
