@@ -56,7 +56,9 @@ def buy():
             # List Formatting : {'name': 'Forward Industries, Inc.', 'price': 1.02, 'symbol': 'FORD'}
             # Set page text to output symbol and how much per share (using USD function to make it a valid ticker - as per check50) converting price to string for display
             text = results["symbol"] + " are currently $" + str(usd(results["price"])) + " per share (" + results["name"] + ")"
-            return render_template("quoted.html", results=text) # Load quoted page with text above as body text
+
+            # Redirect user to home page
+            return redirect("/")
 
     # User reached route via GET (as by clicking a link or via redirect)
     else:
