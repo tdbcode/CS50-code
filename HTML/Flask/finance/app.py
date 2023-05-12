@@ -45,6 +45,7 @@ def index():
 @app.route("/buy", methods=["GET", "POST"])
 @login_required
 def buy():
+    db.execute("CREATE TABLE IF NOT EXISTS shares  )
     if request.method == "POST":
         symbol = request.form.get("symbol")
         shares = request.form.get("shares")
@@ -53,7 +54,7 @@ def buy():
         # If no results then symbol wrong or empty - tell use to enter a valid symbol
         if results == None:
             return apology("Please enter a valid stock symbol")
-        elif shares = None:
+        elif shares == None:
             return apology("Invalid shares quantity entered")
         else:
             # List Formatting : {'name': 'Forward Industries, Inc.', 'price': 1.02, 'symbol': 'FORD'}
@@ -66,7 +67,7 @@ def buy():
             if cash < totalprice:
                 return apology("Not enough funds. Please purchase funds and try again.")
             else:
-                
+                date = datetime.now()
                 # redirect to home
                 return redirect("/")
 
