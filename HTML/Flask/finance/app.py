@@ -42,7 +42,8 @@ def after_request(response):
 @login_required
 def index():
     shares = db.execute("SELECT * FROM shares where userid=?;", session["user_id"])
-    symbol = shares["symbol"]
+    print(shares)
+    symbol = shares[0]["symbol"]
     results = lookup(symbol) # Lookup symbol using function which returns list of stock details
 
     return render_template("index.html",shares=shares,price=str(usd(results["price"])))
