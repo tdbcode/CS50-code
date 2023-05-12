@@ -49,7 +49,7 @@ def buy():
 
 
     db.execute("CREATE TABLE IF NOT EXISTS shares (sharID INTEGER NOT NULL, symbol TEXT NOT NULL, quantity INTEGER NOT NULL, userid int NOT NULL, PRIMARY KEY (shareID), FOREIGN KEY (userID) REFERENCES users(id));")
-    db.execute("CREATE TABLE IF NOT EXISTS transactions (transactionID INTEGER NOT NULL, Date TEXT NOT NULL, time TEXT NOT NULL, PRIMARY KEY (transactionID);")
+    db.execute("CREATE TABLE IF NOT EXISTS transactions (transactionID INTEGER NOT NULL, Date TEXT NOT NULL, time TEXT NOT NULL, price REAL NOT NULL, amount INTEGER NOT NULL, PRIMARY KEY (transactionID);")
     if request.method == "POST":
         symbol = request.form.get("symbol")
         shares = request.form.get("shares")
@@ -74,7 +74,7 @@ def buy():
                 # SQLite datetime formatting source: https://www.tutorialspoint.com/sqlite/sqlite_date_time.htm
                 date = date.today().strftime("%d/%m/%y")
                 time = datetime.now().strftime("%H:%M:%S")
-                db.execute("INSERT INTO transactions (transactionID, ))
+                db.execute("INSERT INTO transactions (date, time, price, amount) VALUES (?,?,?,?);", date, time, totalprice,)
                 # redirect to home
                 return redirect("/")
 
