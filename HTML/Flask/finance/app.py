@@ -115,7 +115,7 @@ def quote():
             return apology("Please enter a valid stock symbol")
         else:
             # List Formatting : {'name': 'Forward Industries, Inc.', 'price': 1.02, 'symbol': 'FORD'}
-            # Set page text to output symbol and how much per share converting price to string for display
+            # Set page text to output symbol and how much per share (using USD function to make it a valid ticker - as per check50) converting price to string for display
             text = results["symbol"] + " are currently $" + str(usd(results["price"])) + " per share (" + results["name"] + ")"
             return render_template("quoted.html", results=text) # Load quoted page with text above as body text
 
