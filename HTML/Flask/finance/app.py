@@ -144,6 +144,9 @@ def register():
             # Remember which user has logged in
             session["user_id"] = rows[0]["id"]
 
+            # Source for looking up flashing messages: https://www.codingninjas.com/codestudio/library/message-flashing-in-flask#:~:text=Flask%20offers%20a%20function%20to,message%20to%20the%20next%20template.
+            flash("User registered")
+
             # Redirect user to home page
             return redirect("/")
 
