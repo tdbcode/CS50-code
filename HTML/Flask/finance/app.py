@@ -43,43 +43,21 @@ def after_request(response):
 def index():
     shares = db.execute("SELECT * FROM shares where userid=?;", session["user_id"])
     print(shares)
-    """ Redundant code """
-    """sharesdict = {}
-    shareid = []
-    symbol = []
-    quantity = []
-    results = []
-    price = []
-    totalprice = [] """
-
 
     for i in range(0,len(shares)):
+        shareid = shares[i]["shareID"]
         symbol = shares[i]["symbol"]
-        results = lookup(symbol)
         quantity = int(shares[i]["quantity"])
-        price = int(results["price"])
-        total = price * quantity
-        shares["price"].append(price)
-
-        items.append(symbol, quantity, price, total)
-
-        """ Redundant code """
-        """
-        shareid.append(shares[i]["shareID"])
-        symbol.append(shares[i]["symbol"])
-        quantity.append(int(shares[i]["quantity"]))
-        results.append(lookup(symbol[i])) # Lookup symbol using function which returns list of stock details
-        price.append(results[i]["price"]) # Lookup symbol using function which returns list of stock details
-        totalprice.append(float(price[i]) * quantity[i])
+        results = lookup(symbol) # Lookup symbol using function which returns list of stock details
+        price = results[i]["price"] # Lookup symbol using function which returns list of stock details
+        totalprice = float(price) * quantity
 
         # Creating a new dictionary to pass thbrough as shares, source: https://www.geeksforgeeks.org/appending-to-list-in-python-dictionary/
         # Adding new key pairs source: https://thispointer.com/add-key-value-pairs-to-an-empty-dictionary-in-python/
-        sharesdict.update({'shareid':shareid, 'symbol':symbol, 'quantity':quantity, 'price':price, 'totalprice':totalprice})
-        print(sharesdict)
-        """
+        sharesdict[shareid] = {'symbol':symbol, 'quantity':quantity, 'price':price, 'totalprice':totalprice}
+    print(sharesdict)
 
-
-    return render_template("index.html",shares=shares)
+    return render_template("index.html",shares=sharesdict)
 
 
 @app.route("/buy", methods=["GET", "POST"])
