@@ -48,8 +48,8 @@ def buy():
     # Sources for SQL: https://www.w3schools.com/sql/sql_foreignkey.asp
 
 
-    db.execute("CREATE TABLE IF NOT EXISTS shares (ShareID INTEGER NOT NULL, Symbol TEXT NOT NULL, Quantity INTEGER NOT NULL, userid int NOT NULL, PRIMARY KEY (OrderID), FOREIGN KEY (userID) REFERENCES users(id));)
-    db.execute("CREATE TABLE IF NOT EXISTS transactions (TransactionID INTEGER NOT NULL, Date Date NOT NULL, Time Time NOT NULL, PRIMARY KEY (transactionID);)
+    db.execute("CREATE TABLE IF NOT EXISTS shares (ShareID INTEGER NOT NULL, Symbol TEXT NOT NULL, Quantity INTEGER NOT NULL, userid int NOT NULL, PRIMARY KEY (OrderID), FOREIGN KEY (userID) REFERENCES users(id));")
+    db.execute("CREATE TABLE IF NOT EXISTS transactions (TransactionID INTEGER NOT NULL, Date Date NOT NULL, Time Time NOT NULL, PRIMARY KEY (transactionID);")
     if request.method == "POST":
         symbol = request.form.get("symbol")
         shares = request.form.get("shares")
