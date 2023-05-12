@@ -50,7 +50,7 @@ def buy():
     # Sources for SQL: https://www.w3schools.com/sql/sql_foreignkey.asp
     # If tables don't exist, then create them for this function
     db.execute("CREATE TABLE IF NOT EXISTS shares (shareID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, symbol TEXT NOT NULL, quantity INTEGER NOT NULL, userid int NOT NULL, FOREIGN KEY (userID) REFERENCES users(id));")
-    db.execute("CREATE TABLE IF NOT EXISTS transactions (transactionID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, date TEXT NOT NULL, time TEXT NOT NULL, price REAL NOT NULL, amount INTEGER NOT NULL, total REAL NOT NULL);")
+    db.execute("CREATE TABLE IF NOT EXISTS transactions (transactionID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, date TEXT NOT NULL, time TEXT NOT NULL, price REAL NOT NULL, quantity INTEGER NOT NULL, total REAL NOT NULL);")
 
     # If method is POST
     if request.method == "POST":
@@ -82,7 +82,11 @@ def buy():
                 # get todays date and time in d/m/y and h:m:s format
                 tod = date.today().strftime("%d/%m/%y")
                 tim = datetime.now().strftime("%H:%M:%S")
-                db.execute("INSERT INTO transactions (date, time, price, amount, total) VALUES (?,?,?,?,?);", tod, tim, price, shares, totalprice)
+                # Add the transaction log to the database table, transactions
+                db.execute("INSERT INTO transactions (date, time, price, quantity, total) VALUES (?,?,?,?,?);", tod, tim, price, shares, totalprice)
+
+                # Add the shares to the shares table and assign the user ID and link to the transaction ID using the foreign keys
+                db.execute("INSERT INTO shares (symbol, quantity, price, amount, total) VALUES (?,?,?,?,?);", tod, tim, price, shares, totalprice)
                 # redirect to home
                 return redirect("/")
 
