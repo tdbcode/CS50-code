@@ -117,26 +117,31 @@ def register():
     # User reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
 
+        username = request.form.get("username")
+        password1 = request.form.get("password")
+        password2 = request.form.get("password2")
+
         # Ensure username was submitted
-        if not request.form.get("username"):
+        if not username:
             return apology("must enter username", 403)
 
         # Ensure password was submitted
-        elif not request.form.get("password"):
+        elif not password1:
             return apology("must enter a password", 403)
 
         # Ensure password was submitted
-        elif not request.form.get("password2"):
+        elif not password2:
             return apology("must verify password", 403)
 
-        elif request.form.get("password") != request.form.get("password2"):
+        elif password1 != password2:
             return apology("Passwords do not match", 403)
 
         else:
             hashpw = generate_password_hash(request.form.get("password"), method='pbkdf2:sha256', salt_length=8)
             # Query database for username
             rows = db.execute("INSERT INTO users (username, hash) VALUES (?, ?)", request.form.get("username"), hashpw)
-
+            test = db.execute("SELECT * from users where username=",username)
+            
 
             # Redirect user to home page
             return redirect("/")
