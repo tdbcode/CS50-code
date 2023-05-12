@@ -159,7 +159,8 @@ def quote():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
-    db.execute("CREATE TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, username TEXT NOT NULL, hash TEXT NOT NULL, cash NUMERIC NOT NULL DEFAULT 10000.00); CREATE UNIQUE INDEX username ON users (username);")
+    db.execute("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, username TEXT NOT NULL, hash TEXT NOT NULL, cash NUMERIC NOT NULL DEFAULT 10000.00);")
+    db.execute("CREATE UNIQUE INDEX IF NOT EXISTS username ON users (username);")
     # User reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
 
