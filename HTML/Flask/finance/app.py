@@ -121,27 +121,27 @@ def register():
         password1 = request.form.get("password")
         password2 = request.form.get("password2")
 
-        # Need to see if the user current exists
+        # Needed to check if user exists in database
         userexists = db.execute("SELECT * FROM users where username=",username)
-
-        if userexists:
-
-
 
         # Ensure username was submitted
         if not username:
-            return apology("must enter username", 403)
+            return apology("must enter username")
+
+        # Ensure user does not exist in database
+        elif userexists != "":
+            return apology("Username taken")
 
         # Ensure password was submitted
         elif not password1:
-            return apology("must enter a password", 403)
+            return apology("must enter a password")
 
         # Ensure password was submitted
         elif not password2:
-            return apology("must verify password", 403)
+            return apology("must verify password")
 
         elif password1 != password2:
-            return apology("Passwords do not match", 403)
+            return apology("Passwords do not match")
 
         else:
             hashpw = generate_password_hash(request.form.get("password"), method='pbkdf2:sha256', salt_length=8)
