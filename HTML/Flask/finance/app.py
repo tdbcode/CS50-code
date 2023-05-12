@@ -73,6 +73,7 @@ def buy():
             price = float(results["price"]) # get the price of the searched stock
             #print(cash[0]["cash"])#for testing only
             totalprice = price * int(shares) # calculate the total price
+            print(totalprice)
 
             # If user case is less than the total price then tell the user they do not add funds
             if cash[0]["cash"] < totalprice:
@@ -88,12 +89,12 @@ def buy():
                 db.execute("UPDATE users SET cash=? where id=?", cash[0]["cash"] - totalprice, session["user_id"])
 
                 currentshares = db.execute("SELECT quantity FROM shares where symbol=? and userid=?", symbol, session["user_id"])
-                print(currentshares)
+                # print(currentshares) # For testing purposes only
                 if len(currentshares) == 0:
                     # Add the shares to the shares table and assign the user ID and link to the transaction ID using the foreign keys s
                     share = db.execute("INSERT INTO shares (symbol, quantity, userid) VALUES (?,?,?);", symbol, shares, session["user_id"])
                 else:
-                    db.execute("UPDATE shares Set quantity=? where symbol=? and id=?", currentshares + shares, symbol, session["user_id"])
+                    db.execute("UPDATE shares Set quantity=? where symbol=? and userid=?", int(currentshares[0]["quantity"]) + int(shares), symbol, session["user_id"])
 
                 # Flash message
                 flash("Purchased")
