@@ -53,8 +53,8 @@ def index():
     totalprice = [] """
 
     items = {}
-
-    for i in range(0,len(shares)):
+    i=0
+    for share in shares:
         symbol = shares[i]["symbol"]
         results = lookup(symbol)
         quantity = int(shares[i]["quantity"])
@@ -62,6 +62,7 @@ def index():
         total = price * quantity
 
         print(symbol, quantity, price, total)
+        i=i+1
 
         """ Redundant code """
         """
