@@ -63,7 +63,7 @@ def buy():
         if results == None:
             return apology("Please enter a valid stock symbol")
         # if shares is empty or less than 1 - tell user an invalided quantity was entered.
-        elif shares == "" or shares.isdecimal() or int(shares) < 1 or not shares.isnumeric():
+        elif shares == None or shares.isdecimal() or int(shares) < 1:
             return apology("Invalid shares quantity entered")
         else:
             # Look up how much cash the current user has in the table
