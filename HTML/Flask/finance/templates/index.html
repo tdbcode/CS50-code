@@ -24,9 +24,9 @@
             <tbody>
                 {% for share in shares %}
                     <tr>
-                        <td>{{ birthday.name }}</td>
+                        <td>{{ share.symbol }}</td>
                         <td>
-                        <form action="/deleteitem" method="post"><input name="id" type="hidden" value="{{ birthday.id }}">
+                        <form action="/sell" method="post"><input name="id" type="hidden" value="{{ share.shareid }}">
                             <button type="submit">Sell</button>
                         </form>
                         </td>

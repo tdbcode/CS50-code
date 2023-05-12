@@ -41,7 +41,9 @@ def after_request(response):
 @app.route("/")
 @login_required
 def index():
-    return render_template("index.html")
+    shares = db.execute("SELECT * FROM shares where userid=?", session["user_id"])
+    print(shares)
+    return render_template("index.html",shares=shares)
 
 
 @app.route("/buy", methods=["GET", "POST"])
