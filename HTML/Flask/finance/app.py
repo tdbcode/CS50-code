@@ -47,18 +47,28 @@ def index():
 def buy():
     if request.method == "POST":
         symbol = request.form.get("symbol")
+        shares = request.form.get("shares")
         results = lookup(symbol) # Lookup symbol using function which returns list of stock details
 
         # If no results then symbol wrong or empty - tell use to enter a valid symbol
         if results == None:
             return apology("Please enter a valid stock symbol")
+        elif shares = None:
+            return apology("Invalid shares quantity entered")
         else:
             # List Formatting : {'name': 'Forward Industries, Inc.', 'price': 1.02, 'symbol': 'FORD'}
             # Set page text to output symbol and how much per share (using USD function to make it a valid ticker - as per check50) converting price to string for display
             text = results["symbol"] + " are currently $" + str(usd(results["price"])) + " per share (" + results["name"] + ")"
 
-            # Redirect user to home page
-            return redirect("/")
+            cash = db.execute("SELECT cash FROM users where id=",session["user_id"])
+            totalprice = results["price"] * int(shares)
+
+            if cash < totalprice:
+                return apology("Not enough funds. Please purchase funds and try again.")
+            else:
+                
+                # redirect to home
+                return redirect("/")
 
     # User reached route via GET (as by clicking a link or via redirect)
     else:
