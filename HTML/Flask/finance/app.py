@@ -44,11 +44,12 @@ def index():
     shares = db.execute("SELECT * FROM shares where userid=?;", session["user_id"])
     for i in range(len(shares)):
         symbol = shares[i]["symbol"]
-        quantity = shares[i]["quantity"]
-        results = str(usd(lookup(symbol)) # Lookup symbol using function which returns list of stock details
-        price = 
+        quantity = int(shares[i]["quantity"])
+        results = lookup(symbol) # Lookup symbol using function which returns list of stock details
+ text = results["symbol"] + " are currently " + str(usd(results["price"])) + " per share (" + results["name"] + ")"
+        price = float(results["price"]) # Lookup symbol using function which returns list of stock details
         totalprice = price * quantity
-        Dict = {'symbol': symbol, 'quantity': shares[i][quantity], 'cost': price, 'totalprice': totalprice}
+        Dict = {'symbol': symbol, 'quantity': quantity, 'cost': price, 'totalprice': totalprice}
 
 
 
