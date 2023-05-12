@@ -51,16 +51,11 @@ def index():
         results = lookup(symbol) # Lookup symbol using function which returns list of stock details
         price = results["price"] # Lookup symbol using function which returns list of stock details
         totalprice = float(price) * quantity
-        # Creating a new dictionary to pass through as shares, source: https://www.geeksforgeeks.org/appending-to-list-in-python-dictionary/
+        # Creating a new dictionary to pass thbrough as shares, source: https://www.geeksforgeeks.org/appending-to-list-in-python-dictionary/
         # Adding new key pairs source: https://thispointer.com/add-key-value-pairs-to-an-empty-dictionary-in-python/
         if (len(sharesdict) == 0):
             sharesdict.update({'shareid':shareid, 'symbol':symbol, 'quantity':quantity, 'price':usd(price), 'totalprice':usd(totalprice)})
-        else:
-            sharesdict.append('shareid':shareid)
-            sharesdict['symbol'].append('symbol':symbol)
-            sharesdict['quantity'].append('quantity':quantity)
-            sharesdict['price'].append('price':usd(price))
-            sharesdict['totalprice'].append('totalprice':usd(totalprice))
+   
 
     print(sharesdict)
     return render_template("index.html",shares=sharesdict)
