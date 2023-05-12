@@ -45,13 +45,14 @@ def index():
     for i in range(len(shares)):
         symbol = shares[i]["symbol"]
         quantity = shares[i]["quantity"]
-        price = str(usd(results["price"])) # Lookup symbol using function which returns list of stock details
+        results = str(usd(lookup(symbol)) # Lookup symbol using function which returns list of stock details
+        price = 
         totalprice = price * quantity
         Dict = {'symbol': symbol, 'quantity': shares[i][quantity], 'cost': price, 'totalprice': totalprice}
 
 
 
-    return render_template("index.html",shares=shares,price=str(usd(results["price"])))
+    return render_template("index.html",shares=Dict)
 
 
 @app.route("/buy", methods=["GET", "POST"])

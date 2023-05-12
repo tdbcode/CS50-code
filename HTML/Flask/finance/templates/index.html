@@ -26,8 +26,8 @@
                     <tr>
                         <td>{{ share.symbol }}</td>
                         <td>{{ share.quantity }}</td>
-                        <td>{{ price }}</td>
-                        <td>{{ share.symbol }}</td>
+                        <td>{{ share.price }}</td>
+                        <td>{{ share.totalprice }}</td>
                         <td>
                         <form action="/sell" method="get"><input name="id" type="hidden" value="{{ share.shareid }}">
                             <button type="submit">Sell</button>
