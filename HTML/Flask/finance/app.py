@@ -41,9 +41,11 @@ def after_request(response):
 @app.route("/")
 @login_required
 def index():
-    shares = db.execute("SELECT * FROM shares where userid=?", session["user_id"])
-    print(shares)
-    return render_template("index.html",shares=shares)
+    shares = db.execute("SELECT symbol, quantity FROM shares where userid=?;", session["user_id"])
+    symbol = shares["symbol"]
+    results = lookup(symbol) # Lookup symbol using function which returns list of stock details
+
+    return render_template("index.html",shares=shares,results=results)
 
 
 @app.route("/buy", methods=["GET", "POST"])
