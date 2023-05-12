@@ -51,6 +51,10 @@ def index():
     price = []
     totalprice = []
     for i in range(0,len(shares)):
+        
+
+
+
         shareid.append(shares[i]["shareID"])
         symbol.append(shares[i]["symbol"])
         quantity.append(int(shares[i]["quantity"]))
