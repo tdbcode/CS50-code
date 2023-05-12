@@ -119,7 +119,7 @@ def register():
 
         username = request.form.get("username")
         password1 = request.form.get("password")
-        password2 = request.form.get("password2")
+        password2 = request.form.get("confirmation")
 
         # Needed to check if user exists in database
         rows = db.execute("SELECT * FROM users WHERE username = ?", username)
