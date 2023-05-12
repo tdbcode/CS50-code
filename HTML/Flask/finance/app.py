@@ -46,9 +46,7 @@ def index():
 @login_required
 def buy():
     # Sources for SQL: https://www.w3schools.com/sql/sql_foreignkey.asp
-
-
-    db.execute("CREATE TABLE IF NOT EXISTS shares (sharID INTEGER NOT NULL, symbol TEXT NOT NULL, quantity INTEGER NOT NULL, userid int NOT NULL, PRIMARY KEY (shareID), FOREIGN KEY (userID) REFERENCES users(id));")
+    db.execute("CREATE TABLE IF NOT EXISTS shares (shareID INTEGER NOT NULL, symbol TEXT NOT NULL, quantity INTEGER NOT NULL, userid int NOT NULL, PRIMARY KEY (shareID), FOREIGN KEY (userID) REFERENCES users(id));")
     db.execute("CREATE TABLE IF NOT EXISTS transactions (transactionID INTEGER NOT NULL, Date TEXT NOT NULL, time TEXT NOT NULL, price REAL NOT NULL, amount INTEGER NOT NULL, total REAL NOT NULL, PRIMARY KEY (transactionID);")
     if request.method == "POST":
         symbol = request.form.get("symbol")
