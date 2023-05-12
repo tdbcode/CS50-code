@@ -56,14 +56,15 @@ def buy():
     if request.method == "POST":
         # Get Symbol and Shares
         symbol = request.form.get("symbol")
-        shares = request.form.get("shares")
+        share = request.form.get("shares")
+        shares = int(share)
         results = lookup(symbol) # Lookup symbol using function which returns list of stock details
 
         # If no results then symbol wrong or empty - tell user to enter a valid symbol
         if results == None:
             return apology("Please enter a valid stock symbol")
         # if shares is empty or less than 1 - tell user an invalided quantity was entered.
-        elif shares == None or shares.isdecimal() or int(shares) < 1:
+        elif shares == None or shares < 1:
             return apology("Invalid shares quantity entered")
         else:
             # Look up how much cash the current user has in the table
