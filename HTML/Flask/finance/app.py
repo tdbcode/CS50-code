@@ -43,18 +43,28 @@ def after_request(response):
 def index():
     shares = db.execute("SELECT * FROM shares where userid=?;", session["user_id"])
     print(shares)
-    sharesdict = {}
+    """ Redundant code """
+    """sharesdict = {}
     shareid = []
     symbol = []
     quantity = []
     results = []
     price = []
-    totalprice = []
+    totalprice = [] """
+
+    items = {}
+
     for i in range(0,len(shares)):
-        
+        symbol = shares[i]["symbol"]
+        results = lookup(symbol)
+        quantity = int(shares[i]["quantity"])
+        price = int(results["price"])
+        total = price * quantity
 
+        print(symbol, quantity, price, total)
 
-
+        """ Redundant code """
+        """
         shareid.append(shares[i]["shareID"])
         symbol.append(shares[i]["symbol"])
         quantity.append(int(shares[i]["quantity"]))
@@ -65,10 +75,10 @@ def index():
         # Creating a new dictionary to pass thbrough as shares, source: https://www.geeksforgeeks.org/appending-to-list-in-python-dictionary/
         # Adding new key pairs source: https://thispointer.com/add-key-value-pairs-to-an-empty-dictionary-in-python/
         sharesdict.update({'shareid':shareid, 'symbol':symbol, 'quantity':quantity, 'price':price, 'totalprice':totalprice})
+        print(sharesdict)
+        """
 
-
-    print(sharesdict)
-    return render_template("index.html",shares=sharesdict)
+    return render_template("index.html",shares="sharesdict")
 
 
 @app.route("/buy", methods=["GET", "POST"])
