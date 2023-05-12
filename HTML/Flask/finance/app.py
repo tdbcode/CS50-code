@@ -84,9 +84,9 @@ def buy():
                 tim = datetime.now().strftime("%H:%M:%S")
                 # Add the transaction log to the database table, transactions
                 db.execute("INSERT INTO transactions (date, time, price, quantity, total) VALUES (?,?,?,?,?);", tod, tim, price, shares, totalprice)
-                print(db.cursor().lastrowid)
+                transaction = db.execute("SELECT transactionID from transactions where=")
                 # Add the shares to the shares table and assign the user ID and link to the transaction ID using the foreign keys
-                share = db.execute("INSERT INTO shares (symbol, quantity, userid, transactionID) VALUES (?,?,?,?);", symbol, shares, 1, 1)
+                share = db.execute("INSERT INTO shares (symbol, quantity, userid, transactionID) VALUES (?,?,?,?);", symbol, shares, session["user_id"], transaction)
                 # Flash message
                 flash("Purchased")
                 # redirect to home
