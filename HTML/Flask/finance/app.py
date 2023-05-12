@@ -51,14 +51,15 @@ def index():
         results = lookup(symbol) # Lookup symbol using function which returns list of stock details
         price = results["price"] # Lookup symbol using function which returns list of stock details
         totalprice = float(price) * quantity
-        sharedict['shareid'].append(shareid)
-        sharedict['symbol'].append(symbol)
-        sharedict['quantity'].append(quantity)
-        sharedict['price'].append(usd(price))
-        sharedict['totalprice'].append(usd(totalprice))
+        # Creating a new dictionary to pass thbrough as shares, source: https://www.geeksforgeeks.org/appending-to-list-in-python-dictionary/
+        sharesdict['shareid'].append(shareid)
+        sharesdict['symbol'].append(symbol)
+        sharesdict['quantity'].append(quantity)
+        sharesdict['price'].append(usd(price))
+        sharesdict['totalprice'].append(usd(totalprice))
 
     print(sharesdict)
-    return render_template("index.html",shares=sharedict)
+    return render_template("index.html",shares=sharesdict)
 
 
 @app.route("/buy", methods=["GET", "POST"])
