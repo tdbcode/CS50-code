@@ -51,10 +51,14 @@ def index():
         results = lookup(symbol) # Lookup symbol using function which returns list of stock details
         price = results["price"] # Lookup symbol using function which returns list of stock details
         totalprice = float(price) * quantity
-        Dict.add {'shareid': shareid, 'symbol': symbol, 'quantity': quantity, 'cost': usd(price), 'totalprice': usd(totalprice)}
+        sharedict['shareid'].append(shareid)
+        sharedict['symbol'].append(symbol)
+        sharedict['quantity'].append(quantity)
+        sharedict['price'].append(usd(price))
+        sharedict['totalprice'].append(usd(totalprice))
 
-    print(Dict)
-    return render_template("index.html",shares=Dict)
+    print(sharesdict)
+    return render_template("index.html",shares=sharedict)
 
 
 @app.route("/buy", methods=["GET", "POST"])
