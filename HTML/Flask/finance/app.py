@@ -53,14 +53,18 @@ def index():
         totalprice = float(price) * quantity
         # Creating a new dictionary to pass thbrough as shares, source: https://www.geeksforgeeks.org/appending-to-list-in-python-dictionary/
         # Adding new key pairs source: https://thispointer.com/add-key-value-pairs-to-an-empty-dictionary-in-python/
-        if (len(sharedict) == 0):
+        if (len(sharesdict) == 0):
             sharesdict.update({'shareid':shareid})
             sharesdict.update({'symbol':symbol})
             sharesdict.update({'quantity':quantity})
             sharesdict.update({'price':usd(price)})
             sharesdict.update({'totalprice':usd(totalprice)})
         else:
-            sharedict
+            sharesdict['shareid'].append(shareid)
+            sharesdict['symbol'].append(symbol)
+            sharesdict['quantity'].append(quantity)
+            sharesdict['price'].append(price)
+            sharesdict['totalprice'].append(totalprice)
 
     print(sharesdict)
     return render_template("index.html",shares=sharesdict)
