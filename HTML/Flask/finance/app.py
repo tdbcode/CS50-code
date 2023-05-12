@@ -8,9 +8,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from helpers import apology, login_required, lookup, usd
 
-from datetime import datetime # Source: https://www.w3schools.com/python/python_datetime.asp
-
-date = datetime.date
+from datetime import datetime, date # Source: https://www.w3schools.com/python/python_datetime.asp and https://docs.python.org/3/library/datetime.html
 
 # Configure application
 app = Flask(__name__)
@@ -50,32 +48,41 @@ def index():
 @login_required
 def buy():
     # Sources for SQL: https://www.w3schools.com/sql/sql_foreignkey.asp
+    # If tables don't exist, then create them for this function
     db.execute("CREATE TABLE IF NOT EXISTS shares (shareID INTEGER NOT NULL, symbol TEXT NOT NULL, quantity INTEGER NOT NULL, userid int NOT NULL, PRIMARY KEY (shareID), FOREIGN KEY (userID) REFERENCES users(id));")
     db.execute("CREATE TABLE IF NOT EXISTS transactions (transactionID INTEGER NOT NULL, date TEXT NOT NULL, time TEXT NOT NULL, price REAL NOT NULL, amount INTEGER NOT NULL, total REAL NOT NULL, PRIMARY KEY (transactionID));")
+
+    # If method is POST
     if request.method == "POST":
+        # Get Symbol and Shares
         symbol = request.form.get("symbol")
         shares = request.form.get("shares")
         results = lookup(symbol) # Lookup symbol using function which returns list of stock details
 
-        # If no results then symbol wrong or empty - tell use to enter a valid symbol
+        # If no results then symbol wrong or empty - tell user to enter a valid symbol
         if results == None:
             return apology("Please enter a valid stock symbol")
+        # if shares is empty or less than 1 - tell user an invalided quantity was entered.
         elif shares == "" or int(shares) < 1:
             return apology("Invalid shares quantity entered")
         else:
-            # List Formatting : {'name': 'Forward Industries, Inc.', 'price': 1.02, 'symbol': 'FORD'}
+            # Look up how much cash the current user has in the table
             cash = db.execute("SELECT cash FROM users where id=?",session["user_id"])
-            price = float(results["price"])
-            #print(cash[0]["cash"])#for testing only
-            totalprice = price * int(shares)
 
+            # List Formatting for reference: {'name': 'Forward Industries, Inc.', 'price': 1.02, 'symbol': 'FORD'}
+            price = float(results["price"]) # get the price of the searched stock
+            #print(cash[0]["cash"])#for testing only
+            totalprice = price * int(shares) # calculate the total price
+
+            # If user case is less than the total price then tell the user they do not add funds
             if cash[0]["cash"] < totalprice:
-                return apology("Not enough funds. Please purchase funds and try again.")
+                return apology("Not enough funds. Please add funds and try again.")
             else:
                 # SQLite datetime formatting source: https://www.tutorialspoint.com/sqlite/sqlite_date_time.htm
-                date = date.today().strftime("%d/%m/%y")
-                time = datetime.now().strftime("%H:%M:%S")
-                db.execute("INSERT INTO transactions (date, time, price, quantity, total) VALUES (?,?,?,?,?);", date, time, price, shares, totalprice)
+                # get todays date and time in d/m/y and h:m:s format
+                tod = dates.today().strftime("%d/%m/%y")
+                tim = dates.now().strftime("%H:%M:%S")
+                db.execute("INSERT INTO transactions (date, time, price, quantity, total) VALUES (?,?,?,?,?);", tod, tim, price, shares, totalprice)
                 # redirect to home
                 return redirect("/")
 
@@ -161,6 +168,7 @@ def quote():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    # If table doesn't exist, then create them for this function
     db.execute("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, username TEXT NOT NULL, hash TEXT NOT NULL, cash NUMERIC NOT NULL DEFAULT 10000.00);")
     db.execute("CREATE UNIQUE INDEX IF NOT EXISTS username ON users (username);")
     # User reached route via POST (as by submitting a form via POST)
