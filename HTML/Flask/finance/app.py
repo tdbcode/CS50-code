@@ -38,6 +38,27 @@ def after_request(response):
     return response
 
 
+def getShares():
+    shares = db.execute("SELECT * FROM shares where userid=?;", session["user_id"])
+    print(shares)
+
+    sharesdict = []
+
+    for i in range(0,len(shares)):
+        shareid = shares[i]["shareID"]
+        symbol = shares[i]["symbol"]
+        quantity = int(shares[i]["quantity"])
+        results = lookup(symbol) # Lookup symbol using function which returns list of stock details
+        price = results["price"] # Lookup symbol using function which returns list of stock details
+
+        totalprice = float(price) * quantity
+
+        # Creating a new dictionary to pass thbrough as shares, source: https://www.geeksforgeeks.org/appending-to-list-in-python-dictionary/
+        # Adding new key pairs source: https://thispointer.com/add-key-value-pairs-to-an-empty-dictionary-in-python/
+        sharesdict.append({'shareid': shareid, 'symbol':symbol, 'quantity':quantity, 'price':usd(price), 'totalprice':usd(totalprice)})
+    ## print(shares) # for testing only
+    ## print(sharesdict) # for testing only
+
 @app.route("/")
 @login_required
 def index():
