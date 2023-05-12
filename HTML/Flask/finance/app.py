@@ -121,6 +121,9 @@ def register():
         password1 = request.form.get("password")
         password2 = request.form.get("password2")
 
+        # Need to see if the user current exists
+        userexists = db.execute("SELECT * FROM users where username=",username)
+
         # Ensure username was submitted
         if not username:
             return apology("must enter username", 403)
