@@ -84,8 +84,14 @@ def buy():
                 tim = datetime.now().strftime("%H:%M:%S")
                 # Add the transaction log to the database table, transactions
                 db.execute("INSERT INTO transactions (date, time, price, quantity, total, userid) VALUES (?,?,?,?,?, ?);", tod, tim, price, shares, totalprice, session["user_id"])
-                # Add the shares to the shares table and assign the user ID and link to the transaction ID using the foreign keys
+                # Update users cash to reflect new amount - Source for help: https://www.w3schools.com/sql/sql_update.asp
+                db.execute("UPDATE users SET cash=? where id=?", cash[0]["cash"] - totalprice, session["user_id"])
+
+                
+
+                # Add the shares to the shares table and assign the user ID and link to the transaction ID using the foreign keys s
                 share = db.execute("INSERT INTO shares (symbol, quantity, userid) VALUES (?,?,?);", symbol, shares, session["user_id"])
+
                 # Flash message
                 flash("Purchased")
                 # redirect to home
