@@ -287,11 +287,11 @@ def sell():
             totalprice = price * int(shares) # calculate the total price
             # print(totalprice) # for testing only
 
-            usershares = db.execute(""SELECT * FROM users WHERE username = ?", username")
+            currentshares = db.execute("SELECT quantity FROM shares where symbol=? and userid=?", symbol, session["user_id"])
 
             # If user case is less than the total price then tell the user they do not add funds
-            if cash[0]["cash"] < totalprice:
-                return apology("Not enough funds. Please add funds and try again.")
+            if currentshares[0]["quantity"] < shares:
+                return apology("Shares entered exceed shares owned. Please adjust.")
             else:
                 # SQLite datetime formatting source: https://www.tutorialspoint.com/sqlite/sqlite_date_time.htm
                 # get todays date and time in d/m/y and h:m:s format
@@ -300,7 +300,7 @@ def sell():
                 # Add the transaction log to the database table, transactions
                 db.execute("INSERT INTO transactions (date, time, price, quantity, total, userid) VALUES (?,?,?,?,?, ?);", tod, tim, price, shares, totalprice, session["user_id"])
                 # Update users cash to reflect new amount - Source for help: https://www.w3schools.com/sql/sql_update.asp
-                db.execute("UPDATE users SET cash=? where id=?", cash[0]["cash"] - totalprice, session["user_id"])
+                db.execute("UPDATE users SET cash=? where id=?", cash[0]["cash"] + totalprice, session["user_id"])
 
                 currentshares = db.execute("SELECT quantity FROM shares where symbol=? and userid=?", symbol, session["user_id"])
                 # print(currentshares) # For testing purposes only
