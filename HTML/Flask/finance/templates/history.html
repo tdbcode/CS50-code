@@ -31,17 +31,12 @@
                         <td>{{ transaction.symbol }}</td>
                         <td>{{ transaction.quantity }}</td>
                         <td>{{ transaction.price }}</td>
-                        <td>
-                        <form action="/sell" method="post"><input name="id" type="hidden" value="{{ share.symbol }}">
-                            <button type="submit">Sell</button>
-                        </form>
-                        </td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
         {% else %}
-            <h2>No shares owned</h2>
+            <h2>No purchase history</h2>
         {% endif %}
     </div>
 </div>
