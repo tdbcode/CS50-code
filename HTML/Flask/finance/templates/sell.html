@@ -16,7 +16,9 @@
                 <select name="symbol" id="symbol">
                     <option disabled selected value="">Symbol</option>
                     {% for share in shares %}
-                    <option value={{share.symbol}}>{{share.symbol}}</option>
+                    {% if share["quantity"] > 0 % }
+                        <option value={{share.symbol}}>{{share.symbol}}</option>
+                    {% endif %}
                     {% endfor %}
                   </select>
             </div>
