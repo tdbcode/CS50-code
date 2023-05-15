@@ -40,7 +40,7 @@ def after_request(response):
 
 def getShares():
     shares = db.execute("SELECT * FROM shares where userid=?;", session["user_id"])
-    print(shares)
+    # print(shares) # for testing only
 
     sharesdict = []
 
