@@ -10,8 +10,15 @@
 </div>
 <div class="container">
     <div class="section">
-        <h3>Cash Balance: {{ cash }}</h2>
-        <h3>Total of current holdings: {{ totalholdings }}</h2>
+        <table>
+            <tr>
+                <td><h3>Cash Balance: {{ cash }}</h3></td>\
+                <td id="addcash"><button id='cashbutton' onClick="addCash()">Add funds</button></td>
+            </tr>
+            <tr>
+                <h3>Total of current holdings: {{ totalholdings }}</h3>
+            </tr>
+        </table>
         <br>
         {% if length > 0 %}
         <table>
@@ -30,15 +37,23 @@
                         <td>{{ share.quantity }}</td>
                         <td>{{ share.price }}</td>
                         <td>{{ share.totalprice }}</td>
-                        <td id="sellbutton~{{ share.symbol }}">
+                        <!-- Create a custom id to get the location to output updated HTML from the sell javascript function -->
+                        <td id="sellbutton{{ share.symbol }}">
+                            <!-- A button with the share symbol when clicked runs the sell javascript function passing in the symbol to the function -->
                             <button id='{{ share.symbol }}' onClick="sell(this.id)">Sell</button>
                         </td>
 
                         <script>
                             // Source for to help write code: https://www.w3schools.com/js/js_htmldom_html.asp
+                            // Function that creates a form which replaces clicked button with a textfield to enter share numbers to sell plus a sell button which submits using the /sell function in Flask
                             function sell(id) {
                                 text = '<form action="/sell" method="post"><input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="shares" name="shares" placeholder="Enter Number of Shares" type="text"><input id="symbol" name="symbol" type="hidden" value="'+ id + '"><button type="submit">Sell</button></form>';
                                 document.getElementById('sellbutton' + id).innerHTML = text;
+                            }
+
+                            function addCash() {
+                                text = '<form action="/add" method="post"><input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="amount" name="amount" placeholder="Enter Amount to Add" type="text"><button type="submit">Add Funds</button></form>';
+                                document.getElementById('addcash').innerHTML = text;
                             }
                         </script>
                 {% endfor %}
