@@ -14,16 +14,16 @@
         <form action="/sell" method="post">
             <div class="mb-3">
                 <select name="symbol" id="symbol">
-                    <option value=0>Please choose</option>
-                    {% for month in months %}
-                    <option value={{id}}>{{symbol}}</option>
+                    <option value="0" selected="selected" disabled>Please choose</option>
+                    {% for share in shares %}
+                    <option value={{id}}>{{share.symbol}}</option>
                     {% endfor %}
                   </select>
             </div>
             <div class="mb-3">
                 <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="shares" name="shares" placeholder="Enter Number of Shares" type="number" min="1" required>
             </div>
-            <button class="btn btn-primary" type="submit">Buy</button>
+            <button class="btn btn-primary" type="submit">Sell</button>
         </form>
     </div>
 </div>
