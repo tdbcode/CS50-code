@@ -314,7 +314,7 @@ def sell():
                 db.execute("UPDATE users SET cash=? where id=?", cash[0]["cash"] + totalprice, session["user_id"])
 
                 # Source for looking up flashing messages: https://www.codingninjas.com/codestudio/library/message-flashing-in-flask#:~:text=Flask%20offers%20a%20function%20to,message%20to%20the%20next%20template.
-                flash("Stock Sold")
+                flash("Sold")
 
                 # Redirect user to home page
                 return redirect("/")
