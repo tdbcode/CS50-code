@@ -75,7 +75,9 @@ def getShares():
 @app.route("/")
 @login_required
 def index():
-    return render_template("index.html",shares=getShares())
+    shares = getShares()
+    length = len(shares)
+    return render_template("index.html",shares=getShares(), length=length)
 
 @app.route("/buy", methods=["GET", "POST"])
 @login_required
