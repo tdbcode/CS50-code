@@ -265,8 +265,7 @@ def register():
 @login_required
 def sell():
     if request.method == "POST":
-        shareid = request.form.get("username")
-        password1 = request.form.get("password")
-        password2 = request.form.get("confirmation")
+        shareid = request.form.get("symbol")
+        print(int(shareid))
     else:
         return render_template("sell.html",shares=getShares())
