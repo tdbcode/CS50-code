@@ -10,7 +10,7 @@
 </div>
 <div class="container">
     <div class="section">
-        {% if {{shares}}|length > 0 %}
+        {% if {}|length > 0 %}
         <table>
             <thead>
                 <tr>
@@ -28,7 +28,7 @@
                         <td>{{ share.price }}</td>
                         <td>{{ share.totalprice }}</td>
                         <td>
-                        <form action="/sell" method="post"><input name="id" type="hidden" value="{{ share.shareid }}">
+                        <form action="/sell" method="post"><input name="id" type="hidden" value="{{ share.symbol }}">
                             <button type="submit">Sell</button>
                         </form>
                         </td>
