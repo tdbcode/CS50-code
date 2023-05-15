@@ -10,6 +10,7 @@
 </div>
 <div class="container">
     <div class="section">
+        {% if len(shares) > 1 %}
         <table>
             <thead>
                 <tr>
@@ -35,6 +36,9 @@
                 {% endfor %}
             </tbody>
         </table>
+        {% else %}
+
+        {% endif %}
     </div>
 </div>
 {% endblock %}
