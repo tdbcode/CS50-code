@@ -296,18 +296,13 @@ def sell():
                 # get todays date and time in d/m/y and h:m:s format
                 tod = date.today().strftime("%d/%m/%y")
                 tim = datetime.now().strftime("%H:%M:%S")
+                # Look up how much cash the current user has in the table
+                cash = db.execute("SELECT cash FROM users where id=?",session["user_id"])
                 # Add the transaction log to the database table, transactions
                 db.execute("INSERT INTO transactions (date, time, price, quantity, total, userid) VALUES (?,?,?,?,?, ?);", tod, tim, price, shares, totalprice, session["user_id"])
                 # Update users cash to reflect new amount - Source for help: https://www.w3schools.com/sql/sql_update.asp
                 db.execute("UPDATE users SET cash=? where id=?", cash[0]["cash"] + totalprice, session["user_id"])
-
-                currentshares = db.execute("SELECT quantity FROM shares where symbol=? and userid=?", symbol, session["user_id"])
-                # print(currentshares) # For testing purposes only
-                if len(currentshares) == 0:
-                    # Add the shares to the shares table and assign the user ID and link to the transaction ID using the foreign keys s
-                    share = db.execute("INSERT INTO shares (symbol, quantity, userid) VALUES (?,?,?);", symbol, shares, session["user_id"])
-                else:
-                    db.execute("UPDATE shares Set quantity=? where symbol=? and userid=?", int(currentshares[0]["quantity"]) + int(shares), symbol, session["user_id"])
+                db.execute("UPDATE shares Set quantity=? where symbol=? and userid=?", int(currentshares[0]["quantity"]) - int(shares), symbol, session["user_id"])
 
                 # Source for looking up flashing messages: https://www.codingninjas.com/codestudio/library/message-flashing-in-flask#:~:text=Flask%20offers%20a%20function%20to,message%20to%20the%20next%20template.
                 flash("Stock Sold")
