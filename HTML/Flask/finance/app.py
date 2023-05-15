@@ -79,7 +79,7 @@ def index():
         # Forget any user_id
         session.clear()
 
-    return render_template("index.html")
+    redirect("/")
 
 @app.route("/buy", methods=["GET", "POST"])
 @login_required
