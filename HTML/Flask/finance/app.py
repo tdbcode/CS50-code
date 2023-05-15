@@ -153,6 +153,7 @@ def add():
 
     return redirect("/")
 
+
 @app.route("/")
 @login_required
 def index():
@@ -174,6 +175,7 @@ def index():
         # Forget any user_id
         session.clear()
         redirect("/login")
+
 
 @app.route("/buy", methods=["GET", "POST"])
 @login_required
@@ -217,7 +219,7 @@ def buy():
                 tim = datetime.now().strftime("%H:%M:%S")
                 # Add the transaction log to the database table, transactions
                 db.execute("INSERT INTO transactions (bors, date, time, symbol, price, quantity, total, userid) VALUES (?, ?, ?, ?, ?, ?, ?, ?);",
-                        "Buy", tod, tim, symbol, price, shares, totalprice, session["user_id"])
+                           "Buy", tod, tim, symbol, price, shares, totalprice, session["user_id"])
                 # Update users cash to reflect new amount - Source for help: https://www.w3schools.com/sql/sql_update.asp
                 db.execute("UPDATE users SET cash=cash-? where id=?", totalprice, session["user_id"])
 
