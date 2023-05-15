@@ -77,7 +77,8 @@ def getShares():
 def index():
     shares = getShares()
     length = len(shares)
-    total = sum(shares["totalprice"]))
+    shares = db.execute("SELECT * FROM shares where userid=?;", session["user_id"])
+    
     print(totalprice)
     return render_template("index.html",shares=getShares(), length=length)
 
