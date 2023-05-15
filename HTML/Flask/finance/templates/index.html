@@ -30,7 +30,7 @@
                         <td>{{ share.quantity }}</td>
                         <td>{{ share.price }}</td>
                         <td>{{ share.totalprice }}</td>
-                        <td id="{{ share.symbol }}">
+                        <td id="sellbutton~{{ share.symbol }}">
                             <button id='{{ share.symbol }}' onClick="sell(this.id)">Sell</button>
                         </td>
 
@@ -38,7 +38,7 @@
                             // Source for to help write code: https://www.w3schools.com/js/js_htmldom_html.asp
                             function sell(id) {
                                 text = '<form action="/sell" method="post"><input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="shares" name="shares" placeholder="Enter Number of Shares" type="text"><input id="symbol" name="symbol" type="hidden" value="'+ id + '"><button type="submit">Sell</button></form>';
-                                document.getElementById('sellbutton').innerHTML = text;
+                                document.getElementById('sellbutton' + id).innerHTML = text;
                             }
                         </script>
                 {% endfor %}
