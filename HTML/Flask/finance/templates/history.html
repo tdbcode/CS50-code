@@ -30,7 +30,7 @@
                         <td>{{ transaction.time }}</td>
                         <td>{{ transaction.symbol }}</td>
                         <td>{{ transaction.quantity }}</td>
-                        <td>{{ transaction.price }}</td>
+                        <td>${{ "%0.2f" | format(transaction.price | float) }}</td>
                     </tr>
                 {% endfor %}
             </tbody>

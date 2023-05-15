@@ -73,6 +73,55 @@ def getShares():
     return sharesdict
 
 
+@app.route("/changepass", methods=["GET", "POST"])
+def changepass():
+    # Create tables if they don't exist
+    createTables()
+    # User reached route via POST (as by submitting a form via POST)
+    if request.method == "POST":
+
+        cpassword = request.form.get("cpassword")
+        password1 = request.form.get("password")
+        password2 = request.form.get("confirmation")
+
+        # Get users current has from database
+        hash = db.execute("SELECT hash FROM users WHERE id = ?", session["user_id"])
+
+        if hash != generate_password_hash(cpassword):
+            return apology("Password entered does not match current password")
+
+        # Ensure current password was submitted
+        if not cpassword:
+            return apology("must enter your current password")
+
+        # Ensure new password was submitted
+        elif not password1:
+            return apology("must enter a new password")
+
+        # Ensure new password was submitted
+        elif not password2:
+            return apology("must verify new password")
+
+        # Check that the passwords match
+        elif password1 != password2:
+            return apology("Passwords do not match")
+
+        else:
+            hashpw = generate_password_hash(password1, method='pbkdf2:sha256', salt_length=8)
+            # Update users cash to reflect new amount using current value
+            db.execute("UPDATE users SET hash=? where id=?;", hashpw, session["user_id"])
+
+            # Source for looking up flashing messages: https://www.codingninjas.com/codestudio/library/message-flashing-in-flask#:~:text=Flask%20offers%20a%20function%20to,message%20to%20the%20next%20template.
+            flash("Password updated")
+
+            # Redirect user to home page
+            return redirect("/")
+
+    # User reached route via GET (as by clicking a link or via redirect)
+    else:
+        return render_template("changepass.html")
+
+
 @app.route("/add", methods=["GET", "POST"])
 @login_required
 def add():
@@ -195,7 +244,7 @@ def history():
     createTables()
     history = db.execute("SELECT * FROM transactions where userid=?;", session["user_id"])
     length = len(history)
-    
+
     return render_template("history.html", history=history, length=length)
 
 
@@ -305,7 +354,7 @@ def register():
             return apology("Passwords do not match")
 
         else:
-            hashpw = generate_password_hash(request.form.get("password"), method='pbkdf2:sha256', salt_length=8)
+            hashpw = generate_password_hash(password1, method='pbkdf2:sha256', salt_length=8)
             # Query database for username
             db.execute("INSERT INTO users (username, hash) VALUES (?, ?)", username, hashpw)
             rows = db.execute("SELECT * FROM users WHERE username = ?", username)
