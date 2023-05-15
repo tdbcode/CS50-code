@@ -84,7 +84,9 @@ def index():
         quantity = int(shares[i]["quantity"])
         totalholdings = totalholdings + (results["price"] * quantity)
 
-    return render_template("index.html",shares=getShares(), length=length)
+    
+
+    return render_template("index.html",shares=getShares(), length=length, totalholdings=totalholdings)
 
 @app.route("/buy", methods=["GET", "POST"])
 @login_required
