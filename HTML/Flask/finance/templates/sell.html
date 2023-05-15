@@ -14,6 +14,7 @@
         <form action="/sell" method="post">
             <div class="mb-3">
                 <select name="symbol" id="symbol">
+                    <option value=0>Please choose</option>
                     {% for month in months %}
                     <option value={{id}}>{{symbol}}</option>
                     {% endfor %}
