@@ -288,7 +288,7 @@ def sell():
             price = float(results["price"]) # get the price of the searched stock
             # print(cash[0]["cash"]) # for testing only
             totalprice = price * int(shares) # calculate the total price
-            #print(totalprice) # for testing only
+            # print(totalprice) # for testing only
 
             # Source for looking up flashing messages: https://www.codingninjas.com/codestudio/library/message-flashing-in-flask#:~:text=Flask%20offers%20a%20function%20to,message%20to%20the%20next%20template.
             flash("Stock Sold")
