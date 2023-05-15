@@ -72,6 +72,25 @@ def getShares():
 
     return sharesdict
 
+
+@app.route("/add", methods=["GET", "POST"])
+@login_required
+def add():
+    # Create tables if they don't exist
+    createTables()
+
+    # If method is POST
+    if request.method == "POST":
+        amount = request.form.get("amount")
+
+        if amount < 1:
+            return apology("Invalid amounted entered")
+        else:
+            # Update users cash to reflect new amount - Source for help: https://www.w3schools.com/sql/sql_update.asp
+            db.execute("UPDATE users SET cash=? where id=?", cash[0]["cash"] - totalprice, session["user_id"])
+
+    redirect("/")
+
 @app.route("/")
 @login_required
 def index():
