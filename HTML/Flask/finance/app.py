@@ -8,7 +8,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from helpers import apology, login_required, lookup, usd
 
-from datetime import datetime, date # Source: https://www.w3schools.com/python/python_datetime.asp and https://docs.python.org/3/library/datetime.html
+from datetime import datetime, date  # Source: https://www.w3schools.com/python/python_datetime.asp and https://docs.python.org/3/library/datetime.html
 
 # Configure application
 app = Flask(__name__)
@@ -55,20 +55,20 @@ def getShares():
 
     sharesdict = []
 
-    for i in range(0,len(shares)):
+    for i in range(0, len(shares)):
         shareid = shares[i]["shareID"]
         symbol = shares[i]["symbol"]
         quantity = int(shares[i]["quantity"])
-        results = lookup(symbol) # Lookup symbol using function which returns list of stock details
-        price = results["price"] # Lookup symbol using function which returns list of stock details
+        results = lookup(symbol)  # Lookup symbol using function which returns list of stock details
+        price = results["price"]  # Lookup symbol using function which returns list of stock details
 
         totalprice = float(price) * quantity
 
         # Creating a new dictionary to pass thbrough as shares, source: https://www.geeksforgeeks.org/appending-to-list-in-python-dictionary/
         # Adding new key pairs source: https://thispointer.com/add-key-value-pairs-to-an-empty-dictionary-in-python/
-        sharesdict.append({'shareid': shareid, 'symbol':symbol, 'quantity':quantity, 'price':usd(price), 'totalprice':usd(totalprice)})
-    ## print(shares) # for testing only
-    ## print(sharesdict) # for testing only
+        sharesdict.append({'shareid': shareid, 'symbol': symbol, 'quantity': quantity, 'price': usd(price), 'totalprice': usd(totalprice)})
+        ## print(shares) # for testing only
+        ## print(sharesdict) # for testing only
 
     return sharesdict
 
@@ -87,7 +87,7 @@ def changepass():
         # Get users current has from database
         dbhash = db.execute("SELECT hash FROM users WHERE id = ?", session["user_id"])
 
-        if not check_password_hash(dbhash[0]["hash"],cpassword):
+        if not check_password_hash(dbhash[0]["hash"], cpassword):
             return apology("Password entered does not match current password")
 
         # Ensure current password was submitted
@@ -146,7 +146,8 @@ def add():
             tod = date.today().strftime("%d/%m/%y")
             tim = datetime.now().strftime("%H:%M:%S")
             # Add the transaction log to the database table, transactions
-            db.execute("INSERT INTO transactions (bors, date, time, symbol, price, quantity, total, userid) VALUES (?, ?, ?, ?, ?, ?, ?, ?);", "Add Funds", tod, tim, "", amount, 1, amount, session["user_id"])
+            db.execute("INSERT INTO transactions (bors, date, time, symbol, price, quantity, total, userid) VALUES (?, ?, ?, ?, ?, ?, ?, ?);",
+                       "Add Funds", tod, tim, "", amount, 1, amount, session["user_id"])
 
         flash("Funds added")
 
@@ -160,7 +161,7 @@ def index():
         length = len(shares)
         sharesdb = db.execute("SELECT * FROM shares where userid=?;", session["user_id"])
         totalholdings = 0.0
-        for i in range(0,len(sharesdb)):
+        for i in range(0, len(sharesdb)):
             results = lookup(sharesdb[i]["symbol"])
             quantity = int(shares[i]["quantity"])
             totalholdings = totalholdings + (results["price"] * quantity)
@@ -188,7 +189,7 @@ def buy():
             shares = int(request.form.get("shares"))
         except:
             return apology("Invalid shares quantity entered")
-        results = lookup(symbol) # Lookup symbol using function which returns list of stock details
+        results = lookup(symbol)  # Lookup symbol using function which returns list of stock details
 
         # If no results then symbol wrong or empty - tell user to enter a valid symbol
         if results == None:
@@ -198,12 +199,12 @@ def buy():
             return apology("Invalid shares quantity entered")
         else:
             # Look up how much cash the current user has in the table
-            cash = db.execute("SELECT cash FROM users where id=?",session["user_id"])
+            cash = db.execute("SELECT cash FROM users where id=?", session["user_id"])
 
             # List Formatting for reference: {'name': 'Forward Industries, Inc.', 'price': 1.02, 'symbol': 'FORD'}
-            price = float(results["price"]) # get the price of the searched stock
+            price = float(results["price"])  # get the price of the searched stock
             # print(cash[0]["cash"]) # for testing only
-            totalprice = price * int(shares) # calculate the total price
+            totalprice = price * int(shares)  # calculate the total price
             # print(totalprice) # for testing only
 
             # If user case is less than the total price then tell the user they do not add funds
@@ -215,7 +216,8 @@ def buy():
                 tod = date.today().strftime("%d/%m/%y")
                 tim = datetime.now().strftime("%H:%M:%S")
                 # Add the transaction log to the database table, transactions
-                db.execute("INSERT INTO transactions (bors, date, time, symbol, price, quantity, total, userid) VALUES (?, ?, ?, ?, ?, ?, ?, ?);", "Buy", tod, tim, symbol, price, shares, totalprice, session["user_id"])
+                db.execute("INSERT INTO transactions (bors, date, time, symbol, price, quantity, total, userid) VALUES (?, ?, ?, ?, ?, ?, ?, ?);",
+                        "Buy", tod, tim, symbol, price, shares, totalprice, session["user_id"])
                 # Update users cash to reflect new amount - Source for help: https://www.w3schools.com/sql/sql_update.asp
                 db.execute("UPDATE users SET cash=cash-? where id=?", totalprice, session["user_id"])
 
@@ -223,9 +225,11 @@ def buy():
                 # print(currentshares) # For testing purposes only
                 if len(currentshares) == 0:
                     # Add the shares to the shares table and assign the user ID and link to the transaction ID using the foreign keys s
-                    share = db.execute("INSERT INTO shares (symbol, quantity, userid) VALUES (?,?,?);", symbol, shares, session["user_id"])
+                    share = db.execute("INSERT INTO shares (symbol, quantity, userid) VALUES (?,?,?);",
+                                       symbol, shares, session["user_id"])
                 else:
-                    db.execute("UPDATE shares Set quantity=quantity+? where symbol=? and userid=?", int(shares), symbol, session["user_id"])
+                    db.execute("UPDATE shares Set quantity=quantity+? where symbol=? and userid=?",
+                               int(shares), symbol, session["user_id"])
 
                 # Flash message
                 flash("Purchased")
@@ -240,7 +244,7 @@ def buy():
 @app.route("/history")
 @login_required
 def history():
-     # Create tables if they don't exist
+    # Create tables if they don't exist
     createTables()
     history = db.execute("SELECT * FROM transactions where userid=?;", session["user_id"])
     length = len(history)
@@ -303,7 +307,7 @@ def quote():
     createTables()
     if request.method == "POST":
         symbol = request.form.get("symbol")
-        results = lookup(symbol) # Lookup symbol using function which returns list of stock details
+        results = lookup(symbol)  # Lookup symbol using function which returns list of stock details
 
         # If no results then symbol wrong or empty - tell use to enter a valid symbol
         if results == None:
@@ -312,7 +316,7 @@ def quote():
             # List Formatting : {'name': 'Forward Industries, Inc.', 'price': 1.02, 'symbol': 'FORD'}
             # Set page text to output symbol and how much per share (using USD function to make it a valid ticker - as per check50) converting price to string for display
             text = results["symbol"] + " are currently " + str(usd(results["price"])) + " per share (" + results["name"] + ")"
-            return render_template("quoted.html", results=text) # Load quoted page with text above as body text
+            return render_template("quoted.html", results=text)  # Load quoted page with text above as body text
 
     # User reached route via GET (as by clicking a link or via redirect)
     else:
@@ -387,7 +391,7 @@ def sell():
             shares = int(request.form.get("shares"))
         except:
             return apology("Invalid shares quantity entered")
-        results = lookup(symbol) # Lookup symbol using function which returns list of stock details
+        results = lookup(symbol)  # Lookup symbol using function which returns list of stock details
         # print(results) # for testining only
 
         # If no results then symbol wrong or empty - tell user to enter a valid symbol
@@ -398,11 +402,12 @@ def sell():
             return apology("Invalid shares quantity entered")
         else:
             # List Formatting for reference: {'name': 'Forward Industries, Inc.', 'price': 1.02, 'symbol': 'FORD'}
-            price = float(results["price"]) # get the price of the searched stock
-            totalprice = price * int(shares) # calculate the total price
+            price = float(results["price"])  # get the price of the searched stock
+            totalprice = price * int(shares)  # calculate the total price
             # print(totalprice) # for testing only
 
-            currentshares = db.execute("SELECT quantity FROM shares where symbol=? and userid=?", symbol, session["user_id"])
+            currentshares = db.execute("SELECT quantity FROM shares where symbol=? and userid=?",
+                                       symbol, session["user_id"])
 
             # If user case is less than the total price then tell the user they do not add funds
             if currentshares[0]["quantity"] < shares:
@@ -411,16 +416,18 @@ def sell():
                 if currentshares[0]["quantity"] - shares == 0:
                     db.execute("DELETE FROM shares where symbol=? and userid=?", symbol, session["user_id"])
                 else:
-                    db.execute("UPDATE shares Set quantity=quantity-? where symbol=? and userid=?", int(shares), symbol, session["user_id"])
+                    db.execute("UPDATE shares Set quantity=quantity-? where symbol=? and userid=?",
+                               int(shares), symbol, session["user_id"])
 
                 # SQLite datetime formatting source: https://www.tutorialspoint.com/sqlite/sqlite_date_time.htm
                 # get todays date and time in d/m/y and h:m:s format
                 tod = date.today().strftime("%d/%m/%y")
                 tim = datetime.now().strftime("%H:%M:%S")
                 # Look up how much cash the current user has in the table
-                cash = db.execute("SELECT cash FROM users where id=?",session["user_id"])
+                cash = db.execute("SELECT cash FROM users where id=?", session["user_id"])
                 # Add the transaction log to the database table, transactions
-                db.execute("INSERT INTO transactions (bors, date, time, symbol, price, quantity, total, userid) VALUES (?, ?, ?, ?, ?, ?, ?, ?);", "Sell", tod, tim, symbol, price, shares, totalprice, session["user_id"])
+                db.execute("INSERT INTO transactions (bors, date, time, symbol, price, quantity, total, userid) VALUES (?, ?, ?, ?, ?, ?, ?, ?);",
+                           "Sell", tod, tim, symbol, price, shares, totalprice, session["user_id"])
                 # Update users cash to reflect new amount - Source for help: https://www.w3schools.com/sql/sql_update.asp
                 db.execute("UPDATE users SET cash=cash+? where id=?", totalprice, session["user_id"])
 
@@ -431,4 +438,4 @@ def sell():
                 return redirect("/")
     else:
         # print(getShares()) # for testing only
-        return render_template("sell.html",shares=getShares())
+        return render_template("sell.html", shares=getShares())
