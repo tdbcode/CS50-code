@@ -157,7 +157,7 @@ def buy():
 def history():
      # Create tables if they don't exist
     createTables()
-    
+    history = db.execute("SELECT * FROM transactions where userid=?;", session["user_id"])
 
     # If method is POST
     if request.method == "POST":
@@ -165,8 +165,6 @@ def history():
     # User reached route via GET (as by clicking a link or via redirect)
     else:
         return render_template("history.html",history=history)
-
-
 
 
 @app.route("/login", methods=["GET", "POST"])
