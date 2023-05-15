@@ -46,7 +46,6 @@ def createTables():
     db.execute("CREATE TABLE IF NOT EXISTS shares (shareID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, symbol TEXT NOT NULL, quantity INTEGER NOT NULL, userid int NOT NULL, FOREIGN KEY (userID) REFERENCES users(id));")
     db.execute("CREATE UNIQUE INDEX IF NOT EXISTS sharesID ON shares (shareID);")
 
-
 def getShares():
     shares = db.execute("SELECT * FROM shares where userid=?;", session["user_id"])
     # print(shares) # for testing only
