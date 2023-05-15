@@ -81,13 +81,13 @@ def add():
 
     # If method is POST
     if request.method == "POST":
-        amount = request.form.get("amount")
+        amount = int(request.form.get("amount"))
 
         if amount < 1:
             return apology("Invalid amounted entered")
         else:
             # Update users cash to reflect new amount - Source for help: https://www.w3schools.com/sql/sql_update.asp
-            db.execute("UPDATE users SET cash=? where id=?", cash + amount, session["user_id"])
+            db.execute("UPDATE users SET cash=cash+? where id=?", cash + amount, session["user_id"])
 
     redirect("/")
 
