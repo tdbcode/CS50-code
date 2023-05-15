@@ -77,9 +77,13 @@ def getShares():
 def index():
     shares = getShares()
     length = len(shares)
-    shares = db.execute("SELECT * FROM shares where userid=?;", session["user_id"])
-    
-    print(totalprice)
+    sharesdb = db.execute("SELECT * FROM shares where userid=?;", session["user_id"])
+    totalholdings = 0.0
+    for i in range(0,len(sharesdb)):
+        results = lookup(sharesdb[i]["symbol"])
+        totalholdings = totalholdings + (result["price"] * shares[""]
+
+    print(results)
     return render_template("index.html",shares=getShares(), length=length)
 
 @app.route("/buy", methods=["GET", "POST"])
