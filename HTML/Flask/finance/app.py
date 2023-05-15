@@ -84,9 +84,10 @@ def index():
         quantity = int(shares[i]["quantity"])
         totalholdings = totalholdings + (results["price"] * quantity)
 
-    
+    userdata = db.execute("SELECT cash from users where id=?;", session["user_id"])
+    cash = userdata[0]["cash"]
 
-    return render_template("index.html",shares=getShares(), length=length, totalholdings=totalholdings)
+    return render_template("index.html", shares=getShares(), length=length, totalholdings=usd(totalholdings), cash=usd(cash))
 
 @app.route("/buy", methods=["GET", "POST"])
 @login_required
