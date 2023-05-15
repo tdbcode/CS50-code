@@ -155,10 +155,18 @@ def buy():
 @app.route("/history")
 @login_required
 def history():
-    # Create tables if they don't exist
+     # Create tables if they don't exist
     createTables()
-    """Show history of transactions"""
-    return apology("TODO")
+    
+
+    # If method is POST
+    if request.method == "POST":
+
+    # User reached route via GET (as by clicking a link or via redirect)
+    else:
+        return render_template("history.html",history=history)
+
+
 
 
 @app.route("/login", methods=["GET", "POST"])
