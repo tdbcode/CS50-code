@@ -310,4 +310,5 @@ def sell():
                 # Redirect user to home page
                 return redirect("/")
     else:
+        # print(getShares()) # for testing only
         return render_template("sell.html",shares=getShares())
