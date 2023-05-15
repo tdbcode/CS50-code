@@ -85,9 +85,12 @@ def changepass():
         password2 = request.form.get("confirmation")
 
         # Get users current has from database
-        hash = db.execute("SELECT hash FROM users WHERE id = ?", session["user_id"])
+        dbhash = db.execute("SELECT hash FROM users WHERE id = ?", session["user_id"])
+        hash = dbhash[0]["hash"]
+        print(hash)
+        print(cpassword)
 
-        if hash != generate_password_hash(cpassword):
+        if not hash == generate_password_hash(cpassword):
             return apology("Password entered does not match current password")
 
         # Ensure current password was submitted
