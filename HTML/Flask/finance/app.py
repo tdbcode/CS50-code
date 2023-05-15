@@ -267,6 +267,7 @@ def sell():
     if request.method == "POST":
         # Get Symbol and Shares
         symbol = request.form.get("symbol")
+        print(symbol)
         try:
             shares = int(request.form.get("shares"))
         except:
@@ -275,7 +276,7 @@ def sell():
 
         # If no results then symbol wrong or empty - tell user to enter a valid symbol
         if results == None:
-            return apology("Please enter a valid stock symbol")
+            return apology("Please select a valid stock symbol")
         # if shares is empty or less than 1 - tell user an invalided quantity was entered.
         elif shares == None or shares < 1:
             return apology("Invalid shares quantity entered")
