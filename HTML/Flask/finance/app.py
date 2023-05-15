@@ -157,7 +157,7 @@ def buy():
 def history():
      # Create tables if they don't exist
     createTables()
-    history = db.execute("SELECT * FROM transactions where userid=?;", session["user_id"])
+    history = db.execute("SELECT * FROM transactions JOIN transactions ON transactions.transactionid = shares.transactionsid where userid=?;", session["user_id"])
     length = len(history)
     return render_template("history.html", history=history, length=length)
 
