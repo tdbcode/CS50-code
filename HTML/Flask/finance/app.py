@@ -275,8 +275,7 @@ def sell():
         except:
             return apology("Invalid shares quantity entered")
         results = lookup(symbol) # Lookup symbol using function which returns list of stock details
-
-        print(results)
+        # print(results) # for testining only
 
         # If no results then symbol wrong or empty - tell user to enter a valid symbol
         if results == None:
