@@ -37,6 +37,7 @@ def after_request(response):
     response.headers["Pragma"] = "no-cache"
     return response
 
+
 def createTables():
     # If table doesn't exist, then create them for program
     # Sources for SQL foreign keys: https://www.w3schools.com/sql/sql_foreignkey.asp
@@ -46,6 +47,7 @@ def createTables():
     db.execute("CREATE UNIQUE INDEX IF NOT EXISTS sharesID ON shares (shareID);")
     db.execute("CREATE TABLE IF NOT EXISTS transactions (transactionID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, bors TEXT NOT NULL, date TEXT NOT NULL, time TEXT NOT NULL, price REAL NOT NULL, quantity INTEGER NOT NULL, total REAL NOT NULL, userid int NOT NULL, FOREIGN KEY (userID) REFERENCES users(id));")
     db.execute("CREATE UNIQUE INDEX IF NOT EXISTS transactionID ON transactions (transactionID);")
+
 
 def getShares():
     shares = db.execute("SELECT * FROM shares where userid=?;", session["user_id"])
@@ -76,8 +78,7 @@ def index():
     try:
         return render_template("index.html",shares=getShares())
     except:
-        # Forget any user_id
-        session.clear()
+        print()
 
     redirect("/")
 
