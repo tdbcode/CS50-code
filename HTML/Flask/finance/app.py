@@ -45,7 +45,7 @@ def createTables():
     db.execute("CREATE UNIQUE INDEX IF NOT EXISTS username ON users (username);")
     db.execute("CREATE TABLE IF NOT EXISTS shares (shareID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, symbol TEXT NOT NULL, quantity INTEGER NOT NULL, userid int NOT NULL, FOREIGN KEY (userID) REFERENCES users(id));")
     db.execute("CREATE UNIQUE INDEX IF NOT EXISTS sharesID ON shares (shareID);")
-    db.execute("CREATE TABLE IF NOT EXISTS transactions (transactionID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, bors TEXT NOT NULL, date TEXT NOT NULL, time TEXT NOT NULL, price REAL NOT NULL, quantity INTEGER NOT NULL, total REAL NOT NULL, userid int NOT NULL, FOREIGN KEY (userID) REFERENCES users(id));")
+    db.execute("CREATE TABLE IF NOT EXISTS transactions (transactionID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, bors TEXT NOT NULL, date TEXT NOT NULL, time TEXT NOT NULL, symbol TEXT NOT NULL, price REAL NOT NULL, quantity INTEGER NOT NULL, total REAL NOT NULL, userid int NOT NULL, FOREIGN KEY (userID) REFERENCES users(id));")
     db.execute("CREATE UNIQUE INDEX IF NOT EXISTS transactionID ON transactions (transactionID);")
 
 
@@ -130,7 +130,7 @@ def buy():
                 tod = date.today().strftime("%d/%m/%y")
                 tim = datetime.now().strftime("%H:%M:%S")
                 # Add the transaction log to the database table, transactions
-                db.execute("INSERT INTO transactions (bors, date, time, price, quantity, total, userid) VALUES (?, ?,?,?,?,?, ?);", "Buy", tod, tim, price, shares, totalprice, session["user_id"])
+                db.execute("INSERT INTO transactions (bors, date, time, symbol, price, quantity, total, userid) VALUES (?, ?, ?, ?, ?, ?, ?, ?);", "Buy", tod, tim, symbol, price, shares, totalprice, session["user_id"])
                 # Update users cash to reflect new amount - Source for help: https://www.w3schools.com/sql/sql_update.asp
                 db.execute("UPDATE users SET cash=? where id=?", cash[0]["cash"] - totalprice, session["user_id"])
 
@@ -333,7 +333,7 @@ def sell():
                 # Look up how much cash the current user has in the table
                 cash = db.execute("SELECT cash FROM users where id=?",session["user_id"])
                 # Add the transaction log to the database table, transactions
-                db.execute("INSERT INTO transactions (bors, date, time, price, quantity, total, userid) VALUES (?, ?,?,?,?,?, ?);", "Sell", tod, tim, price, shares, totalprice, session["user_id"])
+                 db.execute("INSERT INTO transactions (bors, date, time, symbol, price, quantity, total, userid) VALUES (?, ?, ?, ?, ?, ?, ?, ?);", "Sell", tod, tim, symbol, price, shares, totalprice, session["user_id"])
                 # Update users cash to reflect new amount - Source for help: https://www.w3schools.com/sql/sql_update.asp
                 db.execute("UPDATE users SET cash=? where id=?", cash[0]["cash"] + totalprice, session["user_id"])
 
