@@ -283,7 +283,6 @@ def sell():
         else:
             # List Formatting for reference: {'name': 'Forward Industries, Inc.', 'price': 1.02, 'symbol': 'FORD'}
             price = float(results["price"]) # get the price of the searched stock
-            # print(cash[0]["cash"]) # for testing only
             totalprice = price * int(shares) # calculate the total price
             # print(totalprice) # for testing only
 
@@ -291,7 +290,7 @@ def sell():
 
             # If user case is less than the total price then tell the user they do not add funds
             if currentshares[0]["quantity"] < shares:
-                return apology("Shares entered exceed shares owned. Please adjust.")
+                return apology("Shares entered exceed shares owned.")
             else:
                 # SQLite datetime formatting source: https://www.tutorialspoint.com/sqlite/sqlite_date_time.htm
                 # get todays date and time in d/m/y and h:m:s format
