@@ -36,7 +36,7 @@
 
                         <script>
                             // Source for code: https://www.w3schools.com/js/js_htmldom_html.asp
-                            var nextCode = '<form action="/sell" method="post"><input name="id" type="hidden" value="{{ share.symbol }}"><button type="submit">Sell</button></form>';
+                            var nextCode = '<form action="/sell" method="post"><input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="shares" name="shares" placeholder="Enter Number of Shares" type="text"><input name="id" type="hidden" value="{{ share.symbol }}"><button type="submit">Sell</button></form>';
                             function sell() {
                                 var div;
                                 div = document.getElementById('sellbutton').innerHTML = nextCode;
