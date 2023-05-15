@@ -30,7 +30,7 @@
                         <td>{{ share.quantity }}</td>
                         <td>{{ share.price }}</td>
                         <td>{{ share.totalprice }}</td>
-                        <td>
+                        <td id="">
                         <form action="/sell" method="post"><input name="id" type="hidden" value="{{ share.symbol }}">
                             <button type="submit">Sell</button>
                         </form>
