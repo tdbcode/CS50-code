@@ -31,58 +31,17 @@
                         <td>{{ share.price }}</td>
                         <td>{{ share.totalprice }}</td>
                         <td id="sellbutton">
-                        <form action="/sell" method="post"><input name="id" type="hidden" value="{{ share.symbol }}">
-                            <button type="submit">Sell</button>
-                        </form>
+                            <button onClick="sell()">Sell</button>
                         </td>
 
                         <script>
-                            window.addEventListener('load', function()
-                            {
-                            var xhr = null;
-
-                            getXmlHttpRequestObject = function()
-                            {
-                                if(!xhr)
-                                {
-                                    // Create a new XMLHttpRequest object
-                                    xhr = new XMLHttpRequest();
-                                }
-                                return xhr;
-                            };
-
-                            updateLiveData = function()
-                            {
-                                var now = new Date();
-                                // Date string is appended as a query with live data
-                                // for not to use the cached version
-                                var url = 'livefeed.txt?' + now.getTime();
-                                xhr = getXmlHttpRequestObject();
-                                xhr.onreadystatechange = evenHandler;
-                                // asynchronous requests
-                                xhr.open("GET", url, true);
-                                // Send the request over the network
-                                xhr.send(null);
-                            };
-
-                            updateLiveData();
-
-                            function evenHandler()
-                            {
-                                // Check response is ready or not
-                                if(xhr.readyState == 4 && xhr.status == 200)
-                                {
-                                    dataDiv = document.getElementById('liveData');
-                                    // Set current data text
-                                    dataDiv.innerHTML = xhr.responseText;
-                                    // Update the live data every 1 sec
-                                    setTimeout(updateLiveData(), 1000);
-                                }
+                            // Source for code: https://www.w3schools.com/js/js_htmldom_html.asp
+                            var nextCode = '<form action="/sell" method="post"><input name="id" type="hidden" value="{{ share.symbol }}"><button type="submit">Sell</button></form>';
+                            function sell() {
+                                var div;
+                                div = document.getElementById('sellbutton').innerHTML = nextCode;
                             }
-                            });
-
                         </script>
-                    </tr>
                 {% endfor %}
             </tbody>
         </table>
