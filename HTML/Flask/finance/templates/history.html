@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Purchase History
+{% endblock %}
+
+{% block main %}
+<div class="header">
+    <h1>Purchase History</h1>
+</div>
+<div class="container">
+    <div class="section">
+        <h3>Cash Balance: {{ cash }}</h2>
+        <h3>Total of current holdings: {{ totalholdings }}</h2>
+        <br>
+        {% if length > 0 %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Stock</th>
+                    <th>No of Shares</th>
+                    <th>Current price per share</th>
+                    <th>Total value of holding</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for share in shares %}
+                    <tr>
+                        <td>{{ share.symbol }}</td>
+                        <td>{{ share.quantity }}</td>
+                        <td>{{ share.price }}</td>
+                        <td>{{ share.totalprice }}</td>
+                        <td>
+                        <form action="/sell" method="post"><input name="id" type="hidden" value="{{ share.symbol }}">
+                            <button type="submit">Sell</button>
+                        </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+            <h2>No shares owned</h2>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
