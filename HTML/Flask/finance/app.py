@@ -81,9 +81,9 @@ def index():
     totalholdings = 0.0
     for i in range(0,len(sharesdb)):
         results = lookup(sharesdb[i]["symbol"])
-        totalholdings = totalholdings + (result["price"] * shares[""]
+        quantity = int(shares[i]["quantity"])
+        totalholdings = totalholdings + (results["price"] * quantity)
 
-    print(results)
     return render_template("index.html",shares=getShares(), length=length)
 
 @app.route("/buy", methods=["GET", "POST"])
