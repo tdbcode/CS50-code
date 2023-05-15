@@ -97,9 +97,9 @@ def buy():
 
             # List Formatting for reference: {'name': 'Forward Industries, Inc.', 'price': 1.02, 'symbol': 'FORD'}
             price = float(results["price"]) # get the price of the searched stock
-            #print(cash[0]["cash"])#for testing only
+            # print(cash[0]["cash"]) # for testing only
             totalprice = price * int(shares) # calculate the total price
-            print(totalprice)
+            # print(totalprice) # for testing only
 
             # If user case is less than the total price then tell the user they do not add funds
             if cash[0]["cash"] < totalprice:
@@ -265,7 +265,28 @@ def register():
 @login_required
 def sell():
     if request.method == "POST":
-        shareid = request.form.get("symbol")
-        print(int(shareid))
+        # Get Symbol and Shares
+        symbol = request.form.get("symbol")
+        try:
+            shares = int(request.form.get("shares"))
+        except:
+            return apology("Invalid shares quantity entered")
+        results = lookup(symbol) # Lookup symbol using function which returns list of stock details
+
+        # If no results then symbol wrong or empty - tell user to enter a valid symbol
+        if results == None:
+            return apology("Please enter a valid stock symbol")
+        # if shares is empty or less than 1 - tell user an invalided quantity was entered.
+        elif shares == None or shares < 1:
+            return apology("Invalid shares quantity entered")
+        else:
+            # Look up how much cash the current user has in the table
+            cash = db.execute("SELECT cash FROM users where id=?",session["user_id"])
+
+            # List Formatting for reference: {'name': 'Forward Industries, Inc.', 'price': 1.02, 'symbol': 'FORD'}
+            price = float(results["price"]) # get the price of the searched stock
+            # print(cash[0]["cash"]) # for testing only
+            totalprice = price * int(shares) # calculate the total price
+            print(totalprice) # for testing only
     else:
         return render_template("sell.html",shares=getShares())

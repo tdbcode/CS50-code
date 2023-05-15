@@ -14,9 +14,9 @@
         <form action="/sell" method="post">
             <div class="mb-3">
                 <select name="symbol" id="symbol">
-                    <option value="0" selected="selected" disabled>Please choose</option>
+                    <option value="None" selected="selected" disabled>Please choose</option>
                     {% for share in shares %}
-                    <option value={{id}}>{{share.symbol}}</option>
+                    <option value={{share.symbol}}>{{share.symbol}}</option>
                     {% endfor %}
                   </select>
             </div>
