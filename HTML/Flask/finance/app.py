@@ -73,8 +73,11 @@ def getShares():
 @app.route("/")
 @login_required
 def index():
-    return render_template("index.html",shares=getShares())
-
+    try:
+        return render_template("index.html",shares=getShares())
+    except:
+        # Forget any user_id
+        session.clear()
 
 @app.route("/buy", methods=["GET", "POST"])
 @login_required
