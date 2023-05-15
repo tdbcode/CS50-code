@@ -93,6 +93,9 @@ def add():
         else:
             # Update users cash to reflect new amount using current value
             db.execute("UPDATE users SET cash=cash+? where id=?;", amount, session["user_id"])
+            # get todays date and time in d/m/y and h:m:s format
+            tod = date.today().strftime("%d/%m/%y")
+            tim = datetime.now().strftime("%H:%M:%S")
             # Add the transaction log to the database table, transactions
             db.execute("INSERT INTO transactions (bors, date, time, symbol, price, quantity, total, userid) VALUES (?, ?, ?, ?, ?, ?, ?, ?);", "Add Funds", tod, tim, "", amount, 1, amount, session["user_id"])
 
