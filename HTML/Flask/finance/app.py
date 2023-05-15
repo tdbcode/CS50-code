@@ -37,6 +37,15 @@ def after_request(response):
     response.headers["Pragma"] = "no-cache"
     return response
 
+def createTables():
+    # If table doesn't exist, then create them for program
+    db.execute("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, username TEXT NOT NULL, hash TEXT NOT NULL, cash NUMERIC NOT NULL DEFAULT 10000.00);")
+    db.execute("CREATE UNIQUE INDEX IF NOT EXISTS username ON users (username);")
+    db.execute("CREATE TABLE IF NOT EXISTS transactions (transactionID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, bors TEXT NOT NULL, date TEXT NOT NULL, time TEXT NOT NULL, price REAL NOT NULL, quantity INTEGER NOT NULL, total REAL NOT NULL, userid int NOT NULL, FOREIGN KEY (userID) REFERENCES users(id));")
+    db.execute("CREATE UNIQUE INDEX IF NOT EXISTS transactionID ON transactions (transactionID);")
+    db.execute("CREATE TABLE IF NOT EXISTS shares (shareID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, symbol TEXT NOT NULL, quantity INTEGER NOT NULL, userid int NOT NULL, FOREIGN KEY (userID) REFERENCES users(id));")
+    db.execute("CREATE UNIQUE INDEX IF NOT EXISTS sharesID ON shares (shareID);")
+
 
 def getShares():
     shares = db.execute("SELECT * FROM shares where userid=?;", session["user_id"])
@@ -71,11 +80,7 @@ def index():
 @login_required
 def buy():
     # Sources for SQL: https://www.w3schools.com/sql/sql_foreignkey.asp
-    # If tables don't exist, then create them for this function
-    db.execute("CREATE TABLE IF NOT EXISTS transactions (transactionID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, bors TEXT NOT NULL, date TEXT NOT NULL, time TEXT NOT NULL, price REAL NOT NULL, quantity INTEGER NOT NULL, total REAL NOT NULL, userid int NOT NULL, FOREIGN KEY (userID) REFERENCES users(id));")
-    db.execute("CREATE UNIQUE INDEX IF NOT EXISTS transactionID ON transactions (transactionID);")
-    db.execute("CREATE TABLE IF NOT EXISTS shares (shareID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, symbol TEXT NOT NULL, quantity INTEGER NOT NULL, userid int NOT NULL, FOREIGN KEY (userID) REFERENCES users(id));")
-    db.execute("CREATE UNIQUE INDEX IF NOT EXISTS sharesID ON shares (shareID);")
+
 
     # If method is POST
     if request.method == "POST":
@@ -211,9 +216,7 @@ def quote():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
-    # If table doesn't exist, then create them for this function
-    db.execute("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, username TEXT NOT NULL, hash TEXT NOT NULL, cash NUMERIC NOT NULL DEFAULT 10000.00);")
-    db.execute("CREATE UNIQUE INDEX IF NOT EXISTS username ON users (username);")
+    createTables();
     # User reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
 
