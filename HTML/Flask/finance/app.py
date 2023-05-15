@@ -75,19 +75,24 @@ def getShares():
 @app.route("/")
 @login_required
 def index():
-    shares = getShares()
-    length = len(shares)
-    sharesdb = db.execute("SELECT * FROM shares where userid=?;", session["user_id"])
-    totalholdings = 0.0
-    for i in range(0,len(sharesdb)):
-        results = lookup(sharesdb[i]["symbol"])
-        quantity = int(shares[i]["quantity"])
-        totalholdings = totalholdings + (results["price"] * quantity)
+    try:
+        shares = getShares()
+        length = len(shares)
+        sharesdb = db.execute("SELECT * FROM shares where userid=?;", session["user_id"])
+        totalholdings = 0.0
+        for i in range(0,len(sharesdb)):
+            results = lookup(sharesdb[i]["symbol"])
+            quantity = int(shares[i]["quantity"])
+            totalholdings = totalholdings + (results["price"] * quantity)
 
-    userdata = db.execute("SELECT cash from users where id=?;", session["user_id"])
-    cash = userdata[0]["cash"]
+        userdata = db.execute("SELECT cash from users where id=?;", session["user_id"])
+        cash = userdata[0]["cash"]
 
-    return render_template("index.html", shares=getShares(), length=length, totalholdings=usd(totalholdings), cash=usd(cash))
+        return render_template("index.html", shares=getShares(), length=length, totalholdings=usd(totalholdings), cash=usd(cash))
+    except:
+        # Forget any user_id
+        session.clear()
+        redirect("/login")
 
 @app.route("/buy", methods=["GET", "POST"])
 @login_required
