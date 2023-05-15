@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Sell Shares
+    Stock Home
 {% endblock %}
 
 {% block main %}
@@ -10,7 +10,7 @@
 </div>
 <div class="container">
     <div class="section">
-        {% if {shares}|length > 0 %}
+        {% if {{shares}}|length > 0 %}
         <table>
             <thead>
                 <tr>
