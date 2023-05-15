@@ -10,26 +10,27 @@
 </div>
 <div class="container">
     <div class="section">
-        <h3>Cash Balance: {{ cash }}</h2>
-        <h3>Total of current holdings: {{ totalholdings }}</h2>
-        <br>
         {% if length > 0 %}
         <table>
-            <thead>
+           <thead>
                 <tr>
-                    <th>Stock</th>
+                    <th>Date</td>
+                    <th>Time</th>
+                    <th>Type</th>
+                    <th>Symbol</th>
                     <th>No of Shares</th>
-                    <th>Current price per share</th>
-                    <th>Total value of holding</th>
+                    <th>Price</th>
                 </tr>
             </thead>
             <tbody>
-                {% for share in shares %}
+                {% for transaction in history %}
                     <tr>
-                        <td>{{ share.symbol }}</td>
-                        <td>{{ share.quantity }}</td>
-                        <td>{{ share.price }}</td>
-                        <td>{{ share.totalprice }}</td>
+                        <td>{{ transaction.date }}</td>
+                        <td>{{ transaction.time }}</td>
+                        <td>{{ transaction.bors }}</td>
+                        <td>{{ transaction.bors }}</td>
+                        <td>{{ transaction.quantity }}</td>
+                        <td>{{ transaction.price }}</td>
                         <td>
                         <form action="/sell" method="post"><input name="id" type="hidden" value="{{ share.symbol }}">
                             <button type="submit">Sell</button>
