@@ -26,12 +26,11 @@
             <tbody>
                 {% for share in shares %}
                     <tr>
-                        <td>{{ share.symbol }}</td>
+                        <td id="symbol">{{ share.symbol }}</td>
                         <td>{{ share.quantity }}</td>
                         <td>{{ share.price }}</td>
                         <td>{{ share.totalprice }}</td>
                         <td id="sellbutton">
-                            <input id="symbol" name="symbol" type="text" value="{{ share.}}">
                             <button onClick="sell()">Sell</button>
                         </td>
 
