@@ -37,9 +37,8 @@
                         <script>
                             // Source for to help write code: https://www.w3schools.com/js/js_htmldom_html.asp
                             function sell(id) {
-                                text = '"<form action="/sell" method="post"><input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="shares" name="shares" placeholder="Enter Number of Shares" type="text"><input id="symbol" type="hidden" text="';
-
-                                alert('${text}${id}');
+                                text = '<form action="/sell" method="post"><input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="shares" name="shares" placeholder="Enter Number of Shares" type="text"><input id="symbol" type="hidden" text="'+ id + '"><button type="submit">Sell</button></form>';
+                                alert(text)
                                 document.getElementById('sellbutton').innerHTML = codetowrite;
                             }
                         </script>
