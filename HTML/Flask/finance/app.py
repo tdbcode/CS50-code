@@ -87,7 +87,7 @@ def add():
             return apology("Invalid amounted entered")
         else:
             # Update users cash to reflect new amount - Source for help: https://www.w3schools.com/sql/sql_update.asp
-            db.execute("UPDATE users SET cash=? where id=?", cash[0]["cash"] - totalprice, session["user_id"])
+            db.execute("UPDATE users SET cash=? where id=?", cash + amount, session["user_id"])
 
     redirect("/")
 
