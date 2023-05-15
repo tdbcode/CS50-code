@@ -77,6 +77,8 @@ def getShares():
 def index():
     shares = getShares()
     length = len(shares)
+    total = sum(shares["totalprice"]))
+    print(totalprice)
     return render_template("index.html",shares=getShares(), length=length)
 
 @app.route("/buy", methods=["GET", "POST"])
