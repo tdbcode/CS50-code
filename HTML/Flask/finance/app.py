@@ -169,6 +169,7 @@ def history():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    createTables()
     """Log user in"""
 
     # Forget any user_id
