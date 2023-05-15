@@ -39,12 +39,13 @@ def after_request(response):
 
 def createTables():
     # If table doesn't exist, then create them for program
+    # Sources for SQL foreign keys: https://www.w3schools.com/sql/sql_foreignkey.asp
     db.execute("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, username TEXT NOT NULL, hash TEXT NOT NULL, cash NUMERIC NOT NULL DEFAULT 10000.00);")
     db.execute("CREATE UNIQUE INDEX IF NOT EXISTS username ON users (username);")
-    db.execute("CREATE TABLE IF NOT EXISTS transactions (transactionID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, bors TEXT NOT NULL, date TEXT NOT NULL, time TEXT NOT NULL, price REAL NOT NULL, quantity INTEGER NOT NULL, total REAL NOT NULL, userid int NOT NULL, FOREIGN KEY (userID) REFERENCES users(id));")
-    db.execute("CREATE UNIQUE INDEX IF NOT EXISTS transactionID ON transactions (transactionID);")
     db.execute("CREATE TABLE IF NOT EXISTS shares (shareID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, symbol TEXT NOT NULL, quantity INTEGER NOT NULL, userid int NOT NULL, FOREIGN KEY (userID) REFERENCES users(id));")
     db.execute("CREATE UNIQUE INDEX IF NOT EXISTS sharesID ON shares (shareID);")
+    db.execute("CREATE TABLE IF NOT EXISTS transactions (transactionID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, bors TEXT NOT NULL, date TEXT NOT NULL, time TEXT NOT NULL, price REAL NOT NULL, quantity INTEGER NOT NULL, total REAL NOT NULL, userid int NOT NULL, FOREIGN KEY (userID) REFERENCES users(id));")
+    db.execute("CREATE UNIQUE INDEX IF NOT EXISTS transactionID ON transactions (transactionID);")
 
 def getShares():
     shares = db.execute("SELECT * FROM shares where userid=?;", session["user_id"])
@@ -78,8 +79,8 @@ def index():
 @app.route("/buy", methods=["GET", "POST"])
 @login_required
 def buy():
-    # Sources for SQL: https://www.w3schools.com/sql/sql_foreignkey.asp
-
+    # Create tables if they don't exist
+    createTables()
 
     # If method is POST
     if request.method == "POST":
@@ -141,6 +142,8 @@ def buy():
 @app.route("/history")
 @login_required
 def history():
+    # Create tables if they don't exist
+    createTables()
     """Show history of transactions"""
     return apology("TODO")
 
@@ -195,6 +198,8 @@ def logout():
 @app.route("/quote", methods=["GET", "POST"])
 @login_required
 def quote():
+    # Create tables if they don't exist
+    createTables()
     if request.method == "POST":
         symbol = request.form.get("symbol")
         results = lookup(symbol) # Lookup symbol using function which returns list of stock details
@@ -215,7 +220,8 @@ def quote():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
-    createTables();
+    # Create tables if they don't exist
+    createTables()
     # User reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
 
@@ -268,6 +274,8 @@ def register():
 @app.route("/sell", methods=["GET", "POST"])
 @login_required
 def sell():
+    # Create tables if they don't exist
+    createTables()
     if request.method == "POST":
         # Get Symbol and Shares
         symbol = request.form.get("symbol")
