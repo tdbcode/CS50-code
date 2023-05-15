@@ -14,9 +14,9 @@
         <table>
            <thead>
                 <tr>
+                    <th>Type</th>
                     <th>Date</td>
                     <th>Time</th>
-                    <th>Type</th>
                     <th>Symbol</th>
                     <th>No of Shares</th>
                     <th>Price</th>
@@ -25,9 +25,9 @@
             <tbody>
                 {% for transaction in history %}
                     <tr>
+                        <td>{{ transaction.bors }}</td>
                         <td>{{ transaction.date }}</td>
                         <td>{{ transaction.time }}</td>
-                        <td>{{ transaction.bors }}</td>
                         <td>{{ transaction.symbol }}</td>
                         <td>{{ transaction.quantity }}</td>
                         <td>{{ transaction.price }}</td>

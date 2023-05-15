@@ -195,6 +195,7 @@ def history():
     createTables()
     history = db.execute("SELECT * FROM transactions where userid=?;", session["user_id"])
     length = len(history)
+    
     return render_template("history.html", history=history, length=length)
 
 
