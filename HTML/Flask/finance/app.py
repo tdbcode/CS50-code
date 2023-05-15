@@ -81,18 +81,22 @@ def add():
 
     # If method is POST
     if request.method == "POST":
+        # Get amount entered to add from main page
         try:
             amount = int(request.form.get("amount"))
         except:
             return apology("Invalid amounted entered")
 
+        # If amount less than 1 then return invalid amount entered apology page
         if amount < 1:
             return apology("Invalid amounted entered")
         else:
-            # Update users cash to reflect new amount - Source for help: https://www.w3schools.com/sql/sql_update.asp
+            # Update users cash to reflect new amount using current value
             db.execute("UPDATE users SET cash=cash+? where id=?;", amount, session["user_id"])
 
-    redirect("/")
+        flash("Funds added")
+
+    return redirect("/")
 
 @app.route("/")
 @login_required
@@ -159,7 +163,7 @@ def buy():
                 # Add the transaction log to the database table, transactions
                 db.execute("INSERT INTO transactions (bors, date, time, symbol, price, quantity, total, userid) VALUES (?, ?, ?, ?, ?, ?, ?, ?);", "Buy", tod, tim, symbol, price, shares, totalprice, session["user_id"])
                 # Update users cash to reflect new amount - Source for help: https://www.w3schools.com/sql/sql_update.asp
-                db.execute("UPDATE users SET cash=? where id=?", cash[0]["cash"] - totalprice, session["user_id"])
+                db.execute("UPDATE users SET cash=cash-? where id=?", totalprice, session["user_id"])
 
                 currentshares = db.execute("SELECT quantity FROM shares where symbol=? and userid=?", symbol, session["user_id"])
                 # print(currentshares) # For testing purposes only
@@ -352,7 +356,7 @@ def sell():
                 if currentshares[0]["quantity"] - shares == 0:
                     db.execute("DELETE FROM shares where symbol=? and userid=?", symbol, session["user_id"])
                 else:
-                    db.execute("UPDATE shares Set quantity=? where symbol=? and userid=?", int(currentshares[0]["quantity"]) - int(shares), symbol, session["user_id"])
+                    db.execute("UPDATE shares Set quantity=quantity-? where symbol=? and userid=?", int(currentshares[0]["quantity"]) - int(shares), symbol, session["user_id"])
 
                 # SQLite datetime formatting source: https://www.tutorialspoint.com/sqlite/sqlite_date_time.htm
                 # get todays date and time in d/m/y and h:m:s format
