@@ -328,7 +328,7 @@ def sell():
                 return apology("Shares entered exceed shares owned.")
             else:
                 if currentshares[0]["quantity"] - shares == 0:
-                    db.execute("DELETE FROM shares where symbol=? and userid=?", int(currentshares[0]["quantity"]) - int(shares), symbol, session["user_id"])
+                    db.execute("DELETE FROM shares where symbol=? and userid=?", symbol, session["user_id"])
                 else:
                     db.execute("UPDATE shares Set quantity=? where symbol=? and userid=?", int(currentshares[0]["quantity"]) - int(shares), symbol, session["user_id"])
 
